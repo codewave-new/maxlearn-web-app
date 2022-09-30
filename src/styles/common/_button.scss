@@ -1,0 +1,12 @@
+@mixin max__button ($brdrRadius,$padding,$ht,$wd,$color,$font) {
+    border:none; 
+    border-radius:$brdrRadius; 
+    padding:$padding;
+    min-height:$ht; 
+    min-width: $wd;
+    color: $color;
+    font-family: Roboto;
+    font-size: $font;
+    letter-spacing: 0;
+    text-align: center;
+  }

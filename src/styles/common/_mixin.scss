@@ -1,0 +1,30 @@
+@mixin make-container($padding-x: $container-padding-x) {
+  width: 100%;
+  padding-right: $padding-x;
+  padding-left: $padding-x;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@mixin card($ht, $wd, $borderRad, $bg) {
+  height: $ht;
+  width: $wd;
+  border-radius: $borderRad;
+  background-color: $bg;
+}
+
+@mixin dispalyFlex($property, $content, $direction) {
+  display: $property;
+  justify-content: $content;
+  flex-direction: $direction;
+}
+@mixin font($color, $fontSize, $fontWeight, $letterSpace, $lineHeight) {
+  // height: 22px;
+  // width: 52px;
+  color: $color;
+  font-family: Roboto;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+  letter-spacing: $letterSpace;
+  line-height: $lineHeight;
+}

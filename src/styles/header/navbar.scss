@@ -1,0 +1,27 @@
+header{
+    .max__navbar{
+        @include space-between();
+        @include make-container(6.25rem);
+        background-color: $primary-color;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 12px 24px 0 rgba(0,0,0,0.03);
+        height: 80px;
+        .max__nav-list{
+            display: flex;
+            list-style-type: none;
+            color: $text-primary-color;
+            li{
+                margin:0 5px;
+            }
+            // $brdrRadius,$padding,$ht,$wd,$color,$font
+            a{
+                @include max__button(20px,0.625rem,2.5rem,6.26rem,$text-primary-color,0.875rem)
+            }
+            .active  {
+                background-color: $active-btn;
+                color:$active-btn-text ;
+              }
+        }
+    }
+}
+

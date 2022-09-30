@@ -1,0 +1,157 @@
+@mixin space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin full-width {
+  width: 100%;
+}
+
+@mixin align-column {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+@mixin align-column-left {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@mixin row-reverse {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+@mixin space-evenly {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+@mixin space-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin borderBottom {
+  border-bottom: 1px solid #a8bac9;
+}
+@mixin customScroll($width) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+@mixin heading {
+  font-size: 33px;
+  font-weight: 700;
+  line-height: 40px;
+  letter-spacing: -0.40799999237060547px;
+  text-align: left;
+}
+
+@mixin vertical-divider {
+  border-right: 2px solid #e5e5e5;
+}
+.ant-tooltip-inner {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: -0.408px;
+  color: #000000;
+}
+@mixin horizontal-divider {
+  border-bottom: 15px solid #e5e5e5;
+}
+
+@mixin space-center {
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+}
+
+@mixin details {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 24px;
+  color: #000000;
+}
+
+@mixin text-400 {
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 24px;
+}
+
+@mixin black-primary {
+  color: #000000;
+}
+
+// uzhairkhan
+// class to be used throughout the app
+
+@mixin green {
+  color: $green;
+}
+
+.grey2 {
+  color: #5f747e;
+}
+
+.bankpay_checkout-main {
+  // width: 100vw;
+  display: flex;
+  @include media('>=phone', '<small-desktop') {
+    flex-direction: column;
+  }
+
+  .bankpay_checkout-maxspace-div {
+    width: 50%;
+    background-color: $white;
+    @include media('>=phone', '<small-desktop') {
+      width: 100%;
+      border-bottom: 12px solid $grey;
+    }
+  }
+
+  .bankpay_checkout-minspace-div {
+    width: 50%;
+    background-color: #fcfcfc;
+    box-shadow: inset 4px 0px 0 rgba(0, 0, 0, 0.08);
+    @include media('>=phone', '<small-desktop') {
+      width: 100%;
+      background-color: $white;
+    }
+  }
+}
+
+.green {
+  color: $green;
+}
