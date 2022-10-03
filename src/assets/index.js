@@ -10,6 +10,7 @@ export * as BadgeBg from './bg-badge.svg';
 export * as BadgeHome from './badge.svg';
 export * as BadgeBgImg from './home/badge_bg.png';
 export * as HomeAlertLogo from './did-you-know.svg';
+export * as HomeFlashBg from './home/flash.png';
 export * as HomeNotificationLogo from './notification.svg';
 export * as HomeSearchLogo from './home/search.svg';
 export * as HomeUserLogo from './home/Rectangle.svg';
