@@ -7,6 +7,9 @@ import Home from '../pages/home';
 import Login from '../pages/login';
 import Layout from '../components/Layout/Layout';
 import ProtectedRoute from './privateRoute';
+import Todo from '../pages/todo';
+import Rangings from '../pages/rangings';
+import Learn from '../pages/learn';
 
 export const appRoutes = [
   {
@@ -42,6 +45,18 @@ export const appRoutes = [
       {
         path: '/',
         element: <Home />,
+      },
+      {
+        path: '/to-do',
+        element: <Todo />,
+      },
+      {
+        path: '/rankings',
+        element: <Rangings />,
+      },
+      {
+        path: '/learn',
+        element: <Learn />,
       },
     ],
   },

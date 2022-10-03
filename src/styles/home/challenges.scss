@@ -1,4 +1,67 @@
 .wax__home-challenges-wrapper {
   margin: 3.125rem 0 0 0;
   min-height: 360px;
+  width: 820px;
+  .wax__home-challenges-slider-wrapper {
+    width: 820px;
+  }
+}
+
+.max-home_challenges__card-wrapper {
+  .left_challenges-container {
+    position: relative;
+    height: 195px;
+    width: 227.55px;
+    background: linear-gradient(72.96deg, #0a0101 0%, #bf482e 100%);
+    @include dispalyFlex('flex', 'center', 'column');
+
+    .left_challenge_icon-container {
+      // $ht, $wd, $borderRad, $bg
+      position: absolute;
+      top: 30%;
+      bottom: -50%;
+      right: 35%;
+      @include card(4.375rem, 4.383rem, 0.972rem, $challenge-left-Color);
+    }
+  }
+  .right_challenges-container {
+    height: 195px;
+    width: 227.55px;
+    transform: scaleX(-1) scaleY(-1);
+    background: linear-gradient(72.96deg, #0a0101 0%, #0b98d4 100%);
+    .right_challenge_icon-container {
+      // $ht, $wd, $borderRad, $bg
+      position: absolute;
+      top: 30%;
+      bottom: -50%;
+      right: 35%;
+      @include card(4.375rem, 4.383rem, 0.972rem, $chanllenge-right-color);
+    }
+  }
+  .max-challenges-content-container {
+    padding: 1.25rem 1.25rem 1.875rem 1.25rem;
+    .time-details {
+      h3 {
+        @include font($text-secondary-color, 16px, 900, 0, 16px);
+      }
+      .time-details-text {
+        h6 {
+          // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+          @include font($text-primary-color, 14px, 400, 0, 14px);
+        }
+        h5 {
+          @include font($text-secondary-color, 14px, 500, 0, 12px);
+          font-style: italic;
+          strong {
+            @include font($text-secondary-color, 14px, 900, 0, 12px);
+            font-style: italic;
+          }
+          small {
+            @include font($text-secondary-color, 14px, 400, 0, 12px);
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
 }

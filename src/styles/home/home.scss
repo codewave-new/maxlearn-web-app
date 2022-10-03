@@ -5,10 +5,33 @@
   background-color: $secondary-color;
   .max_home-container {
     @include make-container(6.25rem);
-    .max_home-row {
-      @include dispalyFlex(flex, flex-start, row);
+    // .max_home-row {
+    //   @include dispalyFlex(flex, flex-start, row);
+    // }
+  }
+}
+.swiper {
+  height: 330px;
+}
+.max__right-card {
+  // $ht, $wd, $borderRad, $bg
+  @include card(370px, 400px, 1.25rem, $home-right-card-bg);
+  padding: 1.25rem;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  margin: 1.875rem 0 0 0;
+  .max__home-badge-container {
+    position: relative;
+    .max-home__badge-content {
+      display: flex;
+      position: absolute;
+      top: 40px;
+      left: 40px;
     }
   }
+}
+.max__home-quote-container {
+  padding: 1.25rem;
+  display: flex;
 }
 
 .cwr_homepage_wrapper {
