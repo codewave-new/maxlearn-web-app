@@ -1,10 +1,12 @@
 import React, { Fragment } from 'react';
+import { HomeFlashBg } from '../../assets';
 
 const ChallengesCard = () => {
   return (
     <Fragment>
       <div className='max-home_challenges__card-wrapper'>
         <div className='d-flex'>
+          <img src={HomeFlashBg.default} alt='' />
           <div className='left_challenges-container'>
             <div className='left_challenge_icon-container'></div>
           </div>

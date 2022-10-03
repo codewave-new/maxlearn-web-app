@@ -1,7 +1,59 @@
+.max-home__quote-container {
+  @include dispalyFlex(flex, center, column);
+  position: relative;
+}
 .max-home__badge-container {
-  background-color: #000;
-  img {
-    width: 360px;
-    height: 166px;
+  position: relative;
+}
+.max-home__badge-container img {
+  width: 360px;
+  height: 166px;
+  position: relative;
+}
+.max-home__badge-img {
+  width: 360px;
+  height: 166px;
+  position: relative;
+}
+.max-home__badge-content {
+  position: absolute;
+  top: 140px;
+  .badge-content-area {
+    width: 243px;
+    h6 {
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($primary-color, 12px, 500, 0.22px, 12px);
+      color: rgba(255, 255, 255, 0.86);
+    }
+    h4 {
+      @include font($primary-color, 16px, 500, 0.29px, 16px);
+      strong {
+        @include font($primary-color, 16px, 900, 0.29px, 16px);
+        color: #f1ba2d;
+      }
+    }
+    hr {
+      height: 1px;
+      width: 243px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    p {
+      @include font($primary-color, 12px, 300, 0.22px, 16px);
+    }
+  }
+}
+.max-home__quote-container {
+  margin-top: 20px;
+  // $ht, $wd, $borderRad, $bg
+  @include card(166px, 360px, 10px, $primary-color);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+  .max-home__quote-content {
+    p {
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($text-secondary-color, 12px, 400, 0.22px, 18px);
+      height: 90px;
+      width: 207px;
+      padding-left: 10px;
+    }
   }
 }

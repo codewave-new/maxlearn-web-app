@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 
 // import required modules
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
 import ChallengesCard from '../Challenges/ChallengesCard';
 
 export default function SwiperSlider() {
@@ -13,6 +13,10 @@ export default function SwiperSlider() {
     <>
       <Swiper
         cssMode={true}
+        // autoplay={{
+        //   delay: 2500,
+        //   disableOnInteraction: true,
+        // }}
         slidesPerView={1}
         spaceBetween={10}
         pagination={{
@@ -32,7 +36,7 @@ export default function SwiperSlider() {
             spaceBetween: 50,
           },
         }}
-        modules={[Pagination]}
+        modules={[Autoplay, Pagination, Mousewheel, Keyboard]}
         className='mySwiper'
       >
         <SwiperSlide>
