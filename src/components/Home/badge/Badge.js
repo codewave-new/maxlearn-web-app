@@ -4,8 +4,8 @@ import Card from '../../UI/Card';
 
 const Badge = () => {
   return (
-    <div classname='w-100 max-home__badge-container h-100'>
-      <img src={BadgeBgImg.default} alt='' />
+    <div classname=' max-home__badge-container '>
+      <img className='max-home__badge-img' src={BadgeBgImg.default} alt='' />
     </div>
   );
 };
