@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { NotificationIcon } from '../../../assets';
-
-
+import {
+  HomeLogo,
+  HomeNotificationLogo,
+  MaxLogo,
+  HomeSearchLogo,
+  NavLearnLogo,
+  NavToDoLogo,
+  NavRangingLogo,
+} from '../../../assets';
+import { HomeUserLogo } from '../../../assets';
 const Navbar = () => {
-   let activeClassName = "active";
-  const navActive = ({ isActive }) =>
-  isActive ? activeClassName : undefined
+  let activeClassName = 'active';
+  const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
 
   return (
     // <nav className='max_menu'>
-    //     <img src="" alt="" />
+    //
     //     <ul>
     //         <li><Link to='/'>Home</Link></li>
     //         <li><Link to='/'>Learn</Link></li>
@@ -30,17 +36,17 @@ const Navbar = () => {
     //             <ul  className={`menu-nav ${menu ? "": 'open'}`}>
     //                 <li  className={`menu-nav__item active ${menu ? "": 'open'}`}>
     //                     <Link to='/' className="menu-nav__link">
-    //                        <img src='' alt="" /> Home
+    //
     //                     </Link>
     //                 </li>
     //                 <li  className={`menu-nav__item  ${menu ? "": 'open'}`}>
     //                     <Link to='/' className="menu-nav__link">
-    //                         <img src="" alt="" />Learn
+    //
     //                     </Link>
     //                 </li>
     //                 <li  className={`menu-nav__item  ${menu ? "": 'open'}`}>
     //                     <Link to='/' className="menu-nav__link">
-    //                         <img src="" alt="" />To-Dos
+    //
     //                     </Link>
     //                 </li>
     //                 <li className={`menu-nav__item ${menu ? "": 'open'}`}>
@@ -56,37 +62,150 @@ const Navbar = () => {
     //         </nav>
     //     </header>
     <header>
-      <div className="max__menu-btn">
+      {/* <div className='max__menu-btn'>
         <span></span>
       </div>
       <nav className='max__navbar'>
         <h1>maxlearn</h1>
-        <ul className='max__nav-list'>
+        <ul className='max__menunav-list'>
           <li>
-            <NavLink className={navActive}  to="/"><img src="" alt="" /> Home</NavLink>
+            <NavLink className={navActive} to='/'>
+              <HomeLogo.default /> Home
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive}  to="/login">Learn</NavLink>
+            <NavLink className={navActive} to='/login'>
+              Learn
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive} to="/">To-Do</NavLink>
+            <NavLink className={navActive} to='/'>
+              To-Do
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive} to="/">Rankings</NavLink>
+            <NavLink className={navActive} to='/'>
+              Rankings
+            </NavLink>
           </li>
-          <li>
-            <Link to="/">search</Link>
+          <li className='max__nav-search'>
+            <div className='max__nav-search-container'>
+            <button >
+              <NotificationIcon.default />
+            </button>
+            </div>
+           
           </li>
-          <li>
-            <Link to="/"><img src={NotificationIcon.default} alt="" /> notification</Link>
+          
+          <li className='max__notification'>
+            <div className='max__nav-notification-container'>
+            <button >
+              <HomeNotificationLogo.default />
+            </button>
+            </div>
+           
           </li>
-          <li>
-            <Link to="/">user</Link>
+          <li className='max__nav-user'>
+            <div className='max__nav-user-container'>
+            <button >
+             
+            </button>
+            </div>
+           
           </li>
         </ul>
+      </nav> */}
+      <nav className='navbar navbar-expand-lg max__navbar'>
+        <div className='container-fluid'>
+          <a className='navbar-brand' href='#'>
+            <MaxLogo.default />
+          </a>
+          <button
+            className='navbar-toggler'
+            type='button'
+            data-bs-toggle='offcanvas'
+            data-bs-target='#offcanvasNavbar'
+            aria-controls='offcanvasNavbar'
+          >
+            <span className='navbar-toggler-icon'></span>
+          </button>
+          <div
+            className='offcanvas offcanvas-end'
+            tabIndex='-1'
+            id='offcanvasNavbar'
+            aria-labelledby='offcanvasNavbarLabel'
+          >
+            <div className='offcanvas-header'>
+              <h5 className='offcanvas-title' id='offcanvasNavbarLabel'>
+                Offcanvas
+              </h5>
+              <button
+                type='button'
+                className='btn-close text-reset'
+                data-bs-dismiss='offcanvas'
+                aria-label='Close'
+              ></button>
+            </div>
+            <div className='offcanvas-body'>
+              <ul className='navbar-nav max__menunav-list justify-content-end flex-grow-1 border-end pe-5'>
+                <li>
+                  <NavLink className={navActive} to='/'>
+                    <HomeLogo.default /> Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={navActive} to='/learn'>
+                    <NavLearnLogo.default /> Learn
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={navActive} to='/to-do'>
+                    <NavToDoLogo.default />
+                    To-Do
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink className={navActive} to='/rankings'>
+                    <NavRangingLogo.default /> Rankings
+                  </NavLink>
+                </li>
+              </ul>
+              {/* <form className="d-flex">
+          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <button className="btn btn-outline-success" type="submit">Search</button>
+        </form> */}
+              <div className='d-flex'>
+                <ul className='navbar-nav max__menunav-list ms-5'>
+                  <li className='max__nav-search'>
+                    <div className='max__nav-search-container'>
+                      <button>
+                        <HomeSearchLogo.default />
+                      </button>
+                    </div>
+                  </li>
+
+                  <li className='max__notification'>
+                    <div className='max__nav-notification-container'>
+                      <button>
+                        <HomeNotificationLogo.default />
+                      </button>
+                    </div>
+                  </li>
+                  <li className='max__nav-user'>
+                    <div className='max__nav-user-container'>
+                      <button>
+                        <HomeUserLogo.default />
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

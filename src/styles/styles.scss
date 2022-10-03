@@ -9,10 +9,6 @@
 @import './home/index.scss';
 @import './common/button';
 
-
-
-
-
 body,
 * {
   margin: 0;
@@ -26,7 +22,7 @@ html,
 body {
   min-height: 100% !important;
 
-  a{
+  a {
     text-decoration: none;
   }
 }
@@ -41,4 +37,5 @@ body {
 @import './header/navbar.scss';
 @import './home/user.scss';
 @import './home/challenges.scss';
-@import './home/challenges.scss'
+@import './home/challenges.scss';
+@import './home/badge.scss';

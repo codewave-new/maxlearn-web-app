@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Logo, RightArrowShort } from '../assets';
-import Header from '../components/Common/Header/Header'
+import Header from '../components/Common/Header/Header';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Login = () => {
   };
   return (
     <div className='cwr_homepage_wrapper'>
-      <Header/>
+      <Header />
       <div className='cwr_body'>
         <div className='cwr_login'>
           <h1>Authenticate Yourself</h1>
