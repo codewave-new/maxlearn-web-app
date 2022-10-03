@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Quest = () => {
-  return (
-    <section className='wax__home-quest-wrapper'>Quest</section>
-  )
-}
+  return <section className='wax__home-quest-wrapper'>Quest</section>;
+};
 
-export default Quest
+export default Quest;

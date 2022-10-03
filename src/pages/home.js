@@ -17,18 +17,15 @@ const Home = () => {
   return (
     <div className='max_homepage_wrapper'>
       <Header />
-      <div className="max_home-container">
-        <div className="max_home-row">
-          <div className="max_home-left-container col-lg-8">
+      <div className='max_home-container'>
+        <div className='max_home-row'>
+          <div className='max_home-left-container col-lg-8'>
             <User />
             <Challenges />
             <Quest />
           </div>
-          <div className="max_home-right-container col-lg-4">
-         
-          </div>
+          <div className='max_home-right-container col-lg-4'></div>
         </div>
-
       </div>
 
       <Footer />

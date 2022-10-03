@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { NotificationIcon } from '../../../assets';
 
-
 const Navbar = () => {
-   let activeClassName = "active";
-  const navActive = ({ isActive }) =>
-  isActive ? activeClassName : undefined
+  let activeClassName = 'active';
+  const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
 
   return (
     // <nav className='max_menu'>
@@ -56,37 +54,47 @@ const Navbar = () => {
     //         </nav>
     //     </header>
     <header>
-      <div className="max__menu-btn">
+      <div className='max__menu-btn'>
         <span></span>
       </div>
       <nav className='max__navbar'>
         <h1>maxlearn</h1>
         <ul className='max__nav-list'>
           <li>
-            <NavLink className={navActive}  to="/"><img src="" alt="" /> Home</NavLink>
+            <NavLink className={navActive} to='/'>
+              <img src='' alt='' /> Home
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive}  to="/login">Learn</NavLink>
+            <NavLink className={navActive} to='/login'>
+              Learn
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive} to="/">To-Do</NavLink>
+            <NavLink className={navActive} to='/'>
+              To-Do
+            </NavLink>
           </li>
           <li>
-            <NavLink className={navActive} to="/">Rankings</NavLink>
+            <NavLink className={navActive} to='/'>
+              Rankings
+            </NavLink>
           </li>
           <li>
-            <Link to="/">search</Link>
+            <Link to='/'>search</Link>
           </li>
           <li>
-            <Link to="/"><img src={NotificationIcon.default} alt="" /> notification</Link>
+            <Link to='/'>
+              <img src={NotificationIcon.default} alt='' /> notification
+            </Link>
           </li>
           <li>
-            <Link to="/">user</Link>
+            <Link to='/'>user</Link>
           </li>
         </ul>
       </nav>
     </header>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -1,15 +1,13 @@
 /**
 * A Typical Style file
 */
-.max_homepage_wrapper{
+.max_homepage_wrapper {
   background-color: $secondary-color;
-  .max_home-container{
+  .max_home-container {
     @include make-container(6.25rem);
-    .max_home-row{
-      @include dispalyFlex(flex,flex-start,row);
-      
+    .max_home-row {
+      @include dispalyFlex(flex, flex-start, row);
     }
-   
   }
 }
 

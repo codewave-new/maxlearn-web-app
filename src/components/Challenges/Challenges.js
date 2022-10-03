@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const Challenges = () => {
-  return (
-    <section className='wax__home-challenges-wrapper'>Challenges</section>
-  )
-}
+  return <section className='wax__home-challenges-wrapper'>Challenges</section>;
+};
 
-export default Challenges
+export default Challenges;

@@ -18,7 +18,7 @@
     @include transition-ease;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -8px;
       width: 28px;
@@ -28,7 +28,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 8px;
       width: 20px;
@@ -63,7 +63,7 @@
   color: $secondary-color;
   height: 80px;
   @include make-container(6.265rem);
-   &.open {
+  &.open {
     visibility: visible;
   }
 
@@ -79,9 +79,9 @@
     padding-right: 1rem;
     transform: translateY(-100%);
     @include transition-ease;
-    img{
+    img {
       height: 14px;
-      width:14px;
+      width: 14px;
     }
     a {
       // $brdrRadius,$padding,$ht,$wd,$color,$font
