@@ -2,7 +2,7 @@
   margin: 1.875rem 0 0 0;
   .max_user_card {
     // $ht, $wd, $borderRad, $bg
-    @include card(139px, 820px, 20px, $primary-color);
+    @include card(139px, 100%, 20px, $primary-color);
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
     padding: 1.25rem;
     @media (max-width: 992px) {
