@@ -16,8 +16,7 @@ const SideBar = (props) => {
       </div>
     );
   });
-  const challengesListItemNum = ChallengesData.length;
-
+  const challengesListItemNo = ChallengesData.length;
   return (
     <Modal onClose={props.onClose}>
       <div className='max__home-challenges-sidebar'>
@@ -28,7 +27,7 @@ const SideBar = (props) => {
         <hr />
         <div className='sidebar-content'>
           <h5>
-            Here is the challenges listed for you ({challengesListItemNum})
+            Here is the challenges listed for you ({challengesListItemNo})
           </h5>
         </div>
       </div>
