@@ -1,10 +1,14 @@
 import React, { Fragment } from 'react';
+import { HomeFlashBg } from '../../assets';
 
-const ChallengesCard = () => {
+const ChallengesCard = (props) => {
+  const { challengesData } = props;
+
   return (
     <Fragment>
       <div className='max-home_challenges__card-wrapper'>
-        <div className='d-flex'>
+        <div className='d-flex max-home_challenges__card-container'>
+          {/* <img className='max-home-challenges-bg' src={HomeFlashBg.default} alt='' /> */}
           <div className='left_challenges-container'>
             <div className='left_challenge_icon-container'></div>
           </div>
