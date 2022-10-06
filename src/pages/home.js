@@ -12,6 +12,7 @@ import { BadgeBg, BadgeHome, HomeAlertLogo } from '../assets';
 import HomeLayout from '../components/Layout/HomeLayout';
 import SideBar from '../components/UI/SideBar/SideBar';
 import Modal from '../components/UI/Modal';
+import QuestSideBar from '../components/UI/SideBar/QuestSideBar';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,15 @@ const Home = () => {
     dispatch(appInit(true));
   }, []);
   const [cartIsShown, setCartIsShown] = useState(false);
+  const [questSideBar, setQuestSideBar] = useState(false);
+
+  const showQuestBarHandler = () => {
+    setQuestSideBar(true);
+  };
+
+  const hideQuestBarHandler = () => {
+    setQuestSideBar(false);
+  };
 
   const showCartHandler = () => {
     setCartIsShown(true);
@@ -110,9 +120,13 @@ const Home = () => {
         ChallengesData={ChallengesData}
         showCartHandler={showCartHandler}
       />
+      {questSideBar && (
+        <QuestSideBar data={ChallengesData} onClose={hideQuestBarHandler} />
+      )}
       {cartIsShown && (
         <SideBar data={ChallengesData} onClose={hideCartHandler} />
       )}
+
       {/* <div className='max_home-container'>
         <div className='max_home-row row'>
           <div className='max_home-left-container col-lg-8'>
