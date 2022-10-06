@@ -22,7 +22,7 @@ const ChallengesCard = (props) => {
               <div className='d-flex time-details-text justify-content-between'>
                 <h6>5 hrs 6 min left</h6>
                 <h5>
-                  Expire in: <strong>4 </strong> <small>days</small>{' '}
+                  Expire in: <strong>4 </strong> <small>Days</small>
                 </h5>
               </div>
               <h3>Lorem ipm sdiolouir sit amet cons ectuirl se!</h3>
