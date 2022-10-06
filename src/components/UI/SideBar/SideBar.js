@@ -6,17 +6,29 @@ import ChallengesCard from '../../Challenges/ChallengesCard';
 import Modal from '../Modal';
 
 const SideBar = (props) => {
-  const { ChallengesData } = props;
-  const data = ChallengesData.map((el) => {
+  const { data } = props;
+
+  console.log(props.data);
+  const dataChallenges = data.map((el) => {
+    console.log(el);
     return (
-      <div className='row'>
+      <div key={el.id} className='row'>
         <div className='col-12  mb-1'>
-          <ChallengesCard ChallengesData={el} />
+          <ChallengesCard
+            challenger={el.challenger}
+            opponent={el.opponent}
+            time={el.time}
+            expire={el.expire}
+            data={el.data}
+            challengerImg={el.challengerImg}
+            opponentImg={el.opponentImg}
+            discription={el.discription}
+          />
         </div>
       </div>
     );
   });
-  const challengesListItemNo = ChallengesData.length;
+  const challengesListItemNo = 6;
   return (
     <Modal onClose={props.onClose}>
       <div className='max__home-challenges-sidebar'>
@@ -28,6 +40,7 @@ const SideBar = (props) => {
         <div className='sidebar-content'>
           <h5>
             Here is the challenges listed for you ({challengesListItemNo})
+            {dataChallenges}
           </h5>
         </div>
       </div>

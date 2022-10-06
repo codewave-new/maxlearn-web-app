@@ -1,19 +1,32 @@
-import React, { Fragment } from 'react';
-import { HomeFlashBg } from '../../assets';
+import React from 'react';
 
 const ChallengesCard = (props) => {
-  const { challengesData } = props;
-
+  const {
+    id,
+    challenger,
+    discription,
+    opponent,
+    time,
+    expire,
+    challengerImg,
+    opponentImg,
+  } = props;
   return (
-    <Fragment>
+    <>
       <div className='max-home_challenges__card-wrapper'>
         <div className='d-flex max-home_challenges__card-container'>
           {/* <img className='max-home-challenges-bg' src={HomeFlashBg.default} alt='' /> */}
           <div className='left_challenges-container'>
-            <div className='left_challenge_icon-container'></div>
+            <div className='left_challenge_icon-container'>
+              <img src={challengerImg} alt='' />
+            </div>
+            <p>{challenger}</p>
           </div>
           <div className='right_challenges-container'>
-            <div className='right_challenge_icon-container'></div>
+            <div className='right_challenge_icon-container'>
+              <img src={opponentImg} alt='' />
+            </div>
+            <p>{opponent}</p>
           </div>
         </div>
         <div>
@@ -22,15 +35,15 @@ const ChallengesCard = (props) => {
               <div className='d-flex time-details-text justify-content-between'>
                 <h6>5 hrs 6 min left</h6>
                 <h5>
-                  Expire in: <strong>4 </strong> <small>Days</small>
+                  Expire in: <strong>{expire} </strong> <small>Days</small>
                 </h5>
               </div>
-              <h3>Lorem ipm sdiolouir sit amet cons ectuirl se!</h3>
+              <h3>{discription}</h3>
             </div>
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

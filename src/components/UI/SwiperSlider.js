@@ -8,7 +8,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
 import ChallengesCard from '../Challenges/ChallengesCard';
 
-export default function SwiperSlider() {
+export default function SwiperSlider(props) {
+  console.log(props);
+  const { data } = props;
+  const dataChallenges = data.map((el) => {
+    return (
+      <SwiperSlide key={el.id}>
+        <ChallengesCard
+          challenger={el.challenger}
+          opponent={el.opponent}
+          time={el.time}
+          expire={el.expire}
+          data={el.data}
+          challengerImg={el.challengerImg}
+          opponentImg={el.opponentImg}
+          discription={el.discription}
+        />
+      </SwiperSlide>
+    );
+  });
   return (
     <>
       <Swiper
@@ -39,7 +57,7 @@ export default function SwiperSlider() {
         modules={[Autoplay, Pagination, Mousewheel, Keyboard]}
         className='mySwiper'
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <ChallengesCard />
         </SwiperSlide>
         <SwiperSlide>
@@ -50,7 +68,8 @@ export default function SwiperSlider() {
         </SwiperSlide>
         <SwiperSlide>
           <ChallengesCard />
-        </SwiperSlide>
+        </SwiperSlide> */}
+        {dataChallenges}
       </Swiper>
     </>
   );

@@ -30,6 +30,7 @@ const Home = () => {
 
   const ChallengesData = [
     {
+      id: '1',
       challenger: 'Roasters',
       opponent: 'Monsters ',
       time: new Date(),
@@ -38,18 +39,22 @@ const Home = () => {
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
     {
-      challenger: 'Roasters',
-      opponent: 'Monsters ',
+      id: '2',
+      challenger: 'Monster',
+      opponent: 'Bat ',
       time: new Date(),
       expire: '5',
       challengerImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
-        'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+        'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
     {
+      id: '3',
       challenger: 'Roasters',
       opponent: 'Monsters ',
       time: new Date(),
@@ -58,8 +63,10 @@ const Home = () => {
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
     {
+      id: '4',
       challenger: 'Roasters',
       opponent: 'Monsters ',
       time: new Date(),
@@ -68,8 +75,10 @@ const Home = () => {
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
     {
+      id: '5',
       challenger: 'Roasters',
       opponent: 'Monsters ',
       time: new Date(),
@@ -78,8 +87,10 @@ const Home = () => {
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
     {
+      id: '6',
       challenger: 'Roasters',
       opponent: 'Monsters ',
       time: new Date(),
@@ -88,15 +99,19 @@ const Home = () => {
         'https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1665039794/Cute_Bat_o6fzlt.svg',
       opponentImg:
         'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_monsters_ghvepf.svg',
+      discription: 'Lorem ipm sdiolouir sit amet cons ectuirl se!',
     },
   ];
 
   return (
     <div className='max_homepage_wrapper'>
       <Header />
-      <HomeLayout showCartHandler={showCartHandler} />
+      <HomeLayout
+        ChallengesData={ChallengesData}
+        showCartHandler={showCartHandler}
+      />
       {cartIsShown && (
-        <SideBar ChallengesData={ChallengesData} onClose={hideCartHandler} />
+        <SideBar data={ChallengesData} onClose={hideCartHandler} />
       )}
       {/* <div className='max_home-container'>
         <div className='max_home-row row'>
