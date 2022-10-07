@@ -1,0 +1,33 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+
+.max__learn-wrapper {
+  h2 {
+    @include font($text-secondary-color, 20px, 700, 0, 24px);
+    margin: 0;
+  }
+  h3 {
+    @include font($text-secondary-color, 18px, 700, 0, 18px);
+    margin: 0;
+  }
+  h4 {
+    @include font($text-secondary-color, 16px, 700, 0, 20px);
+    margin: 0;
+  }
+  h5 {
+    @include font($text-secondary-color, 14px, 500, 0, 20px);
+    margin: 0;
+  }
+  h6 {
+    @include font($text-secondary-color, 14px, 400, 0, 14px);
+    margin: 0;
+    strong {
+      font-weight: 700;
+    }
+  }
+}
+@import './learn-head.scss';
+@import './learning.scss';

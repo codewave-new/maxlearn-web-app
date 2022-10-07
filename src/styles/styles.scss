@@ -30,7 +30,16 @@ body {
 #root {
   @include media('>small-desktop') {
     height: 100%;
+    background-color: $secondary-color;
+    min-height: 100vh;
   }
+}
+
+.margin-t {
+  margin: 1.875rem 0 0 0;
+}
+.padd-20 {
+  padding: 1.25rem;
 }
 
 @import './common/button.scss';
@@ -41,3 +50,4 @@ body {
 @import './home/quest.scss';
 @import './common/siderbar.scss';
 @import './common/footer.scss';
+@import './learn/learn.scss';

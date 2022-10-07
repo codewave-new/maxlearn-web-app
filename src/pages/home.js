@@ -126,42 +126,6 @@ const Home = () => {
       {cartIsShown && (
         <SideBar data={ChallengesData} onClose={hideCartHandler} />
       )}
-
-      {/* <div className='max_home-container'>
-        <div className='max_home-row row'>
-          <div className='max_home-left-container col-lg-8'>
-            <User />
-            <Challenges />
-            <Quest />
-          </div>
-          <div className='max_home-right-container col-lg-4'>
-            <Card className='max__left-card'>
-              <div className='max__home-badge-container'>
-                <BadgeBg.default />
-                <div className='max-home__badge-content'>
-                  <div>
-                    <p>Congrats Bartholomew!</p>
-                    <h6>You have earned Einstein badge!</h6>
-                    <p>Sed ut perspiciatis unde omnis istenatus</p>
-                  </div>
-                  <div>
-                    <BadgeHome.default />
-                  </div>
-                </div>
-              </div>
-              <div className='max__home-quote-container'>
-                <HomeAlertLogo.default/>
-                <p>
-                  “Lorem ipsum dolor sit amet, consect etur adipiscing elitsesed
-                  do eiusmod tempor incididun lalbore et dolorema gna aliqua. Ut
-                  enim ad minim veniam Lsed do eiusmotelsed am.”
-                </p>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </div> */}
-
       <Footer />
     </div>
   );

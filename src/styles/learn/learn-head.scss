@@ -1,0 +1,60 @@
+// displayFlex()
+// $property, $content, $direction
+// font()
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+//card()
+// $ht, $wd, $borderRad, $bg
+
+.max__learn-achieve-wrapper {
+  @include card(100%, 100%, 20px, $white);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  .achieve-wrapper {
+    background-color: $user-bg;
+    border-radius: 20px;
+    display: flex;
+    padding: 2.25rem 1.563rem 2.25rem 1.563rem;
+    h1 {
+      @include font(#167f7d, 34px, 900, 0, 34px);
+      small {
+        @include font(#6b6b6b, 12px, 400, 0, 13px);
+      }
+    }
+  }
+}
+
+.max-learn__topics-wrapper {
+  @include card(100%, 100%, 20px, $white);
+  padding: 1.875rem 1.25rem 1.875rem 1.25rem;
+  button {
+    background-color: $white;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #0e3a5e;
+    cursor: pointer;
+  }
+
+  .mySwiperTopics {
+    height: 100%;
+  }
+  .silder-topics-container {
+    margin: 1.25rem 0 0 0;
+  }
+  .max-learn__topics-card {
+    @include card(100%, 100%, 10px, #f8f8f8);
+    padding: 1.125rem 0.875rem 1.125rem 0.875rem;
+    h5 {
+      height: 40px;
+      overflow: hidden;
+    }
+    .topic-content {
+      @include card(100%, 100%, 6px, $white);
+      p {
+        padding: 7px 12px;
+        margin: 0;
+      }
+    }
+  }
+}
