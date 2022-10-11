@@ -8,10 +8,11 @@ import {
   NavLearnLogo,
   NavToDoLogo,
   NavRangingLogo,
+  HomeUserLogo,
 } from '../../../assets';
-import { HomeUserLogo } from '../../../assets';
+
 const Navbar = () => {
-  let activeClassName = 'active';
+  const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
 
   return (
@@ -94,30 +95,30 @@ const Navbar = () => {
               <NotificationIcon.default />
             </button>
             </div>
-           
+
           </li>
-          
+
           <li className='max__notification'>
             <div className='max__nav-notification-container'>
             <button >
               <HomeNotificationLogo.default />
             </button>
             </div>
-           
+
           </li>
           <li className='max__nav-user'>
             <div className='max__nav-user-container'>
             <button >
-             
+
             </button>
             </div>
-           
+
           </li>
         </ul>
       </nav> */}
       <nav className='navbar navbar-expand-lg max__navbar'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='#'>
+          <a className='navbar-brand' href='/src#'>
             <MaxLogo.default />
           </a>
           <button
@@ -127,7 +128,7 @@ const Navbar = () => {
             data-bs-target='#offcanvasNavbar'
             aria-controls='offcanvasNavbar'
           >
-            <span className='navbar-toggler-icon'></span>
+            <span className='navbar-toggler-icon' />
           </button>
           <div
             className='offcanvas offcanvas-end'
@@ -144,7 +145,7 @@ const Navbar = () => {
                 className='btn-close text-reset'
                 data-bs-dismiss='offcanvas'
                 aria-label='Close'
-              ></button>
+              />
             </div>
             <div className='offcanvas-body'>
               <ul className='navbar-nav max__menunav-list justify-content-end flex-grow-1 border-end pe-5'>
@@ -171,7 +172,7 @@ const Navbar = () => {
                 </li>
               </ul>
               {/* <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success" type="submit">Search</button>
         </form> */}
               <div className='d-flex'>
