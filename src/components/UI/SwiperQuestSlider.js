@@ -6,9 +6,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import required modules
 import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
-import ChallengesCard from '../Challenges/ChallengesCard';
+import QuestCard from '../Home/Quest/QuestCard';
 
-export default function SwiperSlider() {
+const SwiperQuestSlider = () => {
   return (
     <>
       <Swiper
@@ -37,21 +37,19 @@ export default function SwiperSlider() {
           },
         }}
         modules={[Autoplay, Pagination, Mousewheel, Keyboard]}
-        className='mySwiper'
+        className='mySwiperQuest'
       >
         <SwiperSlide>
-          <ChallengesCard />
+          <QuestCard />
         </SwiperSlide>
         <SwiperSlide>
-          <ChallengesCard />
+          <QuestCard />
         </SwiperSlide>
-        <SwiperSlide>
-          <ChallengesCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ChallengesCard />
-        </SwiperSlide>
+        <SwiperSlide></SwiperSlide>
+        <SwiperSlide></SwiperSlide>
       </Swiper>
     </>
   );
-}
+};
+
+export default SwiperQuestSlider;
