@@ -54,6 +54,10 @@
       p {
         padding: 7px 12px;
         margin: 0;
+        @include font($text-secondary-color, 12px, 700, 0, 14px);
+        small {
+          @include font($text-secondary-color, 12px, 400, 0, 14px);
+        }
       }
     }
   }

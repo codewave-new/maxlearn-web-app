@@ -29,6 +29,8 @@
   @include card(184px, 100%, 8px, $primary-color);
   border: 1px solid #e5e5e5;
   padding: 28px 20px 28px 20px;
+  z-index: 10;
+  position: relative;
   .wax__home-challenges-slider-wrapper {
     margin-top: 24px;
   }
@@ -36,7 +38,7 @@
     .quest-time-details {
       h3 {
         margin-top: 20px;
-        @include font($text-secondary-color, 16px, 900, 0, 20px);
+        @include font($text-secondary-color, 16px, 700, 0, 20px);
       }
       .quest-time-details-text {
         h6 {

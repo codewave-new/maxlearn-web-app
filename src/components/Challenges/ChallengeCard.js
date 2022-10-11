@@ -2,7 +2,7 @@ import React from 'react';
 import { TimeLogo } from '../../../assets';
 import GroupAvatars from '../../UI/GroupAvatars';
 
-const QuestCard = (props) => {
+const ChallengeCard = (props) => {
   return (
     <div className={`max-home__quest-wrapper ${props.className} `}>
       <div className='max-home__questcard-container'>
@@ -33,4 +33,4 @@ const QuestCard = (props) => {
   );
 };
 
-export default QuestCard;
+export default ChallengeCard;

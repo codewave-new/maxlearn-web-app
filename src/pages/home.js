@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Challenges from '../components/Challenges/Challenges';
-import Footer from '../components/Common/Foooter.js/Footer';
 import Header from '../components/Common/Header/Header';
-import Licence from '../components/Home/Licence';
-import Quest from '../components/Home/Quest/Quest';
-import User from '../components/Home/User/User';
-import Card from '../components/UI/Card';
 import { appInit } from '../state';
-import { BadgeBg, BadgeHome, HomeAlertLogo } from '../assets';
 import HomeLayout from '../components/Layout/HomeLayout';
 import SideBar from '../components/UI/SideBar/SideBar';
-import Modal from '../components/UI/Modal';
 import QuestSideBar from '../components/UI/SideBar/QuestSideBar';
+import Footer from '../components/Common/Footer/Footer';
 
 const Home = () => {
   const dispatch = useDispatch();

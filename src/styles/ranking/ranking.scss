@@ -1,0 +1,10 @@
+.max__ranking-wrapper {
+  ul {
+    margin: 1.25rem 0 1.25rem 0;
+    list-style: none;
+  }
+  .ranking-card {
+    @include card(90vh, 100%, 20px, $white);
+    padding: 1.25rem 1.875rem;
+  }
+}

@@ -1,0 +1,54 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+.max__activity-quest-card {
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  border: none !important;
+}
+.max__todo-activity-wrapper {
+  @include card(70vh, 100%, 20px, $home-right-card-bg);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  padding: 1.75rem 1.25rem 3.25rem 1.25rem;
+  position: relative;
+
+  .scroll-activity {
+    height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: 30px;
+    position: relative;
+    .activity-card {
+      margin-bottom: 20px;
+    }
+    .time {
+      p {
+        display: flex;
+        align-items: center;
+        color: #898989;
+        font-family: Roboto;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 12px;
+        margin: 15px 0;
+      }
+      svg {
+        margin-right: 5px;
+      }
+    }
+    h3 {
+      margin-bottom: 30px;
+    }
+
+    .vl {
+      border-left: 2px dotted rgba(42, 119, 118, 0.65);
+      height: 95vh;
+      position: absolute;
+      left: 10px;
+    }
+  }
+}

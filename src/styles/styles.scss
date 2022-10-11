@@ -30,9 +30,10 @@ body {
 #root {
   @include media('>small-desktop') {
     height: 100%;
-    background-color: $secondary-color;
+
     min-height: 100vh;
   }
+  background-color: $secondary-color;
 }
 
 .margin-t {
@@ -51,3 +52,5 @@ body {
 @import './common/siderbar.scss';
 @import './common/footer.scss';
 @import './learn/learn.scss';
+@import './todo/todo.scss';
+@import './ranking/ranking.scss';

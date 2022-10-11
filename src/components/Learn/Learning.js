@@ -9,24 +9,24 @@ function Learning() {
         <button>View all</button>
       </div>
       <div className='row learning-card-row'>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
       </div>
       <div className='row learning-card-row'>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <LearningCard />
         </div>
       </div>

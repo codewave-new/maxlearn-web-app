@@ -9,10 +9,10 @@ const LearnLayout = () => {
   return (
     <div className='container'>
       <div className='row margin-t'>
-        <div className='col-4'>
+        <div className='col-12 col-md-4'>
           <Achievement />
         </div>
-        <div className='col-8'>
+        <div className='col-12 col-md-8'>
           <Topics />
         </div>
       </div>

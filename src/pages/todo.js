@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../components/Common/Header/Header';
-import HomeLayout from '../components/Layout/HomeLayout';
+import Footer from '../components/Common/Footer/Footer';
+import ToDoLayout from '../components/Layout/ToDoLayout';
 
 const Todo = () => {
   return (
     <div>
       <Header />
-      <HomeLayout />
+      <ToDoLayout />
+      <Footer />
     </div>
   );
 };

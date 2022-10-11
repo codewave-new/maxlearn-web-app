@@ -1,0 +1,26 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+
+.max__todo-activity-tab {
+  border: none;
+  li {
+    margin-right: 25px;
+    button {
+      height: 50px;
+      width: 273px;
+      border: 1px solid #212121 !important;
+      border-radius: 25px !important;
+      color: #212121 !important;
+    }
+    .active {
+      border-radius: 25px;
+      background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+      @include font($white, 16px, 700, 0, 16px);
+      color: $white !important;
+      border: none !important;
+    }
+  }
+}

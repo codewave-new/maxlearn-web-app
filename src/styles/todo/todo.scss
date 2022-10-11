@@ -4,7 +4,8 @@
 
 // $ht, $wd, $borderRad, $bg
 
-.max__learn-wrapper {
+.max__todo-wrapper {
+  margin-top: 1.875rem;
   h2 {
     @include font($text-secondary-color, 20px, 700, 0, 24px);
     margin: 0;
@@ -29,6 +30,6 @@
     }
   }
 }
-@import './learn-head.scss';
-@import './learning.scss';
-@import './category.scss';
+
+@import './activities.scss';
+@import './activitylog.scss';
