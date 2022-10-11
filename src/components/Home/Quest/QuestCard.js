@@ -2,9 +2,9 @@ import React from 'react';
 import { TimeLogo } from '../../../assets';
 import GroupAvatars from '../../UI/GroupAvatars';
 
-const QuestCard = () => {
+const QuestCard = (props) => {
   return (
-    <div className='max-home__quest-wrapper'>
+    <div className={`max-home__quest-wrapper ${props.className} `}>
       <div className='max-home__questcard-container'>
         <div className='quest-time-details'>
           <div className='d-flex quest-time-details-text justify-content-between'>

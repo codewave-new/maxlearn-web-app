@@ -12,12 +12,12 @@
   }
 }
 .swiper {
-  height: 330px;
+  height: 355px;
 }
 .max__right-home-container {
   .max__right-card {
     // $ht, $wd, $borderRad, $bg
-    @include card(100%, 400px, 1.25rem, $home-right-card-bg);
+    @include card(100%, 100%, 1.25rem, $home-right-card-bg);
     padding: 1.25rem;
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
     margin: 1.875rem 0 0 0;
@@ -30,6 +30,7 @@
       height: 166px;
       justify-content: center;
       align-items: center;
+      background-repeat: no-repeat;
       .badge-content-area {
         h6 {
           // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight

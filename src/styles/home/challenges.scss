@@ -31,6 +31,7 @@
   width: 13px;
   border-radius: 3px;
   background-color: #c1dbda;
+  opacity: 1;
 }
 .swiper-pagination-bullet-active {
   background-color: #167f7d;
@@ -61,8 +62,19 @@
       position: absolute;
       top: 30%;
       bottom: -50%;
-      right: 35%;
+      right: 32%;
       @include card(4.375rem, 4.383rem, 0.972rem, $challenge-left-Color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      height: 150%;
+      align-items: center;
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($white, 14px, 500, 0, 14px);
     }
   }
   .right_challenges-container {
@@ -70,19 +82,33 @@
     width: 227.55px;
     transform: scaleX(-1) scaleY(-1);
 
+    p {
+      display: flex;
+      justify-content: center;
+      height: 40%;
+      align-items: center;
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($white, 14px, 500, 0, 14px);
+      transform: rotate(180deg);
+    }
     .right_challenge_icon-container {
       // $ht, $wd, $borderRad, $bg
       position: absolute;
       top: 30%;
       bottom: -50%;
-      right: 35%;
+      right: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       @include card(4.375rem, 4.383rem, 0.972rem, $chanllenge-right-color);
+      transform: rotate(180deg);
     }
   }
   .max-challenges-content-container {
     padding: 1.25rem 1.25rem 1.875rem 1.25rem;
     .time-details {
       h3 {
+        margin: 1.125rem 0 0 0;
         @include font($text-secondary-color, 16px, 900, 0, 16px);
       }
       .time-details-text {

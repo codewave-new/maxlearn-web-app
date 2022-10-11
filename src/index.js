@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'swiper/css/bundle';
+import 'react-circular-progressbar/dist/styles.css';
 
 // Redux Imports
 import { Store } from './state';

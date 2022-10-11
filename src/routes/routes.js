@@ -8,7 +8,7 @@ import Login from '../pages/login';
 import Layout from '../components/Layout/Layout';
 import ProtectedRoute from './privateRoute';
 import Todo from '../pages/todo';
-import Rangings from '../pages/rangings';
+import Rankings from '../pages/rankings';
 import Learn from '../pages/learn';
 
 export const appRoutes = [
@@ -52,7 +52,7 @@ export const appRoutes = [
       },
       {
         path: '/rankings',
-        element: <Rangings />,
+        element: <Rankings />,
       },
       {
         path: '/learn',
