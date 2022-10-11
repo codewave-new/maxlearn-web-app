@@ -5,6 +5,8 @@ import ChallengeSlider from '../UI/Slider';
 import SwiperSlider from '../UI/SwiperSlider';
 
 const Challenges = (props) => {
+  console.log('challengs', props.data);
+
   const [modal, setModal] = useState(false);
   return (
     <section className='wax__home-challenges-wrapper'>
@@ -14,7 +16,7 @@ const Challenges = (props) => {
       </div>
       <div className='wax__home-challenges-slider-wrapper'>
         {/* <ChallengeSlider/> */}
-        <SwiperSlider />
+        <SwiperSlider data={props.data} ChallengesData={props.ChallengesData} />
       </div>
     </section>
   );

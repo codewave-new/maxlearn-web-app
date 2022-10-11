@@ -1,13 +1,17 @@
 import React from 'react';
+import Footer from '../components/Common/Footer/Footer';
 import Header from '../components/Common/Header/Header';
-import HomeLayout from '../components/Layout/HomeLayout';
+import LearnLayout from '../components/Layout/LearnLayout';
 
 const Learn = () => {
   return (
-    <div>
-      <Header />
-      <HomeLayout />
-    </div>
+    <>
+      <div className='max__learn-wrapper'>
+        <Header />
+        <LearnLayout />
+      </div>
+      <Footer />
+    </>
   );
 };
 

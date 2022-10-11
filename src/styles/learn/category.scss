@@ -1,0 +1,44 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+.mySwiperCatergory {
+  height: 250px;
+}
+.max-learn__category-wrapper {
+  margin: 4.688rem 0 0 0;
+  @include card(100%, 100%, 20px, $white);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  padding: 30px 20px;
+  button {
+    background-color: $white;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #0e3a5e;
+    cursor: pointer;
+  }
+  .category-container {
+    margin: 1.438rem 0 0 0;
+    .max-learn__catergory-card {
+      @include card(200px, 100%, 8px, $user-bg);
+      padding: 30px 20px;
+      position: relative;
+      .catergory-card-oval {
+        top: -50px;
+        position: absolute;
+        height: 143px;
+        width: 143px;
+        background-color: #d4fed9;
+        border-radius: 50%;
+        right: -50px;
+      }
+    }
+    .progressbar__learn-text {
+      @include font($text-secondary-color, 12px, 400, 0, 12px);
+    }
+  }
+}

@@ -39,6 +39,7 @@
   // height: 100vh;
   width: 100%;
   float: left;
+  background-size: cover;
 
 }
 .formdiv
@@ -48,6 +49,11 @@
   margin: auto;
   text-align: center;
   background-color: #fff;
+  border: 1px solid #979797;
+  border-radius: 20px;
+  box-shadow: 0 20px 32px 0 rgba(0,0,0,0.24);
+  margin-top: 8%;
+  margin-bottom: 8%;
 }
 .welcome
 {

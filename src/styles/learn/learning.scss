@@ -1,0 +1,47 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+
+.max-learn__learning-wrapper {
+  margin: 3.125rem 0 0 0;
+  button {
+    background-color: $secondary-color;
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    color: #0e3a5e;
+    cursor: pointer;
+  }
+  .learning-card-row {
+    margin: 1.25rem 0 0 0;
+  }
+  .max-learn__learning-card {
+    @include card(100%, 100%, 20px, $white);
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+    padding: 34px 20px;
+    .content {
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      height: 100%;
+      flex-direction: column;
+      padding-left: 20px;
+      p {
+        @include font($text-secondary-color, 12px, 400, 0, 14px);
+        margin: 0;
+        strong {
+          font-weight: 900;
+          color: $text-secondary-color;
+        }
+      }
+    }
+  }
+  .CircularProgressbar {
+    height: 50px;
+    width: 50px;
+  }
+}
