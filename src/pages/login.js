@@ -23,7 +23,7 @@ const Login = () => {
             <div className='fordiv-wrapper'>
               <p className='welcome'>Welcome back!</p>
               <h2 className='logintext'>
-                Log in to <MaxLogo.default />
+                Log  in to <MaxLogo.default />
               </h2>
             </div>
           </div>
