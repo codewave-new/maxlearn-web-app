@@ -10,6 +10,7 @@ import ProtectedRoute from './privateRoute';
 import Todo from '../pages/todo';
 import Rankings from '../pages/rankings';
 import Learn from '../pages/learn';
+import Help from '../pages/help';
 
 export const appRoutes = [
   {
@@ -58,6 +59,10 @@ export const appRoutes = [
         path: '/learn',
         element: <Learn />,
       },
+      {
+        path:'/help',
+        element:<Help/>
+      }
     ],
   },
   // unprotected routes

@@ -57,11 +57,12 @@ body {
   border-radius: 20px;
 }
 
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #a4a4a4;
 }
-
+@import './common//search.scss';
 @import './common/button.scss';
 @import './header/navbar.scss';
 @import './home/user.scss';
@@ -73,3 +74,6 @@ body {
 @import './learn/learn.scss';
 @import './todo/todo.scss';
 @import './ranking/ranking.scss';
+@import './common/notifications.scss';
+@import './common/help/help.scss';
+

@@ -1,0 +1,221 @@
+// $property, $content, $direction
+
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+// $ht, $wd, $borderRad, $bg
+.max__help__tab {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  overflow: hidden;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  li {
+    margin-right: 0px;
+    button {
+      min-height: 50px;
+      min-width: 190px;
+      width: 100%;
+    }
+  }
+}
+.max__help-wrapper {
+  h2 {
+    @include font($text-secondary-color, 20px, 700, 0, 24px);
+
+    margin: 0;
+  }
+  h3 {
+    @include font($text-secondary-color, 18px, 700, 0, 18px);
+    margin: 0;
+  }
+  h4 {
+    @include font($text-secondary-color, 16px, 700, 0, 20px);
+    margin: 0;
+  }
+  h5 {
+    @include font($text-secondary-color, 14px, 500, 0, 20px);
+    margin: 0;
+  }
+  h6 {
+    @include font($text-secondary-color, 14px, 400, 0, 14px);
+    margin: 0;
+    strong {
+      font-weight: 700;
+    }
+  }
+  .help__search-container {
+    margin: 1.875rem 0 0 0;
+
+    h2 {
+      margin-bottom: 1.625rem;
+    }
+    input#search-bar {
+      margin: 0 auto;
+      width: 100%;
+      height: 50px;
+      padding: 0 20px;
+      font-size: 1rem;
+      border-radius: 10px;
+      background-color: #ffffff;
+      border: none;
+      outline: none;
+      &:focus {
+        border: 1px solid #1b1b1c;
+        transition: 0.35s ease;
+        color: $text-secondary-color;
+        &::-webkit-input-placeholder {
+          transition: opacity 0.45s ease;
+          opacity: 0;
+        }
+        &::-moz-placeholder {
+          transition: opacity 0.45s ease;
+          opacity: 0;
+        }
+        &:-ms-placeholder {
+          transition: opacity 0.45s ease;
+          opacity: 0;
+        }
+      }
+    }
+
+    .search-icon {
+      position: relative;
+      float: right;
+      width: 16px;
+      height: 16px;
+      top: -31px;
+      right: 20px;
+    }
+  }
+  .help__accordion-contianer {
+    .accordion {
+      margin-bottom: 20px;
+      .accordion-button:focus {
+        box-shadow: none;
+      }
+      .accordion-button {
+        @include font(#2b615c, 14px, 700, 0, 14px);
+        background-color: #ededed;
+      }
+      .accordion-item:last-of-type .accordion-collapse {
+        box-shadow: 0 12px 14px 0 rgb(0 0 0 / 6%);
+      }
+      .accordion-item {
+        border-radius: 4px;
+        background-color: #ffffff;
+        // box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: none;
+        border: none;
+        .accordion-header {
+          @include font(#2b615c, 14px, 700, 0, 14px);
+          .accordion-button:not(.collapsed) {
+            @include font(#2b615c, 14px, 700, 0, 14px);
+            box-shadow: none;
+            background: $white;
+          }
+          .accordion-button:not(.collapsed)::after {
+            background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg');
+            transform: rotate(-180deg);
+          }
+          .accordion-button::after {
+            background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg');
+            @include font(#2b615c, 14px, 700, 0, 14px);
+            transform: rotate(-90deg);
+          }
+        }
+        .accordion-body {
+          padding-top: 0;
+          p {
+            @include font($text-secondary-color, 14px, 400, 0, 17px);
+          }
+        }
+      }
+    }
+  }
+  
+  .question-oval {
+    padding: 10%;
+    opacity: 0.36;
+    background: linear-gradient(204.16deg, #ffd42b 0%, #f0e6be 100%);
+    border-radius: 50%;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border-start-end-radius: 20px;
+    border-start-start-radius: 50%;
+    border-end-end-radius: 30px;
+    border-start-start-radius: 30px;;
+  }
+  .question_wrapper {
+    position: relative;
+    margin-top: 30px;
+    @include card(auto, 100%, 20px, #fff8dd);
+    padding: 33px 46px;
+    .question-img-container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      h2 {
+        text-align: center;
+        margin-bottom: 33px;
+      }
+    }
+    form {
+      .question-from-control {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        label {
+          @include font($text-secondary-color, 12px, 500, 0, 12px);
+          margin-bottom: 14px;
+          margin-top: 14px;
+        }
+        input,
+        textarea {
+          padding: 15px;
+          border: none;
+          box-shadow: none;
+          border-radius: 4px;
+        }
+        input,
+        textarea::placeholder {
+          @include font(#a0a1a2, 12px, 400, 0, 14px);
+        }
+        input,
+        textarea:focus {
+          border: none;
+          box-shadow: none;
+          outline: 0;
+        }
+        input,
+        textarea:focus-visible {
+          border: none;
+          box-shadow: none;
+          outline: 0;
+        }
+        textarea {
+          position: relative;
+          resize: none;
+        }
+        .textarea-number-container {
+          position: absolute;
+          bottom: 10px;
+          right: 25px;
+          @include font($text-secondary-color, 12px, 400, 0, 12px);
+        }
+      }
+      .submit-container {
+        margin-top: 34px;
+        button {
+          border-radius: 4px;
+          background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+          width: 100%;
+          padding: 15px;
+          @include font($white, 16px, 500, 0, 12px);
+          border: none;
+        }
+      }
+    }
+  }
+}

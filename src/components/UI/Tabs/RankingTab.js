@@ -15,8 +15,8 @@ const RankingTab = (props) => {
       </Tab>
       <Tab eventKey='quest' title='Quests & Certs'>
         <div className='row'>
-          <h1>hello</h1>
-          {/* <props.QuestCard/> */}
+        
+          {<props.tabs />}
         </div>
       </Tab>
     </Tabs>

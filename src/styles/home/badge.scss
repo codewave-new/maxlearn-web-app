@@ -1,5 +1,5 @@
 .max-home__quote-container {
-  @include dispalyFlex(flex, center, column);
+  
   position: relative;
 }
 // .max-home__badge-container1 {
@@ -39,7 +39,7 @@
 .max-home__quote-container {
   margin-top: 20px;
   // $ht, $wd, $borderRad, $bg
-  @include card(166px, 360px, 10px, $primary-color);
+  @include card(166px, 100%, 10px, $primary-color);
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
   .max-home__quote-content {
     p {

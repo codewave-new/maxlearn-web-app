@@ -5,7 +5,7 @@
 .max_homepage_wrapper {
   background-color: $secondary-color;
   .max_home-container {
-    @include make-container(6.25rem);
+    
     // .max_home-row {
     //   @include dispalyFlex(flex, flex-start, row);
     // }
@@ -27,10 +27,13 @@
     .max-home__badge-container {
       width: 100%;
       background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/c_scale,h_166,q_auto:eco,w_360/v1665027832/Group_2x_cem3ax.png');
-      height: 166px;
-      justify-content: center;
-      align-items: center;
+      // height: 166px;
+      background-size: 100%;
       background-repeat: no-repeat;
+      padding: 20px 20px;
+      @media(max-width:998px){
+        padding: 60px 20px;
+      }
       .badge-content-area {
         h6 {
           // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
