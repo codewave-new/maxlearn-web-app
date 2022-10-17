@@ -14,6 +14,8 @@ import ResetPassword from '../components/Common/login/ResetPassword';
 import ResetPasswordSuccessful from '../components/Common/login/ResetPasswordSuccessful';
 import ConfirmPassword from '../components/Common/login/ConformPassword';
 import UpdatePasswordSuccessful from '../components/Common/login/UpdatePasswordSuccessful';
+import Help from '../pages/help';
+import Profile from '../pages/profile';
 
 export const appRoutes = [
   {
@@ -61,6 +63,14 @@ export const appRoutes = [
       {
         path: '/learn',
         element: <Learn />,
+      },
+      {
+        path: '/help',
+        element: <Help />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },

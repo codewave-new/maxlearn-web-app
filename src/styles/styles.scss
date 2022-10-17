@@ -42,7 +42,27 @@ body {
 .padd-20 {
   padding: 1.25rem;
 }
+::-webkit-scrollbar {
+  width: 5px;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+  border-radius: 20px;
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a4a4a4;
+}
+@import './common//search.scss';
 @import './common/button.scss';
 @import './header/navbar.scss';
 @import './home/user.scss';
@@ -54,3 +74,7 @@ body {
 @import './learn/learn.scss';
 @import './todo/todo.scss';
 @import './ranking/ranking.scss';
+@import './common/notifications.scss';
+@import './common/help/help.scss';
+@import './profile/profile.scss';
+

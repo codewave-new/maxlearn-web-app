@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 // import FilledInput from '@mui/material/FilledInput';
@@ -23,11 +23,11 @@ import {
 import Header from '../components/Common/Header/Header';
 
 const Login = () => {
-  // const navigate = useNavigate();
-  // const handleLogin = () => {
-  //   localStorage.setItem('TOKEN_NAME', 'someValue');
-  //   navigate('/');
-  // };
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    localStorage.setItem('TOKEN_NAME', 'someValue');
+    navigate('/');
+  };
 
   const [values, setValues] = React.useState({
     password: '',

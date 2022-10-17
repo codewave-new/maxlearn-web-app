@@ -1,0 +1,49 @@
+// @include displayFlex($property, $content, $direction)
+
+// @include font($color, $fontSize, $fontWeight, $letterSpace, $lineHeight)
+
+// @include card($ht, $wd, $borderRad, $bg)
+
+.profile__accordion-contianer {
+  .accordion {
+    .accordion-item {
+        margin-bottom: 16px;
+        box-shadow: 0 12px 24px 0 rgba(0,0,0,0.1);
+        border: none;
+      .accordion-header {
+        button {
+          @include font($text-secondary-color, 16px, 700, 0, 22px);
+        }
+        .accordion-button:focus {
+          border: none;
+          box-shadow: none;
+        }
+        .accordion-button::after {
+          margin-left: 20px;
+        }
+        .accordion-button:not(.collapsed) {
+          background-color: $white;
+          border: none;
+          box-shadow: none;
+        }
+      }
+      .accordion-body {
+        .details-container {
+          background-color: #f5f5f5;
+          padding: 20px 15px;
+          h5 {
+            @include font(#858585, 14px, 900, 0, 16px);
+          }
+          h4 {
+            margin-top: 24px;
+            display: flex;
+            align-items: center;
+            .percentage-bar {
+              width: 20%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+// @include displayFlex($property, $content, $direction)
+
+// @include font($color, $fontSize, $fontWeight, $letterSpace, $lineHeight)
+
+// @include card($ht, $wd, $borderRad, $bg)
+.overall-container {
+  margin: 40px 0 0 0;
+  @include card(auto, 100%, 10px, $nav_content-bg);
+  border-end-start-radius: 0;
+  border-end-end-radius:0;
+  padding: 25px 30px;
+  p{
+    margin: 0;
+    padding-left: 5px;
+    align-self: center;
+    @include font($text-secondary-color,14px,400,0,14px);
+    strong{
+        @include font($text-secondary-color,14px,500,0,14px)
+    }
+}
+}
+.overlall-target-container{
+    @include card(auto , 100%,10px, #ffb14740);
+    border-radius: 0 0 10px 10px;
+    background-color: #ffdc8b;
+    padding: 13px 25px ;
+    display: flex;
+    position: relative;
+    p{
+        margin: 0;
+        padding-left: 5px;
+        align-self: center;
+        @include font($text-secondary-color,14px,400,0,14px);
+        strong{
+            @include font($text-secondary-color,14px,500,0,14px)
+        }
+    }
+    .stars{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+}

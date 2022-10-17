@@ -32,3 +32,7 @@ export * as LoginIcon from './login_icon.svg';
 export * as LoginIcon2 from './login_icon2.svg';
 export * as GoogleIcon from './google_icon.svg';
 export * as LinkedinIcon from './linkedin_icon.svg';
+export * as ProfileEditIcon from './profile/edit.svg';
+export * as ProfileDiamondIcon from './profile/diamond.svg';
+export * as TargetIcon from './profile/target.svg';
+export * as StarsIcon from './profile/stars.svg';

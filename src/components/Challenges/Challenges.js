@@ -3,9 +3,10 @@ import Modal from '../UI/Modal';
 import SideBar from '../UI/SideBar/SideBar';
 import ChallengeSlider from '../UI/Slider';
 import SwiperSlider from '../UI/SwiperSlider';
+import ChallengesCard from './ChallengesCard';
 
 const Challenges = (props) => {
-  console.log('challengs', props.data);
+
 
   const [modal, setModal] = useState(false);
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import RankingTab from '../UI/Tabs/RankingTab';
 import QuestCard from '../Home/Quest/QuestCard';
+import RankTabContent from '../Rankings/RankTabContent';
 
 const RankingLayout = () => {
   return (
@@ -9,7 +10,7 @@ const RankingLayout = () => {
         <li>Squad</li>
       </ul>
       <div className='ranking-card'>
-        <RankingTab tabs={() => <QuestCard />} />
+        <RankingTab tabs={() => <RankTabContent />} />
       </div>
     </div>
   );
