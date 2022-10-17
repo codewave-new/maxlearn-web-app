@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
 // import FilledInput from '@mui/material/FilledInput';
@@ -12,22 +12,16 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-import {
-  MaxLogo,
-  LoginIcon,
-  LoginIcon2,
-  GoogleIcon,
-  LinkedinIcon,
-} from '../assets';
+import { LoginIcon2 } from '../../../assets';
 
-import Header from '../components/Common/Header/Header';
+import Header from '../Header/Header';
 
 const Login = () => {
-  const navigate = useNavigate();
-  const handleLogin = () => {
-    localStorage.setItem('TOKEN_NAME', 'someValue');
-    navigate('/');
-  };
+  // const navigate = useNavigate();
+  // const handleLogin = () => {
+  //   localStorage.setItem('TOKEN_NAME', 'someValue');
+  //   navigate('/');
+  // };
 
   const [values, setValues] = React.useState({
     password: '',
@@ -57,26 +51,10 @@ const Login = () => {
         <div className='login_bg'>
           <div className='formdiv'>
             <div className='fordiv-wrapper'>
-              <p className='welcome'>Welcome back!</p>
               <h2 className='logintext'>
-                Log in to <MaxLogo.default />
+                Update your account <br /> with new password.
               </h2>
               <form>
-                <div className='row input_div'>
-                  <div className='col-sm-1'>
-                    <LoginIcon.default />
-                  </div>
-                  <div className='col-sm-11'>
-                    <input
-                      type='email'
-                      id='user_name'
-                      placeholder='Email ID'
-                      name='user_name'
-                      className='login_name'
-                    />
-                  </div>
-                </div>
-
                 <div className='row input_div'>
                   <div className='col-sm-1'>
                     <LoginIcon2.default />
@@ -85,8 +63,8 @@ const Login = () => {
                     <Input
                       type={values.showPassword ? 'text' : 'password'}
                       onChange={handlePasswordChange('password')}
-                      value={values.password}
-                      // placeholder='Password'
+                      value={values.password1}
+                      placeholder='Your new password'
                       className='login_password'
                       // style={{ '-webkit-text-security': 'square' }}
                       endAdornment={
@@ -108,35 +86,37 @@ const Login = () => {
                 </div>
 
                 <div className='row input_div'>
-                  <button className='login_button'>Login</button>
+                  <div className='col-sm-1'>
+                    <LoginIcon2.default />
+                  </div>
+                  <div className='col-sm-11'>
+                    <Input
+                      type={values.showPassword ? 'text' : 'password'}
+                      onChange={handlePasswordChange('password')}
+                      value={values.password2}
+                      placeholder='Confirm new password'
+                      className='login_password'
+                      // style={{ '-webkit-text-security': 'square' }}
+                      endAdornment={
+                        <InputAdornment position='end'>
+                          <IconButton
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                          >
+                            {values.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </div>
                 </div>
 
-                <p className='forgot_password'>
-                  <a className='forgot_password' href='/'>
-                    Forgot password?
-                  </a>
-                </p>
-
                 <div className='row input_div'>
-                  <p className='login_with'>or login with</p>
-                </div>
-                <div className='row input_div'>
-                  <div className='col-sm-6'>
-                    <a href='/'>
-                      <div className='social_innerdiv'>
-                        <GoogleIcon.default />
-                        <span className='google_text'>Google</span>
-                      </div>
-                    </a>
-                  </div>
-                  <div className='col-sm-6'>
-                    <a href='/'>
-                      <div className='social_innerdiv'>
-                        <LinkedinIcon.default />
-                        <span className='google_text'>Linkedin</span>
-                      </div>
-                    </a>
-                  </div>
+                  <button className='login_button'>Submit</button>
                 </div>
               </form>
             </div>
