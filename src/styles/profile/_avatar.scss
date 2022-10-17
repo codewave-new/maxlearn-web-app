@@ -1,0 +1,32 @@
+// @include displayFlex($property, $content, $direction)
+
+// @include font($color, $fontSize, $fontWeight, $letterSpace, $lineHeight)
+
+// @include card($ht, $wd, $borderRad, $bg)
+.avatar-container {
+  @include card(auto, 100%, 20px, #e7f9fd);
+  padding: 40px 60px;
+  .avatar-img-container {
+    padding: 40px 30px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #894ef9 0%, #bdc7fb 100%);
+    position: relative;
+    img {
+      width: 100%;
+      height: auto;
+    }
+    .edit {
+      position: absolute;
+      background: linear-gradient(167.68deg, #54afae 0%, #2a7776 100%);
+      box-shadow: 0 2px 5px 0 rgba(34, 145, 143, 0.33);
+      padding: 10px 15px;
+      border-radius: 50%;
+      right: -15px;
+      bottom: -25px;
+    }
+  }
+  h4{
+    margin: 1.25rem 0 0 0;
+    text-align: center;
+  }
+}

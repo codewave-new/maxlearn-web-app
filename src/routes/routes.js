@@ -11,6 +11,7 @@ import Todo from '../pages/todo';
 import Rankings from '../pages/rankings';
 import Learn from '../pages/learn';
 import Help from '../pages/help';
+import Profile from '../pages/profile';
 
 export const appRoutes = [
   {
@@ -62,6 +63,10 @@ export const appRoutes = [
       {
         path:'/help',
         element:<Help/>
+      },
+      {
+        path:'/profile',
+        element:<Profile/>
       }
     ],
   },
