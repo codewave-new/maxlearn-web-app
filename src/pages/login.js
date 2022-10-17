@@ -14,10 +14,10 @@ const Login = () => {
     <div className='cwr_homepage_wrapper'>
       <Header />
       <div className='cwr_body'>
-        {/* <div className='cwr_login'>
+        <div className='cwr_login'>
           <h1>Authenticate Yourself</h1>
           <button onClick={handleLogin}>Authenticate</button>
-        </div> */}
+        </div>
         <div className='login_bg'>
           <div className='formdiv'>
             <div className='fordiv-wrapper'>

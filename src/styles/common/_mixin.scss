@@ -28,3 +28,19 @@
   letter-spacing: $letterSpace;
   line-height: $lineHeight;
 }
+
+@mixin  displayCenter {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin  displayVerticalCenter {
+  display: flex;
+  align-items: center;
+}
+
+@mixin displayBothCenter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

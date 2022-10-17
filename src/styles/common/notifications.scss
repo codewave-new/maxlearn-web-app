@@ -1,0 +1,16 @@
+.max__notification-wrapper {
+    
+  .max__notification-card {
+    display: flex;
+    justify-content: space-between;
+    .time {
+      .oval {
+        height: 12px;
+        width: 12px;
+        border: 1px solid #f0f0f0;
+        background-color: #de5021;
+        border-radius: 50%;
+      }
+    }
+  }
+}

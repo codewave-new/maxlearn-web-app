@@ -9,7 +9,7 @@ import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
 import ChallengesCard from '../Challenges/ChallengesCard';
 
 export default function SwiperSlider(props) {
-  console.log(props);
+ 
   const { data } = props;
   const dataChallenges = data.map((el) => {
     return (
