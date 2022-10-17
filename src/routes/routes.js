@@ -10,6 +10,10 @@ import ProtectedRoute from './privateRoute';
 import Todo from '../pages/todo';
 import Rankings from '../pages/rankings';
 import Learn from '../pages/learn';
+import ResetPassword from '../components/Common/login/ResetPassword';
+import ResetPasswordSuccessful from '../components/Common/login/ResetPasswordSuccessful';
+import ConfirmPassword from '../components/Common/login/ConformPassword';
+import UpdatePasswordSuccessful from '../components/Common/login/UpdatePasswordSuccessful';
 
 export const appRoutes = [
   {
@@ -68,5 +72,21 @@ export const appRoutes = [
   {
     path: '/login',
     element: <Login />,
+  },
+  {
+    path: '/reset_password',
+    element: <ResetPassword />,
+  },
+  {
+    path: '/reset_password_successful',
+    element: <ResetPasswordSuccessful />,
+  },
+  {
+    path: '/confirm_password',
+    element: <ConfirmPassword />,
+  },
+  {
+    path: '/update_password_successful',
+    element: <UpdatePasswordSuccessful />,
   },
 ];

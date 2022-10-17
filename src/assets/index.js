@@ -28,3 +28,7 @@ export * as LearnHuman from './learn/learn-human.svg';
 export * as LearnConduct from './learn/learn-cond.svg';
 export * as ToDoTimeIcon from './todo/time (1).svg';
 export * as ToDoCalendarIcon from './todo/calndr.svg';
+export * as LoginIcon from './login_icon.svg';
+export * as LoginIcon2 from './login_icon2.svg';
+export * as GoogleIcon from './google_icon.svg';
+export * as LinkedinIcon from './linkedin_icon.svg';
