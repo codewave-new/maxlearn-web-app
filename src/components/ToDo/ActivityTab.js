@@ -1,7 +1,8 @@
+import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import React from 'react';
 import QuestCard from '../Home/Quest/QuestCard';
+import ChallengesListing from '../../pages/Challenges/ChallengesListing';
 
 const ActivityTab = (props) => {
   return (
@@ -10,7 +11,9 @@ const ActivityTab = (props) => {
       id='uncontrolled-tab-example'
       className='mb-3 max__todo-activity-tab'
     >
-      <Tab eventKey='challenges' title='Challenges'></Tab>
+      <Tab eventKey='challenges' title='Challenges'>
+        <ChallengesListing />
+      </Tab>
       <Tab eventKey='quest' title='Quests & Certs'>
         <div className='row'>
           <div className='col-6'>
