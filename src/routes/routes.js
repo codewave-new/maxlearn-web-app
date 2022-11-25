@@ -16,6 +16,8 @@ import ConfirmPassword from '../components/Common/login/ConformPassword';
 import UpdatePasswordSuccessful from '../components/Common/login/UpdatePasswordSuccessful';
 import Help from '../pages/help';
 import Profile from '../pages/profile';
+import QuestionsNavbar from '../components/Common/Navbar/QuestionsNavbar';
+import ChallengesDetail from '../pages/Challenges/ChallengesDetail';
 
 export const appRoutes = [
   {
@@ -71,6 +73,14 @@ export const appRoutes = [
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/to-do/challenge/detail/:id',
+        element: <ChallengesDetail />,
+      },
+      {
+        path: '/questions/:id',
+        element: <QuestionsNavbar />,
       },
     ],
   },
