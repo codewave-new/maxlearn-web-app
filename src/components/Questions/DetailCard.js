@@ -12,7 +12,7 @@ const DetailCard = () => {
                 Challenge in detail
               </h4>
               <p className='detail__card__header-duration'>
-                10 More days to go
+                10 More days to go to
               </p>
             </div>
             <p>
