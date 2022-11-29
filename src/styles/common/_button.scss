@@ -1,0 +1,59 @@
+@mixin max__button($brdrRadius, $padding, $ht, $wd, $color, $font) {
+  border: none;
+  border-radius: $brdrRadius;
+  padding: $padding;
+  min-height: $ht;
+  min-width: $wd;
+  color: $color;
+  font-family: Roboto;
+  font-size: $font;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+@mixin filled($borderRadius, $padding-y, $bg-color, $color, $font, $width) {
+  border: none;
+  border-radius: $borderRadius;
+  padding: $padding-y 0;
+  background-color: $bg-color;
+  color: $color;
+  font-family: Roboto;
+  font-size: $font;
+  letter-spacing: 0;
+  text-align: center;
+  width: $width;
+}
+@mixin filled__gradient(
+  $borderRadius,
+  $padding-y,
+  $angle,
+  $zero-color,
+  $full-color,
+  $color,
+  $font,
+  $width
+) {
+  border: none;
+  border-radius: $borderRadius;
+  padding: $padding-y 0;
+  background: linear-gradient($angle, $zero-color 0%, $full-color 100%);
+  color: $color;
+  font-family: Roboto;
+  font-size: $font;
+  letter-spacing: 0;
+  text-align: center;
+  width: $width;
+}
+
+@mixin outline__button($borderRadius, $padding-y, $padding-x, $color, $font) {
+  border: none;
+  border-radius: $brdrRadius;
+  padding: $padding;
+  min-height: $ht;
+  min-width: $wd;
+  color: $color;
+  font-family: Roboto;
+  font-size: $font;
+  letter-spacing: 0;
+  text-align: center;
+}

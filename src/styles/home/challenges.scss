@@ -1,0 +1,134 @@
+.wax__home-challenges-wrapper {
+  margin: 3.125rem 0 0 0;
+  min-height: 360px;
+  width: 100%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+  .wax__home-challenges-slider-wrapper {
+    width: 100%;
+    margin-top: 1.25rem;
+  }
+  @media (max-width: 800px) {
+    .wax__home-challenges-slider-wrapper {
+      width: 100%;
+    }
+  }
+  .wax__home-challenges-head {
+    h5 {
+      @include font($text-secondary-color, 18px, 700, 0, 18px);
+    }
+    button {
+      background-color: $secondary-color;
+      border: none;
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($challenge-view-btn-color, 16px, 500, 0, 16px);
+    }
+  }
+}
+.swiper-pagination-bullet {
+  height: 5px;
+  width: 13px;
+  border-radius: 3px;
+  background-color: #c1dbda;
+  opacity: 1;
+}
+.swiper-pagination-bullet-active {
+  background-color: #167f7d;
+  height: 5px;
+  width: 30px;
+  border-radius: 3px;
+}
+
+.max-home_challenges__card-wrapper {
+  background: $primary-color;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  .max-home_challenges__card-container {
+    background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1664801059/flash_i9thnf.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  .left_challenges-container {
+    position: relative;
+    height: 195px;
+    width: 227.55px;
+
+    @include dispalyFlex('flex', 'center', 'column');
+
+    .left_challenge_icon-container {
+      // $ht, $wd, $borderRad, $bg
+      position: absolute;
+      top: 30%;
+      bottom: -50%;
+      right: 32%;
+      @include card(4.375rem, 4.383rem, 0.972rem, $challenge-left-Color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    p {
+      display: flex;
+      justify-content: center;
+      height: 150%;
+      align-items: center;
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($white, 14px, 500, 0, 14px);
+    }
+  }
+  .right_challenges-container {
+    height: 185px;
+    width: 227.55px;
+    transform: scaleX(-1) scaleY(-1);
+
+    p {
+      display: flex;
+      justify-content: center;
+      height: 40%;
+      align-items: center;
+      // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      @include font($white, 14px, 500, 0, 14px);
+      transform: rotate(180deg);
+    }
+    .right_challenge_icon-container {
+      // $ht, $wd, $borderRad, $bg
+      position: absolute;
+      top: 30%;
+      bottom: -50%;
+      right: 33%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @include card(4.375rem, 4.383rem, 0.972rem, $chanllenge-right-color);
+      transform: rotate(180deg);
+    }
+  }
+  .max-challenges-content-container {
+    padding: 1.25rem 1.25rem 1.875rem 1.25rem;
+    .time-details {
+      h3 {
+        margin: 1.125rem 0 0 0;
+        @include font($text-secondary-color, 16px, 900, 0, 16px);
+      }
+      .time-details-text {
+        h6 {
+          // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+          @include font($text-primary-color, 14px, 400, 0, 14px);
+        }
+        h5 {
+          @include font($text-secondary-color, 14px, 500, 0, 12px);
+          font-style: italic;
+          strong {
+            @include font($text-secondary-color, 14px, 900, 0, 12px);
+            font-style: italic;
+          }
+          small {
+            @include font($text-secondary-color, 14px, 400, 0, 12px);
+            font-style: italic;
+          }
+        }
+      }
+    }
+  }
+}

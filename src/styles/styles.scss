@@ -1,0 +1,80 @@
+/**
+* Global Style file where all index file will be imported
+*/
+@import './variables/variables.scss';
+@import './common/mixin';
+@import './home/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import './responsive/breakpoints.scss';
+@import './home/index.scss';
+@import './common/button';
+
+body,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-stack;
+  color: $text-primary-color;
+  font-style: normal;
+}
+html,
+body {
+  min-height: 100% !important;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+#root {
+  @include media('>small-desktop') {
+    height: 100%;
+
+    min-height: 100vh;
+  }
+  background-color: $secondary-color;
+}
+
+.margin-t {
+  margin: 1.875rem 0 0 0;
+}
+.padd-20 {
+  padding: 1.25rem;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #a4a4a4;
+  border-radius: 20px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #a4a4a4;
+}
+@import './common//search.scss';
+@import './common/button.scss';
+@import './header/navbar.scss';
+@import './home/user.scss';
+@import './home/challenges.scss';
+@import './home/badge.scss';
+@import './home/quest.scss';
+@import './common/siderbar.scss';
+@import './common/footer.scss';
+@import './learn/learn.scss';
+@import './todo/todo.scss';
+@import './ranking/ranking.scss';
+@import './common/notifications.scss';
+@import './common/help/help.scss';
+@import './profile/profile.scss';
+@import './questions/detailCard.scss';
+@import './common/buttons/buttons.scss';

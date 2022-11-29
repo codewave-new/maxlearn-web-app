@@ -1,0 +1,91 @@
+// $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+
+.wax__home-quest-wrapper {
+  margin: 3.125rem 0 0 0;
+  padding: 1.875rem 1.25rem 1.875rem 1.25rem;
+  min-height: 360px;
+  @include card(313px, 100%, 20px, $primary-color);
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  .wax__home-quest-container {
+    .wax__home-quest-slider-wrapper {
+      margin-top: 24px;
+    }
+    div {
+      h5 {
+        @include font($text-secondary-color, 18px, 700, 0, 18px);
+      }
+      h6 {
+        @include font($text-secondary-color, 16px, 500, 0, 16px);
+        color: #0e3a5e;
+      }
+    }
+  }
+}
+.mySwiperQuest {
+  height: 260px !important;
+}
+.max-home__quest-wrapper {
+  // $ht, $wd, $borderRad, $bg
+  @include card(184px, 100%, 8px, $primary-color);
+  border: 1px solid #e5e5e5;
+  padding: 28px 20px 28px 20px;
+  z-index: 10;
+  position: relative;
+  .wax__home-challenges-slider-wrapper {
+    margin-top: 24px;
+  }
+  .max-home__questcard-container {
+    .quest-time-details {
+      h3 {
+        margin-top: 20px;
+        @include font($text-secondary-color, 16px, 700, 0, 20px);
+      }
+      .quest-time-details-text {
+        h6 {
+          @include font(#5d5c5c, 14px, 400, 0, 14px);
+        }
+        h5 {
+          @include font($text-secondary-color, 12px, 500, 0, 12px);
+          font-style: italic;
+          strong {
+            @include font($text-secondary-color, 14px, 900, 0, 12px);
+            font-style: italic;
+          }
+          small {
+            @include font($text-secondary-color, 12px, 400, 0, 12px);
+            font-style: italic;
+          }
+        }
+      }
+      .quest-home-content-container {
+        margin-top: 24px;
+        .quest-home__progress {
+          display: flex;
+          p {
+            height: 24px;
+            width: 88px;
+            border-radius: 12px;
+            background-color: #fff8dd;
+            color: #212121;
+            font-family: Roboto;
+            font-size: 14px;
+            letter-spacing: 0;
+            text-align: center;
+          }
+          .quest {
+            height: 24px;
+            width: 68px;
+            border-radius: 12px;
+            background-color: #9effd4;
+          }
+        }
+      }
+    }
+  }
+
+  .quest-time-details-text {
+    h6 {
+      @include font(#5d5c5c, 14px, 400, 0, 14px);
+    }
+  }
+}

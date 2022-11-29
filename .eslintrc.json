@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "parser": "@babel/eslint-parser",
+  "extends": ["react-app", "airbnb"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "linebreak-style": "off",
+    "spaced-comment": ["error", "always"],
+    "react/jsx-pascal-case": "off",
+    "react/function-component-definition": [
+      2,
+      { "namedComponents": "arrow-function" }
+    ],
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/prefer-default-export": "off",
+    "implicit-arrow-linebreak": "off",
+    "default-param-last": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "operator-linebreak": "off",
+    "react/prop-types": "off",
+    "no-plusplus": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "consistent-return": "off",
+    "react/no-unstable-nested-components": ["error", { "allowAsProps": true }],
+    "react/jsx-props-no-spreading": [0, { "html": "ignore" }],
+    "arrow-body-style": [
+      "error",
+      "as-needed",
+      { "requireReturnForObjectLiteral": true }
+    ],
+    "no-confusing-arrow": ["error", { "onlyOneSimpleParam": true }],
+    "object-curly-newline": ["error", { "multiline": true }],
+    "no-unused-vars": "error",
+    "react/button-has-type": "off",
+    "function-paren-newline": "off",
+    "react/jsx-wrap-multilines": "off",
+    "comma-dangle": "off",
+    "import/no-extraneous-dependencies": [
+      "off",
+      {
+        "devDependencies": false,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
+  }
+}
