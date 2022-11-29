@@ -1,10 +1,10 @@
-import React from 'react'
-import QuestionDetail from '../../components/Questions/QuestionDetail'
+import React from 'react';
+import ChallengesIntro from '../../components/Questions/ChallengesIntro';
 
 const ChallengesDetail = () => {
   return (
     <div>
-        <QuestionDetail variant={'challenge'}/>
+        <ChallengesIntro variant={'challenge'}/>
     </div>
   )
 }

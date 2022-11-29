@@ -1,0 +1,15 @@
+.filled__custombutton {
+  @include filled__gradient(
+    10px,
+    19.5px,
+    169.56deg,
+    #ff6633,
+    #de5020,
+    #ffffff,
+    16px,
+    100%
+  );
+}
+.filled__disabled {
+  @include filled(10px, 19.5px, #c0c0c0, #ffffff, 16px, 100%);
+}

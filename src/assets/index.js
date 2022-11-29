@@ -37,3 +37,7 @@ export * as ProfileDiamondIcon from './profile/diamond.svg';
 export * as TargetIcon from './profile/target.svg';
 export * as StarsIcon from './profile/stars.svg';
 export * as QuestionBodyImage from './question/Group.png';
+export * as Points from './DiamondPoints.png';
+export * as OurTeamBackground from './red_challenge_bg.png';
+export * as OpponentTeamBackground from './blue_challenge_bg.png';
+export * as ExamDetailBackground from './Group19.png';

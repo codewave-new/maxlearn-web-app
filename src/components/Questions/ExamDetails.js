@@ -13,9 +13,10 @@ const ExamDetails = () => {
         backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}
+      className='exam__detail__wrapper'
     >
       <Navbar />
-      <div className='container p-5'>
+      <div className='detail__card__center '>
         <DetailCard />
       </div>
       <Footer />

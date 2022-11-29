@@ -1,7 +1,7 @@
 import React from 'react';
 import ExamDetails from './ExamDetails';
 
-const QuestionDetail = ({ variant }) => {
+const ChallengesIntro = ({ variant }) => {
   switch (variant) {
     case 'challenge':
       return <ExamDetails />;
@@ -12,4 +12,4 @@ const QuestionDetail = ({ variant }) => {
   }
 };
 
-export default QuestionDetail;
+export default ChallengesIntro;

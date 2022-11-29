@@ -35,7 +35,7 @@ const ChallengesListing = () => {
           className='col-6'
           key={`challenge0${index}`}
           onClick={() => {
-            navigate(`/questions/${123}`);
+            navigate(`/to-do/challenge/detail/1234`);
           }}
         >
           <QuestCard className={'max__activity-quest-card'} />
