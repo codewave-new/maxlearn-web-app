@@ -37,6 +37,7 @@
   align-items: center;
   justify-content: space-around;
 }
+
 @mixin center {
   display: flex;
   justify-content: center;
@@ -46,6 +47,7 @@
 @mixin borderBottom {
   border-bottom: 1px solid #a8bac9;
 }
+
 @mixin customScroll($width) {
   &::-webkit-scrollbar {
     width: $width;
@@ -78,6 +80,7 @@
 @mixin vertical-divider {
   border-right: 2px solid #e5e5e5;
 }
+
 .ant-tooltip-inner {
   font-family: 'Rubik';
   font-style: normal;
@@ -87,6 +90,7 @@
   letter-spacing: -0.408px;
   color: #000000;
 }
+
 @mixin horizontal-divider {
   border-bottom: 15px solid #e5e5e5;
 }
@@ -128,6 +132,7 @@
 .bankpay_checkout-main {
   // width: 100vw;
   display: flex;
+
   @include media('>=phone', '<small-desktop') {
     flex-direction: column;
   }
@@ -135,6 +140,7 @@
   .bankpay_checkout-maxspace-div {
     width: 50%;
     background-color: $white;
+
     @include media('>=phone', '<small-desktop') {
       width: 100%;
       border-bottom: 12px solid $grey;
@@ -145,6 +151,7 @@
     width: 50%;
     background-color: #fcfcfc;
     box-shadow: inset 4px 0px 0 rgba(0, 0, 0, 0.08);
+
     @include media('>=phone', '<small-desktop') {
       width: 100%;
       background-color: $white;
@@ -155,3 +162,4 @@
 .green {
   color: $green;
 }
+

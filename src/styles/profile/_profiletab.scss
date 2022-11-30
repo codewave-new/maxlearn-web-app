@@ -28,7 +28,94 @@
 
 
 // basic info tab
+.white-block {
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 1.25rem;
+}
+
+.ml-pbi-black {
+  color: #212121;
+
+}
+
+.ml-pbi-grey {
+  color: #6D6B6B;
+}
+
 .ml-pbi {
-  min-height: 100vh;
+  // min-height: 100vh;
+  margin: 0;
+  margin-top: 1.8rem;
+
+  .basic-info-title {
+    color: #212121;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+
+  &__user-details {
+    padding-left: 0;
+
+    @include media('<=phone') {
+      padding: 0;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  &__company-details {
+    padding-right: 0;
+
+    @include media('<=phone') {
+      padding: 0;
+    }
+  }
+
+  &__text {
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 14px;
+  }
+
+  .bio-desc {
+    color: #212121;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: justify;
+
+    margin: 0;
+    margin-top: 1rem;
+  }
+
+  .usd-row {
+    margin: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .usd-row:last-child {
+    margin: 0;
+  }
+
+  span {
+    display: inline-block;
+    word-wrap: break-word;
+  }
+
+  .basic-info-edit-btn {
+    margin-left: 1rem;
+    height: 16px;
+    width: 16px;
+
+    cursor: pointer;
+  }
 
 }
