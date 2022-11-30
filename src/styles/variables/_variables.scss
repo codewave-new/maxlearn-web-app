@@ -43,25 +43,25 @@ $margin: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 }
 
 @each $mar in $margin {
-  .mt-#{$mar} {
-    margin-top: #{$mar}rem;
-  }
+  // .mt-#{$mar} {
+  //   margin-top: #{$mar}rem;
+  // }
 
-  .mb-#{$mar} {
-    margin-top: #{$mar}rem;
-  }
+  // .mb-#{$mar} {
+  //   margin-top: #{$mar}rem;
+  // }
 
-  .ml-#{$mar} {
-    margin-top: #{$mar}px;
-  }
+  // .ml-#{$mar} {
+  //   margin-top: #{$mar}px;
+  // }
 
-  .mr-#{$mar} {
-    margin-top: #{$mar}px;
-  }
+  // .mr-#{$mar} {
+  //   margin-top: #{$mar}px;
+  // }
 
-  .margin-#{$mar} {
-    margin-top: #{$mar}px;
-  }
+  // .margin-#{$mar} {
+  //   margin-top: #{$mar}px;
+  // }
 }
 
 @mixin space-between {

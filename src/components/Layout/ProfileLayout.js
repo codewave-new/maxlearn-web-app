@@ -7,12 +7,12 @@ const ProfileLayout = () => {
   return (
     <div className='max__profile-wrapper container'>
       <div className='row margin-top-main'>
-        <div className='col-3 col-lg-3'>
+        <div className='col-12 col-lg-3'>
           <ProfileAvatar />
           <Overall />
         </div>
-        <div className='col-9 col-lg-9'>
-          <ProfileTab  className='max__profile-tab'/>
+        <div className='col-12 col-lg-9'>
+          <ProfileTab className='max__profile-tab' />
         </div>
       </div>
     </div>
