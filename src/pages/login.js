@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
@@ -11,6 +11,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 // import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Loginauth } from '../services/login/index';
 
 import {
   MaxLogo,
@@ -21,34 +22,128 @@ import {
 } from '../assets';
 
 import Header from '../components/Common/Header/Header';
+import { useDispatch } from 'react-redux';
+import { Email, Password } from '@mui/icons-material';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const navigate = useNavigate();
-  const handleLogin = () => {
-    localStorage.setItem('TOKEN_NAME', 'someValue');
-    navigate('/');
+  const dispatch = useDispatch();
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailvalue, setemailvalue] = useState('');
+  const [pwsdValue, setpwdvalue] = useState('');
+  const [pwdEyeOnOff, setPwdEyeOnOff] = useState(true);
+  const [apperrorLogin, setapperrorLogin] = useState('');
+  const [pwderror, setpwderror] = useState('');
+
+  const togglePwdEyeOnOff = () => setPwdEyeOnOff(!pwdEyeOnOff);
+
+  const emailchangeValue = (e) => {
+    var field = document.querySelector('[name="email"]');
+
+    field.addEventListener('keypress', function (event) {
+      var key = event.keyCode;
+
+      if (key === 32) {
+        event.preventDefault();
+      }
+    });
+    setemailvalue(e.target.value);
+    setapperrorLogin('');
   };
 
-  const [values, setValues] = React.useState({
-    password: '',
-    showPassword: false,
-  });
+  const passwordchangeValue = (e) => {
+    var field = document.querySelector('[name="password"]');
 
-  const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    field.addEventListener('keypress', function (event) {
+      var key = event.keyCode;
+      if (key === 32) {
+        event.preventDefault();
+      }
+    });
+    setpwdvalue(e.target.value);
+    setpwderror('');
   };
 
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
+  // const handleLogin = () => {
+  //   localStorage.setItem('TOKEN_NAME', 'someValue');
+  //   navigate('/');
+  // };
+
+  const loginClick = async (e) => {
+    e.preventDefault();
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (emailvalue === '') {
+      setapperrorLogin('Please enter Email');
+    } else if (regex.test(emailvalue) === false) {
+      setapperrorLogin('Please enter Valid Email');
+    } else if (pwsdValue === '') {
+      setpwderror('Please enter Password');
+    } else {
+      setIsLoading(true);
+      let logindata = {
+        email_id: emailvalue,
+        password: pwsdValue,
+      };
+      const loginapi = await dispatch(Loginauth(logindata));
+      console.log(loginapi, 'ppp');
+      if (loginapi.data.statusCode === 200) {
+        setIsLoading(false);
+        localStorage.setItem('token', loginapi.data.data.loginDetails.token);
+        localStorage.setItem(
+          'TOKEN_NAME',
+          loginapi.data.data.loginDetails.token
+        );
+        localStorage.setItem(
+          'applicationId',
+          loginapi.data.data.loginDetails.user.registrations[0].applicationId
+        );
+        localStorage.setItem(
+          'fullname',
+          loginapi.data.data.loginDetails.user.fullName
+        );
+        localStorage.setItem('userid', loginapi.data.data.loginDetails.user.id);
+
+        navigate('/');
+      } else if (loginapi.data.statusCode === 401) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Oops',
+          text: loginapi.data.message,
+          focusConfirm: false,
+          confirmButtonColor: ' #FF6633  ',
+        });
+      } else if (loginapi.data.statusCode === 404) {
+        Swal.fire({
+          icon: 'info',
+          title: 'Oops',
+          text: loginapi.data.message,
+          focusConfirm: false,
+        });
+      }
+    }
   };
 
-  const handlePasswordChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
+  // const [values, setValues] = React.useState({
+  //   password: '',
+  //   showPassword: false,
+  // });
+
+  // const handleClickShowPassword = () => {
+  //   setValues({ ...values, showPassword: !values.showPassword });
+  // };
+
+  // const handleMouseDownPassword = (event) => {
+  //   event.preventDefault();
+  // };
+
+  // const handlePasswordChange = (prop) => (event) => {
+  //   setValues({ ...values, [prop]: event.target.value });
+  // };
 
   return (
     <div className='cwr_homepage_wrapper'>
-      <Header />
       <div className='cwr_body'>
         {/* <div className='cwr_login'>
           <h1>Authenticate Yourself</h1>
@@ -67,13 +162,16 @@ const Login = () => {
                     <LoginIcon.default />
                   </div>
                   <div className='col-sm-11'>
-                    <input
+                    <Input
                       type='email'
                       id='user_name'
-                      placeholder='Email ID'
-                      name='user_name'
+                      placeholder='Email Id'
+                      name='email'
                       className='login_name'
+                      onChange={emailchangeValue}
+                      value={emailvalue}
                     />
+                    <p className='Log_err'>{apperrorLogin}</p>
                   </div>
                 </div>
 
@@ -83,32 +181,35 @@ const Login = () => {
                   </div>
                   <div className='col-sm-11'>
                     <Input
-                      type={values.showPassword ? 'text' : 'password'}
-                      onChange={handlePasswordChange('password')}
-                      value={values.password}
-                      // placeholder='Password'
+                      type={pwdEyeOnOff ? 'text' : 'password'}
+                      onChange={passwordchangeValue}
+                      value={pwsdValue}
+                      placeholder='Password'
                       className='login_password'
+                      name='password'
                       // style={{ '-webkit-text-security': 'square' }}
                       endAdornment={
                         <InputAdornment position='end'>
                           <IconButton
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
+                            onClick={togglePwdEyeOnOff}
+                            // onMouseDown={handleMouseDownPassword}
                           >
-                            {values.showPassword ? (
-                              <Visibility />
-                            ) : (
-                              <VisibilityOff />
-                            )}
+                            {pwdEyeOnOff ? <Visibility /> : <VisibilityOff />}
                           </IconButton>
                         </InputAdornment>
                       }
                     />
+                    <p className='Log_err'>{pwderror}</p>
                   </div>
                 </div>
 
                 <div className='row input_div'>
-                  <button className='login_button'>Login</button>
+                  <button
+                    className='login_button'
+                    onClick={(e) => loginClick(e)}
+                  >
+                    Login
+                  </button>
                 </div>
 
                 <p className='forgot_password'>
