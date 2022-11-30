@@ -41,3 +41,4 @@ export * as Points from './DiamondPoints.png';
 export * as OurTeamBackground from './red_challenge_bg.png';
 export * as OpponentTeamBackground from './blue_challenge_bg.png';
 export * as ExamDetailBackground from './Group19.png';
+export * as BasicInfoEdit from './profile/basicInfoEdit.svg';

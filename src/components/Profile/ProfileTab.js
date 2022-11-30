@@ -1,6 +1,7 @@
 import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import BasicInfo from './BasicInfo';
 import TopicDetailsAccordion from './TopicDetailsAccordion';
 
 const ProfileTab = (props) => {
@@ -68,7 +69,7 @@ const ProfileTab = (props) => {
         <div className='row'></div>
       </Tab>
       <Tab eventKey='Basic info' title='Basic info'>
-        <div className='row'></div>
+        <BasicInfo />
       </Tab>
       <Tab eventKey='Badges' title='Badges'>
         <div className='row'></div>
