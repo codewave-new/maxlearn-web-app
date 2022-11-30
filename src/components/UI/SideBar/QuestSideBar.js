@@ -6,7 +6,6 @@ import QuestCard from '../../Home/Quest/QuestCard';
 const QuestSideBar = (props) => {
   const { data } = props;
   const dataQuest = data.map((el) => {
-    console.log(el);
     return (
       <div key={el.id} className='row'>
         <div className='col-12  mb-1'>
@@ -24,7 +23,6 @@ const QuestSideBar = (props) => {
       </div>
     );
   });
-  console.log(dataQuest);
   return (
     <Modal onClose={props.onClose}>
       <div className='max__home-challenges-sidebar'>

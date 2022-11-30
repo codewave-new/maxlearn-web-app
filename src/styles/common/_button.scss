@@ -11,7 +11,15 @@
   text-align: center;
 }
 
-@mixin filled($borderRadius, $padding-y, $bg-color, $color, $font, $width) {
+@mixin filled(
+  $borderRadius,
+  $padding-y,
+  $bg-color,
+  $color,
+  $font,
+  $width,
+  $fontWeight
+) {
   border: none;
   border-radius: $borderRadius;
   padding: $padding-y 0;
@@ -22,6 +30,7 @@
   letter-spacing: 0;
   text-align: center;
   width: $width;
+  font-weight: $fontWeight;
 }
 @mixin filled__gradient(
   $borderRadius,
@@ -31,7 +40,8 @@
   $full-color,
   $color,
   $font,
-  $width
+  $width,
+  $fontWeight
 ) {
   border: none;
   border-radius: $borderRadius;
@@ -43,6 +53,7 @@
   letter-spacing: 0;
   text-align: center;
   width: $width;
+  font-weight: $fontWeight;
 }
 
 @mixin outline__button($borderRadius, $padding-y, $padding-x, $color, $font) {

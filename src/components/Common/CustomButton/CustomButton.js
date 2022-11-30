@@ -1,12 +1,12 @@
 import React from 'react';
 
-const CustomButton = ({ disabled, text }) => {
+const CustomButton = ({ disabled, text,disabledText }) => {
   return (
     <div>
       <button
         className={disabled ? 'filled__disabled' : 'filled__custombutton'}
       >
-        {text}
+        {disabled?disabledText:text}
       </button>
     </div>
   );

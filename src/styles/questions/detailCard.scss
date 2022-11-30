@@ -1,6 +1,5 @@
 .detail__card-wrapper {
-  //   position: relative;
-  width: 80%;
+  width: 70%;
   margin: auto;
   padding: 2.5rem;
   border-radius: 20px;
@@ -8,19 +7,29 @@
   background-color: #ffffff;
   box-shadow: 0 12px 84px 0 rgba(0, 0, 0, 0.1);
   &-left {
-    width: 100%;
-    // height: 80%;
+    img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+    }
   }
-  .detail__card-content {
+  .detail__card-center {
+    padding-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+  .detail__card-between {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
   .detail__card__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // @include dispalyFlex(flex,space-between,center);
     &-heading {
       @include font(#9d9d9d, 18px, 900, 0, 18px);
     }
@@ -30,20 +39,19 @@
   }
   .detail__card__body {
     margin-top: 47px;
-    padding-right: 60px;
+    padding-right: 15%;
     &-header {
       @include font(#212121, 20px, bold, 0, 22px);
     }
     &-points {
       margin-top: 30px;
-
       @include font(#5f5d5d, 14px, normal, 0, 18px);
-      img {
+      &-img {
         width: 15px;
         height: 15px;
         margin-right: 10px;
       }
-      div {
+      .wrapper {
         display: flex;
       }
       &-key {
@@ -52,7 +60,9 @@
     }
   }
 }
-
+.button {
+  margin-top: 46px;
+}
 .exam__detail__wrapper {
   display: flex;
   flex-direction: column;
@@ -62,4 +72,41 @@
 
 .detail__card__center {
   padding: 65px;
+}
+
+.partcipation {
+  padding-right: 15%;
+  &__detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ecfeef;
+    border-radius: 8px;
+    width: 100%;
+    padding: 16px 25px;
+    &-img {
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-left: -6px;
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+    &-members {
+      @include font(#212121, 12px, normal, 0, 13px);
+    }
+    &-total {
+      display: inline-flex;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #4ef9c9 0%, #dafff4 100%);
+      margin-left: -6px;
+      justify-content: center;
+      align-items: center;
+      @include font(#212121, 12px, 500, 0, 13px);
+    }
+  }
 }
