@@ -38,7 +38,7 @@ const ProfileTab = (props) => {
   ));
   return (
     <Tabs
-      defaultActiveKey='Analytics'
+      defaultActiveKey='Basic info'
       id='uncontrolled-tab-example'
       className={`mb-3 max__todo-activity-tab ${props.className}`}
     >
