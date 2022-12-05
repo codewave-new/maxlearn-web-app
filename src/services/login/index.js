@@ -28,3 +28,17 @@ export const LoginVerification = (data) => {
     }
   };
 };
+
+export const ConfirmPasswordChange = (data) => {
+  return async () => {
+    try {
+      const loginResp = await axios.post(
+        config.base_url + `/api/app/learners/change-password`,
+        data
+      );
+      return loginResp;
+    } catch (e) {
+      return e.response;
+    }
+  };
+};

@@ -99,7 +99,7 @@ const Login = () => {
         navigate('/');
       } else if (loginapi.data.statusCode === 401) {
         Swal.fire({
-          icon: 'info',
+          icon: 'error',
           title: 'Oops',
           text: loginapi.data.message,
           focusConfirm: false,
@@ -107,7 +107,7 @@ const Login = () => {
         });
       } else if (loginapi.data.statusCode === 404) {
         Swal.fire({
-          icon: 'info',
+          icon: 'error',
           title: 'Oops',
           text: loginapi.data.message,
           focusConfirm: false,
