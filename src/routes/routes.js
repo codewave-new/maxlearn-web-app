@@ -102,7 +102,7 @@ export const appRoutes = [
     element: <ResetPasswordSuccessful />,
   },
   {
-    path: '/confirm_password',
+    path: '/confirm_password/?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiY2hhbmRhbkBjb2Rld2F2ZS5jb20iLCJpYXQiOjE2NzAyMTExODksImV4cCI6MTY3MDIxMTc4OX0._PWl6diEUlZ7eCDiBK9kExkwmqhBzqYb7KHqk_PH2_4',
     element: <ConfirmPassword />,
   },
   {

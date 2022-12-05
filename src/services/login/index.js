@@ -14,3 +14,17 @@ export const Loginauth = (data) => {
     }
   };
 };
+
+export const LoginVerification = (data) => {
+  return async () => {
+    try {
+      const loginResp = await axios.post(
+        config.base_url + `/api/app/learners/send-verification-link`,
+        data
+      );
+      return loginResp;
+    } catch (e) {
+      return e.response;
+    }
+  };
+};

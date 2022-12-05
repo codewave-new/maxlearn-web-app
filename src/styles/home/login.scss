@@ -32,18 +32,15 @@
   }
 }
 
-.login_bg
-{
+.login_bg {
   background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1665123543/Group_Copy-min_codkii.png);
   background-repeat: no-repeat;
-  // height: 100vh;
+  height: fit-content;
   width: 100%;
   float: left;
   background-size: cover;
-
 }
-.formdiv
-{
+.formdiv {
   width: 40%;
   // float: left;
   margin: auto;
@@ -51,25 +48,22 @@
   background-color: #fff;
   border: 1px solid #979797;
   border-radius: 20px;
-  box-shadow: 0 20px 32px 0 rgba(0,0,0,0.24);
+  box-shadow: 0 20px 32px 0 rgba(0, 0, 0, 0.24);
   margin-top: 8%;
   margin-bottom: 8%;
 }
-.welcome
-{
-  color: #9D9D9D;
+.welcome {
+  color: #9d9d9d;
   font-family: Roboto;
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 0;
   line-height: 20px;
 }
-.fordiv-wrapper
-{
+.fordiv-wrapper {
   padding: 40px;
 }
-.logintext
-{
+.logintext {
   color: #212121;
   font-family: Roboto;
   font-size: 26px;
@@ -77,60 +71,61 @@
   letter-spacing: 0.47px;
   line-height: 26px;
 }
-.input_div input[type="email"], input[type="password"]
-{
-background-color: transparent !important;
-color: #212121;
-font-family: Roboto;
-font-size: 18px;
-font-weight: 500;
-letter-spacing: 0;
-line-height: 18px;
+.input_div input[type='email'],
+input[type='password'] {
+  background-color: transparent !important;
+  color: #212121;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 18px;
 }
-.login_name
-{
+.login_name {
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid #D9D9D9;
-  outline:none;
+  border-bottom: 2px solid #d9d9d9;
+  outline: none;
   width: 100%;
   padding-bottom: 10px;
   background-color: transparent !important;
   background: none;
 }
-.login_password::before
-{
+.login_password::before {
   border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
   // content: "************" !important;
-  
 }
-.login_password::after
-{
+.login_password::after {
   border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
 }
-.input_div
-{
-  padding-top:40px;
+.input_div {
+  padding-top: 20px;
 }
-.login_password
-{
+
+.custom_div {
+  padding-top: 40px;
+}
+
+.custom_div1 {
+  padding-top: 70px;
+}
+.login_password {
   box-sizing: border-box;
   border: none;
-  border-bottom: 2px solid #D9D9D9;
-  outline:none;
+  border-bottom: 2px solid #d9d9d9;
+  outline: none;
   width: 100%;
   padding-bottom: 10px;
   background-color: transparent !important;
   background: none;
 }
-.login_button
-{
+.login_button {
   border-radius: 4px;
-  background: linear-gradient(169.56deg, #FF6633 0%, #DE5020 100%);
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
   width: 100%;
   border: none;
   padding: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
@@ -138,9 +133,8 @@ line-height: 18px;
   line-height: 17px;
   outline: none !important;
 }
-.forgot_password
-{
-  color: #0E3A5E;
+.forgot_password {
+  color: #0e3a5e;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
@@ -154,37 +148,34 @@ line-height: 18px;
   display: flex;
   flex-direction: row;
 }
-.login_with:before
-{
-  content: "";
+.login_with:before {
+  content: '';
   flex: 1 1;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   opacity: 0.48;
   margin: auto;
   position: relative;
   // right: 20px;
   left: -10px;
 }
-.login_with:after{
-  content: "";
+.login_with:after {
+  content: '';
   flex: 1 1;
   border-bottom: 1px solid;
   margin: auto;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   opacity: 0.48;
   position: relative;
   // right: 20px;
   left: 10px;
-  }
+}
 
-  .social_innerdiv
-  {
-    border-radius: 4px;
-    background-color: #F0F6F7;
-    padding: 15px;
-  }
-.google_text
-{
+.social_innerdiv {
+  border-radius: 4px;
+  background-color: #f0f6f7;
+  padding: 15px;
+}
+.google_text {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -193,8 +184,7 @@ line-height: 18px;
   line-height: 12px;
   padding-left: 10px;
 }
-.verification
-{
+.verification {
   color: #212121;
   font-family: Roboto;
   font-size: 16px;
@@ -202,4 +192,145 @@ line-height: 18px;
   line-height: 24px;
   text-align: center;
   padding-top: 10px;
+}
+
+.css-1tcs2i1-MuiInputBase-root-MuiInput-root:before {
+  border-bottom: 0px !important;
+}
+
+.css-1tcs2i1-MuiInputBase-root-MuiInput-root:after {
+  border-bottom: 0px !important;
+}
+
+.Log_err {
+  font-size: 12px;
+  float: left;
+  color: red;
+}
+
+.card_background {
+  width: 40%;
+  // float: left;
+  height: 450px;
+  margin: auto;
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid #979797;
+  border-radius: 20px;
+  box-shadow: 0 20px 32px 0 rgba(0, 0, 0, 0.24);
+  margin-top: 13%;
+  margin-bottom: 8%;
+}
+
+.change_password_bg {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1665123543/Group_Copy-min_codkii.png);
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  height: auto;
+  float: left;
+  background-size: cover;
+}
+
+.ml-login {
+  border: 1px solid #979797;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 20px 32px 0 rgba(0, 0, 0, 0.24);
+  float: left;
+  margin-top: 10%;
+  width: 65%;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    color: #212121;
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 0.47px;
+    line-height: 32px;
+
+    text-align: center;
+  }
+
+  &__sub-title {
+    color: #212121;
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 0.47px;
+    line-height: 26px;
+  }
+
+  &__body {
+    flex: none;
+    width: 80%;
+  }
+
+  &__btn-blk {
+    .react-ripples {
+      width: 100%;
+    }
+  }
+
+  &__btn {
+    border-radius: 4px;
+    background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+
+    color: #ffffff;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 17px;
+  }
+
+  &__frgt-pwd-txt {
+    color: #0e3a5e;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+  }
+
+  &__input-blk {
+    .form-control {
+      padding-left: 0.5rem;
+      margin-left: 3rem;
+      width: 89%;
+      border: none;
+      border-bottom: 1.5px solid #d9d9d9;
+      border-radius: 0;
+
+      //   color: #727A92;
+      font-family: Roboto;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 20px;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__pwd-eye {
+    position: absolute;
+    top: 1px;
+    right: 0 !important;
+    z-index: 2;
+    display: block;
+    width: 2.5rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+  }
+}
+
+.login_background {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1665123543/Group_Copy-min_codkii.png);
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  float: left;
 }

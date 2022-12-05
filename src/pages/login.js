@@ -2,13 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
-// import FilledInput from '@mui/material/FilledInput';
-// import OutlinedInput from '@mui/material/OutlinedInput';
-// import InputLabel from '@mui/material/InputLabel';
+
 import InputAdornment from '@mui/material/InputAdornment';
-// import FormHelperText from '@mui/material/FormHelperText';
-// import FormControl from '@mui/material/FormControl';
-// import TextField from '@mui/material/TextField';
+
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Loginauth } from '../services/login/index';
@@ -65,19 +61,14 @@ const Login = () => {
     setpwderror('');
   };
 
-  // const handleLogin = () => {
-  //   localStorage.setItem('TOKEN_NAME', 'someValue');
-  //   navigate('/');
-  // };
-
   const loginClick = async (e) => {
     e.preventDefault();
     const regex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     if (emailvalue === '') {
-      setapperrorLogin('Please enter Email');
+      setapperrorLogin('Please enter email');
     } else if (regex.test(emailvalue) === false) {
-      setapperrorLogin('Please enter Valid Email');
+      setapperrorLogin('Please enter valid email');
     } else if (pwsdValue === '') {
       setpwderror('Please enter Password');
     } else {
@@ -125,30 +116,9 @@ const Login = () => {
     }
   };
 
-  // const [values, setValues] = React.useState({
-  //   password: '',
-  //   showPassword: false,
-  // });
-
-  // const handleClickShowPassword = () => {
-  //   setValues({ ...values, showPassword: !values.showPassword });
-  // };
-
-  // const handleMouseDownPassword = (event) => {
-  //   event.preventDefault();
-  // };
-
-  // const handlePasswordChange = (prop) => (event) => {
-  //   setValues({ ...values, [prop]: event.target.value });
-  // };
-
   return (
     <div className='cwr_homepage_wrapper'>
       <div className='cwr_body'>
-        {/* <div className='cwr_login'>
-          <h1>Authenticate Yourself</h1>
-          <button onClick={handleLogin}>Authenticate</button>
-        </div> */}
         <div className='login_bg'>
           <div className='formdiv'>
             <div className='fordiv-wrapper'>
@@ -187,13 +157,9 @@ const Login = () => {
                       placeholder='Password'
                       className='login_password'
                       name='password'
-                      // style={{ '-webkit-text-security': 'square' }}
                       endAdornment={
                         <InputAdornment position='end'>
-                          <IconButton
-                            onClick={togglePwdEyeOnOff}
-                            // onMouseDown={handleMouseDownPassword}
-                          >
+                          <IconButton onClick={togglePwdEyeOnOff}>
                             {pwdEyeOnOff ? <Visibility /> : <VisibilityOff />}
                           </IconButton>
                         </InputAdornment>
@@ -213,7 +179,7 @@ const Login = () => {
                 </div>
 
                 <p className='forgot_password'>
-                  <a className='forgot_password' href='/'>
+                  <a className='forgot_password' href='/reset_password'>
                     Forgot password?
                   </a>
                 </p>
