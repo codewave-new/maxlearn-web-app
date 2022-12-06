@@ -105,6 +105,7 @@ export const appRoutes = [
     path: '/confirm_password',
     element: <ConfirmPassword />,
   },
+
   {
     path: '/update_password_successful',
     element: <UpdatePasswordSuccessful />,
