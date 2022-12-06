@@ -1,3 +1,5 @@
+import { CloseButton } from 'react-bootstrap';
+
 export * as Logo from './logo.png';
 export * as MaxLogo from './home/Bitmap.svg';
 export * as HomeLogo from './home.svg';
@@ -42,3 +44,9 @@ export * as OurTeamBackground from './red_challenge_bg.png';
 export * as OpponentTeamBackground from './blue_challenge_bg.png';
 export * as ExamDetailBackground from './Group19.png';
 export * as BasicInfoEdit from './profile/basicInfoEdit.svg';
+export * as CloseButton from './CloseButton.svg';
+export * as CuteMonsters from './CuteMonsters.svg';
+export * as PointsEarnedImage from './PointEarned.png';
+export * as challengesCompletionBg from './challengesCompletionbg.png';
+export * as Stars from './stars.svg';
+export * as Gem from './completionCardGem.svg';

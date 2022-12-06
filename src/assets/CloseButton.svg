@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="62px" viewBox="0 0 62 62" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>A23433D0-618A-41BF-AD25-2D5C1152EC6E</title>
+    <defs>
+        <linearGradient x1="43.6381315%" y1="8.81239526e-14%" x2="63.7904506%" y2="109.394658%" id="linearGradient-1">
+            <stop stop-color="#FF6633" offset="0%"></stop>
+            <stop stop-color="#DE5020" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="17" cy="17" r="17"></circle>
+        <filter x="-69.1%" y="-54.4%" width="238.2%" height="238.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="5" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="7" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.285210883 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Squad-Information-(User-Team)" transform="translate(-1312.000000, -71.000000)">
+            <g id="Group-2" transform="translate(1326.000000, 80.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                </g>
+                <g id="close-(2)" transform="translate(10.045455, 10.045455)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M0.679289813,13.9090909 C0.404562645,13.9090909 0.15686414,13.7436712 0.051723673,13.4898566 C-0.0534167942,13.236042 0.00471260692,12.9438825 0.198999669,12.7496447 L12.7495679,0.198944779 C13.0148249,-0.0663149262 13.4448913,-0.0663149262 13.7101482,0.198944779 C13.9754051,0.464204483 13.9754051,0.894275439 13.7101482,1.15953514 L1.15957996,13.710235 C1.03230876,13.8377704 0.859464264,13.9093335 0.679289813,13.9090909 L0.679289813,13.9090909 Z" id="Path"></path>
+                    <path d="M13.2298011,13.9090909 C13.0496266,13.9093335 12.8767821,13.8377704 12.749511,13.710235 L0.198942692,1.15953514 C-0.0663142306,0.894275439 -0.0663142306,0.464204483 0.198942692,0.198944779 C0.464199614,-0.0663149262 0.894266059,-0.0663149262 1.15952298,0.198944779 L13.7100912,12.7496447 C13.9043783,12.9438825 13.9625077,13.236042 13.8573672,13.4898566 C13.7522268,13.7436712 13.5045283,13.9090909 13.2298011,13.9090909 L13.2298011,13.9090909 Z" id="Path"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

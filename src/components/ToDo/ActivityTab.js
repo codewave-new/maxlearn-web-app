@@ -7,7 +7,7 @@ import ChallengesListing from '../../pages/Challenges/ChallengesListing';
 const ActivityTab = (props) => {
   return (
     <Tabs
-      defaultActiveKey='quest'
+      defaultActiveKey='challenges'
       id='uncontrolled-tab-example'
       className='mb-3 max__todo-activity-tab'
     >

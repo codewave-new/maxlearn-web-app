@@ -18,6 +18,7 @@ import Help from '../pages/help';
 import Profile from '../pages/profile';
 import QuestionsNavbar from '../components/Common/Navbar/QuestionsNavbar';
 import ChallengesDetail from '../pages/Challenges/ChallengesDetail';
+import ChallengesCompleted from '../pages/Challenges/ChallengesCompleted';
 
 export const appRoutes = [
   {
@@ -77,6 +78,10 @@ export const appRoutes = [
       {
         path: '/to-do/challenge/detail/:id',
         element: <ChallengesDetail />,
+      },
+      {
+        path: '/to-do/challenge/completed/:id',
+        element: <ChallengesCompleted />,
       },
       {
         path: '/questions/:id',

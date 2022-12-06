@@ -1,16 +1,77 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
-import { Points, ExamDetailBackground } from '../../assets';
+import { Points, ExamDetailBackground, CuteMonsters } from '../../assets';
+import MembersAvatar from '../Common/Avatar/MembersAvatar';
+import QuestionCard, {
+  DetailComponent,
+  ThumNailComponent,
+} from '../Common/QuestionCard.js/QuestionCard';
+import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
 
-const DetailCard = ({start}) => {
-  
+const DetailCard = ({ start }) => {
+  const [modalStatus, setModalStatus] = useState(true);
   return (
     <div>
       <div className='detail__card-wrapper'>
         <div className='row'>
           <div className='col-6'>
-            <div className='detail__card-wrapper-left'>
-              <img src={ExamDetailBackground.default} />
+            <div
+              className='detail__card-wrapper-left'
+              style={{
+                backgroundImage: `url(${ExamDetailBackground.default})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            >
+              {/* <img src={ExamDetailBackground.default} /> */}
+              <div className='team__info__image-des'>
+                <div className='text-center'>
+                  <div className='team__info--image team__info--our-team'>
+                    <CuteMonsters.default />
+                  </div>
+                  <p className='team__info--name'>Roasters</p>
+                  <div className='team__info__member-wrapper'>
+                    <MembersAvatar
+                      total={21}
+                      max={4}
+                      team={[1, 2, 3, 4, 5, 5, 5, 5]}
+                    />
+                  </div>
+                  <div className='team__info__points-wrapper'>
+                    <p className='mb-0 team__info__points-text'>
+                      <img
+                        className='team__info__points-img'
+                        src={Points.default}
+                      />
+                      130 points
+                    </p>
+                  </div>
+                </div>
+                <div className='text-center'>
+                  <div className='team__info--image team__info--opponent-team'>
+                    <CuteMonsters.default />
+                  </div>
+                  <p className='team__info--name'>Roasters</p>
+
+                  <div className='team__info__member-wrapper'>
+                    <MembersAvatar
+                      total={21}
+                      max={4}
+                      team={[1, 2, 3, 4, 5, 5, 5, 5]}
+                    />
+                  </div>
+                  <div className='team__info__points-wrapper'>
+                    <p className='mb-0 team__info__points-text'>
+                      <img
+                        className='team__info__points-img'
+                        src={Points.default}
+                      />
+                      130 points
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div
@@ -56,27 +117,11 @@ const DetailCard = ({start}) => {
             {start && (
               <div className='partcipation'>
                 <div className='partcipation__detail'>
-                  <div>
-                    {[1, 2, 3, 3].map((val, i) => (
-                      <>
-                        {i < 3 ? (
-                          <img
-                            src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299456/Group_45_bpykjx.svg'
-                            className='partcipation__detail-img'
-                          />
-                        ) : (
-                          ''
-                        )}
-                        {i === 3 ? (
-                          <span className='partcipation__detail-total'>
-                            +21
-                          </span>
-                        ) : (
-                          ''
-                        )}
-                      </>
-                    ))}
-                  </div>
+                  <MembersAvatar
+                    total={21}
+                    max={3}
+                    team={[1, 2, 3, 4, 5, 5, 5, 5]}
+                  />
                   <p className='partcipation__detail-members mb-0'>
                     5 people are taking this challenge now!
                   </p>
@@ -93,6 +138,7 @@ const DetailCard = ({start}) => {
           </div>
         </div>
       </div>
+      <TeamDetailModal modalStatus={modalStatus} handleClose={() => setModalStatus(false)}/>
     </div>
   );
 };
