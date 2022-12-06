@@ -18,6 +18,7 @@ body,
   color: $text-primary-color;
   font-style: normal;
 }
+
 html,
 body {
   min-height: 100% !important;
@@ -33,15 +34,18 @@ body {
 
     min-height: 100vh;
   }
+
   background-color: $secondary-color;
 }
 
 .margin-t {
   margin: 1.875rem 0 0 0;
 }
+
 .padd-20 {
   padding: 1.25rem;
 }
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -61,6 +65,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #a4a4a4;
 }
+
 @import './common//search.scss';
 @import './common/button.scss';
 @import './header/navbar.scss';
@@ -81,3 +86,4 @@ body {
 @import './abstaracts/variable';
 @import './Challenges/challenges-completed.scss';
 @import './common/accordian.scss';
+@import "./modals/index.scss"
