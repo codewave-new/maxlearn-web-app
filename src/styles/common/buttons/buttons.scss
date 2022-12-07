@@ -7,9 +7,10 @@
     #de5020,
     #ffffff,
     16px,
-    100%
+    100%,
+    500
   );
 }
 .filled__disabled {
-  @include filled(10px, 19.5px, #c0c0c0, #ffffff, 16px, 100%);
+  @include filled(10px, 19.5px, #c0c0c0, #ffffff, 16px, 100%, 500);
 }

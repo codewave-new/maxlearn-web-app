@@ -1,0 +1,141 @@
+.completion__wrapper {
+  padding: 40px;
+}
+.completion__content {
+  position: relative;
+  border-radius: 20px;
+  &--note {
+  }
+  &--welcomenote {
+    @include font(#9d9d9d, 18px, 900, 0, 18px);
+  }
+  &--thanknote {
+    margin-top: 12px;
+    @include font(#212121, 20px, 900, 0, 26px);
+  }
+}
+.content__padding {
+  padding: 77px 130px 68px 130px;
+}
+.completion__points {
+  &-earned {
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    padding: 44px 57px 99px 44px;
+    margin-bottom: 36px;
+  }
+}
+.completion__points--text {
+  @include font(#212121, 18px, 900, 0.33px, 18px);
+  margin-bottom: 8px;
+}
+.completion__points--myscore {
+  @include font(#212121, 12px, 400, 0.22px, 12px);
+}
+.completion__points--points {
+  @include font(#212121, 36px, 900, 0.65px, 36px);
+  margin-right: 4px;
+}
+.completion__leading--info {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  background-color: rgba(#ffb147, 0.25);
+  border-radius: 0px 0px 10px 10px;
+  padding: 16px 55px;
+  @include font(#212121, 14px, 400, 0.25px, 14px);
+  strong {
+    color: #212121;
+  }
+}
+.leading__team--logo {
+  margin-right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 4.2px;
+}
+.leading__stars {
+  position: absolute;
+  bottom: 16px;
+  right: 0px;
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+.opponents__list {
+  @include font(#212121, 18px, 600, 0px, 18px);
+  margin-bottom: 24px;
+}
+
+.score__details__section {
+  padding-left: 71px;
+}
+.score__card__wrapper {
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+}
+.score__card__header {
+  padding: 33px 34px 28px 34px;
+  border-bottom: 1px solid rgba(#979797, 0.24);
+}
+.score__card-text {
+  @include font(#212121, 18px, 900, 0, 18px);
+  margin-bottom: 25px;
+}
+.member__detail__score {
+  padding: 20px 34px 33px 34px;
+}
+.completion__close-btn {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  border: none;
+  background-color: transparent;
+}
+.report__alert {
+  background-color: #ffe8b9;
+  border-radius: 8px;
+  padding: 15px 45px 15px 15px;
+  margin-top: 26px;
+  display: flex;
+  // margin-bottom: 68px;
+  svg {
+    transform: rotate(180deg);
+    margin-right: 9px;
+  }
+}
+.completion__footer {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top: 1px solid rgba(#979797, 0.25);
+}
+.footer__wrapper{
+    padding:0px 130px 0px 130px;
+}
+.challenge__outline-btn {
+  padding: 21px 87px 21px 87px;
+  border: 1px solid #ff6633;
+  border-radius: 10px;
+  background-color: #f8f8f8;
+  margin-right: 20px;
+  @include font(#ff6633, 16px, 500, 0, 12px);
+
+}
+.challenge__filled-btn {
+  padding: 21px 87px 21px 87px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff6633;
+  @include font(#ffffff, 16px, 500, 0, 12px);
+
+}
+.mb-22 {
+  margin-bottom: 22px !important;
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}

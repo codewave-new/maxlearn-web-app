@@ -3,7 +3,6 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
 const RankingTab = (props) => {
-  console.log(props.tabs);
   return (
     <Tabs
       defaultActiveKey='quest'

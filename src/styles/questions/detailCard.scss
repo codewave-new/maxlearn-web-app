@@ -1,6 +1,5 @@
 .detail__card-wrapper {
-  //   position: relative;
-  width: 80%;
+  width: 70%;
   margin: auto;
   padding: 2.5rem;
   border-radius: 20px;
@@ -8,19 +7,34 @@
   background-color: #ffffff;
   box-shadow: 0 12px 84px 0 rgba(0, 0, 0, 0.1);
   &-left {
+    position: relative;
     width: 100%;
-    // height: 80%;
+    height: 600px;
+    border-radius: 20px;
+    object-fit: cover;
+    // img {
+    //   width: 100%;
+    //   max-height: 600px;
+    //   object-fit: cover;
+    // }
   }
-  .detail__card-content {
+  .detail__card-center {
+    padding-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
+  .detail__card-between {
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
   .detail__card__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    // @include dispalyFlex(flex,space-between,center);
     &-heading {
       @include font(#9d9d9d, 18px, 900, 0, 18px);
     }
@@ -30,20 +44,19 @@
   }
   .detail__card__body {
     margin-top: 47px;
-    padding-right: 60px;
+    padding-right: 15%;
     &-header {
       @include font(#212121, 20px, bold, 0, 22px);
     }
     &-points {
       margin-top: 30px;
-
       @include font(#5f5d5d, 14px, normal, 0, 18px);
-      img {
+      &-img {
         width: 15px;
         height: 15px;
         margin-right: 10px;
       }
-      div {
+      .wrapper {
         display: flex;
       }
       &-key {
@@ -52,7 +65,9 @@
     }
   }
 }
-
+.button {
+  margin-top: 46px;
+}
 .exam__detail__wrapper {
   display: flex;
   flex-direction: column;
@@ -62,4 +77,183 @@
 
 .detail__card__center {
   padding: 65px;
+}
+
+.partcipation {
+  padding-right: 15%;
+}
+.partcipation__detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ecfeef;
+  border-radius: 8px;
+  width: 100%;
+  padding: 16px 25px;
+}
+.partcipation__detail-img {
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: -6px;
+  &:first-child {
+    margin-left: 0px;
+  }
+}
+.partcipation__detail-members {
+  @include font(#212121, 12px, normal, 0, 13px);
+}
+.partcipation__detail-total {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #4ef9c9 0%, #dafff4 100%);
+  margin-left: -6px;
+  justify-content: center;
+  align-items: center;
+  @include font(#212121, 12px, 500, 0, 13px);
+}
+
+.member__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  &:last-child{
+    margin-bottom: 0px;
+  }
+  .member-profile {
+    @include font(#212121, 16px, 400, 0, 14px);
+    &-img {
+      height: 34px;
+      width: 34px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+  }
+  .member-points {
+    @include font(#212121, 12px, 500, 0, 14px);
+    &-img {
+      width: 14px;
+      height: 14px;
+      margin-right: 8px;
+    }
+  }
+  .nudge__button {
+    @include font(#fff, 14px, 500, 0, 14px);
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    background: linear-gradient(167.68deg, #54afae 0%, #2a7776 100%);
+  }
+}
+
+.our__team {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background: linear-gradient(72.96deg, #0a0101 0%, #bf482e 100%);
+}
+.opponent__team {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background: linear-gradient(72.96deg, #0a0101 0%, #0b98d4 100%);
+}
+.team__logo {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 27px;
+  padding: 25px 31px;
+}
+.team__name {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  @include font(#ffffff, 24px, 500, 0, 24px);
+}
+.points__data {
+  padding: 20px;
+  background-color: #ecfeee;
+  border-radius: 20px;
+  overflow: hidden;
+  &-graph {
+    width: 180px;
+    height: 100px;
+    overflow: clip;
+  }
+  &-text {
+    display: inline-block;
+    vertical-align: middle;
+    // text-align: center;
+    @include font(#212121, 20px, 500, 0, 28px);
+  }
+}
+
+.team__members {
+  margin-top: 20px;
+  &-header {
+    @include font(#212121, 20px, 500, 0, 14px);
+    margin-bottom: 20px;
+  }
+}
+
+.width-60 {
+  width: 60% !important;
+  padding: 50px !important;
+}
+.pl-30 {
+  padding-left: 30px;
+}
+
+.team__info__image-des{
+  width: 100%;
+  position: absolute;
+  top: 20%;
+  display: flex;
+  justify-content: space-between;
+  padding: 70px;
+}
+.team__info--name {
+  @include font(#ffffff, 16px, 500, 0, 16px);
+  margin-top: 10px;
+}
+.team__info__points-wrapper {
+  margin-top: 20px;
+}
+.team__info__points-text{
+  color: #FFD568;
+}
+.team__info__points-img{
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+}
+.team__info__member-wrapper{
+  margin-top: 36px;
+}
+.team__info--image{
+  text-align: center;
+  border-radius: 18px;
+  padding: 17px 12px;
+}
+.team__info--our-team{
+  background-color: #FF5E7B,
+}
+.team__info--opponent-team{
+  background-color: #5EC6FF;
 }

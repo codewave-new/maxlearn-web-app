@@ -1,0 +1,21 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal__wrapper {
+  padding-top: 11rem;
+}
+.close__button {
+  position: absolute;
+  top: 4rem;
+  right: 6rem;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
