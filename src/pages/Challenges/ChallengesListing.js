@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { todaysChallengesListing } from '../../api';
+import { todaysChallengesListing } from '../../services/challenges/index';
 import QuestCard from '../../components/Home/Quest/QuestCard';
 import GroupAvatars from '../../components/UI/GroupAvatars';
 
@@ -39,17 +39,18 @@ const ChallengesListing = () => {
 
   const todaysChallenges = async () => {
     const response = await todaysChallengesListing();
-    const { status, data } = response;
-    if (status === 200) {
-      setTodayChallenge(data.response);
-      setCount(data.countInfo.count);
+    if (response?.statusCode === 200) {
+      setTodayChallenge(response?.data?.[0]?.response);
+      setCount(response?.data?.[0]?.countInfo?.[0]?.count);
+    } else {
+      alert(response);
     }
   };
 
   console.log(count, todayChallenge);
   return (
     <div className='row'>
-      {challengesData?.map((val, index) => (
+      {todayChallenge?.map((individualChallenge, index) => (
         <div
           className='col-6'
           key={`challenge0${index}`}
@@ -57,7 +58,11 @@ const ChallengesListing = () => {
             navigate(`/to-do/challenge/detail/1234`);
           }}
         >
-          <QuestCard className={'max__activity-quest-card'} />
+          <QuestCard
+            data={individualChallenge}
+            type='challenges'
+            className={'max__activity-quest-card'}
+          />
         </div>
       ))}
     </div>
