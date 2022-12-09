@@ -1,0 +1,35 @@
+.individual__image-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.squad__image-container {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+.squad__image-img {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+}
+.individual__image-img {
+  object-fit: cover;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.squad__versus-img {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+.indivial__opponent-img {
+  display: inline;
+}
+.image__grid {
+  margin-right: 4px;
+}
+.more__opponents {
+  @include font(#5d5c5c, 12px, 400, 0, 14px);
+}

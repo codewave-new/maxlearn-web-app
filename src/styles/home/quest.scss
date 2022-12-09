@@ -26,11 +26,13 @@
 }
 .max-home__quest-wrapper {
   // $ht, $wd, $borderRad, $bg
-  @include card(184px, 100%, 8px, $primary-color);
+  @include card('', 100%, 8px, $primary-color);
   border: 1px solid #e5e5e5;
   padding: 28px 20px 28px 20px;
   z-index: 10;
   position: relative;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+  margin-bottom: 18px;
   .wax__home-challenges-slider-wrapper {
     margin-top: 24px;
   }

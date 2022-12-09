@@ -9,7 +9,6 @@
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
   border: none !important;
   cursor: pointer;
-  margin-bottom: 20px;
 }
 .max__todo-activity-wrapper {
   @include card(70vh, 100%, 20px, $home-right-card-bg);
@@ -54,4 +53,17 @@
       left: 10px;
     }
   }
+}
+.upcomming__todo-btn{
+  background-color: #FFE8B9;
+  padding: 22px 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+}
+.upcomming__todo-text{
+  margin-left: 8px;
+  @include font(#212121, 14px, 500, 0, 20px);
 }
