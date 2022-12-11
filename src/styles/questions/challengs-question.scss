@@ -1,0 +1,138 @@
+.team {
+  height: 44px;
+  border-radius: 4px;
+  //   width: 93px;
+}
+
+.team_name {
+  font-family: 'Roboto';
+  position: relative;
+  //   left: -22px;
+  top: -9px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.team_points {
+  font-family: 'Roboto';
+  position: relative;
+  top: 8px;
+  left: -65px;
+  color: #dfa80c;
+  font-weight: 500;
+}
+
+.progress_bar {
+  width: 300px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 34px;
+  .bar {
+    height: 8px;
+    .progress-bar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--bs-progress-bar-color);
+      text-align: center;
+      white-space: nowrap;
+      background-color: #3d908f;
+      transition: var(--bs-progress-bar-transition);
+    }
+  }
+  .progress_lable {
+    font-size: 10px;
+    position: relative;
+    top: -12px;
+    left: 33px;
+    float: right;
+  }
+}
+
+.close_btn {
+  position: absolute;
+  top: 1rem;
+  right: 6rem;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+.question_card {
+  margin-top: 50px;
+  margin-left: 150px;
+  width: 75%;
+  height: 68vh;
+  border-radius: 20px;
+  background-color: #ffff;
+  box-sizing: border-box;
+  box-shadow: 0 12px 84px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+.question_detail {
+  border-radius: 20px;
+  background-color: #f6f6f6;
+  margin-left: 24px;
+}
+
+.quest_image {
+  height: 260px;
+  width: 100%;
+}
+
+.in_chec .custom-control-label {
+  cursor: not-allowed;
+}
+
+.quest_check {
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+}
+
+.quest_ans {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  color: #999999;
+}
+
+.quest_options {
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.add_btnctprev {
+  width: 50%;
+  height: 50px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  border: none;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+.add_btnctprev:hover {
+  width: 50%;
+  height: 50px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  border: none;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.app_subtn {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.squaddetail_bg {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1670591170/Detailbg_ovnb0a.png);
+  width: 75%;
+  height: 68vh;
+  margin-left: 50px;
+}

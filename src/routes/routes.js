@@ -18,7 +18,9 @@ import Help from '../pages/help';
 import Profile from '../pages/profile';
 import QuestionsNavbar from '../components/Common/Navbar/QuestionsNavbar';
 import ChallengesDetail from '../pages/Challenges/ChallengesDetail';
+import ChallengesQuestions from '../pages/questions/ChallengesQuestions';
 import ChallengesCompleted from '../pages/Challenges/ChallengesCompleted';
+import ChallengeSquadDetails from '../pages/questions/ChallengeSquadDetails';
 
 export const appRoutes = [
   {
@@ -79,9 +81,18 @@ export const appRoutes = [
         path: '/to-do/challenge/detail/:id',
         element: <ChallengesDetail />,
       },
+
       {
         path: '/to-do/challenge/completed/:id',
         element: <ChallengesCompleted />,
+      },
+      {
+        path: '/challenge_question/:id',
+        element: <ChallengesQuestions />,
+      },
+      {
+        path: '/challenge-squad-detail',
+        element: <ChallengeSquadDetails />,
       },
       {
         path: '/questions/:id',

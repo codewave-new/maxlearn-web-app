@@ -7,6 +7,7 @@ import QuestionCard, {
   ThumNailComponent,
 } from '../Common/QuestionCard.js/QuestionCard';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
+import { NavLink } from 'react-router-dom';
 
 const DetailCard = ({ start }) => {
   const [modalStatus, setModalStatus] = useState(true);
@@ -129,16 +130,21 @@ const DetailCard = ({ start }) => {
               </div>
             )}
             <div className='button'>
-              <CustomButton
-                disabled={!start}
-                disabledText={'Yet to start'}
-                text={'Start Challenge'}
-              />
+              <NavLink to='/challenge_question/:id'>
+                <CustomButton
+                  disabled={!start}
+                  disabledText={'Yet to start'}
+                  text={'Start Challenge'}
+                />
+              </NavLink>
             </div>
           </div>
         </div>
       </div>
-      <TeamDetailModal modalStatus={modalStatus} handleClose={() => setModalStatus(false)}/>
+      <TeamDetailModal
+        modalStatus={modalStatus}
+        handleClose={() => setModalStatus(false)}
+      />
     </div>
   );
 };
