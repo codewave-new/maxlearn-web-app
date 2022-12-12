@@ -1,14 +1,14 @@
 import React from 'react';
 
-const MembersAvatar = ({ team, total, max }) => {
+const MembersAvatar = ({ team, total, max, className,imgClass }) => {
   return (
-    <div>
-      {team.map((member, i) => (
-        <>
+    <div className={`${className} partcipation__detail-img-container`}>
+      {team?.map((member, i) => (
+        <span key={`members 0${Math.random()*i}`} >
           {i < max ? (
             <img
-              src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299456/Group_45_bpykjx.svg'
-              className='partcipation__detail-img'
+              src={member?.profilePic}
+              className={`partcipation__detail-img ${imgClass}`}
             />
           ) : (
             ''
@@ -18,7 +18,7 @@ const MembersAvatar = ({ team, total, max }) => {
           ) : (
             ''
           )}
-        </>
+        </span>
       ))}
     </div>
   );

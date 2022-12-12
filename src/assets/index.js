@@ -50,3 +50,10 @@ export * as PointsEarnedImage from './PointEarned.png';
 export * as challengesCompletionBg from './challengesCompletionbg.png';
 export * as Stars from './stars.svg';
 export * as Gem from './completionCardGem.svg';
+export * as Versus from './versus.svg';
+export * as RightArrow from './Arrow.svg';
+export * as CalenderIcon from './clanderIcon.svg';
+export * as ProfileGem from './profileGem.svg';
+export * as ProfileStanding from './profileStanding.svg';
+
+

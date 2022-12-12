@@ -1,0 +1,23 @@
+.chip__wrapper {
+  padding: 8px 15px;
+  @include font(#212121, 12px, 400, 0, 12px);
+  border-radius: 12px;
+}
+.completed__color {
+  background-color: #ecfeee;
+}
+.inprogress__color {
+  background-color: #fff8dd;
+}
+.notstarted__color {
+  background-color: #f0f0f0;
+}
+.quest__color {
+  background-color: #9effd4;
+}
+.certs__color {
+  background-color: #9ed5ff;
+}
+.challenge__color {
+  background-color: #fef1ab;
+}
