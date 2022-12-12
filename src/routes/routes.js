@@ -21,6 +21,7 @@ import ChallengesDetail from '../pages/Challenges/ChallengesDetail';
 import ChallengesQuestions from '../pages/questions/ChallengesQuestions';
 import ChallengesCompleted from '../pages/Challenges/ChallengesCompleted';
 import ChallengeSquadDetails from '../pages/questions/ChallengeSquadDetails';
+import SquadDetails from '../components/Profile/SquadDetails';
 
 export const appRoutes = [
   {
@@ -76,6 +77,10 @@ export const appRoutes = [
       {
         path: '/profile',
         element: <Profile />,
+      },
+      {
+        path: '/squad-details:id',
+        element: <SquadDetails />,
       },
       {
         path: '/to-do/challenge/detail/:id',

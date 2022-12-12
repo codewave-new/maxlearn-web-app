@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { TimeLogo } from '../../../assets';
 import GroupAvatars from '../../UI/GroupAvatars';
 import moment from 'moment';
+import Chip from '../../Common/chip/Chip';
+import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
 const QuestCard = ({ className, data, type }) => {
   return (
@@ -20,10 +22,17 @@ const QuestCard = ({ className, data, type }) => {
           </div>
           <h3>{data?.name}</h3>
           <div className='quest-home-content-container d-flex justify-content-between'>
-            <div>{type === 'challenges' ? '' : <GroupAvatars />}</div>
+            <div>
+              {type === 'challenges' ? (
+                <SquadAvatar data={data} />
+              ) : (
+                <GroupAvatars />
+              )}
+            </div>
             <div className='quest-home__progress'>
-              <p className='progress'>In progress</p>
-              <p className='quest'>quest</p>
+              {/* <p className='progress'>In progress</p>
+              <p className='quest'>quest</p> */}
+              <Chip status={data?.status} />
             </div>
           </div>
         </div>

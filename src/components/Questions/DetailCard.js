@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
 import { Points, ExamDetailBackground, CuteMonsters } from '../../assets';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
@@ -8,9 +8,42 @@ import QuestionCard, {
 } from '../Common/QuestionCard.js/QuestionCard';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
 import { NavLink } from 'react-router-dom';
+import { challengesDetails, challengeStatus } from '../../services/challenges';
+import { useLocation, useParams, useSearchParams } from 'react-router-dom';
+import { useQuery } from '../../utility/helper';
 
 const DetailCard = ({ start }) => {
+  const { id } = useParams();
+  const loaction = useLocation();
+  const query = useQuery(loaction.search);
   const [modalStatus, setModalStatus] = useState(true);
+  const [challengeDescription, setChallengeDescription] = useState({});
+  const [ongoingChallenge, setOngoingChallenge] = useState([]);
+
+  useEffect(() => {
+    ChallengeDetail(id, query['challenge-type']);
+  }, []);
+
+  const ChallengeDetail = async (challengeId, challengeType) => {
+    const response = await challengesDetails(challengeId, challengeType);
+    console.log(response);
+    if (response.statusCode === 200) {
+      setChallengeDescription(response?.data);
+      learnersStartedChallenge(challengeId);
+    }
+  };
+
+  const learnersStartedChallenge = async (challengeId) => {
+    const response = await challengeStatus(challengeId);
+    console.log(response);
+    if (response.statusCode === 200) {
+      const liveExam = response?.data?.challengeStats?.map((learners) => {
+        return learners?.learner;
+      });
+      setOngoingChallenge(liveExam);
+    }
+  };
+
   return (
     <div>
       <div className='detail__card-wrapper'>
@@ -86,45 +119,44 @@ const DetailCard = ({ start }) => {
                   Challenge in detail
                 </h4>
                 <p className='detail__card__header-duration mb-0'>
-                  10 More days to go to
+                  {/* 10 More days to go to */}
                 </p>
               </div>
 
               <div className='detail__card__body'>
                 <h3 className='detail__card__body-header'>
-                  Sed ut perspiciatis unde omn sed amets natus error sit
-                  voluptat!
+                  {challengeDescription?.challengeDetails?.name}
                 </h3>
                 {/* points */}
                 <div className='detail__card__body-points'>
-                  {[1, 2, 2]?.map((value) => (
-                    <div className='wrapper'>
-                      <span>
-                        <img
-                          className='detail__card__body-points-img'
-                          src={Points.default}
-                        />
-                      </span>
-                      <p className='detail__card__body-points-key'>
-                        Sed ut perspiciatis unde omnis iste natus ers ametco
-                        uptatem accusantium doloremque laudant.
-                      </p>
-                    </div>
-                  ))}
+                  {/* {[1, 2, 2]?.map((value) => ( */}
+                  <div className='wrapper'>
+                    <span>
+                      <img
+                        className='detail__card__body-points-img'
+                        src={Points.default}
+                      />
+                    </span>
+                    <p className='detail__card__body-points-key'>
+                      {challengeDescription?.challengeDetails?.description}
+                    </p>
+                  </div>
+                  {/* ))} */}
                 </div>
               </div>
             </div>
 
-            {start && (
+            {ongoingChallenge?.length > 0 && (
               <div className='partcipation'>
                 <div className='partcipation__detail'>
                   <MembersAvatar
-                    total={21}
+                    total={ongoingChallenge?.length}
                     max={3}
-                    team={[1, 2, 3, 4, 5, 5, 5, 5]}
+                    team={ongoingChallenge}
                   />
                   <p className='partcipation__detail-members mb-0'>
-                    5 people are taking this challenge now!
+                    {ongoingChallenge?.length} people are taking this challenge
+                    now!
                   </p>
                 </div>
               </div>

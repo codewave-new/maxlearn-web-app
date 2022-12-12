@@ -97,9 +97,11 @@
   object-fit: cover;
   border-radius: 50%;
   margin-left: -6px;
-  &:first-child {
-    margin-left: 0px;
-  }
+  
+}
+.partcipation__detail-img-container{
+  padding-left: 6px;
+  
 }
 .partcipation__detail-members {
   @include font(#212121, 12px, normal, 0, 13px);

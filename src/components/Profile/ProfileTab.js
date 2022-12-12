@@ -2,6 +2,7 @@ import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import BasicInfo from './BasicInfo';
+import YourSquad from './YourSquad';
 import TopicDetailsAccordion from './TopicDetailsAccordion';
 
 const ProfileTab = (props) => {
@@ -38,7 +39,7 @@ const ProfileTab = (props) => {
   ));
   return (
     <Tabs
-      defaultActiveKey='Basic info'
+      defaultActiveKey='Your squad'
       id='uncontrolled-tab-example'
       className={`mb-3 max__todo-activity-tab ${props.className}`}
     >
@@ -64,7 +65,9 @@ const ProfileTab = (props) => {
           </div>
         </div>
       </Tab>
-      <Tab eventKey='Your squad' title='Your squad'></Tab>
+      <Tab eventKey='Your squad' title='Your squad'>
+        <YourSquad/>
+      </Tab>
       <Tab eventKey='badges' title='My badges'>
         <div className='row'></div>
       </Tab>
