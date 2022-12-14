@@ -5,7 +5,17 @@ const percentage = 66;
 const LearningCard = () => {
   return (
     <div className='max-learn__learning-card d-flex'>
-      <CircularProgressbar value={percentage} text={`${percentage}%`} />
+      <CircularProgressbar
+        value={percentage}
+        text={`${percentage}%`}
+        styles={buildStyles({
+          rotation: 0.85,
+          textSize: '20px',
+          textColor: '#212121',
+          pathColor: '#4C9A99',
+          strokeLinecap: 'butt',
+        })}
+      />
       <div className='content'>
         <p>
           Level - <strong>Awareness</strong>

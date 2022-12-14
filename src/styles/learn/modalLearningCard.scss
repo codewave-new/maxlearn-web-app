@@ -1,0 +1,29 @@
+@import '../reusableClasses/index.scss';
+
+.learning_modal_card_wrapper {
+  &__row {
+    border-radius: 8px;
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 18px;
+    &__content {
+      width: 70%;
+      @include align-column-left();
+      padding-left: 20px;
+      &__title {
+        @include font(#212121, 16px, bold, 0, 22px);
+        padding-bottom: 16px;
+      }
+      &__level {
+        @include font(#212121, 14px, normal, 0, 14px);
+      }
+      &__level1 {
+        @include font(#212121, 14px, bold, 0, 14px);
+      }
+    }
+  }
+  .CircularProgressbar {
+    height: 90px;
+    width: 90px;
+    margin: 25px;
+  }
+}

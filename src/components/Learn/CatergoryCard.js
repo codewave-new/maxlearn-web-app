@@ -4,6 +4,7 @@ import Card from '../UI/Card';
 // import { ProgressBar } from 'react-bootstrap';
 import ProgressBar from '../UI/ProgressBar';
 const percentage = 73;
+
 const CatergoryCard = () => {
   return (
     <div className='max-learn__catergory-card'>

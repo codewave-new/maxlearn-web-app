@@ -1,10 +1,10 @@
 import React from 'react';
 
-const MembersAvatar = ({ team, total, max, className,imgClass }) => {
+const MembersAvatar = ({ team, total, max, className, imgClass }) => {
   return (
     <div className={`${className} partcipation__detail-img-container`}>
       {team?.map((member, i) => (
-        <span key={`members 0${Math.random()*i}`} >
+        <span key={`members 0${Math.random() * i}`}>
           {i < max ? (
             <img
               src={member?.profilePic}
