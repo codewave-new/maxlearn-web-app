@@ -11,14 +11,26 @@
   text-transform: capitalize;
 }
 .your__squad-subtext {
-    @include font(#212121, 12px, 400, 0, 12px);
-  }
+  @include font(#212121, 12px, 400, 0, 12px);
+}
+.squad_challenge-header{
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+.table_btn {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+}
 .table__row-wrapper {
   border-radius: 8px;
   background-color: #ffffff;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
   padding: 24px 20px;
   margin-bottom: 16px;
+}
+.your_Squad_img-wrapper{
+text-align: left;
 }
 .your__squad-image {
   height: 50px;
@@ -36,8 +48,11 @@
 }
 .your__squard-points {
   border-right: 1px solid rgba(#979797, 0.3);
+  text-align: left;
+  padding-left: 30px;
   svg {
     margin-right: 8px;
+    margin-bottom: 8px;
   }
 }
 .your__squard-standing {
@@ -45,67 +60,70 @@
     margin-right: 8px;
   }
 }
-
-// table {
-//   width: 100%;
-//   //   margin: 50px auto;
-//   font-family: Arial, sans-serif;
-//   font-size: 14px;
-//   border-collapse: separate;
-//   border-spacing: 0 7px;
-//   thead {
-//     background-color: green;
-//     color: #fff;
-//     td {
-//       &:first-child {
-//         border-left: 1px solid green;
-//       }
-//       &:last-child {
-//         border-right: 1px solid green;
-//       }
-//     }
-//   }
-//   td {
-//     height: 50px;
-//     vertical-align: middle;
-//     text-align: center;
-//     position: relative;
-//     padding: 24px;
-//     &:after {
-//       content: '';
-//       width: 1px;
-//       position: absolute;
-//       right: 0;
-//       top: 8px;
-//     //   bottom: 8px;
-//       background-color: #eee;
-//     }
-//     &:last-child {
-//       &:after {
-//         content: none;
-//       }
-//     }
-//   }
-//   tbody {
-//     td {
-//       border-top: 1px solid #eee;
-//       border-bottom: 1px solid #eee;
-//       &:first-child {
-//         border-left: 1px solid #eee;
-//       }
-//       &:last-child {
-//         border-right: 1px solid #eee;
-//       }
-//     }
-//     tr {
-//       background-color: #ffffff;
-//       border-radius: 8px;
-//       &:hover {
-//         background-color: #fafafa;
-//       }
-//     //   &:last-child {
-//     //     box-shadow: none;
-//     //   }
-//     }
-//   }
-// }
+.squad__back-btn {
+  border: none;
+  background-color: transparent;
+  color: #212121;
+  @include font(#212121, 16px, 500, 0, 16px);
+  margin-bottom: 30px;
+  svg {
+    margin-right: 15px;
+    fill: #212121;
+  }
+}
+.squad_standing-container {
+  margin-top: 30px;
+}
+.squad-text {
+  display: inline-block;
+  margin-left: 6px;
+  @include font(#212121, 24px, 900, 0, 24px);
+}
+.squad-subheader {
+  @include font(#515b73, 14px, 500, 0, 16px);
+  margin-top: 12px;
+  text-align: center;
+}
+.squad__logo-image {
+  border-radius: 20px;
+  min-height: 200px;
+  padding: 1px 20px 1px 20px;
+}
+.squad__logo-container {
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+.squad__logo-background {
+  background-color: #ffffff;
+  height: 178px;
+  width: 178px;
+  padding: 15px;
+  border-radius: 20px;
+}
+.squad__detail-teamname {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+  text-transform: capitalize;
+  @include font(#212121, 16px, 500, 0, 16px);
+}
+.squad__detail-logo {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+}
+.squad-details-wrapper {
+  margin-top: 30px;
+}
+.squad-details-container {
+  padding: 12px 56px 12px 12px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-bottom: 5px;
+}
+.squad__points-image {
+  margin-right: 9px;
+  height: 18px;
+  width: 18px;
+}
