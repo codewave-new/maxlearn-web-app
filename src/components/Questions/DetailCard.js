@@ -7,6 +7,7 @@ import QuestionCard, {
   ThumNailComponent,
 } from '../Common/QuestionCard.js/QuestionCard';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
+import { NavLink } from 'react-router-dom';
 import { challengesDetails, challengeStatus } from '../../services/challenges';
 import { useLocation, useParams, useSearchParams } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
@@ -145,7 +146,7 @@ const DetailCard = ({ start }) => {
               </div>
             </div>
 
-            {ongoingChallenge?.length>0 && (
+            {ongoingChallenge?.length > 0 && (
               <div className='partcipation'>
                 <div className='partcipation__detail'>
                   <MembersAvatar
@@ -161,11 +162,13 @@ const DetailCard = ({ start }) => {
               </div>
             )}
             <div className='button'>
-              <CustomButton
-                disabled={!start}
-                disabledText={'Yet to start'}
-                text={'Start Challenge'}
-              />
+              <NavLink to='/challenge_question/:id'>
+                <CustomButton
+                  disabled={!start}
+                  disabledText={'Yet to start'}
+                  text={'Start Challenge'}
+                />
+              </NavLink>
             </div>
           </div>
         </div>
