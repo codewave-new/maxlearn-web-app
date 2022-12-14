@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Versus } from '../../assets';
-import MembersAvatar from '../../components/Common/Avatar/MembersAvatar';
 
-const SquadAvatar = ({ data }) => {
+const SquadAvatar = ({ data, yourSquad, opponentSquads }) => {
   const [learnerData, setLearnerData] = useState({});
   const [opponentData, setOpponentData] = useState([]);
 
@@ -17,6 +16,11 @@ const SquadAvatar = ({ data }) => {
       segregation(data?.squadList, data?.mySquad);
     } else {
       segregation(data?.learnerList, currentlearner);
+    }
+
+    if (yourSquad || opponentSquads) {
+      setLearnerData(yourSquad);
+      setOpponentData(opponentSquads);
     }
   }, []);
 
@@ -43,34 +47,22 @@ const SquadAvatar = ({ data }) => {
       <span className='squad__versus-img'>
         <Versus.default />
       </span>
-      {data?.challengeType === 'INDIVIDUAL' ? (
-        <MembersAvatar
-          team={opponentData}
-          total={opponentData.length}
-          max={2}
-          className={'indivial__opponent-img'}
-        />
-      ) : (
-        opponentData?.slice(0, 2).map((individualOpponent, index) => (
-          <span
-            className='squad__image-container'
-            key={individualOpponent?._id}
-          >
-            <img
-              className={`${imageVarient[data?.challengeType]} image__grid`}
-              src={individualOpponent?.imageUrl}
-              alt='no'
-            />
-            {index === 1 ? (
-              <span className='more__opponents'>
-                + {opponentData.length - 2} more
-              </span>
-            ) : (
-              ''
-            )}
-          </span>
-        ))
-      )}
+      {opponentData?.slice(0, 2).map((individualOpponent, index) => (
+        <span className='squad__image-container' key={individualOpponent?._id}>
+          <img
+            className={`${imageVarient[data?.challengeType]} image__grid`}
+            src={individualOpponent?.profilePic || individualOpponent?.imageUrl}
+            alt='no'
+          />
+          {index === 1 && opponentData.length - 2 > 0 ? (
+            <span className='more__opponents'>
+              + {opponentData.length - 2} more
+            </span>
+          ) : (
+            ''
+          )}
+        </span>
+      ))}
     </>
   );
 };
