@@ -23,22 +23,45 @@
   }
   .category-container {
     margin: 1.438rem 0 0 0;
-    .max-learn__catergory-card {
-      @include card(200px, 100%, 8px, $user-bg);
-      padding: 30px 20px;
-      position: relative;
-      .catergory-card-oval {
-        top: -50px;
-        position: absolute;
-        height: 143px;
-        width: 143px;
-        background-color: #d4fed9;
-        border-radius: 50%;
-        right: -50px;
-      }
+  }
+}
+.progressbar__learn-text {
+  @include font($text-secondary-color, 12px, none, 0, 12px);
+  margin-top: 20px;
+}
+.max-learn__catergory-card {
+  @include card(200, 100%, 8px, 0);
+  padding: 30px 20px;
+  margin-bottom: 30px;
+  &__category_subject {
+    @include font(#707070, 14px, bold, 0, 16px);
+  }
+}
+
+//Category listing
+.category_row {
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  padding: 20px;
+  &__heading {
+    @include font(#212121, 18px, bold, 0, 18px);
+    margin-top: 26px;
+    margin-bottom: 36px;
+  }
+}
+
+.list_bread {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  &__key1 {
+    @include font(#999999, 12px, bold, 0, 14px);
+    &:hover {
+      text-decoration: none;
+      color: #999999;
     }
-    .progressbar__learn-text {
-      @include font($text-secondary-color, 12px, 400, 0, 12px);
-    }
+  }
+  &__key2 {
+    @include font(#212121, 12px, bold, 0, 14px);
   }
 }

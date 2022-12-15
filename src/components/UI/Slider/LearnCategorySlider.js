@@ -3,7 +3,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
 import { Autoplay, Mousewheel, Keyboard, Pagination } from 'swiper';
-import CatergoryCard from '../../Learn/CatergoryCard';
+import CatergoryCard from '../../Learn/Category/CatergoryCard';
+import { data } from '../../Learn/Category/data';
 
 const LearnCategorySlider = () => {
   return (
@@ -30,30 +31,19 @@ const LearnCategorySlider = () => {
           },
           1024: {
             slidesPerView: 4,
-            spaceBetween: 50,
+            spaceBetween: 20,
           },
         }}
         modules={[Autoplay, Mousewheel, Pagination, Keyboard]}
         className='mySwiperCatergory'
       >
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <CatergoryCard />
-        </SwiperSlide>
+        {data.slice(0, 6).map((element, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <CatergoryCard data={element} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </>
   );

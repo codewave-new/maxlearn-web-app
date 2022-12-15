@@ -1,7 +1,7 @@
 import React from 'react';
 import Footer from '../Common/Footer/Footer';
 import Achievement from '../Learn/Achievement';
-import Category from '../Learn/Category';
+import Category from '../Learn/Category/Category';
 import Learning from '../Learn/Learning';
 import Topics from '../Learn/Topics';
 
