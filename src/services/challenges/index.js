@@ -16,7 +16,7 @@ export const todaysChallengesListing = async () => {
 export const upcomingChallenges = async (pageNum) => {
   try {
     const response = await http.get(
-      `/api/app/challenges/upcoming-challenges/${learnerId}?pageNum=1`
+      `/api/app/challenges/upcoming-challenges/${learnerId}?pageNum=${pageNum}`
     );
     return response.data;
   } catch (error) {

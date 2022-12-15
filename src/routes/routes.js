@@ -89,7 +89,7 @@ export const appRoutes = [
         element: <Profile />,
       },
       {
-        path: '/squad-details:id',
+        path: '/profile/squad-details/:id',
         element: <SquadDetails />,
       },
       {

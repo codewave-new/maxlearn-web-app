@@ -1,5 +1,6 @@
 import React from 'react';
 import Avatar from '@mui/material/Avatar';
+import { Points } from '../../assets';
 
 const RankingPositionCard = (props) => {
   const {rankNo,userName,points} = props;
@@ -25,7 +26,7 @@ const RankingPositionCard = (props) => {
                 </h5>
               </div>
               <div className='points d-flex align-items-center'>
-                <h6> {points}</h6>
+                <h6> <img src={Points.default} className='rank__points-image' /> {points}</h6>
               </div>
             </div>
           </div>
