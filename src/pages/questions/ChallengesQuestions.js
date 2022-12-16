@@ -21,10 +21,12 @@ import { Button, Col, Row } from 'react-bootstrap';
 
 import { CardBody, Input } from 'reactstrap';
 import { CheckBox } from '@mui/icons-material';
+import ConfidenceSliderModal from '../../components/Common/CustomModal/ConfidenceSliderModal';
 
 const ChallengesQuestions = () => {
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
+  const [openModal, setOpenModal] = useState(false);
 
   const CustomNavbar = () => {
     return (
@@ -178,11 +180,15 @@ const ChallengesQuestions = () => {
               </CardBody>
 
               <div className='app_subtn'>
-                <a href='/challenge-squad-detail'>
-                  <Button className='add-new-btn add_btnctprev' color='primary'>
-                    Submit
-                  </Button>
-                </a>
+                {/* <a href='/challenge-squad-detail'> */}
+                <Button
+                  className='add-new-btn add_btnctprev'
+                  color='primary'
+                  onClick={() => setOpenModal(true)}
+                >
+                  Submit
+                </Button>
+                {/* </a> */}
               </div>
             </Col>
           </Row>
@@ -190,6 +196,11 @@ const ChallengesQuestions = () => {
 
         {/* </div> */}
       </div>
+
+      <ConfidenceSliderModal
+        modalStatus={openModal}
+        handleClose={() => setOpenModal(false)}
+      />
     </div>
   );
 };

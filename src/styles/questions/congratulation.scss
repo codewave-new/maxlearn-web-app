@@ -1,0 +1,109 @@
+.cong_bg {
+  width: 100%;
+  height: 110vh;
+  background-color: #ffff;
+}
+
+.banner_bg {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1671008842/Group_15_lrhzyk.png);
+  background-size: cover;
+  width: 90%;
+  height: 103vh;
+  border-radius: 20px;
+  //   background: linear-gradient(182.65deg, #54afae 0%, #2a7776 100%);
+  margin-left: 60px;
+  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.cong_intro {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.29px;
+  text-align: center;
+}
+
+.cong_team_name {
+  color: #ffeca2;
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.51px;
+  line-height: 28px;
+  text-align: center;
+}
+
+.cup_img {
+  width: 201px;
+  height: 198px;
+}
+
+.cong_card {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1670991374/Group_13_niqprj.png);
+  width: 457px;
+  height: 190px;
+  border-radius: 16px;
+  border: none;
+}
+
+.cong_points {
+  color: #ffce00;
+  font-family: Roboto;
+  font-size: 78px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 78px;
+  text-align: center;
+}
+
+.cong_card_footer {
+  border-radius: 0 0 8px 8px;
+  background-color: #164949;
+}
+
+.card_intro {
+  color: #ffeca2;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+
+.cong_footer {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0;
+  border-radius: 0px 0px 16px 16px !important;
+}
+
+.cong_click {
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin-left: 5px;
+}
+
+.explore_challenge {
+  width: 354px;
+  border-radius: 10px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  border: none;
+  height: 50px;
+}
+
+.view_leaderboard {
+  background: none;
+  border: none;
+}
+
+.view_leaderboard:hover {
+  background: none;
+  border: none;
+}
