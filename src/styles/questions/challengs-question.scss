@@ -6,9 +6,9 @@
 
 .team_name {
   font-family: 'Roboto';
-  position: relative;
+  // position: relative;
   //   left: -22px;
-  top: -9px;
+  // top: -9px;
   font-size: 16px;
   font-weight: 600;
   color: #212121;
@@ -16,18 +16,19 @@
 
 .team_points {
   font-family: 'Roboto';
-  position: relative;
-  top: 8px;
-  left: -65px;
+  // position: relative;
+  // top: 8px;
+  // left: -65px;
   color: #dfa80c;
   font-weight: 500;
 }
 
 .progress_bar {
-  width: 300px;
+  width: 350px;
   margin-top: 15px;
   margin-left: 10px;
   margin-right: 34px;
+  padding-right: 12px;
   .bar {
     height: 8px;
     .progress-bar {
@@ -48,6 +49,18 @@
     top: -12px;
     left: 33px;
     float: right;
+  }
+}
+.header-timer{
+  height: 40px;
+  width: 131px;
+  border-radius: 20px;
+  background: linear-gradient(194.62deg, #FFE159 0%, #FFC02C 100%, #FFC02C 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg{
+  margin-right: 5px;
   }
 }
 
@@ -352,4 +365,19 @@
   padding: 0px;
   border: none;
   background-color: transparent;
+}
+.card-dumm{
+  width: 300px;
+  height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.drag-list{
+  li{
+    list-style-type: none;
+}
+  list-style-type: none;
 }

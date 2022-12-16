@@ -55,5 +55,7 @@ export * as RightArrow from './Arrow.svg';
 export * as CalenderIcon from './clanderIcon.svg';
 export * as ProfileGem from './profileGem.svg';
 export * as ProfileStanding from './profileStanding.svg';
+export * as timerLogo from './timer.svg';
+
 
 

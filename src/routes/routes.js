@@ -88,11 +88,11 @@ export const appRoutes = [
       },
 
       {
-        path: '/to-do/challenge/completed/:id',
+        path: '/to-do/challenge/score-details/:id',
         element: <ChallengesCompleted />,
       },
       {
-        path: '/challenge_question/:id',
+        path: '/start-challenge-exam/:id',
         element: <ChallengesQuestions />,
       },
       {
