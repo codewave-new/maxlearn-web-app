@@ -94,7 +94,7 @@ const Login = () => {
           'fullname',
           loginapi.data.data.loginDetails.user.fullName
         );
-        localStorage.setItem('userid', loginapi.data.data.loginDetails.user.id);
+        localStorage.setItem('userid', loginapi.data.data.learnerId);
 
         navigate('/');
       } else if (loginapi.data.statusCode === 401) {
