@@ -22,6 +22,7 @@ import ChallengesQuestions from '../pages/questions/ChallengesQuestions';
 import ChallengesCompleted from '../pages/Challenges/ChallengesCompleted';
 import ChallengeSquadDetails from '../pages/questions/ChallengeSquadDetails';
 import SquadDetails from '../components/Profile/SquadDetails';
+import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
 
 export const appRoutes = [
   {
@@ -79,7 +80,7 @@ export const appRoutes = [
         element: <Profile />,
       },
       {
-        path: '/squad-details:id',
+        path: '/profile/squad-details/:id',
         element: <SquadDetails />,
       },
       {
@@ -98,6 +99,10 @@ export const appRoutes = [
       {
         path: '/challenge-squad-detail',
         element: <ChallengeSquadDetails />,
+      },
+      {
+        path: '/team-score',
+        element: <CongratualtionsScreen />,
       },
       {
         path: '/questions/:id',

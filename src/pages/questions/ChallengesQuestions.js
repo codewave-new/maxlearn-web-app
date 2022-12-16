@@ -27,6 +27,7 @@ import { QuestionTypeWrapper } from '../../components/questionTypes/questionType
 import Modal from '../../components/Common/CustomModal/Modal';
 import StepRangeSlider from 'react-step-range-slider'
 import { WaitingLoader } from '../../components/loader/loader';
+import ConfidenceSliderModal from '../../components/Common/CustomModal/ConfidenceSliderModal';
 
 const range = [
   { value: '0', step: 1 }, // acts as min value
@@ -129,6 +130,7 @@ return navigate({
 console.log('questionsInfo',questionsInfo)
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
+  const [openModal, setOpenModal] = useState(false);
 
 
   useEffect(()=>{

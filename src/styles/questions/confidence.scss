@@ -1,0 +1,41 @@
+.confidence_modal {
+  width: 676px;
+  height: 388px;
+  background-color: white;
+  position: relative;
+  top: 84px;
+  left: 238px;
+  border-radius: 20px;
+}
+
+.maodal_name {
+  color: #999999;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+.modal_header {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0;
+}
+
+.modal_header {
+  border-radius: 20px;
+  background-color: #ecfeee;
+}
+
+.horizontal-slider {
+  border: 1px solid red;
+  height: 4px;
+  width: 200px;
+}
+
+.example-track {
+  background-color: black;
+  height: 2px;
+}

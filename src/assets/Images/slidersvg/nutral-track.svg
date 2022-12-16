@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="229px" height="40px" viewBox="0 0 229 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>9E99146C-A3FE-43C7-ABCD-A17559A55807</title>
+    <defs>
+        <linearGradient x1="77.6005538%" y1="50%" x2="-4.67310276%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#DEF6A0" offset="0%"></stop>
+            <stop stop-color="#F5F5F5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Confidence-Monitoring-slider-3" transform="translate(-476.000000, -358.000000)" fill="url(#linearGradient-1)">
+            <g id="Group-25" transform="translate(476.000000, 353.000000)">
+                <path d="M0,25 C1.02057441e-15,33.3336225 6.66497258,40.1368578 14.9968387,40.3079433 L227.484988,44.6711496 L227.484988,44.6711496 L228.610018,5.30574912 L14.9968387,9.6920567 C6.66497258,9.86314225 -1.02057441e-15,16.6663775 0,25 Z" id="Path-6"></path>
+            </g>
+        </g>
+    </g>
+</svg>
