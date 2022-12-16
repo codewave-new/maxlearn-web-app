@@ -55,5 +55,9 @@ export * as RightArrow from './Arrow.svg';
 export * as CalenderIcon from './clanderIcon.svg';
 export * as ProfileGem from './profileGem.svg';
 export * as ProfileStanding from './profileStanding.svg';
+export * as BackButton from './back.svg';
+export * as SquadBackGround from './bg.png';
+
+
 
 

@@ -5,14 +5,20 @@ import moment from 'moment';
 import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
-const QuestCard = ({ className, data, type }) => {
+const QuestCard = ({ className, data, type, status }) => {
+  const endTime = moment('24:00:00', 'HH:mm:ss');
+  const duration = moment.duration(endTime.diff(moment()));
+
   return (
     <div className={`max-home__quest-wrapper ${className} `}>
       <div className='max-home__questcard-container'>
         <div className='quest-time-details'>
           <div className='d-flex quest-time-details-text justify-content-between'>
             <h6>
-              <TimeLogo.default /> 10/30/2022 to 11/20/2022
+              <TimeLogo.default />{' '}
+              {`${parseInt(duration.asHours())} hours ${
+                parseInt(duration.asMinutes()) % 60
+              } minutes `}
             </h6>
             <h5>
               Expire in:
@@ -24,7 +30,11 @@ const QuestCard = ({ className, data, type }) => {
           <div className='quest-home-content-container d-flex justify-content-between'>
             <div>
               {type === 'challenges' ? (
-                <SquadAvatar data={data} />
+                <SquadAvatar
+                  data={data}
+                  yourSquad={data?.yourSquad}
+                  opponentSquads={data?.opponentSquads}
+                />
               ) : (
                 <GroupAvatars />
               )}
@@ -32,7 +42,7 @@ const QuestCard = ({ className, data, type }) => {
             <div className='quest-home__progress'>
               {/* <p className='progress'>In progress</p>
               <p className='quest'>quest</p> */}
-              <Chip status={data?.status} />
+              <Chip status={status || data?.status} />
             </div>
           </div>
         </div>

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { createSearchParams, useNavigate } from 'react-router-dom';
-import { todaysChallengesListing } from '../../services/challenges/index';
+import {
+  todaysChallengesListing,
+  upcomingChallenges,
+} from '../../services/challenges/index';
 import QuestCard from '../../components/Home/Quest/QuestCard';
 import {
   CalenderIcon,
@@ -8,16 +11,30 @@ import {
   RightArrow,
   ToDoCalendarIcon,
 } from '../../assets';
-import Modal from '../../components/UI/Modal';
+import { Modal } from 'react-bootstrap';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ChallengesListing = () => {
   const navigate = useNavigate();
   const [todayChallenge, setTodayChallenge] = useState([]);
   const [count, setCount] = useState(0);
+  const [upcomingChallengeDetail, setUpcomingChallengeDetail] = useState([]);
+  const [upcomingCount, setUpcomingCount] = useState(0);
+  const [upcomingPage, setUpcomingPage] = useState(0);
   const [modalStatus, setModalStatus] = useState(false);
+  const [tableContainerRef, setTableContainerRef] = useState();
 
   useEffect(() => {
     todaysChallenges();
+    upcomingChallenge();
+  }, []);
+
+  console.log(upcomingChallengeDetail, upcomingCount);
+
+  const onTableContainerRefChange = useCallback((node) => {
+    if (node !== null) {
+      setTableContainerRef(node);
+    }
   }, []);
 
   const todaysChallenges = async () => {
@@ -30,9 +47,22 @@ const ChallengesListing = () => {
     }
   };
 
+  const upcomingChallenge = async () => {
+    console.log('hitting');
+    setUpcomingPage((pre) => pre + 1);
+    const response = await upcomingChallenges(upcomingPage + 1);
+    if (response?.statusCode === 200) {
+      setUpcomingChallengeDetail((pre) => [
+        ...pre,
+        ...response?.data?.[0]?.response,
+      ]);
+      setUpcomingCount(response?.data?.[0]?.countInfo?.[0]?.count);
+    } else {
+      // alert(response);
+    }
+  };
+
   const handleModalOpen = async () => {
-    const response = await upcomingChallenges();
-    // if()
     setModalStatus(true);
   };
   const closeModal = () => {
@@ -40,7 +70,7 @@ const ChallengesListing = () => {
   };
 
   return (
-    <>
+    <div>
       <div className='row'>
         {todayChallenge?.map((individualChallenge, index) => (
           <div
@@ -53,7 +83,6 @@ const ChallengesListing = () => {
                   'challenge-type': `${individualChallenge?.challengeType}`,
                 }).toString(),
               });
-              // navigate(`/to-do/challenge/detail/${individualChallenge?._id}`);
             }}
           >
             <QuestCard
@@ -63,7 +92,7 @@ const ChallengesListing = () => {
             />
           </div>
         ))}
-        <button className='upcomming__todo-btn' onClick={handleModalOpen}>
+        <button className='upcomming__todo-btn ' onClick={handleModalOpen}>
           <div>
             <CalenderIcon.default />
             <span className='upcomming__todo-text mb-0'>
@@ -76,36 +105,66 @@ const ChallengesListing = () => {
         </button>
       </div>
 
-      {modalStatus && (
-        <Modal onClose={closeModal}>
-          <div className='max__home-challenges-sidebar'>
-            <div className='sidebar-head'>
-              <h4>Upcoming challenges</h4>
-              <Close.default onClick={closeModal} />
-            </div>
-            <hr />
-            <div className='sidebar-content'>
-              <h5>You have {todayChallenge.length} upcoming challenges</h5>
-              {todayChallenge?.map((individualChallenge, index) => (
-                <div
-                  className='col-12'
-                  key={`challenge0${index}`}
-                  onClick={() => {
-                    navigate(`/to-do/challenge/detail/1234`);
-                  }}
+      <Modal
+        show={modalStatus}
+        onHide={closeModal}
+        backdrop='static'
+        keyboard={false}
+        className='ml-edit-user-details'
+        dialogClassName='ml-edit-user-details__modal-dialog ml-modal-blur'
+        contentClassName='ml-edit-user-details__modal-content'
+      >
+        <Modal.Header
+          closeButton
+          className='ml-edit-user-details__modal-header'
+        >
+          <Modal.Title>Upcoming challenges</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className='ml-edit-user-details__modal-body'>
+          <div className='sidebar-content'>
+            <h5 className='modal__body-header'>
+              You have {upcomingCount} upcoming challenges
+            </h5>
+            <div
+              style={{
+                height: 'calc(100vh - 200px)', // this works also
+                overflow: 'auto',
+              }}
+              ref={onTableContainerRefChange}
+            >
+              {tableContainerRef && (
+                <InfiniteScroll
+                  dataLength={upcomingChallengeDetail?.length}
+                  next={upcomingChallenge}
+                  initialLoad={false}
+                  hasMore={upcomingChallengeDetail?.length < upcomingCount}
+                  loader={<h4>Loading...</h4>}
+                  useWindow={false}
+                  scrollableTarget={tableContainerRef}
                 >
-                  <QuestCard
-                    data={individualChallenge}
-                    type='challenges'
-                    // className={'max__activity-quest-card'}
-                  />
-                </div>
-              ))}
+                  {upcomingChallengeDetail?.map(
+                    (individualChallenge, index) => (
+                      <div
+                        className='col-12'
+                        key={`challenge0${index}`}
+                        onClick={() => {
+                          navigate(`/to-do/challenge/detail/1234`);
+                        }}
+                      >
+                        <QuestCard
+                          data={individualChallenge}
+                          type='challenges'
+                        />
+                      </div>
+                    )
+                  )}
+                </InfiniteScroll>
+              )}
             </div>
           </div>
-        </Modal>
-      )}
-    </>
+        </Modal.Body>
+      </Modal>
+    </div>
   );
 };
 
