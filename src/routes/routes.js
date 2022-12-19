@@ -25,6 +25,7 @@ import SquadDetails from '../components/Profile/SquadDetails';
 import CategoryListing from '../pages/LearnCategory/CategoryListing';
 import CategoryDetail from '../pages/LearnCategory/CategoryDetail';
 import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
+import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
 
 export const appRoutes = [
   {
@@ -113,6 +114,10 @@ export const appRoutes = [
       {
         path: '/challenge-squad-detail',
         element: <ChallengeSquadDetails />,
+      },
+      {
+        path: '/team-score',
+        element: <CongratualtionsScreen />,
       },
       {
         path: '/questions/:id',
