@@ -16,7 +16,7 @@ import ProgressBar from '../../UI/ProgressBar';
 //     </>
 //   );
 // };
-const CatergoryCard = ({ data }) => {
+const CatergoryCard = ({ data, detail }) => {
   return (
     <>
       <div
@@ -32,9 +32,12 @@ const CatergoryCard = ({ data }) => {
           bgcolor='#212121'
           progress={data.percentage}
           height={6}
-          className='mt-2'
+          className='mt-2 progressbar__learn-text'
           marginTop={20}
         />
+        <div className='category_detail'>
+          {detail === true ? data.detail : ''}
+        </div>
       </div>
     </>
   );

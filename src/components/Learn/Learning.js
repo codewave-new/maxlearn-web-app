@@ -1,6 +1,7 @@
 import React, { useState, Fragment } from 'react';
 import LearningCard from './LearningCard';
 import LearningModal from '../Modals/LearningModal';
+import { SubjectData } from './Category/data';
 
 function Learning() {
   const [showLearningModal, setShowLearningModal] = useState(false);
@@ -16,10 +17,15 @@ function Learning() {
           <button onClick={handleShowLearningModal}>View all</button>
         </div>
         <div className='row learning-card-row'>
-          <div className='col-12 col-md-4'>
-            <LearningCard />
-          </div>
-          <div className='col-12 col-md-4'>
+          {SubjectData.slice(0, 6).map((element, i) => {
+            return (
+              <div className='col-lg-4 col-md-6 col-12 mb-3' key={i}>
+                <LearningCard data={element} className='content' />
+              </div>
+            );
+          })}
+
+          {/* <div className='col-12 col-md-4'>
             <LearningCard />
           </div>
           <div className='col-12 col-md-4'>
@@ -35,7 +41,7 @@ function Learning() {
           </div>
           <div className='col-12 col-md-4'>
             <LearningCard />
-          </div>
+          </div> */}
         </div>
       </div>
 

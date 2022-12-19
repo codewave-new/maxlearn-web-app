@@ -24,6 +24,7 @@ import ChallengeSquadDetails from '../pages/questions/ChallengeSquadDetails';
 import SquadDetails from '../components/Profile/SquadDetails';
 import CategoryListing from '../pages/LearnCategory/CategoryListing';
 import CategoryDetail from '../pages/LearnCategory/CategoryDetail';
+import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
 
 export const appRoutes = [
   {
@@ -77,8 +78,12 @@ export const appRoutes = [
         element: <CategoryListing />,
       },
       {
-        path: '/learn/category-list/:id',
+        path: '/learn/category-list/detail',
         element: <CategoryDetail />,
+      },
+      {
+        path: '/learn/category-list/detail/subject-detail',
+        element: <SubjectDetail />,
       },
       {
         path: '/help',

@@ -19,24 +19,36 @@
   .learning-card-row {
     margin: 1.25rem 0 0 0;
   }
-  .max-learn__learning-card {
-    @include card(100%, 100%, 20px, $white);
-    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
-    padding: 34px 20px;
-    .content {
-      display: flex;
-      justify-content: center;
-      /* align-items: center; */
-      height: 100%;
-      flex-direction: column;
-      padding-left: 20px;
-      p {
-        @include font($text-secondary-color, 12px, 400, 0, 14px);
-        margin: 0;
-        strong {
-          font-weight: 900;
-          color: $text-secondary-color;
-        }
+}
+.max-learn__learning-card {
+  // @include card(100%, 100%, 20px, $white);
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
+  padding: 34px 20px;
+  .content {
+    @include dispalyFlex(flex, center, column);
+    height: 100%;
+    padding-left: 20px;
+    p {
+      @include font($text-secondary-color, 12px, 400, 0, 14px);
+      margin: 0;
+      strong {
+        font-weight: 900;
+        color: $text-secondary-color;
+      }
+    }
+  }
+  .content-color {
+    @include dispalyFlex(flex, center, column);
+    height: 100%;
+    padding-left: 15px;
+    p {
+      @include font(#389f9e, 12px, 400, 0, 14px);
+      margin: 0;
+      strong {
+        font-weight: 900;
+        color: #389f9e;
       }
     }
   }

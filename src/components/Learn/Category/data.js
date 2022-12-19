@@ -5,7 +5,8 @@ export const data = [
     subject: '10',
     percentage: '30',
     bgColor: 'rgb(235 254 238)',
-    detail: 'Compliance',
+    detail:
+      'Sed ut perspiciatis unde omnis iste natus error sitole sed uptatem accusantium sel doloremque laudantiums sed am, Sed utl perspiciatis unde omnis iste natus errors sitole sed uptatem accusantium amsedl doloremque ',
     detailpage: [
       {
         topics: '12',
@@ -97,5 +98,87 @@ export const data = [
     subject: '11',
     percentage: '30',
     bgColor: 'rgb(235 254 238)',
+  },
+];
+
+export const SubjectData = [
+  {
+    id: '1',
+    title: 'Anti-money Laundering',
+    level: 'Awareness level',
+    percentage: '66',
+  },
+  {
+    id: '2',
+    title: 'Leadership and Learning',
+    level: 'Explanatory level',
+    percentage: '72',
+  },
+  {
+    id: '3',
+    title: 'Leadership and Learning',
+    level: 'Explanatory level',
+    percentage: '72',
+  },
+  {
+    id: '4',
+    title: 'Leadership and Learning',
+    level: 'Explanatory level',
+    percentage: '65',
+  },
+  {
+    id: '5',
+    title: 'Leadership and Learning',
+    level: 'Explanatory level',
+    percentage: '65',
+  },
+  {
+    id: '6',
+    title: 'Leadership and Learning',
+    level: 'Explanatory level',
+    percentage: '65',
+  },
+];
+
+export const CategorySubjectData = [
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
+  },
+  {
+    name: 'Company ethics compliances',
+    topic: '14',
+    percentage: '60',
   },
 ];

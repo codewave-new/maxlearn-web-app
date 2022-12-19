@@ -102,25 +102,25 @@ const ModalTopicsCard = () => {
   return (
     <Fragment>
       <div className='topicsModalCard_wrapper'>
-        {DummyData.map((index) => {
+        {DummyData.map((data) => {
           return (
-            <div key={index.id} className='row topicsModalCard_wrapper__row'>
+            <div key={data.id} className='row topicsModalCard_wrapper__row'>
               <div className='col-12  mb-1'>
                 <div className='topicsModalCard_wrapper__row__content'>
                   <div className='topicsModalCard_wrapper__row__content__title'>
-                    {index.title}
+                    {data.title}
                   </div>
                   <span className='topicsModalCard_wrapper__row__content__level'>
                     <LearnBadge.default /> You are at{' '}
                     <span className='topicsModalCard_wrapper__row__content__level1'>
-                      {index.level}
+                      {data.level}
                     </span>
                   </span>
                   <span className='d-flex align-items-center topicsModalCard_wrapper__row__content__members'>
                     <MembersAvatar
                       total={DummyData?.length}
                       max={3}
-                      team={index?.member}
+                      team={data?.member}
                     />{' '}
                     <span className='topicsModalCard_wrapper__row__content__total'>
                       5 people are learning this topic now
