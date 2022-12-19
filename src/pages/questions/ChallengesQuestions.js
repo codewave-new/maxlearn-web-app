@@ -80,13 +80,13 @@ const ChallengesQuestions = () => {
 
   useEffect(() => {
     let interval = null;
-    if (questionsInfo?._id && timerVal == 'true') {
+    if (questionsInfo?._id && timerVal == 'true'&&(!submitCliked)) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
       setIntervalID(interval)
     }
-  }, [questionsInfo, timerVal]);
+  }, [questionsInfo, timerVal,submitCliked]);
 
 
 
@@ -226,6 +226,8 @@ const ChallengesQuestions = () => {
             setSubmitCliked={setSubmitCliked}
             isSubmitting={isSubmitting}
             name={name}
+            setIncresingTimerId={setIncresingTimerId}
+            setIntervalID={setIntervalID}
           /> : ''}
       </div>
     </div>
