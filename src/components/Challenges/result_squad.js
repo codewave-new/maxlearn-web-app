@@ -10,16 +10,21 @@ import {
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChallengesAccoridan from '../../components/Common/CustomAccordian/ChallengesAccoridan';
 import TeamMembersDetail from '../../components/Questions/TeamMembersDetail';
+import CongratualtionsScreen from './CongratualtionsScreen';
+import { Link, NavLink } from 'react-router-dom';
 
 export const ResultSquad = ({
   individualResult,
   resultDetails,
   member,
-  opponentSquads
+  opponentSquads,
+  setSubmitCliked,
+  submitCliked
 }) => {
-  // const {pointsEarned,fullName}= member
-  console.log('member',member)
+
   return (
+    <>
+    {!submitCliked?
     <div className='completion__wrapper'>
     <div
       className='completion__content'
@@ -46,8 +51,9 @@ export const ResultSquad = ({
               backgroundPosition: 'center',
               backgroundSize: 'cover',
             }}
+            onClick={()=>setSubmitCliked(true)}
           >
-            <div className='d-flex justify-content-between'>
+            <div className='d-flex justify-content-between' >
               <div>
                 <h4 className='completion__points--text'>
                   Congrats!! Great achievement
@@ -127,14 +133,24 @@ export const ResultSquad = ({
       </button>
       <div className='completion__footer '>
         <div className='d-flex justify-content-between align-items-center footer__wrapper'>
-          <p className='mb-0'>Lorem ipsm dolor sit amet consecture</p>
           <div>
+          <Link to='#'>
             <button className='challenge__outline-btn '>View my leaderboard</button>
+            </Link>
+            <Link to='/to-do'>
             <button className='challenge__filled-btn'>Explore challenges</button>
+            </Link>           
           </div>
         </div>
       </div>
     </div>
+
   </div>
+  :<CongratualtionsScreen
+  close={()=>setSubmitCliked(false)}
+  points={Math.floor(individualResult?.squadScore)}
+  name={individualResult?.name}
+  />}
+  </>
     )
 }

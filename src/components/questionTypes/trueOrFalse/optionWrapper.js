@@ -10,7 +10,6 @@ export const OptionWrapper = ({options,
     options?.map((item,index)=><div className='quest_check p-2 d-flex mb-4'
     onClick={()=>handleSelect(item?.value)}
     >
-        {console.log('isTrueOrFalse',isTrueOrFalse)}
     <div className='col-sm-1 d-flex justify-content-between '>
       <input type='checkbox'
     checked={isTrueOrFalse===''?'':(isTrueOrFalse===item?.value?true:false)}

@@ -28,6 +28,7 @@ const ChallengesCompleted = () => {
   const [individualResult, setIndividualResult] = useState({})
 
 
+
   
   useEffect(() => {
     getChallengeResultDetailss(id,challengeType)
@@ -49,10 +50,11 @@ const ChallengesCompleted = () => {
     }
   }
 }
-console.log('resultDetails',resultDetails,individualResult)
   return (
     challengeType=="SQUAD"?
     <ResultSquad 
+    setSubmitCliked={setSubmitCliked}
+    submitCliked={submitCliked}
     individualResult={individualResult}
     resultDetails={resultDetails}
     member={individualResult?.learners?.find(item=>item?._id==resultDetails?.learner)}
@@ -61,6 +63,8 @@ console.log('resultDetails',resultDetails,individualResult)
   
     :
     <ResultIndividual
+    setSubmitCliked={setSubmitCliked}
+    submitCliked={submitCliked}
     individualResult={individualResult}
     resultDetails={resultDetails}
     opponents={resultDetails?.learners?.filter(item=>item?._id!==individualResult?._id)}

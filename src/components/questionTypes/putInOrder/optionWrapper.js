@@ -17,26 +17,17 @@ const SortableList = SortableContainer(({items}) => {
 
 export const OptionWrapper = ({
   options,
-  selectedOption,
   handleSelect
 }) => {
     const [items, setItems] = useState([]);
     useEffect(()=>{
     if(options?.length) setItems(options)
     },[options])
-
-    // useEffect(()=>{
-    //   if(items?.length)handleSelect(items)
-    // },[items])
-console.log('rtrr',items,selectedOption)
-    
     const swapElements = (myArray, index1, index2) => {
         [myArray[index1], myArray[index2]] = [myArray[index2], myArray[index1]];
         return myArray;
     };
   const onSortEnd = ({oldIndex, newIndex}) => {
-    // setItems(swapElements(items,oldIndex,newIndex))
-    // console.log('swap',swapElements(items,oldIndex,newIndex))
   let res=swapElements(items,oldIndex,newIndex)
     handleSelect(res)
       };

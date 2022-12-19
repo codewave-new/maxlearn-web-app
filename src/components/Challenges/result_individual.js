@@ -11,15 +11,18 @@ import {
   import ChallengesAccoridan from '../../components/Common/CustomAccordian/ChallengesAccoridan';
   import TeamMembersDetail from '../../components/Questions/TeamMembersDetail';
 import { Link, NavLink } from 'react-router-dom';
+import CongratualtionsScreen from './CongratualtionsScreen';
 
 export const ResultIndividual = ({
     individualResult,
-    resultDetails,
-    opponents
+    opponents,
+    setSubmitCliked,
+    submitCliked  
 }) => {
     const {pointsEarned,fullName,profilePic}= individualResult
-
   return (
+    <>
+    {!submitCliked?
     <div className='completion__wrapper'>
     <div
       className='completion__content'
@@ -46,6 +49,7 @@ export const ResultIndividual = ({
               backgroundPosition: 'center',
               backgroundSize: 'cover',
             }}
+            onClick={()=>setSubmitCliked(true)}
           >
             <div className='d-flex justify-content-between'>
               <div>
@@ -71,12 +75,6 @@ export const ResultIndividual = ({
               {/* <img className='leading__stars' src={Stars.default}/> */}
             </div>
           </div>
-          {/* <div>
-            <h3 className='opponents__list'>Your opponents score details</h3>
-            <ChallengesAccoridan />
-            <ChallengesAccoridan />
-            <ChallengesAccoridan />
-          </div> */}
            <div className='report__alert'>
             <ErrorOutlineIcon />
             <p className='mb-0'>
@@ -123,7 +121,6 @@ export const ResultIndividual = ({
       </button>
       <div className='completion__footer '>
         <div className='d-flex justify-content-between align-items-center footer__wrapper'>
-          <p className='mb-0'>Lorem ipsm dolor sit amet consecture</p>
           <div>
           <Link to='#'>
             <button className='challenge__outline-btn '>View my leaderboard</button>
@@ -135,6 +132,12 @@ export const ResultIndividual = ({
         </div>
       </div>
     </div>
-  </div>
+  </div>:
+  <CongratualtionsScreen
+  close={()=>setSubmitCliked(false)}
+  points={pointsEarned}
+  name={fullName}
+  />}
+  </>
     )
 }
