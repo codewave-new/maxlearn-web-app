@@ -1,21 +1,23 @@
 import React from 'react';
 import { Points } from '../../assets';
 
-const TeamMembersDetail = ({points,className}) => {
+const TeamMembersDetail = ({member}) => {
+  const {pointsEarned,fullName,profilePic}= member
+
   return (
-    <div className={`member__wrapper ${className}`}>
+    <div className={`member__wrapper`}>
       <div className='member-profile'>
         <img
-          src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299456/Group_45_bpykjx.svg'
+          src={profilePic}
           className='member-profile-img'
         />{' '}
-        Johnson Williams
+        {fullName}
       </div>
-      {points?<div className='member-points'>
+      {pointsEarned?<div className='member-points'>
         <span>
           <img className='member-points-img' src={Points.default} />
         </span>
-        40 points
+        {pointsEarned} points
       </div>:<button className='nudge__button'>Nudge player</button>}
     </div>
   );
