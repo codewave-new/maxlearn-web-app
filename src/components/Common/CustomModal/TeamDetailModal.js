@@ -85,8 +85,7 @@ const TeamDetailModal = ({
               <div className='member__listing-modal'>
                 {teamDetails?.learners?.map((memberDetail, index) => (
                   <TeamMembersDetail
-                    memberDetail={memberDetail}
-                    points={true}
+                    member={memberDetail}
                     key={`teamMembers-${index}`}
                   />
                 ))}

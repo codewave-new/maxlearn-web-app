@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="487px" height="50px" viewBox="0 0 487 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>4A36459A-5ED0-45CE-91D3-917D6BC8AC71</title>
+    <defs>
+        <linearGradient x1="85.1501452%" y1="50%" x2="6.90091142%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#9CDF5C" offset="0%"></stop>
+            <stop stop-color="#F5F5F5" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Confidence-Monitoring-slider-5" transform="translate(-476.000000, -353.000000)" fill="url(#linearGradient-1)">
+            <g id="Group-28" transform="translate(476.000000, 353.000000)">
+                <path d="M0,25 C1.02057441e-15,33.3336225 6.66497258,40.1368578 14.9968387,40.3079433 L462.005269,49.4867612 C475.528934,49.7644545 486.717145,39.026473 486.994838,25.5028082 C486.998279,25.3352276 487,25.167616 487,25 C487,11.4734845 476.034593,0.508077075 462.508077,0.508077075 C462.340461,0.508077075 462.17285,0.509797751 462.005269,0.513238833 L14.9968387,9.6920567 C6.66497258,9.86314225 -1.02057441e-15,16.6663775 0,25 Z" id="Path-6"></path>
+            </g>
+        </g>
+    </g>
+</svg>

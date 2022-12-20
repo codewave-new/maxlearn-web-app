@@ -1,23 +1,24 @@
 import React from 'react';
 import { Points } from '../../assets';
 
-const TeamMembersDetail = ({ points, className, memberDetail }) => {
+const TeamMembersDetail = ({member}) => {
+  const {pointsEarned,fullName,profilePic}= member
+
   return (
-    <div className={`member__wrapper ${className}`}>
+    <div className={`member__wrapper`}>
       <div className='member-profile'>
-        <img src={memberDetail?.profilePic} className='member-profile-img' />{' '}
-        {memberDetail?.fullName}
+        <img
+          src={profilePic}
+          className='member-profile-img'
+        />{' '}
+        {fullName}
       </div>
-      {points ? (
-        <div className='member-points'>
-          <span>
-            <img className='member-points-img' src={Points.default} />
-          </span>
-          {memberDetail?.pointsEarned} points
-        </div>
-      ) : (
-        <button className='nudge__button'>Nudge player</button>
-      )}
+      {pointsEarned?<div className='member-points'>
+        <span>
+          <img className='member-points-img' src={Points.default} />
+        </span>
+        {pointsEarned} points
+      </div>:<button className='nudge__button'>Nudge player</button>}
     </div>
   );
 };
