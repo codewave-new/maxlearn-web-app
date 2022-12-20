@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FormGroup, FormLabel } from 'react-bootstrap';
@@ -25,7 +25,7 @@ const EditUserDetailsModal = (props) => {
   const { show, onHide } = props;
   const [countryCode, setCountryCode] = useState([]);
 
-  // export const getCountries = async () =>
+  //  const getCountries = async () =>
   // axios.get(`/countries/allCountries`, {
   //   headers: {
   //     "x-tenant-id": x_tenant_id,
@@ -194,6 +194,7 @@ const EditUserDetailsModal = (props) => {
                   onChange={handleChange}
                   id='data-name'
                 />
+
                 {errors.title && touched.title ? (
                   <div className='form_error-message mt-25'>{errors.title}</div>
                 ) : null}
