@@ -4,7 +4,7 @@ const MembersAvatar = ({ team, total, max, className,imgClass }) => {
   return (
     <div className={`${className} partcipation__detail-img-container`}>
       {team?.map((member, i) => (
-        <span key={`members 0${Math.random()*i}`} >
+        <div key={`members 0${Math.random()*i}`} >
           {i < max ? (
             <img
               src={member?.profilePic}
@@ -14,11 +14,11 @@ const MembersAvatar = ({ team, total, max, className,imgClass }) => {
             ''
           )}
           {i === max ? (
-            <span className='partcipation__detail-total'>+{total - max}</span>
+            <div className='partcipation__detail-total'>+{total - max}</div>
           ) : (
             ''
           )}
-        </span>
+        </div>
       ))}
     </div>
   );

@@ -1,6 +1,8 @@
 import React from 'react';
-import { buildStyles, CircularProgressbarWithChildren } from 'react-circular-progressbar';
-import { CuteMonsters } from '../../../assets';
+import {
+  buildStyles,
+  CircularProgressbarWithChildren,
+} from 'react-circular-progressbar';
 import TeamMembersDetail from '../../Questions/TeamMembersDetail';
 import QuestionCard, {
   DetailComponent,
@@ -8,44 +10,69 @@ import QuestionCard, {
 } from '../QuestionCard.js/QuestionCard';
 import Modal from './Modal';
 
-const TeamDetailModal = ({ modalStatus, handleClose }) => {
+const TeamDetailModal = ({
+  modalStatus,
+  handleClose,
+  teamBgColor,
+  teamDetails,
+}) => {
   return (
     <Modal open={modalStatus} close={handleClose}>
       <QuestionCard className={'width-60'}>
-        <ThumNailComponent>
-          <div className='our__team '>
+        <ThumNailComponent className='col-lg-12'>
+          <div className={teamBgColor}>
             <div className='team__logo'>
-              <CuteMonsters.default />
-              {/* <img src={CuteMonsters.default} alt='team logo'/> */}
+              <img
+                className='team__logo-main-image'
+                src={teamDetails?.imageUrl}
+                alt='team logo'
+              />
             </div>
-            <h4 className='team__name'>Monsters</h4>
+            <h4 className='team__name'>{teamDetails?.name}</h4>
           </div>
         </ThumNailComponent>
         <DetailComponent>
           <div>
-            <div className='points__data row'>
+            <div className='points__data row d-flex align-items-center justify-content-center'>
               <div className='points__data-graph col-4'>
+                <svg style={{ height: 0 }}>
+                  <defs>
+                    <linearGradient
+                      id={'progress'}
+                      gradientTransform={`rotate(85)`}
+                    >
+                      <stop offset='1%' stopColor='#eee' />
+                      <stop offset='99%' stopColor='#2A7776' />
+                    </linearGradient>
+                  </defs>
+                </svg>
                 <CircularProgressbarWithChildren
-                  value={80}
-                  strokeWidth={7}
-                  // text={`${100}`}
-                  linearGradient={['red', 'blue']}
-                  circleRatio={0.5}
+                  value={100}
+                  strokeWidth={5}
+                  circleRatio='0.45'
+                  styles={{
+                    path: {
+                      stroke: `url(#${'progress'})`,
+                      height: '100%',
+                      transform: 'rotate(0.77turn)',
+                      transformOrigin: 'center center',
+                    },
+                    trail: {
+                      stroke: '#2e2e2e',
+                      transform: 'rotate(0.55turn)',
+                    },
+                  }}
                   initialAnimation={true}
-                  styles={buildStyles({
-                    rotation: 3 / 4,
-                    pathColor: '#2A7776',
-                    strokeLinecap: 'round',
-                    trailColor: '#eee',
-                  })}
                 >
                   <div>
-                    <div>100</div>
-                    <p>Points</p>
+                    <h3 className='mb-0 text-center'>
+                      {teamDetails?.pointsEarned} <br />
+                      <small>Points</small>
+                    </h3>
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
-              <div className='col-7 text-bottom'>
+              <div className='col-7 mt-md-1'>
                 <span className='points__data-text mb-0'>
                   Points earned by the team
                 </span>
@@ -53,11 +80,17 @@ const TeamDetailModal = ({ modalStatus, handleClose }) => {
             </div>
             <div className='team__members'>
               <h5 className='team__members-header'>
-                Team Roasters member list
+                Team {teamDetails?.name} member list
               </h5>
-              {[1, 2, 3, 3, 3, 1]?.map((val) => (
-                <TeamMembersDetail />
-              ))}
+              <div className='member__listing-modal'>
+                {teamDetails?.learners?.map((memberDetail, index) => (
+                  <TeamMembersDetail
+                    memberDetail={memberDetail}
+                    points={true}
+                    key={`teamMembers-${index}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </DetailComponent>

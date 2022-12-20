@@ -4,124 +4,6 @@ import { ProfileGem, ProfileStanding } from '../../assets';
 import { yourSquadListing } from '../../services/profile';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
 
-const data = [
-  {
-    name: 'monster',
-    profileImg:
-      'https://maxlearn-admin-images.s3.amazonaws.com/admin/images/squads/codewave-new-logo.png.png',
-    points: '12000',
-    stand: '1st',
-    members: [
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-    ],
-  },
-  {
-    name: 'warriers',
-    profileImg:
-      'https://maxlearn-admin-images.s3.amazonaws.com/admin/images/squads/codewave-new-logo.png.png',
-    points: '12000',
-    stand: '1st',
-    members: [
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-    ],
-  },
-  {
-    name: 'winners',
-    profileImg:
-      'https://maxlearn-admin-images.s3.amazonaws.com/admin/images/squads/codewave-new-logo.png.png',
-    points: '12000',
-    stand: '1st',
-    members: [
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-    ],
-  },
-  {
-    name: 'hunters',
-    profileImg:
-      'https://maxlearn-admin-images.s3.amazonaws.com/admin/images/squads/codewave-new-logo.png.png',
-    points: '12000',
-    stand: '1st',
-    members: [
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-      {
-        profilePic:
-          'https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299460/Group_47_in1yd2.svg',
-      },
-    ],
-  },
-];
 
 const YourSquad = () => {
   const navigate=useNavigate()
@@ -133,7 +15,6 @@ const YourSquad = () => {
 
   const squadList = async () => {
     const response = await yourSquadListing();
-    console.log(response);
     if (response.statusCode === 200) {
       setSquadsLists(response?.data?.list);
     }
@@ -156,15 +37,15 @@ const YourSquad = () => {
           >
             <div className='table__row-wrapper row' key={singleSquad?._id}>
               <div className='col-6 row '>
-                <div className='col-7 p-0 your_Squad_img-wrapper '>
+                <div className='col-7 d-flex align-items-center p-0 your_Squad_img-wrapper '>
                   <img
                     className='your__squad-image'
                     src={singleSquad?.imageUrl}
                     alt='no-data'
                   />
-                  <span className='mb-0 your__squad-text'>
+                  <p className='mb-0 your__squad-text' style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
                     {singleSquad?.name}
-                  </span>
+                  </p>
                 </div>
                 <div className='col-5 m-auto your__squad-member text-center'>
                   <MembersAvatar

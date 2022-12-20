@@ -13,4 +13,5 @@
 }
 .filled__disabled {
   @include filled(10px, 19.5px, #c0c0c0, #ffffff, 16px, 100%, 500);
+  cursor: not-allowed !important;
 }

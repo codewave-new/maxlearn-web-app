@@ -5,6 +5,8 @@ const baseURL={
   dev:'https://yck5wx5ms5.execute-api.us-east-1.amazonaws.com/local',
 }
 
+export const tenentId=localStorage.getItem('userid');
+
 const createAxios=()=>{
   // if(process.env.REACT_APP_STAGE='build for Prod'){
   //   const client=axios.create({

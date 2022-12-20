@@ -24,7 +24,6 @@ const SquadDetails = (props) => {
     squadInfomation();
   }, []);
 
-  console.log(squadMemeberDetails);
   const squadInfomation = async () => {
     const response = await yourSquadDetails(id);
     if (response?.statusCode === 200) {
@@ -124,7 +123,6 @@ const SquadDetails = (props) => {
                 </div>
               </Tab>
               <Tab eventKey='Challenges' title='Challenges'>
-                <h2 className='squad_challenge-header'>Your squad has 3 challenges in the list</h2>
                 <SquadDetailChallenges />
               </Tab>
             </Tabs>
