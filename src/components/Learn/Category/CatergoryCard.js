@@ -16,7 +16,7 @@ import ProgressBar from '../../UI/ProgressBar';
 //     </>
 //   );
 // };
-const CatergoryCard = ({ data, detail }) => {
+const CatergoryCard = ({ data, detail, level, button }) => {
   return (
     <>
       <div
@@ -26,7 +26,7 @@ const CatergoryCard = ({ data, detail }) => {
         <LearnCompliance.default />
         <h4 className='pt-3'>{data.name}</h4>
         <span className='max-learn__catergory-card__category_subject'>
-          {data.subject} Subjects
+          {data.subject}
         </span>
         <ProgressBar
           bgcolor='#212121'
@@ -35,9 +35,36 @@ const CatergoryCard = ({ data, detail }) => {
           className='mt-2 progressbar__learn-text'
           marginTop={20}
         />
+
+        {level === true ? (
+          <>
+            <div className='card_level_wrapper'>
+              <img
+                src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1670755725/Group_5_rcffqr.svg'
+                height='20px'
+                width='20px'
+              ></img>{' '}
+              &nbsp;
+              <span className='card_level'>
+                You are at <strong>{data.level}</strong>
+              </span>
+            </div>
+          </>
+        ) : (
+          ''
+        )}
+
         <div className='category_detail'>
           {detail === true ? data.detail : ''}
         </div>
+
+        {button === true ? (
+          <div className='card_quiz_button'>
+            <div>Quiz me</div>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </>
   );

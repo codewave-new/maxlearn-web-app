@@ -8,17 +8,19 @@ const CategorySubjects = () => {
     <div className='row category_subject'>
       {CategorySubjectData.map((el, i) => {
         return (
-          <div className='col-12 col-md-6 category_subject__col'>
+          <div className='col-12 col-md-6 category_subject__col' key={i}>
             <div className='category_subject__wrapper'>
-              <div className='row'>
+              <div className='row pl-5'>
                 <div className='col-md-auto col-sm-auto col-auto subject_icon'>
-                  In
+                  <img
+                    src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1670755725/Group_5_rcffqr.svg'
+                    height='24px'
+                    width='24px'
+                  ></img>
                 </div>
                 <div className='col-md-auto col-sm-auto col-auto'>
                   <div className='topic_wrapper'>
-                    <div className='topic_wrapper__total'>
-                      {el.topic} Topics
-                    </div>
+                    <div className='topic_wrapper__total'>{el.topic}</div>
                   </div>
                   <div className='topic_name'>{el.name}</div>
                 </div>

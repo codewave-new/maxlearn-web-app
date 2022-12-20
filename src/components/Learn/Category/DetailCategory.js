@@ -1,7 +1,7 @@
 import React from 'react';
 import CatergoryCard from './CatergoryCard';
 import { data } from './data';
-import { Breadcrumbs } from '@mui/material';
+import BreadCrumb from '../../Common/BreadCrumb/BreadCrumb';
 import CategorySubjects from './CategorySubjects';
 import { Link } from 'react-router-dom';
 
@@ -11,22 +11,12 @@ export const DetailCategory = () => {
       {data.slice(0, 1).map((element, i) => {
         return (
           <div className='container category_detail_wrapper' key={i}>
-            <div className='list_bread'>
-              <Breadcrumbs separator='|' aria-label='breadcrumb'>
-                <Link to='/learn' className='list_bread__key1'>
-                  Learn
-                </Link>
-                <Link to='/learn/category-list' className='list_bread__key1'>
-                  Category listing
-                </Link>
-                <span className='list_bread__key2'>Category detail page</span>
-              </Breadcrumbs>
-            </div>
+            <BreadCrumb title='Category detail page' id={3} />
             <div className='row detail_row'>
-              <div className='col-lg-3  col-12 detail_col1'>
+              <div className='col-xl-3 col-lg-4 col-12 detail_left_col'>
                 <CatergoryCard data={element} detail={true} />
               </div>
-              <div className='col-lg-9  col-12 detail_col2'>
+              <div className='ccol-xl-9 col-lg-8  col-12  detail_right_col'>
                 <div className='subject_description'>
                   Subject under {element.name} (20)
                 </div>

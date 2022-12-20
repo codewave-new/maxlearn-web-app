@@ -39,6 +39,35 @@
   &__category_subject {
     @include font(#707070, 14px, bold, 0, 16px);
   }
+  .card_level_wrapper {
+    display: inline-block;
+    border-radius: 17px;
+    background: linear-gradient(
+      153.63deg,
+      #fbdc6d 0%,
+      #fcc765 45.92%,
+      #fca157 100%
+    );
+    padding: 7px 15px;
+    margin-top: 20px;
+    .card_level {
+      @include font(#212121, 12px, 0, 0.22px, 12px);
+      strong {
+        font-weight: 700px;
+        color: #212121;
+      }
+    }
+  }
+  .card_quiz_button {
+    border-radius: 10px;
+    background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+    padding: 19px;
+    @include displayBothCenter();
+    margin-top: 15px;
+    div {
+      @include font(#ffffff, 16px, 500, 0, 12px);
+    }
+  }
 }
 
 //Category listing

@@ -16,7 +16,7 @@ const LearningCard = ({ data, className }) => {
                 rotation: 0.85,
                 textSize: '20px',
                 textColor: '#212121',
-                pathColor: '#4C9A99',
+                pathColor: '#389F9E',
                 strokeLinecap: 'butt',
               })}
             />

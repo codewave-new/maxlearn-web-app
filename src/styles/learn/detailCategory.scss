@@ -1,13 +1,13 @@
 //Detail category
 .category_detail_wrapper {
-  .detail_col1 {
+  .detail_left_col {
     border-radius: 20px;
     background-color: #ffffff;
     box-shadow: 0 12px 24px 0 rgb(0 0 0 / 3%);
     padding: 20px;
     height: 100%;
   }
-  .detail_col2 {
+  .detail_right_col {
     padding-left: 20px;
     .subject_description {
       @include font(#212121, 18px, bold, 0, 18px);
@@ -29,7 +29,7 @@
       border-radius: 10px;
       background-color: #f3f3f3;
       padding: 13px 13px;
-      margin-left: 15px;
+      // margin-left: 15px;
     }
     .topic_wrapper {
       display: flex;

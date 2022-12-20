@@ -1,0 +1,17 @@
+.flash-card-wrapper {
+  height: 100%;
+  padding: 65px;
+  @include displayBothCenter();
+  .flash_card_row {
+    background-color: #ffffff;
+    border: 1px solid #e2e2e2;
+    border-radius: 20px;
+    box-shadow: 0 12px 84px 0 rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    .col {
+      &:nth-child(1) {
+        height: 434px;
+      }
+    }
+  }
+}

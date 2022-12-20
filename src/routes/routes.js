@@ -26,6 +26,8 @@ import CategoryListing from '../pages/LearnCategory/CategoryListing';
 import CategoryDetail from '../pages/LearnCategory/CategoryDetail';
 import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
 import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
+import TopicDetail from '../pages/LearnCategory/TopicDetail';
+import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
 
 export const appRoutes = [
   {
@@ -85,6 +87,14 @@ export const appRoutes = [
       {
         path: '/learn/category-list/detail/subject-detail',
         element: <SubjectDetail />,
+      },
+      {
+        path: '/learn/category-list/detail/subject-detail/topic-detail',
+        element: <TopicDetail />,
+      },
+      {
+        path: '/flash-card',
+        element: <CategoryFlashCard />,
       },
       {
         path: '/help',
