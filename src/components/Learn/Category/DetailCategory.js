@@ -20,7 +20,7 @@ export const DetailCategory = () => {
                 <div className='subject_description'>
                   Subject under {element.name} (20)
                 </div>
-                <Link to='/learn/category-list/detail/subject-detail'>
+                <Link to='/learn/subject-detail'>
                   <CategorySubjects />
                 </Link>
               </div>

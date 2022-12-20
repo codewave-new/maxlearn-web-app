@@ -17,7 +17,7 @@ const CategoryList = () => {
                 className='col-12 col-md-6 col-lg-3  category_row__col'
                 key={element.id}
               >
-                <Link to='/learn/category-list/detail'>
+                <Link to='/learn/detail'>
                   <CatergoryCard data={element} />
                 </Link>
               </div>

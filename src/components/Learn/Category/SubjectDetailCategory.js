@@ -27,7 +27,7 @@ const SubjectDetailCategory = () => {
             <div className='subject_description'>
               Topics under Information security.. (20)
             </div>
-            <Link to='/learn/category-list/detail/subject-detail/topic-detail'>
+            <Link to='/learn/topic-detail'>
               <div className='row'>
                 {SubjectData.map((data, i) => {
                   return (

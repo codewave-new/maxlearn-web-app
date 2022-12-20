@@ -25,7 +25,7 @@ import SquadDetails from '../components/Profile/SquadDetails';
 import CategoryListing from '../pages/LearnCategory/CategoryListing';
 import CategoryDetail from '../pages/LearnCategory/CategoryDetail';
 import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
-import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
+// import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
 import TopicDetail from '../pages/LearnCategory/TopicDetail';
 import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
 
@@ -81,19 +81,19 @@ export const appRoutes = [
         element: <CategoryListing />,
       },
       {
-        path: '/learn/category-list/detail',
+        path: '/learn/detail',
         element: <CategoryDetail />,
       },
       {
-        path: '/learn/category-list/detail/subject-detail',
+        path: '/learn/subject-detail',
         element: <SubjectDetail />,
       },
       {
-        path: '/learn/category-list/detail/subject-detail/topic-detail',
+        path: '/learn/topic-detail',
         element: <TopicDetail />,
       },
       {
-        path: '/flash-card',
+        path: '/learn/flash-card',
         element: <CategoryFlashCard />,
       },
       {
@@ -114,21 +114,21 @@ export const appRoutes = [
       },
 
       {
-        path: '/to-do/challenge/completed/:id',
+        path: '/to-do/challenge/score-details/:id',
         element: <ChallengesCompleted />,
       },
       {
-        path: '/challenge_question/:id',
+        path: '/start-challenge-exam/:id',
         element: <ChallengesQuestions />,
       },
       {
         path: '/challenge-squad-detail',
         element: <ChallengeSquadDetails />,
       },
-      {
-        path: '/team-score',
-        element: <CongratualtionsScreen />,
-      },
+      // {
+      //   path: '/team-score',
+      //   element: <CongratualtionsScreen />,
+      // },
       {
         path: '/questions/:id',
         element: <QuestionsNavbar />,

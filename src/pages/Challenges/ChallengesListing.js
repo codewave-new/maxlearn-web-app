@@ -29,8 +29,6 @@ const ChallengesListing = () => {
     upcomingChallenge();
   }, []);
 
-  console.log(upcomingChallengeDetail, upcomingCount);
-
   const onTableContainerRefChange = useCallback((node) => {
     if (node !== null) {
       setTableContainerRef(node);
@@ -48,7 +46,6 @@ const ChallengesListing = () => {
   };
 
   const upcomingChallenge = async () => {
-    console.log('hitting');
     setUpcomingPage((pre) => pre + 1);
     const response = await upcomingChallenges(upcomingPage + 1);
     if (response?.statusCode === 200) {
