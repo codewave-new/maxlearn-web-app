@@ -24,11 +24,11 @@ export const yourSquadDetails = async (squadId) => {
   }
 };
 
-export const yourSquadChallenges = async (squadId) => {
+export const yourSquadChallenges = async (squadId, pageNum) => {
   try {
-    const response = await http.get(`/api/app/challenges/list-by-squad/${squadId}?pageNum=1`, {
-      squadId,
-    });
+    const response = await http.get(
+      `/api/app/challenges/list-by-squad/${squadId}?pageNum=${pageNum}`
+    );
     return response.data;
   } catch (error) {
     return error.response;

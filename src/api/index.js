@@ -13,13 +13,3 @@ export const callSomeAPI = async () => {
   }
 };
 
-export const dummy = async () => {
-  const response = await Axios.get('/some_route');
-  return response;
-};
-export const todaysChallengesListing = async () => {
-  const response = await Axios.get(
-    '/api/app/challenges/todays-challenges/637ca1b5a3e00ec60c6da66b?pageNum=1'
-  );
-  return response;
-};

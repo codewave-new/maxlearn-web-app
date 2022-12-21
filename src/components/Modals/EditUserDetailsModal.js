@@ -63,7 +63,7 @@ const EditUserDetailsModal = (props) => {
             appLanguage: '',
             password: '',
           }}
-          //   validationSchema={klp_schema}
+          //   validationSchema={klp_schema}  
           onSubmit={(formData, ...rest) => {
             // console.log(formData);
           }}

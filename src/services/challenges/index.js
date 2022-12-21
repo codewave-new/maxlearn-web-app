@@ -2,10 +2,10 @@ import http from '../../api/api';
 
 const learnerId = '63738c435aaa893eecc9dbc1';
 
-export const todaysChallengesListing = async () => {
+export const todaysChallengesListing = async (pageNum) => {
   try {
     const response = await http.get(
-      `/api/app/challenges/todays-challenges/${learnerId}?pageNum=1`
+      `/api/app/challenges/todays-challenges/${learnerId}?pageNum=${pageNum}`
     );
     return response.data;
   } catch (error) {

@@ -1,4 +1,4 @@
-.ml-edit-user-details {
+.sidebar__modal {
   width: 100% !important;
   right: 0 !important;
   left: auto !important;
@@ -45,6 +45,11 @@
   &__modal-body {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    .modal__infintescroll-wrapper {
+      height: calc(100vh - 200px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
     .modal__body-header {
       @include font(#212121, 16px, 700, 0, 17px);
       margin-bottom: 20px;
@@ -71,43 +76,6 @@
     }
   }
 }
-
-// edit user details form
-.ml-edit-user-detail-form {
-  .ml-form-group {
-    margin: 0;
-    margin-bottom: 1.938rem;
-  }
-
-  .ml-form-text-title {
-    color: #727a92;
-    font-family: Roboto;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 16px;
-
-    margin: 0;
-    margin-bottom: 0.875rem;
-  }
-
-  .ml-form-inputs {
-    border: none;
-    border-bottom: 1.5px solid #d9d9d9;
-    border-radius: 0px;
-    padding: 0;
-    padding-bottom: 1.4rem;
-    padding-right: 1.4rem;
-
-    // input text styling
-    color: #212121;
-    font-family: Roboto;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 22px;
-  }
-
-  .ml-form-inputs:focus {
-    box-shadow: none;
-  }
+.infinite-scroll-component {
+  overflow-x: hidden !important;
 }
