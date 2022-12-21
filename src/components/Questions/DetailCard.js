@@ -1,16 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
-import { Points, ExamDetailBackground, CuteMonsters } from '../../assets';
+import { Points, ExamDetailBackground } from '../../assets';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
-import QuestionCard, {
-  DetailComponent,
-  ThumNailComponent,
-} from '../Common/QuestionCard.js/QuestionCard';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
-import { NavLink ,useNavigate} from 'react-router-dom';
-import { challengesDetails, challengeStatus,startChallenge,getChallengeExamQuestions} from '../../services/challenges';
-import { useLocation, useParams,createSearchParams, useSearchParams} from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import {
+  challengesDetails,
+  challengeStatus,
+  startChallenge,
+  getChallengeExamQuestions,
+} from '../../services/challenges';
+import {
+  useLocation,
+  useParams,
+  createSearchParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
+import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
 import { WaitingLoader } from '../loader/loader';
 
 const DetailCard = ({ start }) => {
@@ -21,6 +28,10 @@ const DetailCard = ({ start }) => {
   const [modalStatus, setModalStatus] = useState(false);
   const [challengeDescription, setChallengeDescription] = useState({});
   const [ongoingChallenge, setOngoingChallenge] = useState([]);
+  const [teamType, setTeamType] = useState();
+  const [yourTeam, setYourTeam] = useState({});
+  const [opponentTeam, setOpponentTeam] = useState([]);
+  const [teamDetails, setTeamDetails] = useState({});
   const [examStart, setExamStart] = useState({});
   const [questionsInfo, setQuestionsInfo] = useState();
   const [stat, setStat] = useState('');
@@ -30,14 +41,13 @@ const DetailCard = ({ start }) => {
   const [searchParams] = useSearchParams();
   console.log(searchParams.get('session')); // 'name'
   console.log(searchParams.get('master')); // 'name'
-const [individualResult,setIndividualResult]=useState('')
-
-
-
-
+  const [individualResult, setIndividualResult] = useState('');
 
   useEffect(() => {
     ChallengeDetail(id, query['challenge-type']);
+    if (query.exam_type === 'TODAYSTEST') {
+      learnersStartedChallenge(id);
+    }
   }, []);
 
   // useEffect(()=>{
@@ -47,109 +57,146 @@ const [individualResult,setIndividualResult]=useState('')
 
   // },[examStart])
 
-  useEffect(()=>{
-    if((examStart?.challengeResult)&&(individualResult!=='')){
+  useEffect(() => {
+    if (examStart?.challengeResult && individualResult !== '') {
       navigate({
         pathname: `/start-challenge-exam/${examStart?.challengeResult}`,
         search: createSearchParams({
-          'session': `${examStart?.session}`,
-          'master':`${examStart?.challengeResult}`,
-          'attemptedQuestions':`${examStart?.attemptedQuestions}`,
-          'questionPerSession':`${examStart?.questionPerSession}`,
-          'timer':`${examStart?.isTimeSetPerQuestion}`,
-          'challenge-type':query['challenge-type'],
-          'name':query['challenge-type']=="SQUAD"?individualResult?.name:individualResult?.fullName,
-          'points': query['challenge-type']=="SQUAD"?Math.floor(individualResult?.squadScore):Math.floor(individualResult?.pointsEarned) 
+          session: `${examStart?.session}`,
+          master: `${examStart?.challengeResult}`,
+          attemptedQuestions: `${examStart?.attemptedQuestions}`,
+          questionPerSession: `${examStart?.questionPerSession}`,
+          timer: `${examStart?.isTimeSetPerQuestion}`,
+          'challenge-type': query['challenge-type'],
+          name:
+            query['challenge-type'] == 'SQUAD'
+              ? individualResult?.name
+              : individualResult?.fullName,
+          points:
+            query['challenge-type'] == 'SQUAD'
+              ? Math.floor(individualResult?.squadScore)
+              : Math.floor(individualResult?.pointsEarned),
         }).toString(),
-      })
+      });
     }
-      },[examStart,individualResult])
-    
+  }, [examStart, individualResult]);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
     const response = await challengesDetails(challengeId, challengeType);
-    console.log(response);
     if (response.statusCode === 200) {
       setChallengeDescription(response?.data);
-      learnersStartedChallenge(challengeId);
+      if (challengeType === 'SQUAD') {
+        teamSegregation(
+          response?.data?.challengeDetails?.squads,
+          response?.data?.squad
+        );
+      } else {
+        teamSegregation(
+          response?.data?.challengeDetails?.learners,
+          response?.data?.learner
+        );
+      }
     }
   };
 
-  const learnersStartedChallenge = async (challengeId) => {
+  const teamSegregation = (teamArray, teamId) => {
+    const ownTeamIndex = teamArray?.findIndex((team) => team?._id === teamId);
+    setYourTeam(teamArray?.[ownTeamIndex]);
+    const opponentTeamData = teamArray?.filter((team) => team?._id !== teamId);
+    setOpponentTeam(opponentTeamData);
+  };
+
+  const learnersStartedChallenge = useCallback(async (challengeId) => {
     const response = await challengeStatus(challengeId);
-    console.log(response);
     if (response.statusCode === 200) {
       const liveExam = response?.data?.challengeStats?.map((learners) => {
         return learners?.learner;
       });
       setOngoingChallenge(liveExam);
+    } else {
+      console.log(response);
+    }
+  }, []);
+
+  const teamDetailInfomation = (team, teamInfo) => {
+    if (query['challenge-type'] === 'SQUAD') {
+      setModalStatus(true);
+      setTeamType(team);
+      setTeamDetails(teamInfo);
     }
   };
 
-const handleClick=async()=>{
-//   attemptedQuestions
-// : 
-// 0
-// challenge
-// : 
-// "638f27e33e6076482ed85bf5"
-// challengeResult
-// : 
-// "638f29b33d478823d6734c7e"
-// isExplanationSetPerQuestion
-// : 
-// true
-// isTimeSetPerQuestion
-// : 
-// true
-// learner
-// : 
-// "63738c435aaa893eecc9dbc1"
-// questionPerSession
-// : 
-// 5
-// season
-// : 
-// "638744a6b56a7acb2cf61846"
-// session
-// : 
-// "63971a56d89b2cc7321ba46b"
-// sessionPerDay
-// : 
-// 5
-// squad
-// : 
-// "637f41661b7a54b494e625d5"
-setLoading(true)
-    try{
-      const res= await startChallenge({challenge:id,learner:'63738c435aaa893eecc9dbc1'})
-      setExamStart(res?.data)
-      setLoading(false)
-    }catch(er){
-      console.log(er)
+  const handleClick = async () => {
+    //   attemptedQuestions
+    // :
+    // 0
+    // challenge
+    // :
+    // "638f27e33e6076482ed85bf5"
+    // challengeResult
+    // :
+    // "638f29b33d478823d6734c7e"
+    // isExplanationSetPerQuestion
+    // :
+    // true
+    // isTimeSetPerQuestion
+    // :
+    // true
+    // learner
+    // :
+    // "63738c435aaa893eecc9dbc1"
+    // questionPerSession
+    // :
+    // 5
+    // season
+    // :
+    // "638744a6b56a7acb2cf61846"
+    // session
+    // :
+    // "63971a56d89b2cc7321ba46b"
+    // sessionPerDay
+    // :
+    // 5
+    // squad
+    // :
+    // "637f41661b7a54b494e625d5"
+    setLoading(true);
+    try {
+      const res = await startChallenge({
+        challenge: id,
+        learner: '63738c435aaa893eecc9dbc1',
+      });
+      setExamStart(res?.data);
+      setLoading(false);
+    } catch (er) {
+      console.log(er);
     }
-  }
+  };
 
-  useEffect(()=>{
-    if(challengeDescription){
-      if(query['challenge-type']=="SQUAD"){
-        if(challengeDescription.challengeDetails?.squads?.length){
-          let val=challengeDescription.challengeDetails?.squads?.find(item=>item?._id==challengeDescription?.squad)
-          setIndividualResult(val)
+  useEffect(() => {
+    if (challengeDescription) {
+      if (query['challenge-type'] == 'SQUAD') {
+        if (challengeDescription.challengeDetails?.squads?.length) {
+          let val = challengeDescription.challengeDetails?.squads?.find(
+            (item) => item?._id == challengeDescription?.squad
+          );
+          setIndividualResult(val);
         }
-      }else  if(query['challenge-type']=="INDIVIDUAL"){
-        let val=challengeDescription.challengeDetails?.learners?.find(item=>item?._id==challengeDescription?.learner)
-        setIndividualResult(val)
+      } else if (query['challenge-type'] == 'INDIVIDUAL') {
+        let val = challengeDescription.challengeDetails?.learners?.find(
+          (item) => item?._id == challengeDescription?.learner
+        );
+        setIndividualResult(val);
       }
     }
-  },[challengeDescription])
-console.log('individualResult',individualResult)
+  }, [challengeDescription]);
+  console.log('individualResult', individualResult);
   // stat === ''&&!questionsInfo?._id &&isLoading
   return (
     <div>
-      <div className='detail__card-wrapper'>
+      <div className='detail__card-wrapper width-100'>
         <div className='row'>
-          <div className='col-6'>
+          <div className='col-12 col-lg-6'>
             <div
               className='detail__card-wrapper-left'
               style={{
@@ -159,63 +206,127 @@ console.log('individualResult',individualResult)
                 backgroundSize: 'cover',
               }}
             >
-              {/* <img src={ExamDetailBackground.default} /> */}
               <div className='team__info__image-des'>
-                <div className='text-center'>
-                  <div className='team__info--image team__info--our-team'>
-                    <CuteMonsters.default />
-                  </div>
-                  <p className='team__info--name'>Roasters</p>
-                  <div className='team__info__member-wrapper'>
-                    <MembersAvatar
-                      total={21}
-                      max={4}
-                      team={[1, 2, 3, 4, 5, 5, 5, 5]}
+                <div className='text-center max-width'>
+                  <div
+                    className={
+                      query['challenge-type'] === 'SQUAD'
+                        ? 'team__info--image'
+                        : 'team__info-individual'
+                    }
+                    onClick={() => {
+                      teamDetailInfomation('our__team', yourTeam);
+                    }}
+                  >
+                    <img
+                      className={
+                        query['challenge-type'] === 'SQUAD'
+                          ? 'team__info-logo-image'
+                          : 'team__info-individual-logo-image'
+                      }
+                      src={yourTeam?.imageUrl || yourTeam?.profilePic}
+                      alt='no'
                     />
                   </div>
+                  <p className='team__info--name'>
+                    {yourTeam?.name || yourTeam?.fullName}
+                  </p>
+                  {query['challenge-type'] === 'SQUAD' && (
+                    <div className='team__info__member-wrapper justify-content-center'>
+                      <MembersAvatar
+                        total={yourTeam?.learners?.length}
+                        max={4}
+                        team={yourTeam?.learners}
+                        className='justify-content-center'
+                      />
+                    </div>
+                  )}
                   <div className='team__info__points-wrapper'>
-                    <p className='mb-0 team__info__points-text'>
+                    <p className='mb-0 team__info__points-text d-flex justify-content-center align-items-center'>
                       <img
                         className='team__info__points-img'
                         src={Points.default}
                       />
-                      130 points
+                      {yourTeam?.pointsEarned} points
                     </p>
                   </div>
                 </div>
-                <div className='text-center'>
-                  <div className='team__info--image team__info--opponent-team'>
-                    <CuteMonsters.default />
-                  </div>
-                  <p className='team__info--name'>Roasters</p>
 
-                  <div className='team__info__member-wrapper'>
-                    <MembersAvatar
-                      total={21}
-                      max={4}
-                      team={[1, 2, 3, 4, 5, 5, 5, 5]}
-                    />
-                  </div>
-                  <div className='team__info__points-wrapper'>
-                    <p className='mb-0 team__info__points-text'>
-                      <img
-                        className='team__info__points-img'
-                        src={Points.default}
-                      />
-                      130 points
-                    </p>
-                  </div>
-                </div>
+                {opponentTeam?.length > 0 && (
+                  <ChallengeDetailSlider>
+                    {opponentTeam?.map((opponent) => (
+                      <div
+                        className='opponent-wrapper-slick'
+                        key={opponent?._id}
+                      >
+                        <div className='opponent_wrapper-slick d-flex flex-column justify-content-center align-items-center'>
+                          {/* <div> */}
+                          <div
+                            className={
+                              query['challenge-type'] === 'SQUAD'
+                                ? 'team__info--image'
+                                : 'team__info-individual'
+                            }
+                            onClick={() => {
+                              teamDetailInfomation('opponent__team', opponent);
+                            }}
+                          >
+                            <img
+                              className={
+                                query['challenge-type'] === 'SQUAD'
+                                  ? 'team__info-logo-image'
+                                  : 'team__info-individual-logo-image'
+                              }
+                              src={opponent?.imageUrl || opponent?.profilePic}
+                              alt='no'
+                            />
+                          </div>
+                          <p className='team__info--name text-center'>
+                            {opponent?.name || opponent?.fullName}
+                          </p>
+                          {/* </div> */}
+
+                          {query['challenge-type'] === 'SQUAD' && (
+                            <div className='team__info__member-wrapper'>
+                              <MembersAvatar
+                                total={opponent?.learners?.length}
+                                max={4}
+                                team={opponent?.learners}
+                              />
+                            </div>
+                          )}
+                          <div
+                            className={
+                              query['challenge-type'] === 'SQUAD'
+                                ? 'team__info__points-wrapper'
+                                : ''
+                            }
+                          >
+                            <p className='mb-0 team__info__points-text text-center justify-content-center d-flex align-items-center'>
+                              <img
+                                className='team__info__points-img'
+                                src={Points.default}
+                              />
+                              {opponent?.pointsEarned} points
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </ChallengeDetailSlider>
+                )}
               </div>
             </div>
           </div>
           <div
-            className={`col-6 ${
-              start ? 'detail__card-between' : 'detail__card-center'
+            className={`col-12  col-lg-6 ${
+              query.exam_type === 'TODAYSTEST'
+                ? 'detail__card-between'
+                : 'detail__card-center'
             }`}
           >
             <div>
-              <div className='detail__card__header'>
+              <div className='detail__card__header mt-lg-0 mt-sm-5'>
                 <h4 className='detail__card__header-heading mb-0'>
                   Challenge in detail
                 </h4>
@@ -230,7 +341,6 @@ console.log('individualResult',individualResult)
                 </h3>
                 {/* points */}
                 <div className='detail__card__body-points'>
-                  {/* {[1, 2, 2]?.map((value) => ( */}
                   <div className='wrapper'>
                     <span>
                       <img
@@ -242,7 +352,6 @@ console.log('individualResult',individualResult)
                       {challengeDescription?.challengeDetails?.description}
                     </p>
                   </div>
-                  {/* ))} */}
                 </div>
               </div>
             </div>
@@ -264,25 +373,35 @@ console.log('individualResult',individualResult)
             )}
             <div className='button'>
               {/* <NavLink to='/start-challenge-exam/:id'> */}
-                <CustomButton
-                  disabled={!start}
-                  disabledText={'Yet to start'}
-                  text={(stat === ''&&!questionsInfo?._id &&isLoading)?<WaitingLoader/>:'Start Challenge'}
-                  handleClick={handleClick}
-                  
-                />
+              <CustomButton
+                disabled={query.exam_type === 'TODAYSTEST' ? false : true}
+                disabledText={'Yet to start'}
+                text={
+                  stat === '' && !questionsInfo?._id && isLoading ? (
+                    <WaitingLoader />
+                  ) : (
+                    'Start Challenge'
+                  )
+                }
+                handleClick={handleClick}
+              />
               {/* </NavLink> */}
             </div>
           </div>
         </div>
       </div>
-      <TeamDetailModal
-        modalStatus={modalStatus}
-        handleClose={() => setModalStatus(false)}
-      />
+      {query['challenge-type'] === 'SQUAD' ? (
+        <TeamDetailModal
+          modalStatus={modalStatus}
+          handleClose={() => setModalStatus(false)}
+          teamBgColor={teamType}
+          teamDetails={teamDetails}
+        />
+      ) : (
+        ''
+      )}
     </div>
-    
   );
 };
 
-export default DetailCard;
+export default memo(DetailCard);

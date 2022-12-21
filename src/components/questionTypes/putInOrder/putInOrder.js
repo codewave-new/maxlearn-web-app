@@ -8,7 +8,7 @@ import { CardBody, Input } from 'reactstrap';
 import { CheckBox } from '@mui/icons-material';
 import quesImage from '../../../assets/Images/question/Rectangle-2.png';
 import { renderText } from '../../../utility/helper';
-import { OptionWrapper } from './OptionWrapper';
+import { OptionWrapper } from './optionWrapper';
 
 export const PutInOrder = ({
   questionInfo,

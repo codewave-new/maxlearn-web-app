@@ -17,7 +17,7 @@ const ExamDetails = () => {
     >
       <Navbar />
       <div className='detail__card__center '>
-        <DetailCard start={true} />
+        <DetailCard start={false} />
       </div>
       <Footer />
     </div>
