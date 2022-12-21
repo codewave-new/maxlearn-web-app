@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {
   challengesCompletionBg,
   CloseButton,
@@ -10,120 +10,65 @@ import {
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import ChallengesAccoridan from '../../components/Common/CustomAccordian/ChallengesAccoridan';
 import TeamMembersDetail from '../../components/Questions/TeamMembersDetail';
+import { Link, NavLink,useSearchParams,useParams,useNavigate,createSearchParams } from 'react-router-dom';
+import { challengeIndividualScoreDetails, challengeSquadScoreDetails } from '../../services/challenges';
+import { ResultIndividual } from '../../components/Challenges/result_individual';
+import { ResultSquad } from '../../components/Challenges/result_squad';
 
 const ChallengesCompleted = () => {
-  return (
-    <div className='completion__wrapper'>
-      <div
-        className='completion__content'
-        style={{
-          backgroundImage: `url(${challengesCompletionBg.default})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-        }}
-      >
-        <div className='row content__padding'>
-          <div className='col-5'>
-            <div className='completion__content--note'>
-              <h5 className='completion__content--welcomenote'>Hi Tessa,</h5>
-              <p className='completion__content--thanknote'>
-                Thank you for taking part in the challenge
-              </p>
-            </div>
-            <div
-              className='completion__points-earned'
-              style={{
-                backgroundImage: `url(${PointsEarnedImage.default})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-              }}
-            >
-              <div className='d-flex justify-content-between'>
-                <div>
-                  <h4 className='completion__points--text'>
-                    Congrats!! Great achievement
-                  </h4>
-                  <p className='completion__points--myscore'>You have earned</p>
-                  <strong className='completion__points--points'>350</strong>
-                  <span className='completion__points--myscore'>Points</span>
-                </div>
-                <div>
-                  <Gem.default />
-                </div>
-              </div>
+  const learnerId = '63738c435aaa893eecc9dbc1';
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  let challengeType=searchParams.get('challenge-type')
+  const { id } = useParams();
 
-              <div className='completion__leading--info'>
-                <img className='leading__team--logo' src={Points.default} />
-                Hei.. team <strong>Roaster</strong> are leading in this
-                challenge
-                <div className='leading__stars'>
-                  <Stars.default />
-                </div>
-                {/* <img className='leading__stars' src={Stars.default}/> */}
-              </div>
-            </div>
-            <div>
-              <h3 className='opponents__list'>Your opponents score details</h3>
-              <ChallengesAccoridan />
-              <ChallengesAccoridan />
-              <ChallengesAccoridan />
-            </div>
-          </div>
-          <div className='col-7 score__details__section'>
-            <div className='score__card__wrapper'>
-              <div className='score__card__header'>
-                <h4 className='score__card-text'>Your squad’s score details</h4>
-                <div className='accordian__wrapper'>
-                  <div className='accordian__team__detail'>
-                    <div className='accordian__team__detail__logo'>
-                      <img
-                        className='accordian__team__logo--image'
-                        src={Points.default}
-                      />
-                      {/* <CuteMonsters.default/> */}
-                    </div>
-                    <h4 className='accordian__team--name mb-0'>Monsters</h4>
-                  </div>
-                  <div className='accordian__team__points__detail'>
-                    <img
-                      className='team__detail__points--image'
-                      src={Points.default}
-                    />
-                    <h4 className='team__detail__points mb-0'>100 points</h4>
-                  </div>
-                </div>
-              </div>
-              <div className='member__detail__score'>
-                {[1, 2, 3, 3, 3, 1, 1]?.map((val) => (
-                  <TeamMembersDetail className='mb-22' />
-                ))}
-              </div>
-            </div>
-            <div className='report__alert'>
-              <ErrorOutlineIcon />
-              <p className='mb-0'>
-                We will publish the challenge results once both squads have
-                completed their challenges.
-              </p>
-            </div>
-          </div>
-        </div>
-        <button className='completion__close-btn'>
-          <CloseButton.default />
-        </button>
-        <div className='completion__footer '>
-          <div className='d-flex justify-content-between align-items-center footer__wrapper'>
-            <p className='mb-0'>Lorem ipsm dolor sit amet consecture</p>
-            <div>
-              <button className='challenge__outline-btn '>View my leaderboard</button>
-              <button className='challenge__filled-btn'>Explore challenges</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  const [resultDetails, setResultDetails] = useState([]);
+  const [submitCliked, setSubmitCliked] = useState(false);
+  const [modalStatus, setModalStatus] = useState(true);
+  const [individualResult, setIndividualResult] = useState({})
+
+
+
+  
+  useEffect(() => {
+    getChallengeResultDetailss(id,challengeType)
+  }, [id]);
+  const getChallengeResultDetailss=async(id,type)=>{
+  if(type=="INDIVIDUAL"){
+    const res =await challengeIndividualScoreDetails(learnerId,id)
+    setResultDetails(res?.data)
+    if(res?.data?.learners?.length){
+      let val=res?.data?.learners?.find(item=>item?._id==res?.data?.learner)
+      setIndividualResult(val)  
+    }
+  }else if(type=="SQUAD"){
+    const res =await challengeSquadScoreDetails(learnerId,id)
+    setResultDetails(res?.data)
+    if(res?.data?.challengeDetails?.squads?.length){
+      let val=res?.data?.challengeDetails?.squads?.find(item=>item?._id==res?.data?.squad)
+      setIndividualResult(val)  
+    }
+  }
+}
+  return (
+    challengeType=="SQUAD"?
+    <ResultSquad 
+    setSubmitCliked={setSubmitCliked}
+    submitCliked={submitCliked}
+    individualResult={individualResult}
+    resultDetails={resultDetails}
+    member={individualResult?.learners?.find(item=>item?._id==resultDetails?.learner)}
+    opponentSquads={resultDetails?.challengeDetails?.squads?.filter(item=>item?._id!==resultDetails?.squad)}
+    />
+  
+    :
+    <ResultIndividual
+    setSubmitCliked={setSubmitCliked}
+    submitCliked={submitCliked}
+    individualResult={individualResult}
+    resultDetails={resultDetails}
+    opponents={resultDetails?.learners?.filter(item=>item?._id!==individualResult?._id)}
+    />
   );
 };
 
