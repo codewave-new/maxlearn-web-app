@@ -8,7 +8,7 @@ export const DetailComponent = ({ children }) => {
   return <>{children}</>;
 };
 
-const QuestionCard = ({
+const  QuestionCard = ({
   leftClassName = '',
   rightClassName = '',
   className = '',
@@ -17,8 +17,8 @@ const QuestionCard = ({
   return (
     <div className={`detail__card-wrapper ${className}`}>
       <div className='row'>
-        <div className={`col-6 ${leftClassName}`}>{children[0]}</div>
-        <div className={`col-6 pl-30 ${rightClassName}`}>{children[1]}</div>
+        <div className={`col-12 col-lg-6 ${leftClassName}`}>{children[0]}</div>
+        <div className={`col-12 col-lg-6 pl-30 ${rightClassName}`}>{children[1]}</div>
       </div>
     </div>
   );

@@ -13,9 +13,15 @@
 .your__squad-subtext {
   @include font(#212121, 12px, 400, 0, 12px);
 }
-.squad_challenge-header{
+.squad_challenge-header {
   margin-top: 30px;
   margin-bottom: 15px;
+}
+.points__earned-image {
+  width: 15px;
+  height: 15px;
+  object-fit: cover;
+  margin-right: 2px;
 }
 .table_btn {
   background-color: transparent;
@@ -29,8 +35,8 @@
   padding: 24px 20px;
   margin-bottom: 16px;
 }
-.your_Squad_img-wrapper{
-text-align: left;
+.your_Squad_img-wrapper {
+  text-align: left;
 }
 .your__squad-image {
   height: 50px;
@@ -88,6 +94,11 @@ text-align: left;
   border-radius: 20px;
   min-height: 200px;
   padding: 1px 20px 1px 20px;
+  max-width: 300px;
+  margin: auto;
+  @include media('>phone', '<=tablet') {
+  margin-bottom: 20px;
+  }
 }
 .squad__logo-container {
   margin-top: 40px;

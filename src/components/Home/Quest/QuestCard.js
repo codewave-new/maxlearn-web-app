@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { TimeLogo } from '../../../assets';
+import { Points, TimeLogo, ToDoCalendarIcon } from '../../../assets';
 import GroupAvatars from '../../UI/GroupAvatars';
 import moment from 'moment';
 import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
-const QuestCard = ({ className, data, type, status }) => {
+const QuestCard = ({ className, data, type, status, challengeType }) => {
   const endTime = moment('24:00:00', 'HH:mm:ss');
   const duration = moment.duration(endTime.diff(moment()));
 
@@ -14,17 +14,50 @@ const QuestCard = ({ className, data, type, status }) => {
       <div className='max-home__questcard-container'>
         <div className='quest-time-details'>
           <div className='d-flex quest-time-details-text justify-content-between'>
-            <h6>
-              <TimeLogo.default />{' '}
-              {`${parseInt(duration.asHours())} hours ${
-                parseInt(duration.asMinutes()) % 60
-              } minutes `}
-            </h6>
-            <h5>
-              Expire in:
-              <strong>{moment(data?.endDate).diff(moment(), 'days')}</strong>
-              <small>days</small>
-            </h5>
+            {status === 'COMPLETED' || data?.status === 'COMPLETED' ? (
+              <h6 className='d-flex align-items-center'>
+                <ToDoCalendarIcon.default /> &nbsp;
+                {` Closed on ${moment(data?.endDate).format('MM/DD/YYYY')}`}
+              </h6>
+            ) : challengeType === 'upcoming' ? (
+              <h6 className='d-flex align-items-center'>
+                <ToDoCalendarIcon.default /> &nbsp;
+                {` Starts on ${moment(data?.startDate).format('MM/DD/YYYY')}`}
+              </h6>
+            ) : (
+              <h6>
+                <TimeLogo.default />{' '}
+                {`${parseInt(duration.asHours())} hours ${
+                  parseInt(duration.asMinutes()) % 60
+                } minutes `}
+              </h6>
+            )}
+            {status === 'COMPLETED' || data?.status === 'COMPLETED' ? (
+              <h5 className='text-end'>
+                Your squad earned:
+                <br />
+                <img
+                  className='points__earned-image'
+                  src={Points.default}
+                />{' '}
+                <strong>{data?.pointsEarned}</strong>
+                <small>points</small>
+              </h5>
+            ) : challengeType === 'upcoming' ? (
+              <h6 className='d-flex align-items-center'>
+                Schedule for:
+                <strong>
+                  {moment(data?.startDate).diff(moment(), 'days')}
+                </strong>
+                <small>days</small>
+              </h6>
+            ) : (
+              <h5>
+                Expire in:
+                <strong>{moment(data?.endDate).diff(moment(), 'days')}</strong>
+                <small>days</small>
+              </h5>
+            )}
           </div>
           <h3>{data?.name}</h3>
           <div className='quest-home-content-container d-flex justify-content-between'>

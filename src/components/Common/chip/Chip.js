@@ -3,6 +3,7 @@ import React from 'react';
 const Chip = ({ status }) => {
     
   const chipDescription = {
+    'YET-TO-START':{title: `Yet to start`, color: 'notstarted__color'},
     'NOT-STARTED': { title: `let's start`, color: 'notstarted__color' },
     'IN-PROGRESS': { title: `In progress`, color: 'inprogress__color' },
     COMPLETED: { title: `Completed`, color: 'completed__color' },

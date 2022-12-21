@@ -24,10 +24,10 @@
 }
 
 @media (min-width: 768px) {
-  .modal {
-    width: 40rem;
-    left: calc(50% - 20rem);
-  }
+  // .modal {
+  //   width: 40rem;
+  //   left: calc(50% - 20rem);
+  // }
 }
 
 @keyframes slide-down {
@@ -67,6 +67,10 @@
     margin: 2.625rem 0 0 0;
     overflow: scroll;
     height: 100vh;
+   
+    h4{
+      @include font(#212121, 16px, 400, 0, 17px) ;
+    }
     h5 {
       @include font($text-secondary-color, 16px, 700, 0, 17px);
     }

@@ -1,0 +1,358 @@
+.team {
+  height: 44px;
+  border-radius: 4px;
+}
+
+.team_name {
+  font-family: "Roboto";
+  position: relative;
+  top: -9px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.team_points {
+  font-family: "Roboto";
+  position: relative;
+  top: 8px;
+  left: -65px;
+  color: #dfa80c;
+  font-weight: 500;
+}
+
+.progress_bar {
+  width: 300px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 34px;
+}
+.progress_bar .bar {
+  height: 8px;
+}
+.progress_bar .bar .progress-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--bs-progress-bar-color);
+  text-align: center;
+  white-space: nowrap;
+  background-color: #3d908f;
+  transition: var(--bs-progress-bar-transition);
+}
+.progress_bar .progress_lable {
+  font-size: 10px;
+  position: relative;
+  top: -12px;
+  left: 33px;
+  float: right;
+}
+
+.close_btn {
+  position: absolute;
+  top: 1rem;
+  right: 6rem;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}
+
+.question_card {
+  margin-top: 50px;
+  margin-left: 150px;
+  width: 75%;
+  height: 68vh;
+  border-radius: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 0 12px 84px 0 rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+}
+
+.question_detail {
+  border-radius: 20px;
+  background-color: #f6f6f6;
+  margin-left: 24px;
+}
+
+.quest_image {
+  height: 260px;
+  width: 100%;
+}
+
+.in_chec .custom-control-label {
+  cursor: not-allowed;
+}
+
+.quest_check {
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+}
+
+.quest_ans {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+  color: #999999;
+}
+
+.quest_options {
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 500;
+  color: #212121;
+}
+
+.add_btnctprev {
+  width: 50%;
+  height: 50px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.add_btnctprev:hover {
+  width: 50%;
+  height: 50px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  border: none;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.app_subtn {
+  width: 100%;
+  margin-top: 50px;
+}
+
+.chaallenge_squad_bg {
+  width: 100%;
+  height: 120vh;
+  background-color: white;
+  margin-top: 50px;
+}
+
+.squaddetail_bg {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1670591170/Detailbg_ovnb0a.png);
+  width: 91%;
+  height: 103vh;
+  margin-left: 50px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.card_squad_detail {
+  height: 400px;
+  width: auto;
+  border-color: transparent;
+  border-radius: 8px;
+  background-color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.detail_header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 25px;
+  color: #212121;
+}
+
+.squad_img {
+  height: 50px;
+  width: 50px;
+}
+
+.diamond_size {
+  height: 18px;
+  width: 18px;
+}
+
+.squad_name {
+  font-family: "Roboto";
+  position: relative;
+  top: 1px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #212121;
+}
+
+.squad_points {
+  color: #e7a006;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.diamond_list_size {
+  height: 14px;
+  width: 14px;
+}
+
+.listing_points {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.listing_name {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.nudge_btn {
+  border-radius: 6px;
+  background: linear-gradient(167.68deg, #54afae 0%, #2a7776 100%);
+  height: 32px;
+  color: white;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  text-align: right;
+  border: none;
+}
+
+.nudge_btn:hover {
+  border-radius: 6px;
+  background: linear-gradient(167.68deg, #54afae 0%, #2a7776 100%);
+  height: 32px;
+  color: white;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0;
+  text-align: right;
+  border: none;
+}
+
+.user_name {
+  color: #9d9d9d;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.greet_msg {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.points_bg {
+  background-image: url(https://res.cloudinary.com/dysdy7hjr/image/upload/v1670754276/bg_card_ouczpz.svg);
+  height: 200px;
+  border: none;
+  width: 85%;
+}
+
+.points_card_header {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.33px;
+  margin-left: 39px;
+  margin-top: 32px;
+}
+
+.points_sm_txt {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0.22px;
+  line-height: 12px;
+  margin-left: 39px;
+}
+
+.points {
+  font-size: 30px;
+  font-weight: 900;
+  color: black;
+  margin-left: 39px;
+}
+.points .txt {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 0.25px;
+}
+
+.points_diamond {
+  position: relative;
+  top: 55px;
+  left: -45px;
+}
+
+.points_footer {
+  border-radius: 0 0 10px 10px;
+  color: black;
+  background-color: #ffb147;
+}
+.points_footer .points_txt {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 12px;
+  letter-spacing: 0.25px;
+}
+
+.pic_sm {
+  height: 40px;
+  width: 40px;
+}
+
+.list_bd {
+  border-radius: 8px;
+  background-color: #f0f1f2;
+}
+
+.header_txt {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.explore_chg {
+  border-radius: 10px;
+  background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+  color: white;
+  width: 310px;
+  padding: 12px;
+  border: none;
+}
+
+.leaderboard_chg {
+  width: 310px;
+  border: 1px solid #ff6633;
+  border-radius: 10px;
+  padding: 12px;
+  color: #ff6633;
+  background-color: #f8f8f8;
+}
+
+.leaderboard_chg:hover {
+  width: 310px;
+  border: 1px solid #ff6633;
+  border-radius: 10px;
+  padding: 12px;
+  color: #ff6633;
+  background-color: #f8f8f8;
+}
+
+.detail_close {
+  position: absolute;
+  top: 4rem;
+  right: 5rem;
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+}/*# sourceMappingURL=challengs-question.css.map */
