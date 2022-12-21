@@ -18,7 +18,7 @@ const TeamDetailModal = ({
 }) => {
   return (
     <Modal open={modalStatus} close={handleClose}>
-      <QuestionCard className={'width-60'}>
+      <QuestionCard className={'width-60 detail_team_margin'}>
         <ThumNailComponent className='col-lg-12'>
           <div className={teamBgColor}>
             <div className='team__logo'>
