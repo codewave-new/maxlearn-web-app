@@ -1,8 +1,12 @@
 .ml-edit-user-details {
   width: 100% !important;
   right: 0 !important;
+  top: 0 !important;
   left: auto !important;
   backdrop-filter: blur(2px);
+  z-index: 9999 !important;
+  background-color: transparent !important;
+  padding: 0 !important;
 
   &__modal-dialog {
     margin: 0;
@@ -45,6 +49,10 @@
   &__modal-body {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    .modal__body-header {
+      @include font(#212121, 16px, 700, 0, 17px);
+      margin-bottom: 20px;
+    }
   }
 
   &__modal-footer {
@@ -81,6 +89,7 @@
     font-size: 16px;
     letter-spacing: 0;
     line-height: 16px;
+
     margin: 0;
     margin-bottom: 0.875rem;
   }
@@ -105,8 +114,4 @@
   .ml-form-inputs:focus {
     box-shadow: none;
   }
-}
-.learning-modal-title {
-  @include font(#212121, 16px, bold, 0, 19px);
-  margin-bottom: 22px;
 }

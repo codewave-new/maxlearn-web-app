@@ -102,7 +102,7 @@ const FlashCard = () => {
                   <h5>{value.detail1}</h5>
                   <h3 className='mt-4'>{value.heading2}</h3>
                   <h5>{value.detail2}</h5>
-                  <div className='swiper_pagination'>
+                  <div className='swiper_pagination1'>
                     <span className='page_index'>
                       {i + 1} / {data.length}
                       {console.log('laa', value.i)}

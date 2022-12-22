@@ -7,7 +7,6 @@ import ReactDOM from 'react-dom';
 
 
 const Backdrop = (props) => {
-  console.log(props);
   return <div className='backdrop1' onClick={props.onClose} />;
 };
 

@@ -1,0 +1,81 @@
+.sidebar__modal {
+  width: 100% !important;
+  right: 0 !important;
+  left: auto !important;
+  backdrop-filter: blur(2px);
+
+  &__modal-dialog {
+    margin: 0;
+    position: fixed;
+    right: 0;
+    width: 29.375rem;
+    min-height: 100vh;
+
+    @include media('<=phone') {
+      width: 100% !important;
+      padding: 1.5rem !important;
+    }
+  }
+
+  &__modal-content {
+    min-height: 100vh;
+  }
+
+  &__modal-header {
+    padding: 2.5rem;
+    padding-bottom: 1.5rem;
+
+    .modal-title {
+      color: #212121;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 18px;
+    }
+
+    .btn-close {
+      width: 0.8rem !important;
+      height: 0.8rem !important;
+      color: #212121 !important;
+      opacity: 1;
+    }
+  }
+
+  &__modal-body {
+    padding: 2.5rem;
+    padding-bottom: 1.5rem;
+    .modal__infintescroll-wrapper {
+      height: calc(100vh - 200px);
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+    .modal__body-header {
+      @include font(#212121, 16px, 700, 0, 17px);
+      margin-bottom: 20px;
+    }
+  }
+
+  &__modal-footer {
+    padding: 0 2.5rem 1.8rem 2.5rem;
+    border-top: none !important;
+    justify-content: center;
+
+    .btn {
+      width: 100%;
+      border-radius: 4px;
+      background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+      padding: 1.375rem;
+
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 12px;
+    }
+  }
+}
+.infinite-scroll-component {
+  overflow-x: hidden !important;
+}
