@@ -1,6 +1,7 @@
 import http from '../../api/api';
 
-export const learnerId = '63738c435aaa893eecc9dbc1';
+// export const learnerId = '63738c435aaa893eecc9dbc1';
+export const learnerId = localStorage.getItem('userid');
 
 export const yourSquadListing = async () => {
   try {

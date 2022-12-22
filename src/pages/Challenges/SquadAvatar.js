@@ -11,7 +11,9 @@ const SquadAvatar = ({ data, yourSquad, opponentSquads }) => {
   };
 
   useEffect(() => {
-    const currentlearner = '63738c435aaa893eecc9dbc1';
+    // const currentlearner = '63738c435aaa893eecc9dbc1';
+    const currentlearner = localStorage.getItem('userid');
+    
     if (data?.challengeType == 'SQUAD') {
       segregation(data?.squadList, data?.mySquad);
     } else {
