@@ -65,10 +65,11 @@ const useCreateQuestCards = (certsAndQuestData) => {
                   <div className='quest-home__progress'>
                     <Chip
                       status={
-                        ele?.type === 'cert'
-                          ? ele?.certResults?.certStatus === 'finished' &&
+                        ele.type === 'cert' && ele.certResults
+                          ? ele.certResults.certStatus === 'finished' &&
                             'COMPLETED'
-                          : ele?.questResults?.status === 'in_progress' &&
+                          : ele.questResults &&
+                            ele.questResults.status === 'in_progress' &&
                             'IN-PROGRESS'
                       }
                     />
@@ -105,8 +106,8 @@ const QuestCertListing = () => {
 
   return (
     <>
-      <div className='row' style={{ minHeight: '100vh' }}>
-        {questCards}
+      <div className='' style={{ minHeight: '100vh' }}>
+        <div className='row'>{questCards}</div>
       </div>
       <button className='upcomming__todo-btn w-100' onClick={handleModalOpen}>
         <div>
