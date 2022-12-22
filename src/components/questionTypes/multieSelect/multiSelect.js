@@ -73,7 +73,7 @@ handleSelect={handleSelect}
       
       onClick={()=>setSubmitCliked(true)}>
 
-        {  multi?(selectedOption?.length>=2?'Submit answer':"Next question"):
+        {multi?(selectedOption?.length>=1?'Submit answer':"Next question"):
               (selectedOption?.length==1?'Submit answer':"Next question")}
       </Button>
     </a>
