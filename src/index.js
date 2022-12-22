@@ -9,6 +9,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import 'swiper/css/bundle';
 import 'react-circular-progressbar/dist/styles.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Redux Imports
 import { Store } from './state';
@@ -27,7 +28,7 @@ root.render(
     <Provider store={Store}>
       <NavigationRoutes />
       <ToastContainer
-          position='bottom-center'
+          position='top-right'
           autoClose={2500}
           hideProgressBar={true}
           newestOnTop={false}
@@ -37,7 +38,7 @@ root.render(
           // pauseOnFocusLoss
           draggable
           // pauseOnHover
-          theme='light'
+          theme='dark'
         />
     </Provider>
   </BrowserRouter>

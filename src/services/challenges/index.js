@@ -56,6 +56,7 @@ export const startChallenge = async (payload) => {
     const response = await http.post(`/api/app/challenges/start-challenge`,payload);
     return response.data;
   } catch (error) {
+    console.log(error.response);
     return error.response;
   }
 };

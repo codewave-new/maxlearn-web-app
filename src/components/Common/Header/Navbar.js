@@ -196,13 +196,13 @@ const Navbar = () => {
                   </li>
                   <li className='max__nav-user'>
                     <div className='max__nav-user-container'>
-                      <buttonsetProfileDropDown
+                      <button
                         onClick={() => {
                           setProfileDropDown(true);
                         }}
                       >
                         <HomeUserLogo.default />
-                      </buttonsetProfileDropDown>
+                      </button>
                     </div>
                   </li>
                 </ul>
