@@ -19,6 +19,7 @@ import {
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
 import { WaitingLoader } from '../loader/loader';
+import { toast } from 'react-toastify';
 
 const DetailCard = ({ start }) => {
   const navigate = useNavigate();
@@ -166,8 +167,12 @@ const DetailCard = ({ start }) => {
         challenge: id,
         learner: '63738c435aaa893eecc9dbc1',
       });
-      setExamStart(res?.data);
-      setLoading(false);
+      if(res.statusCode===200){
+        setExamStart(res?.data);
+        setLoading(false);
+      }else if(res?.data?.statusCode===409){
+        toast.error("Challenge is completed")
+      }
     } catch (er) {
       console.log(er);
     }

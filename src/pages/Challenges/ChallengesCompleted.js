@@ -16,7 +16,7 @@ import { ResultIndividual } from '../../components/Challenges/result_individual'
 import { ResultSquad } from '../../components/Challenges/result_squad';
 
 const ChallengesCompleted = () => {
-  const learnerId = '63738c435aaa893eecc9dbc1';
+  const learnerId = localStorage.getItem('userid');
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   let challengeType=searchParams.get('challenge-type')
