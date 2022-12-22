@@ -29,17 +29,17 @@
   line-height: $lineHeight;
 }
 
-@mixin  displayCenter {
+@mixin displayCenter {
   display: flex;
   justify-content: center;
 }
 
-@mixin  displayVerticalCenter {
+@mixin displayVerticalCenter {
   display: flex;
   align-items: center;
 }
 
-@mixin displayBothCenter{
+@mixin displayBothCenter {
   display: flex;
   justify-content: center;
   align-items: center;

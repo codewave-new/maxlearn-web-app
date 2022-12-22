@@ -1,11 +1,12 @@
 import React from 'react';
 
-const ProgressBar = ({ bgcolor, progress, height }) => {
+const ProgressBar = ({ bgcolor, progress, height, marginTop, className }) => {
   const Parentdiv = {
     height: height,
     width: '100%',
     backgroundColor: 'whitesmoke',
     borderRadius: 40,
+    marginTop: marginTop,
   };
 
   const Childdiv = {
@@ -24,7 +25,7 @@ const ProgressBar = ({ bgcolor, progress, height }) => {
         <div style={Childdiv}></div>
       </div>
       <div
-        className='ps-2 progressbar__learn-text'
+        className={`ps-2 ${className}`}
         style={progresstext}
       >{`${progress}%`}</div>
     </div>
