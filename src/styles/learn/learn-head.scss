@@ -39,8 +39,38 @@
   .mySwiperTopics {
     height: 100%;
   }
+
   .silder-topics-container {
-    margin: 1.25rem 0 0 0;
+    margin: 1.25rem 0px 0 0px;
+    .row {
+      // @include displayBothCenter();
+      display: flex;
+      align-items: center;
+    }
+    .icon_column {
+      @include displayBothCenter();
+      @include card(100%, 3%, 20px, #f1f1f1);
+      // background-color: #f1f1f1;
+      // border-radius: 20px;
+      // height: 100%;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .swiper-button-disabled {
+      color: rgb(154 153 153);
+      &:hover {
+        cursor: context-menu;
+      }
+    }
+  }
+  .prev {
+    color: black;
+    font-weight: bold;
+  }
+  .next {
+    color: black;
+    font-weight: bold;
   }
   .max-learn__topics-card {
     @include card(100%, 100%, 10px, #f8f8f8);
@@ -50,7 +80,7 @@
       overflow: hidden;
     }
     .topic-content {
-      @include card(100%, 100%, 6px, $white);
+      @include card(auto, 100%, 6px, $white);
       p {
         padding: 7px 12px;
         margin: 0;

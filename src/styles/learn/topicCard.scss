@@ -1,0 +1,12 @@
+.topic-card-wrapper {
+  border-radius: 8px;
+  background-color: #ffffff;
+  padding: 15px;
+  .card-name {
+    @include font(#212121, 16px, bold, 0, 22px);
+  }
+  .card-number {
+    @include font(#707070, 14px, bold, 0, 16px);
+    padding-top: 15px;
+  }
+}
