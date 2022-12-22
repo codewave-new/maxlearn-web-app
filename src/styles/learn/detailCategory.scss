@@ -1,3 +1,5 @@
+@import '../responsive/breakpoints.scss';
+
 //Detail category
 .category_detail_wrapper {
   .detail_left_col {
@@ -30,6 +32,11 @@
       background-color: #f3f3f3;
       padding: 13px 13px;
       // margin-left: 15px;
+    }
+    .right_col_wrapper {
+      @include media('>=phone', '<=small-desktop') {
+        padding-left: 6px;
+      }
     }
     .topic_wrapper {
       display: flex;

@@ -18,7 +18,7 @@ const CategorySubjects = () => {
                     width='24px'
                   ></img>
                 </div>
-                <div className='col-md-auto col-sm-auto col-auto'>
+                <div className='col-md-auto col-sm-auto col-auto right_col_wrapper'>
                   <div className='topic_wrapper'>
                     <div className='topic_wrapper__total'>{el.topic}</div>
                   </div>

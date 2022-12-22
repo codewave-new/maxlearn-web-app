@@ -1,16 +1,16 @@
 import React from 'react';
 import { LearnBadge, LearnUsers } from '../../assets';
 
-const TopicsCard = () => {
+const TopicsCard = ({ data }) => {
   return (
     <div className='max-learn__topics-card'>
-      <h5>Providing Exceptional Customer Service</h5>
+      <h5>{data.name}</h5>
       <div className='topic-content d-flex justify-content-between'>
         <p>
-          <LearnBadge.default /> <small>Level -</small> Awareness
+          <LearnBadge.default /> <small>Level -</small> {data.level}
         </p>
         <p>
-          <LearnUsers.default /> <small>9</small> People
+          <LearnUsers.default /> <small>{data.people}</small> People
         </p>
       </div>
     </div>

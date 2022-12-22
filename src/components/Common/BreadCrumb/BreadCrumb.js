@@ -17,19 +17,19 @@ const BreadCrumb = ({ title, id }) => {
       inActive: 'list_bread__key1',
     },
     {
-      path: '/learn/category-list/detail',
+      path: '/learn/detail',
       title: 'Category detail page',
       active: 'list_bread__key2',
       inActive: 'list_bread__key1',
     },
     {
-      path: '/learn/category-list/detail/subject-detail',
+      path: '/learn/subject-detail',
       title: 'Subject detail page',
       active: 'list_bread__key2',
       inActive: 'list_bread__key1',
     },
     {
-      path: '/learn/category-list/detail/subject-detail/topic-detail',
+      path: '/learn/topic-detail',
       title: 'Topic detail page',
       active: 'list_bread__key2',
       inActive: 'list_bread__key1',

@@ -32,7 +32,7 @@ const TopicCategoryDetail = () => {
             <div className='subject_description'>
               Decks under Compliance and m.. (20)
             </div>
-            <Link to='/flash-card'>
+            <Link to='/learn/flash-card'>
               <div className='row'>
                 {TopicCardData.map((data, i) => {
                   return (
