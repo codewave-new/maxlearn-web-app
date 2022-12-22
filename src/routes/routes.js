@@ -22,7 +22,12 @@ import ChallengesQuestions from '../pages/questions/ChallengesQuestions';
 import ChallengesCompleted from '../pages/Challenges/ChallengesCompleted';
 import ChallengeSquadDetails from '../pages/questions/ChallengeSquadDetails';
 import SquadDetails from '../components/Profile/SquadDetails';
+import CategoryListing from '../pages/LearnCategory/CategoryListing';
+import CategoryDetail from '../pages/LearnCategory/CategoryDetail';
+import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
 // import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
+import TopicDetail from '../pages/LearnCategory/TopicDetail';
+import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
 
 export const appRoutes = [
   {
@@ -70,6 +75,26 @@ export const appRoutes = [
       {
         path: '/learn',
         element: <Learn />,
+      },
+      {
+        path: '/learn/category-list',
+        element: <CategoryListing />,
+      },
+      {
+        path: '/learn/detail',
+        element: <CategoryDetail />,
+      },
+      {
+        path: '/learn/subject-detail',
+        element: <SubjectDetail />,
+      },
+      {
+        path: '/learn/topic-detail',
+        element: <TopicDetail />,
+      },
+      {
+        path: '/learn/flash-card',
+        element: <CategoryFlashCard />,
       },
       {
         path: '/help',

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FormGroup, FormLabel } from 'react-bootstrap';
@@ -6,26 +6,32 @@ import { Formik, Field, Form } from 'formik';
 import Select from 'react-select';
 
 const selectStyles = {
-  container: (baseStyles) => ({
-    ...baseStyles,
-    paddingRight: '0 !important',
-    paddingBottom: '0.5rem !important',
-  }),
-  control: (baseStyles) => ({
-    ...baseStyles,
-    border: 'none',
-  }),
-  valueContainer: (baseStyles) => ({
-    ...baseStyles,
-    paddingLeft: '0 !important',
-  }),
+  container: (baseStyles) => {
+    return {
+      ...baseStyles,
+      paddingRight: '0 !important',
+      paddingBottom: '0.5rem !important',
+    };
+  },
+  control: (baseStyles) => {
+    return {
+      ...baseStyles,
+      border: 'none',
+    };
+  },
+  valueContainer: (baseStyles) => {
+    return {
+      ...baseStyles,
+      paddingLeft: '0 !important',
+    };
+  },
 };
 
 const EditUserDetailsModal = (props) => {
   const { show, onHide } = props;
   const [countryCode, setCountryCode] = useState([]);
 
-  // export const getCountries = async () =>
+  //  const getCountries = async () =>
   // axios.get(`/countries/allCountries`, {
   //   headers: {
   //     "x-tenant-id": x_tenant_id,
@@ -194,6 +200,7 @@ const EditUserDetailsModal = (props) => {
                   onChange={handleChange}
                   id='data-name'
                 />
+
                 {errors.title && touched.title ? (
                   <div className='form_error-message mt-25'>{errors.title}</div>
                 ) : null}

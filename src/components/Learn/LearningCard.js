@@ -1,16 +1,35 @@
 import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 
-const percentage = 66;
-const LearningCard = () => {
+// const percentage = 66;
+
+const LearningCard = ({ data, className }) => {
   return (
     <div className='max-learn__learning-card d-flex'>
-      <CircularProgressbar value={percentage} text={`${percentage}%`} />
-      <div className='content'>
-        <p>
-          Level - <strong>Awareness</strong>
-        </p>
-        <h5 className='mt-1'>Anti-money Laundering</h5>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-2'>
+            <CircularProgressbar
+              value={data.percentage}
+              text={`${data.percentage}%`}
+              styles={buildStyles({
+                rotation: 0.85,
+                textSize: '20px',
+                textColor: '#212121',
+                pathColor: '#389F9E',
+                strokeLinecap: 'butt',
+              })}
+            />
+          </div>
+          <div className='col-10'>
+            <div className={`${className}`}>
+              <p>
+                Level - <strong>{data.level}</strong>
+              </p>
+              <h5>{data.title}</h5>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

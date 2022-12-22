@@ -86,10 +86,14 @@ body {
 @import './abstaracts/variable';
 @import './Challenges/challenges-completed.scss';
 @import './common/accordian.scss';
-@import "./modals/index.scss";
+@import './modals/index.scss';
 @import './common/chip.scss';
 @import './common/avatar.scss';
 @import './profile/your-squad.scss';
+@import './learn/modalLearningCard.scss';
+@import './learn/topicsModalCard.scss';
 @import './ranking/ranking.scss';
+@import './learn/detailCategory.scss';
+@import './learn/topicCard.scss';
+@import './learn/flashCard.scss';
 @import './common/modal/sidebar-modal.scss';
-

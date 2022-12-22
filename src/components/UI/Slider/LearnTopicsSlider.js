@@ -5,6 +5,29 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay, Mousewheel, Keyboard } from 'swiper';
 import TopicsCard from '../../Learn/TopicsCard';
 
+const data = [
+  {
+    name: 'Providing Exceptional Customer Service',
+    level: 'Awareness',
+    people: '9',
+  },
+  {
+    name: 'Providing Exceptional Customer Service',
+    level: 'Awareness',
+    people: '7',
+  },
+  {
+    name: 'Providing Exceptional Customer Service',
+    level: 'Awareness',
+    people: '9',
+  },
+  {
+    name: 'Providing Exceptional Customer Service',
+    level: 'Awareness',
+    people: '6',
+  },
+];
+
 const LearnTopicsSlider = () => {
   return (
     <>
@@ -22,26 +45,44 @@ const LearnTopicsSlider = () => {
         breakpoints={{
           640: {
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 5,
           },
           768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
+            slidesPerView: 1,
+            spaceBetween: 5,
           },
           1024: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          1280: {
             slidesPerView: 2,
-            spaceBetween: 50,
+            spaceBetween: 20,
           },
         }}
         modules={[Navigation, Autoplay, Mousewheel, Keyboard]}
         className='mySwiperTopics'
+        navigation={{
+          prevEl: '.prev',
+          nextEl: '.next',
+        }}
       >
-        <SwiperSlide>
+        {data.map((element, i) => {
+          return (
+            <>
+              <SwiperSlide key={i}>
+                <TopicsCard data={element} />
+              </SwiperSlide>
+            </>
+          );
+        })}
+
+        {/* <SwiperSlide>
           <TopicsCard />
         </SwiperSlide>
         <SwiperSlide>
           <TopicsCard />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );
