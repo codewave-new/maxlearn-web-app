@@ -11,7 +11,7 @@ import Footer from '../Common/Footer/Footer';
 import Header from '../Common/Header/Header';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate, useParams } from 'react-router-dom';
-import { learnerId, yourSquadDetails } from '../../services/profile';
+import { yourSquadDetails } from '../../services/profile';
 import SquadDetailChallenges from './SquadDetailChallenges';
 
 const SquadDetails = (props) => {
@@ -19,6 +19,7 @@ const SquadDetails = (props) => {
   const { id } = useParams();
   const [squadMemeberDetails, setSquadMemberDetails] = useState({});
   const [teamPoints, setTeamPoints] = useState();
+  const learnerId = localStorage.getItem('userid');
 
   useEffect(() => {
     squadInfomation();
