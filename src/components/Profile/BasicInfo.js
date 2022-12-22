@@ -1,15 +1,16 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import { BasicInfoEdit } from '../../assets';
 import EditUserDetailsModal from '../Modals/EditUserDetailsModal';
 
 const BasicInfo = () => {
+  const dummyUserId = '6399d070af314ab863dce89c';
   const [showEditUserDetailsForm, setShowEditUserDetailsForm] = useState(false);
 
   const handleEditUserDetailsForm = () => setShowEditUserDetailsForm(true);
   const closeModal = () => setShowEditUserDetailsForm(false);
 
   return (
-    <Fragment>
+    <>
       <div className='ml-pbi row'>
         <div className='ml-pbi__user-details col-12 col-md-6'>
           <h5 className='m-0 mb-3 basic-info-title'>
@@ -150,7 +151,7 @@ const BasicInfo = () => {
         show={showEditUserDetailsForm}
         onHide={closeModal}
       />
-    </Fragment>
+    </>
   );
 };
 

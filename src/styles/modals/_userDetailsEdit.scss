@@ -1,8 +1,19 @@
 .ml-edit-user-details {
+<<<<<<< HEAD
   width: 100% !important;
   right: 0 !important;
   left: auto !important;
   backdrop-filter: blur(2px);
+=======
+    width: 100% !important;
+    right: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+    backdrop-filter: blur(2px);
+    z-index: 9999 !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+>>>>>>> 2d700d0 (Uzhairkhan | basic info changes)
 
   &__modal-dialog {
     margin: 0;

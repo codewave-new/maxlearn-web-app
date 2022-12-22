@@ -6,19 +6,25 @@ import { Formik, Field, Form } from 'formik';
 import Select from 'react-select';
 
 const selectStyles = {
-  container: (baseStyles) => ({
-    ...baseStyles,
-    paddingRight: '0 !important',
-    paddingBottom: '0.5rem !important',
-  }),
-  control: (baseStyles) => ({
-    ...baseStyles,
-    border: 'none',
-  }),
-  valueContainer: (baseStyles) => ({
-    ...baseStyles,
-    paddingLeft: '0 !important',
-  }),
+  container: (baseStyles) => {
+    return {
+      ...baseStyles,
+      paddingRight: '0 !important',
+      paddingBottom: '0.5rem !important',
+    };
+  },
+  control: (baseStyles) => {
+    return {
+      ...baseStyles,
+      border: 'none',
+    };
+  },
+  valueContainer: (baseStyles) => {
+    return {
+      ...baseStyles,
+      paddingLeft: '0 !important',
+    };
+  },
 };
 
 const EditUserDetailsModal = (props) => {
