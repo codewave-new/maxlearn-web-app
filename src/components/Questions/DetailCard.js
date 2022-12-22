@@ -19,6 +19,7 @@ import {
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
 import { WaitingLoader } from '../loader/loader';
+import { toast, ToastContainer } from 'react-toastify';
 
 const DetailCard = ({ start }) => {
   const navigate = useNavigate();
@@ -42,6 +43,8 @@ const DetailCard = ({ start }) => {
   console.log(searchParams.get('session')); // 'name'
   console.log(searchParams.get('master')); // 'name'
   const [individualResult, setIndividualResult] = useState('');
+
+  const learnerId = localStorage.getItem('userid');
 
   useEffect(() => {
     ChallengeDetail(id, query['challenge-type']);
@@ -161,15 +164,17 @@ const DetailCard = ({ start }) => {
     // :
     // "637f41661b7a54b494e625d5"
     setLoading(true);
-    try {
-      const res = await startChallenge({
-        challenge: id,
-        learner: '63738c435aaa893eecc9dbc1',
-      });
+
+    const res = await startChallenge({
+      challenge: id,
+      learner: learnerId,
+    });
+    if (res.statusCode === 200) {
       setExamStart(res?.data);
       setLoading(false);
-    } catch (er) {
-      console.log(er);
+    } else if (res?.data?.statusCode === 409) {
+      setLoading(false);
+      toast.error('This Challenge is completed');
     }
   };
 

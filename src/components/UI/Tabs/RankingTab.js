@@ -5,18 +5,15 @@ import Tabs from 'react-bootstrap/Tabs';
 const RankingTab = (props) => {
   return (
     <Tabs
-      defaultActiveKey='quest'
+      defaultActiveKey='Individual rankings'
       id='uncontrolled-tab-example'
       className='mb-3 max__todo-activity-tab'
     >
-      <Tab eventKey='challenges' title='Challenges'>
+      <Tab eventKey='Individual rankings' title='Individual rankings'>
         {<props.tabs />}
       </Tab>
-      <Tab eventKey='quest' title='Quests & Certs'>
-        <div className='row'>
-        
-          {<props.tabs />}
-        </div>
+      <Tab eventKey='Squad rankings' title='Squad rankings'>
+        <div className='row'>{<props.tabs />}</div>
       </Tab>
     </Tabs>
   );

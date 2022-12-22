@@ -6,15 +6,19 @@ import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
 const QuestCard = ({ className, data, type, status, challengeType }) => {
+  const completionDate = moment(data?.endDate).diff(moment(), 'minutes');
   const endTime = moment('24:00:00', 'HH:mm:ss');
   const duration = moment.duration(endTime.diff(moment()));
+  const challengeEndDate = moment(data?.endDate).diff(moment(), 'days');
+  const challengeStartDate = moment(data?.startDate).diff(moment(), 'days');
 
   return (
     <div className={`max-home__quest-wrapper ${className} `}>
       <div className='max-home__questcard-container'>
         <div className='quest-time-details'>
           <div className='d-flex quest-time-details-text justify-content-between'>
-            {status === 'COMPLETED' || data?.status === 'COMPLETED' ? (
+            {(status === 'COMPLETED' || data?.status === 'COMPLETED') &&
+            completionDate <= 0 ? (
               <h6 className='d-flex align-items-center'>
                 <ToDoCalendarIcon.default /> &nbsp;
                 {` Closed on ${moment(data?.endDate).format('MM/DD/YYYY')}`}
@@ -32,7 +36,8 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
                 } minutes `}
               </h6>
             )}
-            {status === 'COMPLETED' || data?.status === 'COMPLETED' ? (
+            {(status === 'COMPLETED' || data?.status === 'COMPLETED') &&
+            completionDate <= 0 ? (
               <h5 className='text-end'>
                 Your squad earned:
                 <br />
@@ -47,15 +52,24 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
               <h6 className='d-flex align-items-center'>
                 Schedule for:
                 <strong>
-                  {moment(data?.startDate).diff(moment(), 'days')}
+                  {challengeStartDate ? challengeStartDate : 'Today'}
                 </strong>
                 <small>days</small>
               </h6>
             ) : (
               <h5>
-                Expire in:
-                <strong>{moment(data?.endDate).diff(moment(), 'days')}</strong>
-                <small>days</small>
+                {challengeEndDate ? (
+                  <>
+                    Expire in:
+                    <strong>{' '}{challengeEndDate}</strong>
+                    <small> days</small>
+                  </>
+                ) : (
+                  <>
+                    Expires 
+                    <strong>{' '}Today</strong>
+                  </>
+                )}
               </h5>
             )}
           </div>

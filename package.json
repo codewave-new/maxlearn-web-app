@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/codewave-new/create-cwr-project.git"
+    "url": "git+https://github.com/codewave-new/create-cwr-project.git"
   },
   "keywords": [
     "react",
@@ -89,6 +89,7 @@
     "react-slider": "^2.0.4",
     "react-sortable-hoc": "^2.0.0",
     "react-step-range-slider": "^1.4.1",
+    "react-toastify": "^9.1.1",
     "reactstrap": "^9.1.5",
     "redux": "^4.2.0",
     "redux-logger": "^3.0.6",
