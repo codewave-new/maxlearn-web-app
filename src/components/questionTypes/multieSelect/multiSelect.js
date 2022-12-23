@@ -67,7 +67,7 @@ handleSelect={handleSelect}
   <div className='app_subtn'>
     <a >
       <Button className='add-new-btn add_btnctprev' color='primary' disabled={
-        multi?(selectedOption?.length>=2?false:true):
+        multi?(selectedOption?.length>=1?false:true):
               (selectedOption?.length==1?false:true)
     }
       
