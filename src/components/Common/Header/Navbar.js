@@ -12,6 +12,8 @@ import {
 } from '../../../assets';
 
 const Navbar = () => {
+  const [profileDropDown, setProfileDropDown] = useState(false);
+
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
 
@@ -194,7 +196,11 @@ const Navbar = () => {
                   </li>
                   <li className='max__nav-user'>
                     <div className='max__nav-user-container'>
-                      <button>
+                      <button
+                        onClick={() => {
+                          setProfileDropDown(true);
+                        }}
+                      >
                         <HomeUserLogo.default />
                       </button>
                     </div>

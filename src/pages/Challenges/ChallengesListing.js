@@ -111,7 +111,7 @@ const ChallengesListing = () => {
       >
         <div>
           <h4 className='modal__body-header'>
-            You have {upcomingCount} upcoming challenges
+            You have {upcomingCount || '-'} upcoming challenges
           </h4>
 
           <InfiniteScrollModal
