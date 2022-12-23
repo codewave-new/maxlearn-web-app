@@ -10,10 +10,11 @@ const CategoryFlashCard = () => {
       <div
         className='max__learn-wrapper'
         style={{
-          backgroundImage: `url(${QuestionBodyImage.default})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
+          // backgroundImage: `url(${QuestionBodyImage.default})`,
+          // backgroundRepeat: 'no-repeat',
+          // backgroundPosition: 'center',
+          // backgroundSize: 'cover',
+          backgroundColor: '#F1F9F2',
         }}
       >
         <Header />
