@@ -52,6 +52,7 @@ header {
 
       .max__nav-user {
         .max__nav-user-container {
+          position: relative;
           button {
             @include card(2.5rem, 2.5rem, 0.625rem, $secondary-color);
             border: none;
@@ -76,3 +77,56 @@ header {
 //     min-height: 0;
 //   }
 // }
+
+header {
+  .max__navbar {
+    .max__menunav-list {
+      .dropDownProfile {
+        position: absolute;
+        padding: 30px 26px;
+        top: 85%;
+        right: 6%;
+        max-width: 350px;
+        border-radius: 15px;
+        z-index: 1;
+        // border: 1px solid gray;
+        background-color: #ffffff;
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.07);
+        .dropdown__list-wrapper {
+          padding: 0px;
+        }
+        .dropdown__list {
+          display: flex;
+          align-items: center;
+          list-style: none;
+          color: #212121;
+          font-family: Roboto;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0;
+          line-height: 14px;
+          margin-top: 26px;
+          cursor: pointer;
+          &:first-child{
+            margin-top: 0px;
+          }
+          .image-logo{
+            margin-right: 8px;
+          }
+        }
+        &::before {
+          content: ' ';
+          position: absolute;
+          top: -0.4rem;
+          right: 1rem;
+          width: 10px;
+          height: 10px;
+          background-color: #ffffff;
+          transform: rotate(45deg);
+          // border-left: 1px solid gray;
+          // border-top: 1px solid gray;
+        }
+      }
+    }
+  }
+}
