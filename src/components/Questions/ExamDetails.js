@@ -4,7 +4,8 @@ import Navbar from '../Common/Header/Navbar';
 import { QuestionBodyImage } from '../../assets';
 import DetailCard from './DetailCard';
 
-const ExamDetails = () => {
+const ExamDetails = (props) => {
+  const { state } = props;
   return (
     <div
       style={{
@@ -17,7 +18,7 @@ const ExamDetails = () => {
     >
       <Navbar />
       <div className='detail__card__center '>
-        <DetailCard start={false} />
+        <DetailCard start={false} state={state} />
       </div>
       <Footer />
     </div>

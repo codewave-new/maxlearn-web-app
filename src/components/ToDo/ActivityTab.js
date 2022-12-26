@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import QuestCertListing from './QuestCertListing';
+import QuestCertListing from './questcerttab/QuestCertListing';
 import ChallengesListing from '../../pages/Challenges/ChallengesListing';
 import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
