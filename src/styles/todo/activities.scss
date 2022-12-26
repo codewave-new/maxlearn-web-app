@@ -6,8 +6,12 @@
 
 .max__todo-activity-tab {
   border: none;
+  animation: bottomToTop 0.5s;
+
   li {
     margin-right: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     button {
       height: 50px;
       width: 273px;
@@ -22,5 +26,14 @@
       color: $white !important;
       border: none !important;
     }
+  }
+}
+@keyframes bottomToTop {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  100% {
+    opacity: 1;
   }
 }

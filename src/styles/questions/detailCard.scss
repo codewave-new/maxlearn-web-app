@@ -225,7 +225,7 @@
   background-color: #ecfeee;
   border-radius: 20px;
   overflow: hidden;
-  @include media('>400px','<992px') {
+  @include media('>400px', '<992px') {
     margin-top: 30px;
   }
   &-graph {
@@ -264,34 +264,34 @@
   }
   max-height: 70px;
   overflow-y: scroll;
-  &::-webkit-scrollbar{
+  &::-webkit-scrollbar {
     width: 0px;
   }
 }
 .opponent_wrapper-slick {
   margin-bottom: 10px;
 }
-
-ul {
-  li {
+.detail__card-wrapper {
+  ul {
     li {
-      margin-bottom: 0px;
-      width: 8px !important;
-      height: 8px !important;
-      border-radius: 50%;
-      background-color: grey !important;
+      li {
+        margin-bottom: 0px;
+        width: 8px !important;
+        height: 8px !important;
+        border-radius: 50%;
+        background-color: grey !important;
+      }
     }
   }
-}
-
-li {
-  .active-slider {
-    height: 25px !important;
-    width: 8px !important;
-    border-radius: 4px !important;
-    background-color: #fff !important;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+  li {
+    .active-slider {
+      height: 25px !important;
+      width: 8px !important;
+      border-radius: 4px !important;
+      background-color: #fff !important;
+      padding-top: 5px !important;
+      padding-bottom: 5px !important;
+    }
   }
 }
 
@@ -312,7 +312,7 @@ li {
   max-width: 128px;
 }
 
-.detail_team_margin{
+.detail_team_margin {
   margin-top: 8%;
 }
 
@@ -345,7 +345,7 @@ li {
 .pl-30 {
   padding-left: 30px;
   @include media('>=400px', '<900px') {
-  padding-left: 10px;
+    padding-left: 10px;
   }
 }
 

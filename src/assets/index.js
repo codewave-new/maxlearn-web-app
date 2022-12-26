@@ -58,3 +58,8 @@ export * as ProfileStanding from './profileStanding.svg';
 export * as timerLogo from './timer.svg';
 export * as BackButton from './back.svg';
 export * as SquadBackGround from './bg.png';
+export * as LogoutImage from './log-out.svg';
+export * as ProfileImage from './profile.svg';
+export * as HelpDesk from './helpdesk.svg';
+export * as ConsoleArrow from './consoleArrow.svg';
+export * as StartCertExam from './start-cert/Group 13@3x.png';

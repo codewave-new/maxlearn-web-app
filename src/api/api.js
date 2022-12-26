@@ -21,7 +21,7 @@ const createAxios = () => {
   const client = axios.create({
     baseURL: baseURL.dev,
     headers: {
-      'x-tenant-id': applicationId,
+      'x-tenant-id': localStorage.getItem('applicationId'),
     },
   });
   return client;
