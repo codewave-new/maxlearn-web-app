@@ -5,55 +5,59 @@ import { TimeLogo, CalenderIcon, RightArrow } from '../../../assets';
 import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 import { getCertBasedOnLearnerId } from '../../../services/certs';
+import { CenterLoadingBar } from '../../loader/loader';
+import CertQuestUpcommingModal from '../../Modals/CertQuestUpcommingModal';
 
 const useFetchCertQuestListing = (userID) => {
   const [certsQuests, setCertsQuests] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [dataToBeReturned, setDataToBeReturned] = useState([]);
 
   useEffect(() => {
     (async () => {
+      setLoading(true);
       try {
         const resp = await getCertBasedOnLearnerId(userID);
         if (resp.data.statusCode === 200) {
           const { data } = resp.data;
           setCertsQuests(data);
+          setLoading(false);
         }
       } catch (err) {
         console.log(err.response);
+        setLoading(false);
       }
     })();
   }, [userID]);
 
-  return certsQuests;
+  useEffect(() => {
+    if (!loading) setDataToBeReturned(certsQuests);
+    if (loading) setDataToBeReturned('loading');
+  }, [loading]);
+
+  return dataToBeReturned;
 };
 
 const useCreateQuestCards = (certsAndQuestData) => {
   const navigate = useNavigate();
-  const endTime = moment('24:00:00', 'HH:mm:ss');
-  const duration = moment.duration(endTime.diff(moment()));
+  // const endTime = moment('24:00:00', 'HH:mm:ss');
+  // const duration = moment.duration(endTime.diff(moment()));
 
   const [questCards, setQuestCards] = useState([]);
 
-  // const certsAndQuestData1 = {
-  //   list: [
-  //     {
-  //       name: 'resr',
-  //       _id: 1,
-  //       endDate: '12/12/2022',
-  //       type: 'cert',
-  //     },
-  //   ],
-  // };
-
   const handleCardClick = (ele) => {
     const userName = localStorage.getItem('fullname');
+    const userID = localStorage.getItem('userid');
     if (ele.type === 'cert') {
       navigate('/to-do/cert/start', {
         state: {
           type: 'cert',
           status: ele?.certResults?.certStatus ?? '',
           certName: ele.name,
+          // eslint-disable-next-line no-underscore-dangle
           certID: ele._id,
           userName,
+          userID,
         },
       });
     }
@@ -66,6 +70,7 @@ const useCreateQuestCards = (certsAndQuestData) => {
       certsAndQuestData.list.length
     ) {
       const cards = certsAndQuestData.list.map((ele) => (
+        // eslint-disable-next-line no-underscore-dangle
         <div className='col-md-6 col-12' key={ele._id}>
           <div
             className='max-home__quest-wrapper'
@@ -77,19 +82,37 @@ const useCreateQuestCards = (certsAndQuestData) => {
                 <div className='d-flex quest-time-details-text justify-content-between'>
                   <h6>
                     <TimeLogo.default />{' '}
-                    {`${parseInt(duration.asHours())} hours ${
-                      parseInt(duration.asMinutes()) % 60
-                    } minutes `}
+                    {!ele.startDate && !ele.endDate
+                      ? 'Time is not limited'
+                      : moment(ele.endDate).diff(moment(), 'days') > 1
+                      ? `${moment(ele.startDate).format(
+                          'MM/DD/yy'
+                        )} to ${moment(ele.endDate).format('MM/DD/yy')}`
+                      : moment(ele.endDate).diff(moment(), 'days') > -1 &&
+                        moment(ele.endDate).diff(moment(), 'days') < 1
+                      ? `${moment
+                          .duration(moment(ele.endDate).diff(moment()))
+                          .asHours()} hours ${
+                          moment
+                            .duration(moment(ele.endDate).diff(moment()))
+                            .asMinutes() % 60
+                        } minutes 
+                      `
+                      : 'Expired'}
                   </h6>
-                  <h5>
-                    Expire in:
-                    <strong>
-                      {ele.endDate
-                        ? moment(ele.endDate).diff(moment(), 'days')
-                        : ' '}
-                    </strong>
-                    <small>days</small>
-                  </h5>
+                  {moment(ele.endDate).diff(moment(), 'days') > 1 ? (
+                    <h5>
+                      Expire in:{' '}
+                      <strong>
+                        {ele.endDate
+                          ? moment(ele.endDate).diff(moment(), 'days')
+                          : ' '}
+                      </strong>
+                      <small>days</small>
+                    </h5>
+                  ) : (
+                    ''
+                  )}
                 </div>
                 <h3>{ele?.name}</h3>
                 <div className='quest-home-content-container d-flex justify-content-between'>
@@ -140,16 +163,22 @@ const QuestCertListing = () => {
   const handleModalOpen = async () => {
     setModalStatus(true);
   };
+
   const closeModal = () => {
     setModalStatus(false);
   };
 
-  return (
+  return certQuestListingData === 'loading' ? (
+    <CenterLoadingBar />
+  ) : (
     <>
       <div className='' style={{ maxHeight: '100vh', overflowY: 'auto' }}>
-        <div className='row'>{questCards}</div>
+        <div className='row m-0'>{questCards}</div>
       </div>
-      <button className='upcomming__todo-btn w-100' onClick={handleModalOpen}>
+      <button
+        className='upcomming__todo-btn w-100 mt-4'
+        onClick={handleModalOpen}
+      >
         <div>
           <CalenderIcon.default />
           <span className='upcomming__todo-text mb-0'>
@@ -160,6 +189,12 @@ const QuestCertListing = () => {
           <RightArrow.default />
         </div>
       </button>
+
+      <CertQuestUpcommingModal
+        show={modalStatus}
+        onHide={closeModal}
+        userId={userId}
+      />
     </>
   );
 };
