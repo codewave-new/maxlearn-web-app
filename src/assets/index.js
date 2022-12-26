@@ -58,3 +58,4 @@ export * as ProfileStanding from './profileStanding.svg';
 export * as timerLogo from './timer.svg';
 export * as BackButton from './back.svg';
 export * as SquadBackGround from './bg.png';
+export * as ChatIcon from './chatIcon.svg';

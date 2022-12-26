@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
 import ModalTopicsCard from '../Learn/ModalTopicsCard';
 import SidebarModal from '../Common/CustomModal/SidebarModal';
-import InfiniteScrollModal from '../Pagination/InfiniteScrollModal';
 
 const HotTopicsModal = (props) => {
   const { show, onHide } = props;

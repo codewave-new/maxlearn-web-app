@@ -10,9 +10,14 @@ import {
   NavRangingLogo,
   HomeUserLogo,
 } from '../../../assets';
+import NotificationModal from '../../Modals/NotificationModal';
 
 const Navbar = () => {
   const [profileDropDown, setProfileDropDown] = useState(false);
+
+  const [showNotificationModal, setShowNotificationModal] = useState(false);
+  const handleNotificationModal = () => setShowNotificationModal(true);
+  const closeModal = () => setShowNotificationModal(false);
 
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
@@ -64,8 +69,9 @@ const Navbar = () => {
     //             </ul>
     //         </nav>
     //     </header>
-    <header>
-      {/* <div className='max__menu-btn'>
+    <>
+      <header>
+        {/* <div className='max__menu-btn'>
         <span></span>
       </div>
       <nav className='max__navbar'>
@@ -118,100 +124,102 @@ const Navbar = () => {
           </li>
         </ul>
       </nav> */}
-      <nav className='navbar navbar-expand-lg max__navbar'>
-        <div className='container-fluid'>
-          <a className='navbar-brand' href='/src#'>
-            <MaxLogo.default />
-          </a>
-          <button
-            className='navbar-toggler'
-            type='button'
-            data-bs-toggle='offcanvas'
-            data-bs-target='#offcanvasNavbar'
-            aria-controls='offcanvasNavbar'
-          >
-            <span className='navbar-toggler-icon' />
-          </button>
-          <div
-            className='offcanvas offcanvas-end'
-            tabIndex='-1'
-            id='offcanvasNavbar'
-            aria-labelledby='offcanvasNavbarLabel'
-          >
-            <div className='offcanvas-header'>
-              <h5 className='offcanvas-title' id='offcanvasNavbarLabel'>
-                Offcanvas
-              </h5>
-              <button
-                type='button'
-                className='btn-close text-reset'
-                data-bs-dismiss='offcanvas'
-                aria-label='Close'
-              />
-            </div>
-            <div className='offcanvas-body'>
-              <ul className='navbar-nav max__menunav-list justify-content-end flex-grow-1 border-end pe-5'>
-                <li>
-                  <NavLink className={navActive} to='/'>
-                    <HomeLogo.default /> Home
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className={navActive} to='/learn'>
-                    <NavLearnLogo.default /> Learn
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className={navActive} to='/to-do'>
-                    <NavToDoLogo.default />
-                    To-Do
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink className={navActive} to='/rankings'>
-                    <NavRangingLogo.default /> Rankings
-                  </NavLink>
-                </li>
-              </ul>
-              {/* <form className="d-flex">
+        <nav className='navbar navbar-expand-lg max__navbar'>
+          <div className='container-fluid'>
+            <a className='navbar-brand' href='/src#'>
+              <MaxLogo.default />
+            </a>
+            <button
+              className='navbar-toggler'
+              type='button'
+              data-bs-toggle='offcanvas'
+              data-bs-target='#offcanvasNavbar'
+              aria-controls='offcanvasNavbar'
+            >
+              <span className='navbar-toggler-icon' />
+            </button>
+            <div
+              className='offcanvas offcanvas-end'
+              tabIndex='-1'
+              id='offcanvasNavbar'
+              aria-labelledby='offcanvasNavbarLabel'
+            >
+              <div className='offcanvas-header'>
+                <h5 className='offcanvas-title' id='offcanvasNavbarLabel'>
+                  Offcanvas
+                </h5>
+                <button
+                  type='button'
+                  className='btn-close text-reset'
+                  data-bs-dismiss='offcanvas'
+                  aria-label='Close'
+                />
+              </div>
+              <div className='offcanvas-body'>
+                <ul className='navbar-nav max__menunav-list justify-content-end flex-grow-1 border-end pe-5'>
+                  <li>
+                    <NavLink className={navActive} to='/'>
+                      <HomeLogo.default /> Home
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className={navActive} to='/learn'>
+                      <NavLearnLogo.default /> Learn
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className={navActive} to='/to-do'>
+                      <NavToDoLogo.default />
+                      To-Do
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink className={navActive} to='/rankings'>
+                      <NavRangingLogo.default /> Rankings
+                    </NavLink>
+                  </li>
+                </ul>
+                {/* <form className="d-flex">
       <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
           <button className="btn btn-outline-success" type="submit">Search</button>
         </form> */}
-              <div className='d-flex'>
-                <ul className='navbar-nav max__menunav-list ms-5'>
-                  <li className='max__nav-search'>
-                    <div className='max__nav-search-container'>
-                      <button>
-                        <HomeSearchLogo.default />
-                      </button>
-                    </div>
-                  </li>
+                <div className='d-flex'>
+                  <ul className='navbar-nav max__menunav-list ms-5'>
+                    <li className='max__nav-search'>
+                      <div className='max__nav-search-container'>
+                        <button>
+                          <HomeSearchLogo.default />
+                        </button>
+                      </div>
+                    </li>
 
-                  <li className='max__notification'>
-                    <div className='max__nav-notification-container'>
-                      <button>
-                        <HomeNotificationLogo.default />
-                      </button>
-                    </div>
-                  </li>
-                  <li className='max__nav-user'>
-                    <div className='max__nav-user-container'>
-                      <button
-                        onClick={() => {
-                          setProfileDropDown(true);
-                        }}
-                      >
-                        <HomeUserLogo.default />
-                      </button>
-                    </div>
-                  </li>
-                </ul>
+                    <li className='max__notification'>
+                      <div className='max__nav-notification-container'>
+                        <button onClick={handleNotificationModal}>
+                          <HomeNotificationLogo.default />
+                        </button>
+                      </div>
+                    </li>
+                    <li className='max__nav-user'>
+                      <div className='max__nav-user-container'>
+                        <button
+                          onClick={() => {
+                            setProfileDropDown(true);
+                          }}
+                        >
+                          <HomeUserLogo.default />
+                        </button>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </nav>
-    </header>
+        </nav>
+      </header>
+      <NotificationModal show={showNotificationModal} onHide={closeModal} />
+    </>
   );
 };
 

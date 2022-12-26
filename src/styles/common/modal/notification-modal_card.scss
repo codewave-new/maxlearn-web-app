@@ -1,0 +1,26 @@
+.notification_card_wrapper {
+  padding: 22px 20px;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  .card_title {
+    @include font(#212121, 14px, 500, 0, 20px);
+  }
+  .icon_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid; */
+    background: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+  .notification_time {
+    color: #878383;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 12px;
+    text-align: right;
+  }
+}
