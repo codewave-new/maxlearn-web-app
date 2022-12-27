@@ -20,43 +20,46 @@ import FeedbackModal from './FeedbackModal';
 
 const ConfidenceSliderModal = ({
   modalStatus,
-  handleClose,
   setConfidence,
   setSubmitCliked,
   name,
   setIncresingTimerId,
   setIntervalID,
+  timeOut,
 }) => {
   const [sliderChange, setSliderChange] = useState(0);
   const [isContinue, setContinue] = useState(0);
-
-  const [showModal, setShowModal] = useState(false);
-  const handleShowModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
 
   const dWidth = screen.width;
   useEffect(() => {
     if (isContinue) {
       switch (sliderChange) {
         case 0:
-          setConfidence('low');
+          setConfidence('NOT-CONFIDENT');
           break;
         case 0.25:
-          setConfidence('medium');
+          setConfidence('CONFUSED');
           break;
         case 0.5:
-          setConfidence('medium');
+          setConfidence('NEUTRAL');
           break;
         case 0.75:
-          setConfidence('medium');
+          setConfidence('CONFIDENT');
           break;
         case 1:
-          setConfidence('high');
+          setConfidence('VERY-CONFIDENT');
           break;
       }
     }
   }),
     [sliderChange, isContinue];
+  const handleClose = () => {
+    if (!timeOut) {
+      setSubmitCliked(false);
+      setIncresingTimerId();
+      setIntervalID();
+    }
+  };
   return (
     <>
       <Modal
@@ -179,7 +182,7 @@ const ConfidenceSliderModal = ({
           <p>
             Do you have any feedback?&nbsp;
             <span>
-              <button onClick={handleShowModal}>Click here</button>
+              <button>Click here</button>
             </span>
           </p>
         </div>

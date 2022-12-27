@@ -26,6 +26,8 @@ const ChallengesCompleted = () => {
   const [submitCliked, setSubmitCliked] = useState(false);
   const [modalStatus, setModalStatus] = useState(true);
   const [individualResult, setIndividualResult] = useState({})
+  const [leadingMemeber, setLeadingMember] = useState('')
+
 
 
 
@@ -40,14 +42,27 @@ const ChallengesCompleted = () => {
     if(res?.data?.learners?.length){
       let val=res?.data?.learners?.find(item=>item?._id==res?.data?.learner)
       setIndividualResult(val)  
-    }
-  }else if(type=="SQUAD"){
+let max=null
+let kkkkk=res?.data?.learners?.forEach(item=>{
+  if(max==null)max=item
+  else if(item?.pointsEarned>max?.pointsEarned)max=item
+
+})
+setLeadingMember(max)
+
+}}else if(type=="SQUAD"){
     const res =await challengeSquadScoreDetails(learnerId,id)
     setResultDetails(res?.data)
     if(res?.data?.challengeDetails?.squads?.length){
       let val=res?.data?.challengeDetails?.squads?.find(item=>item?._id==res?.data?.squad)
-      setIndividualResult(val)  
-    }
+      setIndividualResult(val)
+      let max=null
+let kkkkk=res?.data?.challengeDetails?.squads?.forEach(item=>{
+  if(max==null)max=item
+  else if(item?.squadScore>max?.squadScore)max=item
+})
+setLeadingMember(max)
+}
   }
 }
   return (
@@ -59,8 +74,8 @@ const ChallengesCompleted = () => {
     resultDetails={resultDetails}
     member={individualResult?.learners?.find(item=>item?._id==resultDetails?.learner)}
     opponentSquads={resultDetails?.challengeDetails?.squads?.filter(item=>item?._id!==resultDetails?.squad)}
+    leadingMemeber={leadingMemeber?.name}
     />
-  
     :
     <ResultIndividual
     setSubmitCliked={setSubmitCliked}
@@ -68,6 +83,7 @@ const ChallengesCompleted = () => {
     individualResult={individualResult}
     resultDetails={resultDetails}
     opponents={resultDetails?.learners?.filter(item=>item?._id!==individualResult?._id)}
+    leadingMemeber={leadingMemeber?.fullName}
     />
   );
 };

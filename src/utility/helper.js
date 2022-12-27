@@ -22,9 +22,6 @@ export const useQuery = (params) => {
 export const renderText = (text) => {
   const mathtype = <MathJax math={String.raw`${text}`} />;
   const texttype = parse(text);
-  console.log('text', text);
-  console.log('texttype', texttype);
-
   let textType = '';
 
   const loop = (item) => {
