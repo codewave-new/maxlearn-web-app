@@ -86,6 +86,14 @@ const DetailCard = ({ start }) => {
               query['challenge-type'] == 'SQUAD'
                 ? Math.floor(opponentResult?.squadScore)
                 : Math.floor(opponentResult?.pointsEarned),
+                logo1:
+                query['challenge-type'] == 'SQUAD'
+                  ? individualResult?.imageUrl
+                  : individualResult?.profilePic,
+                  logo2:
+                query['challenge-type'] == 'SQUAD'
+                  ? opponentResult?.imageUrl
+                  : opponentResult?.profilePic,
         }).toString(),
       });
     }

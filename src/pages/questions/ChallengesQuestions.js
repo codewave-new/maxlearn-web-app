@@ -47,7 +47,10 @@ const ChallengesQuestions = () => {
   let name = searchParams.get('name')
   let opponentPoints = searchParams.get('opponentPoints')
   let opponentName = searchParams.get('opponentName')
+  let logo1 = searchParams.get('logo1')
+  let logo2 = searchParams.get('logo2')
 
+  
   const { id } = useParams();
   const [questionsInfo, setQuestionsInfo] = useState();
   const [stat, setStat] = useState('');
@@ -230,6 +233,8 @@ const ChallengesQuestions = () => {
           submitCliked={submitCliked}
           statusVal={statusVal}
           nextButtonClicked={nextButtonClicked}
+          logo1={logo1}
+          logo2={logo2}
         />
         {stat === '' && !submitCliked &&
           questionsInfo?._id && (

@@ -19,7 +19,9 @@ const CustomNavbar = ({time,
   statusVal,
   nextButtonClicked,
   opponentPoints,
-  opponentName
+  opponentName,
+  logo1,
+  logo2
 }) => {
     return (
       <>
@@ -77,7 +79,7 @@ const CustomNavbar = ({time,
                   <ul className='navbar-nav max__menunav-list justify-content-start  border-end '>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
-                        <img src={team} className='team' style={{marginRight:'10px'}} />
+                        <img src={logo1} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
                         <span className='team_name'>
                         {name.length > 15 ? `${name.slice(0, 15)}...` : name}
@@ -88,7 +90,7 @@ const CustomNavbar = ({time,
                     </li>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
-                        <img src={team} className='team' style={{marginRight:'10px'}} />
+                        <img src={logo2} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
                         <span className='team_name'>
                         {opponentName.length > 10? `${opponentName.slice(0, 10)}...` : opponentName}
