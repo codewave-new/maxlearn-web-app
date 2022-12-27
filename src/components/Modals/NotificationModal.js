@@ -8,22 +8,22 @@ const data = [
   {
     name: 'A new challenge has been assigned to your squad.',
     time: '1 min',
-    bgColor: '#ECF3FE',
+    bgColor: 'purple',
   },
   {
     name: 'A new challenge has been assigned to your squad.',
     time: '6 min',
-    bgColor: '#FFF8DD',
+    bgColor: 'yellow',
   },
   {
     name: 'A new challenge has been assigned to your squad.',
     time: '7 min',
-    bgColor: '#ECFEEE',
+    bgColor: 'green',
   },
   {
     name: 'A new challenge has been assigned to your squad.',
     time: '12 min',
-    bgColor: '#FEECEC',
+    bgColor: 'pink',
   },
 ];
 

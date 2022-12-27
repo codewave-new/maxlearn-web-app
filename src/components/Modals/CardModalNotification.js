@@ -40,10 +40,7 @@ const CardData = ({ data }) => {
 
 const CardModalNotification = ({ data, index }) => {
   return (
-    <div
-      className={`notification_card_wrapper ${colorClassName}`}
-      style={{ backgroundColor: data.bgColor }}
-    >
+    <div className={`notification_card_wrapper ${data.bgColor}`}>
       {index <= 1 ? (
         <Badge sx={badgeStyle} variant='dot'>
           <CardData data={data} />

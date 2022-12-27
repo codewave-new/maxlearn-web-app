@@ -15,6 +15,7 @@ import {
   HelpDesk,
 } from '../../../assets';
 import NotificationModal from '../../Modals/NotificationModal';
+import LogoutModal from '../CustomModal/LogoutModal';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -22,7 +23,15 @@ const Navbar = () => {
 
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const handleNotificationModal = () => setShowNotificationModal(true);
-  const closeModal = () => setShowNotificationModal(false);
+  const closeNotificationModal = () => setShowNotificationModal(false);
+
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const handleLogoutModal = () => {
+    setShowLogoutModal(true);
+  };
+  const closeLogoutModal = () => {
+    setShowLogoutModal(false);
+  };
 
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
@@ -243,10 +252,11 @@ const Navbar = () => {
                           </li>
                           <li
                             className='dropdown__list'
-                            onClick={() => {
-                              localStorage.clear();
-                              navigate('/login');
-                            }}
+                            // onClick={() => {
+                            //   localStorage.clear();
+                            //   navigate('/login');
+                            // }}
+                            onClick={handleLogoutModal}
                           >
                             <div className='image-logo'>
                               <LogoutImage.default />
@@ -265,7 +275,11 @@ const Navbar = () => {
           </div>
         </nav>
       </header>
-      <NotificationModal show={showNotificationModal} onHide={closeModal} />
+      <NotificationModal
+        show={showNotificationModal}
+        onHide={closeNotificationModal}
+      />
+      <LogoutModal open={showLogoutModal} close={closeLogoutModal} />
     </>
   );
 };
