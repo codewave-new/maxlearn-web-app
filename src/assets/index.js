@@ -58,3 +58,6 @@ export * as ProfileStanding from './profileStanding.svg';
 export * as timerLogo from './timer.svg';
 export * as BackButton from './back.svg';
 export * as SquadBackGround from './bg.png';
+export * as correctIcon from './correctt.svg';
+export * as wrongIcon from './wrongg.svg';
+export * as unCheckedIcon from './question/Rectangle.svg';

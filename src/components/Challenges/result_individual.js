@@ -17,7 +17,8 @@ export const ResultIndividual = ({
     individualResult,
     opponents,
     setSubmitCliked,
-    submitCliked  
+    submitCliked,
+    leadingMemeber
 }) => {
     const {pointsEarned,fullName,profilePic}= individualResult
   return (
@@ -67,7 +68,7 @@ export const ResultIndividual = ({
 
             <div className='completion__leading--info'>
               <img className='leading__team--logo' src={Points.default} />
-              Hei.. team <strong>Roaster</strong> are leading in this
+              Hei.. team <strong>{leadingMemeber}</strong> are leading in this
               challenge
               <div className='leading__stars'>
                 <Stars.default />

@@ -66,11 +66,13 @@
 
 .close_btn {
   position: absolute;
-  top: 1rem;
-  right: 6rem;
+  // top: 1rem;
+  // right: 6rem;
   padding: 0px;
   border: none;
   background-color: transparent;
+  margin: 0 10px;
+  margin-top: -5px;
 }
 
 .question_card {
@@ -103,6 +105,14 @@
 .quest_check {
   border: 1px solid #d8d8d8;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+}
+.checked-background{
+  border:2px solid #3d908f;
+border-radius: 6px;
+  background-color: #FFFFFF;
+  box-shadow: 0 12px 14px 0 rgba(0,0,0,0.08);
 }
 
 .quest_ans {
@@ -380,4 +390,10 @@
     list-style-type: none;
 }
   list-style-type: none;
+}
+.attempted_answers{
+  background: #FED4D4;
+}
+.actual_answers{
+  background: #D4FED9;
 }

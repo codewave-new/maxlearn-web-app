@@ -13,13 +13,18 @@ import ProgressBar from 'react-bootstrap/ProgressBar';
 const CustomNavbar = ({time,
   progress,
   points,
-  name
+  name,
+  stat,
+  submitCliked,
+  statusVal,
+  nextButtonClicked,
+  opponentPoints,
+  opponentName
 }) => {
-  console.log('uuuuu',time)
     return (
       <>
         <header>
-          <nav className='navbar navbar-expand-lg max__navbar'>
+          <nav className='navbar navbar-expand-lg max__navbar question_navbar'>
             <div className='container-fluid'>
               <div style={{ borderRight: '1px solid' }}>
                 <a className='navbar-brand' href='/src#'>
@@ -74,16 +79,33 @@ const CustomNavbar = ({time,
                       {/* <NavLink className='p-0' to='/'> */}
                         <img src={team} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
-                        <span className='team_name'>{name}</span>
+                        <span className='team_name'>
+                        {name.length > 15 ? `${name.slice(0, 15)}...` : name}
+                        </span>
                         <span className=' team_points'>{points} Points</span>
+                        </div>
+                      {/* </NavLink> */}
+                    </li>
+                    <li className='d-flex align-items-center justify-content-center'>
+                      {/* <NavLink className='p-0' to='/'> */}
+                        <img src={team} className='team' style={{marginRight:'10px'}} />
+                        <div className='d-flex  flex-column justify-content-start '>
+                        <span className='team_name'>
+                        {opponentName.length > 10? `${opponentName.slice(0, 10)}...` : opponentName}
+                        </span>
+                        <span className=' team_points'>{opponentPoints} Points</span>
                         </div>
                       {/* </NavLink> */}
                     </li>
                     {/* <li>
                       <NavLink className='p-0' to='/learn'>
                         <img src={team} className='team ' />
-                        <span className='team_name'> Monsters</span>
-                        <span className=' team_points'>130 Points</span>
+                        <div className='d-flex  flex-column justify-content-start '>
+                        <span className='team_name'>
+                        {opponentName.length > 15 ? `${opponentName.slice(0, 15)}...` : opponentName}
+                        </span>
+                        <span className=' team_points'>{opponentPoints} Points</span>
+                        </div>
                       </NavLink>
                     </li> */}
                   </ul>
@@ -95,17 +117,18 @@ const CustomNavbar = ({time,
                      {progress}%
                     </span>
                   </div>
+                  {!((stat === 'IN-PROGRESS'&&!submitCliked)||(stat === 'COMPLETED'&&statusVal&&!nextButtonClicked&&!submitCliked))?    
                   <div className='header-timer'>
                   <timerLogo.default />
-                  {time=='NaNmin:NaNsec'?"0min:00sec":time}
+                  {time=='NaNmin:NaNsec'?"00:00":time}
                     </div>
-                  <div>
+                     :''
+                    }
                     <a href='/to-do'>
-                      <button className='close_btn'>
+                      <button className='close_btn right-0'>
                         <CloseButton.default />
                       </button>
                     </a>
-                  </div>
                 </div>
               </div>
             </div>

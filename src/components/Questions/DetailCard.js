@@ -40,9 +40,8 @@ const DetailCard = ({ start }) => {
   const [questionType, setQuestionType] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get('session')); // 'name'
-  console.log(searchParams.get('master')); // 'name'
   const [individualResult, setIndividualResult] = useState('');
+  const [opponentResult, setOpponentResult] = useState('');
 
   const learnerId = localStorage.getItem('userid');
 
@@ -61,7 +60,7 @@ const DetailCard = ({ start }) => {
   // },[examStart])
 
   useEffect(() => {
-    if (examStart?.challengeResult && individualResult !== '') {
+    if (examStart?.challengeResult && individualResult !== ''&&opponentResult!=='') {
       navigate({
         pathname: `/start-challenge-exam/${examStart?.challengeResult}`,
         search: createSearchParams({
@@ -79,10 +78,18 @@ const DetailCard = ({ start }) => {
             query['challenge-type'] == 'SQUAD'
               ? Math.floor(individualResult?.squadScore)
               : Math.floor(individualResult?.pointsEarned),
+              opponentName:
+              query['challenge-type'] == 'SQUAD'
+                ? opponentResult?.name
+                : opponentResult?.fullName,
+                opponentPoints:
+              query['challenge-type'] == 'SQUAD'
+                ? Math.floor(opponentResult?.squadScore)
+                : Math.floor(opponentResult?.pointsEarned),
         }).toString(),
       });
     }
-  }, [examStart, individualResult]);
+  }, [examStart, individualResult,opponentResult]);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
     const response = await challengesDetails(challengeId, challengeType);
@@ -186,16 +193,23 @@ const DetailCard = ({ start }) => {
             (item) => item?._id == challengeDescription?.squad
           );
           setIndividualResult(val);
+          let opponentVal = challengeDescription.challengeDetails?.squads?.find(
+            (item) => item?._id !== challengeDescription?.squad
+          );
+          setOpponentResult(opponentVal)
         }
       } else if (query['challenge-type'] == 'INDIVIDUAL') {
         let val = challengeDescription.challengeDetails?.learners?.find(
           (item) => item?._id == challengeDescription?.learner
         );
         setIndividualResult(val);
+        let opponentVal = challengeDescription.challengeDetails?.learners?.find(
+          (item) => item?._id !== challengeDescription?.learner
+        );
+        setOpponentResult(opponentVal)
       }
     }
   }, [challengeDescription]);
-  console.log('individualResult', individualResult);
   // stat === ''&&!questionsInfo?._id &&isLoading
   return (
     <div>
