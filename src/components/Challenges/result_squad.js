@@ -19,7 +19,8 @@ export const ResultSquad = ({
   member,
   opponentSquads,
   setSubmitCliked,
-  submitCliked
+  submitCliked,
+  leadingMemeber
 }) => {
 
   return (
@@ -69,7 +70,7 @@ export const ResultSquad = ({
 
             <div className='completion__leading--info'>
               <img className='leading__team--logo' src={Points.default} />
-              Hei.. team <strong>{individualResult?.name}</strong> are leading in this
+              Hei.. team <strong>{leadingMemeber}</strong> are leading in this
               challenge
               <div className='leading__stars'>
                 <Stars.default />

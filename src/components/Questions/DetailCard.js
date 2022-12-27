@@ -18,9 +18,10 @@ import {
 } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
-import { ButtonLoader, WaitingLoader } from '../loader/loader';
+import { WaitingLoader } from '../loader/loader';
 import { toast, ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
+import { ButtonLoader } from '../loader/loader';
 
 const DetailCard = ({ start }) => {
   const navigate = useNavigate();

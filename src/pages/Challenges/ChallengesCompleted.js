@@ -37,28 +37,41 @@ const ChallengesCompleted = () => {
   const [submitCliked, setSubmitCliked] = useState(false);
   const [modalStatus, setModalStatus] = useState(true);
   const [individualResult, setIndividualResult] = useState({});
+  const [leadingMemeber, setLeadingMember] = useState('');
 
   useEffect(() => {
     getChallengeResultDetailss(id, challengeType);
   }, [id]);
   const getChallengeResultDetailss = async (id, type) => {
     if (type == 'INDIVIDUAL') {
-      const res = await challengeIndividualScoreDetails(authData?.learnerId, id);
+      const res = await challengeIndividualScoreDetails(learnerId, id);
       setResultDetails(res?.data);
       if (res?.data?.learners?.length) {
         let val = res?.data?.learners?.find(
           (item) => item?._id == res?.data?.learner
         );
         setIndividualResult(val);
+        let max = null;
+        let kkkkk = res?.data?.learners?.forEach((item) => {
+          if (max == null) max = item;
+          else if (item?.pointsEarned > max?.pointsEarned) max = item;
+        });
+        setLeadingMember(max);
       }
     } else if (type == 'SQUAD') {
-      const res = await challengeSquadScoreDetails(authData?.learnerId, id);
+      const res = await challengeSquadScoreDetails(learnerId, id);
       setResultDetails(res?.data);
       if (res?.data?.challengeDetails?.squads?.length) {
         let val = res?.data?.challengeDetails?.squads?.find(
           (item) => item?._id == res?.data?.squad
         );
         setIndividualResult(val);
+        let max = null;
+        let kkkkk = res?.data?.challengeDetails?.squads?.forEach((item) => {
+          if (max == null) max = item;
+          else if (item?.squadScore > max?.squadScore) max = item;
+        });
+        setLeadingMember(max);
       }
     }
   };
@@ -74,6 +87,7 @@ const ChallengesCompleted = () => {
       opponentSquads={resultDetails?.challengeDetails?.squads?.filter(
         (item) => item?._id !== resultDetails?.squad
       )}
+      leadingMemeber={leadingMemeber?.name}
     />
   ) : (
     <ResultIndividual
@@ -84,6 +98,7 @@ const ChallengesCompleted = () => {
       opponents={resultDetails?.learners?.filter(
         (item) => item?._id !== individualResult?._id
       )}
+      leadingMemeber={leadingMemeber?.fullName}
     />
   );
 };

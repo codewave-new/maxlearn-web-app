@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
-import { TimeLogo, CalenderIcon, RightArrow } from '../../assets';
-import Chip from '../Common/chip/Chip';
-import SquadAvatar from '../../pages/Challenges/SquadAvatar';
-import { getCertBasedOnLearnerId } from '../../services/certs';
+import { TimeLogo, CalenderIcon, RightArrow } from '../../../assets';
+import Chip from '../../Common/chip/Chip';
+import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
+import { getCertBasedOnLearnerId } from '../../../services/certs';
 
 const useFetchCertQuestListing = (userID) => {
   const [certsQuests, setCertsQuests] = useState([]);
@@ -26,10 +27,37 @@ const useFetchCertQuestListing = (userID) => {
 };
 
 const useCreateQuestCards = (certsAndQuestData) => {
+  const navigate = useNavigate();
   const endTime = moment('24:00:00', 'HH:mm:ss');
   const duration = moment.duration(endTime.diff(moment()));
 
   const [questCards, setQuestCards] = useState([]);
+
+  // const certsAndQuestData1 = {
+  //   list: [
+  //     {
+  //       name: 'resr',
+  //       _id: 1,
+  //       endDate: '12/12/2022',
+  //       type: 'cert',
+  //     },
+  //   ],
+  // };
+
+  const handleCardClick = (ele) => {
+    const userName = localStorage.getItem('fullname');
+    if (ele.type === 'cert') {
+      navigate('/to-do/cert/start', {
+        state: {
+          type: 'cert',
+          status: ele?.certResults?.certStatus ?? '',
+          certName: ele.name,
+          certID: ele._id,
+          userName,
+        },
+      });
+    }
+  };
 
   useEffect(() => {
     if (
@@ -39,7 +67,11 @@ const useCreateQuestCards = (certsAndQuestData) => {
     ) {
       const cards = certsAndQuestData.list.map((ele) => (
         <div className='col-md-6 col-12' key={ele._id}>
-          <div className='max-home__quest-wrapper'>
+          <div
+            className='max-home__quest-wrapper'
+            style={{ cursor: 'pointer' }}
+            onClick={() => handleCardClick(ele)}
+          >
             <div className='max-home__questcard-container'>
               <div className='quest-time-details'>
                 <div className='d-flex quest-time-details-text justify-content-between'>
@@ -74,6 +106,14 @@ const useCreateQuestCards = (certsAndQuestData) => {
                       }
                     />
                   </div>
+                  <div
+                    className={
+                      ele.type === 'cert' ? 'ml-cert-chip' : 'ml-quest-chip'
+                    }
+                  >
+                    {ele?.type?.charAt(0).toUpperCase() +
+                      ele?.type?.slice(1).toLowerCase() ?? 'N/A'}
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,11 +129,11 @@ const useCreateQuestCards = (certsAndQuestData) => {
 };
 
 const QuestCertListing = () => {
-  const dummyUserId = '63738c435aaa893eecc9dbc1';
+  const userId = localStorage.getItem('userid');
 
   const [modalStatus, setModalStatus] = useState(false);
 
-  const certQuestListingData = useFetchCertQuestListing(dummyUserId);
+  const certQuestListingData = useFetchCertQuestListing(userId);
 
   const questCards = useCreateQuestCards(certQuestListingData);
 
@@ -106,7 +146,7 @@ const QuestCertListing = () => {
 
   return (
     <>
-      <div className='' style={{ minHeight: '100vh' }}>
+      <div className='' style={{ maxHeight: '100vh', overflowY: 'auto' }}>
         <div className='row'>{questCards}</div>
       </div>
       <button className='upcomming__todo-btn w-100' onClick={handleModalOpen}>
