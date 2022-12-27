@@ -18,14 +18,16 @@ import {
 } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
-import { WaitingLoader } from '../loader/loader';
+import { ButtonLoader, WaitingLoader } from '../loader/loader';
 import { toast, ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const DetailCard = ({ start }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const loaction = useLocation();
   const query = useQuery(loaction.search);
+  const authData = useSelector((state) => state.auth);
   const [modalStatus, setModalStatus] = useState(false);
   const [challengeDescription, setChallengeDescription] = useState({});
   const [ongoingChallenge, setOngoingChallenge] = useState([]);
@@ -43,8 +45,6 @@ const DetailCard = ({ start }) => {
   console.log(searchParams.get('session')); // 'name'
   console.log(searchParams.get('master')); // 'name'
   const [individualResult, setIndividualResult] = useState('');
-
-  const learnerId = localStorage.getItem('userid');
 
   useEffect(() => {
     ChallengeDetail(id, query['challenge-type']);
@@ -85,7 +85,11 @@ const DetailCard = ({ start }) => {
   }, [examStart, individualResult]);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
-    const response = await challengesDetails(challengeId, challengeType);
+    const response = await challengesDetails(
+      authData.learnerId,
+      challengeId,
+      challengeType
+    );
     if (response.statusCode === 200) {
       setChallengeDescription(response?.data);
       if (challengeType === 'SQUAD') {
@@ -167,7 +171,7 @@ const DetailCard = ({ start }) => {
 
     const res = await startChallenge({
       challenge: id,
-      learner: learnerId,
+      learner: authData?.learnerId,
     });
     if (res.statusCode === 200) {
       setExamStart(res?.data);
@@ -383,7 +387,7 @@ const DetailCard = ({ start }) => {
                 disabledText={'Yet to start'}
                 text={
                   stat === '' && !questionsInfo?._id && isLoading ? (
-                    <WaitingLoader />
+                    <ButtonLoader />
                   ) : (
                     'Start Challenge'
                   )

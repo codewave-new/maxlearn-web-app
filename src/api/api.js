@@ -6,28 +6,16 @@ const baseURL = {
 };
 
 export const learnerId = localStorage.getItem('userid');
-const applicationId = localStorage.getItem('applicationId');
 
-const createAxios = () => {
-  // if(process.env.REACT_APP_STAGE='build for Prod'){
-  //   const client=axios.create({
-  //     baseURL:baseURL.prod,
-  //     headers:{
-  //       'x-tenant-id':'af82327f-eedf-4528-ac79-dd155be3efe5',
-  //     }
-  //   });
-  //   return client;
-  // }else {
-  const client = axios.create({
-    baseURL: baseURL.dev,
-    headers: {
-      'x-tenant-id': localStorage.getItem('applicationId'),
-    },
-  });
-  return client;
-  // }
-};
+const http = axios.create({ baseURL: baseURL?.dev });
 
-const http = createAxios();
+http.interceptors.request.use(
+  (request) => {
+    const applicationId = localStorage.getItem('applicationId');
+    request.headers['x-tenant-id'] = applicationId;
+    return request;
+  },
+  (err) => Promise.reject(err)
+);
 
 export default http;

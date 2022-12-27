@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BasicInfoEdit } from '../../assets';
 import EditUserDetailsModal from '../Modals/EditUserDetailsModal';
 
 const BasicInfo = () => {
   const dummyUserId = '6399d070af314ab863dce89c';
   const [showEditUserDetailsForm, setShowEditUserDetailsForm] = useState(false);
+
+  useEffect(() => {
+   
+  }, [])
+  
 
   const handleEditUserDetailsForm = () => setShowEditUserDetailsForm(true);
   const closeModal = () => setShowEditUserDetailsForm(false);
