@@ -12,9 +12,10 @@ import {notConfident,confused,neutral,confident,veryConfident,
 import { Link, NavLink } from 'react-router-dom';
 import { WaitingLoader } from '../../loader/loader';
 
-const ConfidenceSliderModal = ({ modalStatus, handleClose,setConfidence,setSubmitCliked,name,
+const ConfidenceSliderModal = ({ modalStatus, setConfidence,setSubmitCliked,name,
   setIncresingTimerId,
-  setIntervalID
+  setIntervalID,
+  timeOut
 }) => {
   const [sliderChange, setSliderChange] = useState(0);
   const [isContinue, setContinue] = useState(0);
@@ -24,22 +25,29 @@ useEffect(()=>{
   if(isContinue){
   switch(sliderChange){
     case 0:
-    setConfidence('low')
+    setConfidence('NOT-CONFIDENT')
     break;
     case 0.25:
-      setConfidence('medium')
+      setConfidence('CONFUSED')
       break; case 0.5:
-      setConfidence('medium')
+      setConfidence('NEUTRAL')
       break; 
       case 0.75:
-      setConfidence('medium')
+      setConfidence('CONFIDENT')
       break;
       case 1:
-        setConfidence('high')
+        setConfidence('VERY-CONFIDENT')
       break;
   }
 }
 }),[sliderChange,isContinue]
+const handleClose=()=>{
+  if(!timeOut){
+    setSubmitCliked(false)
+    setIncresingTimerId()
+    setIntervalID()
+  }
+}
   return (
     <>
       <Modal
@@ -105,12 +113,7 @@ sliderChange === 0.5?"I’m neutral":sliderChange === 0.75?"I’m confident":sli
         <div className='completion__footer slider_footer'>
         <div className={`d-flex ${isContinue?'justify-content-center':'justify-content-between'} align-items-center`}>
         {isContinue?<p className='d-flex flex-column justify-content-center align-items-center'><WaitingLoader/><span className='modal_header bg-transparent'>Submitting...</span></p>:<>
-            <button onClick={()=>{
-              setSubmitCliked(false)
-              setIncresingTimerId()
-              setIntervalID()
-            }
-            } disabled={isContinue?true:false} className='challenge__outline-btn '>Let me retry</button>
+            <button onClick={handleClose} disabled={isContinue?true:false} className='challenge__outline-btn '>Let me retry</button>
             <button disabled={isContinue?true:false} onClick={()=>setContinue(true)}  className='challenge__filled-btn'>Yes, continue</button>
             </>
 }

@@ -20,7 +20,7 @@ import quesImage from '../../assets/Images/question/Rectangle-2.png';
 import { Button, Card, Col, Row } from 'react-bootstrap';
 
 import { CardBody, Input } from 'reactstrap';
-import { CheckBox } from '@mui/icons-material';
+import { CheckBox, Sort } from '@mui/icons-material';
 import { getChallengeExamQuestions, submitAnswerChallengeExam } from '../../services/challenges';
 import CustomNavbar from '../../components/questionTypes/navBar';
 import { QuestionTypeWrapper } from '../../components/questionTypes/questionTypeWrapper';
@@ -45,11 +45,12 @@ const ChallengesQuestions = () => {
   let challengeType = searchParams.get('challenge-type')
   let points = searchParams.get('points')
   let name = searchParams.get('name')
+  let opponentPoints = searchParams.get('opponentPoints')
+  let opponentName = searchParams.get('opponentName')
+  let logo1 = searchParams.get('logo1')
+  let logo2 = searchParams.get('logo2')
 
-
-
-
-
+  
   const { id } = useParams();
   const [questionsInfo, setQuestionsInfo] = useState();
   const [stat, setStat] = useState('');
@@ -66,42 +67,43 @@ const ChallengesQuestions = () => {
   const [confidence, setConfidence] = useState();
   const [intervalID, setIntervalID] = useState();
   const [incresingIntervalID, setIncresingTimerId] = useState();
+  const [nextButtonClicked, setNextButtonClicked] = useState(false);
+  const [statusVal, setstatus] = useState({});
 
 
   useEffect(() => {
-    if (questionsInfo?._id && timerVal == 'false'&&(!submitCliked)) {
+    if (questionsInfo?._id && timerVal == 'false' && (!submitCliked)) {
       const timer = setInterval(() => {
-       if(!submitCliked) setTimeTakenToAnswer(timeTakenToAnswer + 1);
+        if (!submitCliked) setTimeTakenToAnswer(timeTakenToAnswer + 1);
       }, 1000);
-     if(!incresingIntervalID) setIncresingTimerId(timer)
+      if (!incresingIntervalID) setIncresingTimerId(timer)
       return () => clearInterval(timer); //This is important
     }
   })
 
   useEffect(() => {
     let interval = null;
-    if (questionsInfo?._id && timerVal == 'true'&&(!submitCliked)) {
+    if (questionsInfo?._id && timerVal == 'true' && !submitCliked) {
       interval = setInterval(() => {
         setTime((prevTime) => prevTime - 1);
       }, 1000);
       setIntervalID(interval)
     }
-  }, [questionsInfo, timerVal,submitCliked]);
-
+  }, [questionsInfo, timerVal, submitCliked]);
 
 
   useEffect(() => {
     if (submitCliked) {
-      clearInterval(intervalID,);
+      clearInterval(intervalID);
     }
-  }, [intervalID, submitCliked]);
+  }, [intervalID, submitCliked])
+
   useEffect(() => {
     if (submitCliked) {
       clearInterval(incresingIntervalID);
     }
   }, [incresingIntervalID, submitCliked]);
 
-  
 
   useEffect(() => {
     getExamQuestions();
@@ -109,6 +111,8 @@ const ChallengesQuestions = () => {
 
 
   const getExamQuestions = async () => {
+    clearInterval(intervalID);
+    clearInterval(incresingIntervalID);
     try {
       const res = await getChallengeExamQuestions(id);
       if (res?.data?.sessionStatus == 'COMPLETED') {
@@ -125,6 +129,12 @@ const ChallengesQuestions = () => {
       setTime(res?.data?.questionInfo?.timeToSolve);
       setTotalTime(res?.data?.questionInfo?.timeToSolve);
       setAttemptedQuestions(res?.data?.attemptedQuestions)
+      setNextButtonClicked(false)
+      setstatus({});
+      setStat('');
+      setSelectedOption([]);
+      setIsTrueOrFalse('')
+      setConfidence()
     } catch (error) {
       console.log(error.response.status);
       if (error.response.status === 410) {
@@ -133,9 +143,29 @@ const ChallengesQuestions = () => {
     }
   }
 
-  useEffect(() => {
-    if (stat) getNextQuestion()
-    if (stat == 'COMPLETED') {
+  // useEffect(() => {
+  //   // if (stat) getNextQuestion()
+  //   if (stat == 'COMPLETED'&&nextButtonClicked) {
+  //     navigate({
+  //       pathname: `/to-do/challenge/score-details/${session}`,
+  //       search: createSearchParams({
+  //         'challenge-type': challengeType
+  //       }).toString(),
+  //     })
+  //   }
+  // }, [stat,nextButtonClicked])
+
+  // useEffect(()=>{
+  //   if(questionsInfo?._id)setNextButtonClicked(false)
+  //  },[questionsInfo])
+
+  const getNextQuestion = () => {
+    setNextButtonClicked(true)
+    setQuestionsInfo()
+    if (stat === 'IN-PROGRESS') {
+      getExamQuestions()
+    }
+    else if (stat == 'COMPLETED') {
       navigate({
         pathname: `/to-do/challenge/score-details/${session}`,
         search: createSearchParams({
@@ -143,23 +173,13 @@ const ChallengesQuestions = () => {
         }).toString(),
       })
     }
-  }, [stat])
-  const getNextQuestion = () => {
-    setTimeTakenToAnswer(0)
-    setSubmitCliked(false)
-    setConfidence()
-    setTotalTime()
-    setTime()
-    setIsTrueOrFalse('')
-    setSelectedOption([]);
-    setQuestionsInfo('')
-    setIntervalID('')
-    setIncresingTimerId('')
-    if (stat === 'IN-PROGRESS') {
-      // setstatus({});
-      setStat('');
-      getExamQuestions()
-    }
+    // setTimeTakenToAnswer(0)
+    // setTotalTime()
+    // setTime()
+    // setQuestionsInfo()
+    // setIntervalID('')
+    // setIncresingTimerId('')
+    // }
   };
   useEffect(() => {
     if ((timerVal == "true" && time == 0)) {
@@ -180,7 +200,7 @@ const ChallengesQuestions = () => {
         masterId: master,
         sessionId: session,
         question: questionsInfo._id,
-        solutionIndex: selectedOption?.length ? selectedOption : null,
+        solutionIndex: selectedOption?.length ? questionType == 'PUT_IN_ORDER' ? selectedOption : selectedOption?.sort() : null,
         isTrueOrFalse: isTrueOrFalse == '' ? null : isTrueOrFalse,
         timeTaken: (timerVal == "true") ? (totaltime - time) : timeTakenToAnswer,
         confidence: confidence
@@ -190,11 +210,13 @@ const ChallengesQuestions = () => {
       const res = await submitAnswerChallengeExam(params);
       setStat(res?.data?.sessionStatus);
       setAttemptedQuestions(res?.data?.attemptedQuestions)
-
+      setstatus(res?.data);
+      setSubmitCliked(false)
       setSubmitting(false)
     } catch (error) {
       console.log(error);
       setSubmitting(false)
+      setSubmitCliked(false)
     }
   };
   return (
@@ -205,8 +227,32 @@ const ChallengesQuestions = () => {
           progress={Math.floor((attemptedQuestions / (parseInt(questionPerSession))) * 100)}
           points={points}
           name={name}
+          stat={stat}
+          opponentPoints={opponentPoints}
+          opponentName={opponentName}
+          submitCliked={submitCliked}
+          statusVal={statusVal}
+          nextButtonClicked={nextButtonClicked}
+          logo1={logo1}
+          logo2={logo2}
         />
-        <div>
+        {stat === '' && !submitCliked &&
+          questionsInfo?._id && (
+            <div>
+              <QuestionTypeWrapper
+                questionInfo={questionsInfo}
+                attemptedQuestions={attemptedQuestions}
+                questionPerSession={questionPerSession}
+                setSelectedOption={setSelectedOption}
+                selectedOption={selectedOption}
+                setSubmitCliked={setSubmitCliked}
+                setIsTrueOrFalse={setIsTrueOrFalse}
+                isTrueOrFalse={isTrueOrFalse}
+                isExplanation={false}
+                getNextQuestion={getNextQuestion}
+              />
+            </div>)}
+        {((stat === 'IN-PROGRESS' && !submitCliked) || (stat === 'COMPLETED' && statusVal && !nextButtonClicked && !submitCliked)) && (
           <QuestionTypeWrapper
             questionInfo={questionsInfo}
             attemptedQuestions={attemptedQuestions}
@@ -216,8 +262,11 @@ const ChallengesQuestions = () => {
             setSubmitCliked={setSubmitCliked}
             setIsTrueOrFalse={setIsTrueOrFalse}
             isTrueOrFalse={isTrueOrFalse}
+            isExplanation={true}
+            getNextQuestion={getNextQuestion}
+            statusVal={statusVal}
           />
-        </div>
+        )}
         {submitCliked ?
           <ConfidenceSliderModal
             modalStatus={true}
@@ -228,6 +277,7 @@ const ChallengesQuestions = () => {
             name={name}
             setIncresingTimerId={setIncresingTimerId}
             setIntervalID={setIntervalID}
+            timeOut={(timerVal == "true" && time == 0) ? true : false}
           /> : ''}
       </div>
     </div>

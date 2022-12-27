@@ -26,13 +26,10 @@ export const ReArrangeCard = () => {
 ]);
     const swapElements = (myArray, index1, index2) => {
         [myArray[index1], myArray[index2]] = [myArray[index2], myArray[index1]];
-        console.log('myArray',myArray)
         return myArray
     };
-    console.log('finalArray',items)
    
   const onSortEnd = ({oldIndex, newIndex}) => {
-    console.log('oldIndex',oldIndex,newIndex)
     setItems(swapElements(items,oldIndex,newIndex))
       };
       return(

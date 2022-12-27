@@ -9,7 +9,10 @@ export const QuestionTypeWrapper = ({questionInfo,attemptedQuestions,
   selectedOption,
   setSubmitCliked,
   setIsTrueOrFalse,
-  isTrueOrFalse
+  isTrueOrFalse,
+  isExplanation,
+  getNextQuestion,
+  statusVal
 }) => {
   return (
     <div>
@@ -22,6 +25,9 @@ export const QuestionTypeWrapper = ({questionInfo,attemptedQuestions,
         selectedOption={selectedOption}
         setSubmitCliked={setSubmitCliked}
         multi={true}
+        isExplanation={isExplanation}
+        getNextQuestion={getNextQuestion}
+        statusVal={statusVal}
         />
         :questionInfo?.questionType=="SINGLE_CHOICE"?
         <MultiSelect
@@ -32,16 +38,21 @@ export const QuestionTypeWrapper = ({questionInfo,attemptedQuestions,
         selectedOption={selectedOption}
         setSubmitCliked={setSubmitCliked}
         multi={false}
+        isExplanation={isExplanation}
+        getNextQuestion={getNextQuestion}
+        statusVal={statusVal}
         />:questionInfo?.questionType=="TRUE_OR_FALSE"?
         <TrueOfFalse
         questionInfo={questionInfo}
         attemptedQuestions={attemptedQuestions}
         questionPerSession={questionPerSession}
-       
   setIsTrueOrFalse={setIsTrueOrFalse}
   isTrueOrFalse={isTrueOrFalse}
         setSubmitCliked={setSubmitCliked}
         multi={false}
+        isExplanation={isExplanation}
+        getNextQuestion={getNextQuestion}
+        statusVal={statusVal}
         />:
         questionInfo?.questionType=="PUT_IN_ORDER"?
         <PutInOrder
@@ -51,6 +62,9 @@ export const QuestionTypeWrapper = ({questionInfo,attemptedQuestions,
         setSelectedOption={setSelectedOption}
         selectedOption={selectedOption}
         setSubmitCliked={setSubmitCliked}
+        isExplanation={isExplanation}
+        getNextQuestion={getNextQuestion}
+        statusVal={statusVal}
         />
         :''}
 

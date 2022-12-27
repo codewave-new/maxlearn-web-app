@@ -9,15 +9,18 @@ import { CheckBox } from '@mui/icons-material';
 import quesImage from '../../../assets/Images/question/Rectangle-2.png';
 import { renderText } from '../../../utility/helper';
 import { OptionWrapper } from './optionWrapper';
+import { OptionWrapperPreview } from './optionWrapperPreview';
 
 export const MultiSelect = ({ questionInfo ,attemptedQuestions,
   questionPerSession,
   setSelectedOption,
   selectedOption,
   setSubmitCliked,
-  multi
+  multi,
+  isExplanation,
+  statusVal,
+  getNextQuestion
 }) => {
-  console.log('nkn', questionInfo)
   const handleSelect = (index)=>{
     if(multi){
 
@@ -44,28 +47,41 @@ export const MultiSelect = ({ questionInfo ,attemptedQuestions,
       <Col className='col-sm-6 mt-4 mb-4 ml-2 question_detail '>
         <div className='p-1'>
           <div className=''>
-            Question - {attemptedQuestions+1} OF {questionPerSession}</div>
+            Question - {isExplanation?attemptedQuestions-1:attemptedQuestions+1} OF {questionPerSession}</div>
             <p className='mt-1'>
           {multi?'MULTI SELECT QUESTION':'SINGLE SELECT QUESTION'} 
           </p>
           <p className='mt-1'>
             {renderText(questionInfo?.body)}
           </p>
-          <img className='quest_image mt-1' src={quesImage} />
+          {/* <img className='quest_image mt-1' src={quesImage} /> */}
         </div>
       </Col>
       <Col className='col-sm-5 mt-4 mr-1 mb-4'>
-        <div className='mt-2 quest_ans'> SELECT YOUR ANSWER</div>
+        <div className='mt-2 quest_ans'>{isExplanation?"YOUR ANSWERS":"SELECT YOUR ANSWER"} </div>
         <CardBody className='mt-3 ml-2'>
+          {!isExplanation?
           <OptionWrapper
 options={questionInfo?.options}
 selectedOption={selectedOption}
 handleSelect={handleSelect}
-
-          />
+          />:
+          <OptionWrapperPreview
+options={questionInfo?.options}
+selectedOption={selectedOption}
+handleSelect={handleSelect}
+statusVal={statusVal}
+questionType={questionInfo?.questionType}
+/>
+}
 </CardBody>      
   <div className='app_subtn'>
-    <a >
+    {isExplanation? <a >
+      <Button className='add-new-btn add_btnctprev' color='primary'
+      onClick={()=>getNextQuestion()}>
+        Next question
+      </Button>
+    </a>: <a >
       <Button className='add-new-btn add_btnctprev' color='primary' disabled={
         multi?(selectedOption?.length>=1?false:true):
               (selectedOption?.length==1?false:true)
@@ -76,8 +92,18 @@ handleSelect={handleSelect}
         {multi?(selectedOption?.length>=1?'Submit answer':"Next question"):
               (selectedOption?.length==1?'Submit answer':"Next question")}
       </Button>
-    </a>
+    </a>}
+   
   </div>
+  <CardBody className='mt-3 ml-2'>
+{isExplanation?
+(<>
+  <p className='mt-1'>Answer explanation in detail</p>
+{statusVal?.answerInfo?.feedback}
+</>
+)
+:''}
+</CardBody>
       </Col>
     </Row>
   )
