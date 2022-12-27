@@ -33,7 +33,7 @@ const NotificationModal = ({ show, onHide }) => {
       <div className='row'>
         {data.map((value, index) => {
           return (
-            <div className='col-12'>
+            <div className='col-12' key={index}>
               <CardModalNotification data={value} index={index} />
             </div>
           );

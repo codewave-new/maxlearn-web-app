@@ -1,5 +1,5 @@
 import React from 'react';
-import { LearnBadge } from '../../assets';
+import { NavToDoLogo } from '../../assets';
 import Badge from '@mui/material/Badge';
 
 const badgeStyle = {
@@ -14,11 +14,19 @@ const badgeStyle = {
   },
 };
 
-const CardData = ({ data, index }) => {
+// classname for all the color for the notification
+const colorClassName = {
+  purple: 'purple',
+  yellow: 'yellow',
+  green: 'green',
+  pink: 'pink',
+};
+
+const CardData = ({ data }) => {
   return (
     <div className='row'>
       <div className='col-2 icon_wrapper'>
-        <LearnBadge.default />
+        <NavToDoLogo.default />
       </div>
       <div className='col-7'>
         <div className='card_title'>{data.name}</div>
@@ -33,15 +41,15 @@ const CardData = ({ data, index }) => {
 const CardModalNotification = ({ data, index }) => {
   return (
     <div
-      className='notification_card_wrapper'
+      className={`notification_card_wrapper ${colorClassName}`}
       style={{ backgroundColor: data.bgColor }}
     >
       {index <= 1 ? (
         <Badge sx={badgeStyle} variant='dot'>
-          <CardData data={data} index={index} />
+          <CardData data={data} />
         </Badge>
       ) : (
-        <CardData data={data} index={index} />
+        <CardData data={data} />
       )}
     </div>
   );

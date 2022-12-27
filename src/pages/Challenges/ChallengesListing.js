@@ -9,6 +9,7 @@ import { CalenderIcon, RightArrow } from '../../assets';
 import InfiniteScrollModal from '../../components/Pagination/InfiniteScrollModal';
 import SidebarModal from '../../components/Common/CustomModal/SidebarModal';
 import InfiniteScrollling from '../../components/Pagination/InfiniteScrollling';
+import { CenterLoadingBar, LoadingBar } from '../../components/loader/loader';
 
 const ChallengesListing = () => {
   const navigate = useNavigate();
@@ -19,14 +20,14 @@ const ChallengesListing = () => {
   const [upcomingCount, setUpcomingCount] = useState(0);
   const [upcomingPage, setUpcomingPage] = useState(0);
   const [modalStatus, setModalStatus] = useState(false);
-
-  useEffect(() => {
-    todaysChallenges();
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingUpcoming, setIsLoadingUpcoming] = useState(false);
 
   const todaysChallenges = async () => {
     setTodayPageNum((pageNum) => pageNum + 1);
+    setIsLoading(true);
     const response = await todaysChallengesListing(todayPageNum + 1);
+    setIsLoading(false);
     if (response?.statusCode === 200) {
       setTodayChallenge((challenges) => [
         ...challenges,
@@ -38,9 +39,15 @@ const ChallengesListing = () => {
     }
   };
 
+  useEffect(() => {
+    todaysChallenges();
+  }, []);
+
   const upcomingChallenge = async () => {
     setUpcomingPage((upcomingPage) => upcomingPage + 1);
+    setIsLoadingUpcoming(true);
     const response = await upcomingChallenges(upcomingPage + 1);
+    setIsLoadingUpcoming(false);
     if (response?.statusCode === 200) {
       setUpcomingChallengeDetail((upcomingChallenges) => [
         ...upcomingChallenges,
@@ -62,47 +69,57 @@ const ChallengesListing = () => {
 
   return (
     <div>
-      <InfiniteScrollling
-        dataLength={todayChallenge?.length}
-        next={todaysChallenges}
-        hasMore={todayChallenge?.length < count}
-      >
-        <div className='row'>
-          {todayChallenge?.map((individualChallenge, index) => (
-            <div
-              className='col-6'
-              key={`challenge0${index}`}
-              onClick={() => {
-                navigate({
-                  pathname: `/to-do/challenge/detail/${individualChallenge?._id}`,
-                  search: createSearchParams({
-                    'challenge-type': `${individualChallenge?.challengeType}`,
-                    exam_type: 'TODAYSTEST',
-                  }).toString(),
-                });
-              }}
-            >
-              <QuestCard
-                data={individualChallenge}
-                type='challenges'
-                className={'max__activity-quest-card'}
-              />
+      {isLoading && todayPageNum === 1 ? (
+        <CenterLoadingBar />
+      ) : (
+        <>
+          <InfiniteScrollling
+            dataLength={todayChallenge?.length}
+            next={todaysChallenges}
+            hasMore={todayChallenge?.length < count}
+            loader={<LoadingBar />}
+          >
+            <div className='row'>
+              {todayChallenge?.map((individualChallenge, index) => (
+                <div
+                  className='col-6'
+                  key={`challenge0${index}`}
+                  onClick={() => {
+                    navigate({
+                      pathname: `/to-do/challenge/detail/${individualChallenge?._id}`,
+                      search: createSearchParams({
+                        'challenge-type': `${individualChallenge?.challengeType}`,
+                        exam_type: 'TODAYSTEST',
+                      }).toString(),
+                    });
+                  }}
+                >
+                  <QuestCard
+                    data={individualChallenge}
+                    type='challenges'
+                    className={'max__activity-quest-card'}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </InfiniteScrollling>
+          </InfiniteScrollling>
 
-      <button className='upcomming__todo-btn w-100' onClick={handleModalOpen}>
-        <div>
-          <CalenderIcon.default />
-          <span className='upcomming__todo-text mb-0'>
-            Get update on your upcoming challenges
-          </span>
-        </div>
-        <div>
-          <RightArrow.default />
-        </div>
-      </button>
+          <button
+            className='upcomming__todo-btn w-100'
+            onClick={handleModalOpen}
+          >
+            <div>
+              <CalenderIcon.default />
+              <span className='upcomming__todo-text mb-0'>
+                Get update on your upcoming challenges
+              </span>
+            </div>
+            <div>
+              <RightArrow.default />
+            </div>
+          </button>
+        </>
+      )}
 
       <SidebarModal
         show={modalStatus}
@@ -111,7 +128,8 @@ const ChallengesListing = () => {
       >
         <div>
           <h4 className='modal__body-header'>
-            You have {upcomingCount || '-'} upcoming challenges
+            You have {isLoadingUpcoming ? '-' : upcomingCount || 0} upcoming
+            challenges
           </h4>
 
           <InfiniteScrollModal

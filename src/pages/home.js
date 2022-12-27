@@ -6,12 +6,25 @@ import HomeLayout from '../components/Layout/HomeLayout';
 import SideBar from '../components/UI/SideBar/SideBar';
 import QuestSideBar from '../components/UI/SideBar/QuestSideBar';
 import Footer from '../components/Common/Footer/Footer';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+  // const navigator = useContext(UNSAFE_NavigationContext).navigator;
   useEffect(() => {
     dispatch(appInit(true));
   }, []);
+
+  // useEffect(() => {
+  //   // console.log(navigator);
+
+  //   window.onpopstate = () => {
+  //     navigate('/');
+  //   };
+  // }, []);
+
   const [cartIsShown, setCartIsShown] = useState(false);
   const [questSideBar, setQuestSideBar] = useState(false);
 

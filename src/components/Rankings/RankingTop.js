@@ -14,8 +14,8 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+          <h6 className='topper__name'>dvgfhvfkkxkzxbck</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
         <div className='first-container'>
@@ -29,8 +29,8 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+            <h6 className='topper__name'>You</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
         <div className='third-container'>
@@ -43,8 +43,8 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+          <h6 className='topper__name'>You</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
       </div>
