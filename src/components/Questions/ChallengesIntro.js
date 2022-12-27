@@ -1,10 +1,10 @@
 import React from 'react';
 import ExamDetails from './ExamDetails';
 
-const ChallengesIntro = ({ variant }) => {
+const ChallengesIntro = ({ variant, state }) => {
   switch (variant) {
     case 'challenge':
-      return <ExamDetails />;
+      return <ExamDetails state={state} />;
     case 'quest':
       return <ExamDetails />;
     default:

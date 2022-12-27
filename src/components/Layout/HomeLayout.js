@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Challenges from '../Challenges/Challenges';
 import Badge from '../Home/badge/Badge';
 import Quote from '../Home/badge/Quote';
@@ -7,6 +7,8 @@ import User from '../Home/User/User';
 import Card from '../UI/Card';
 
 const HomeLayout = (props) => {
+ 
+  
   
   return (
     <div className='max_home-container container'>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {
   HomeLogo,
   HomeNotificationLogo,
@@ -9,9 +9,14 @@ import {
   NavToDoLogo,
   NavRangingLogo,
   HomeUserLogo,
+  LogoutImage,
+  ConsoleArrow,
+  ProfileImage,
+  HelpDesk,
 } from '../../../assets';
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [profileDropDown, setProfileDropDown] = useState(false);
 
   const activeClassName = 'active';
@@ -198,13 +203,53 @@ const Navbar = () => {
                     <div className='max__nav-user-container'>
                       <button
                         onClick={() => {
-                          setProfileDropDown(true);
+                          setProfileDropDown((previousState) => !previousState);
                         }}
                       >
                         <HomeUserLogo.default />
                       </button>
                     </div>
                   </li>
+                  {profileDropDown ? (
+                    <div className='dropDownProfile'>
+                      <ul className='dropdown__list-wrapper'>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            navigate('/profile');
+                          }}
+                        >
+                          <div className='image-logo'>
+                            <ProfileImage.default />
+                          </div>
+                          My profile
+                        </li>
+                        <li className='dropdown__list'>
+                          Console <ConsoleArrow.default />
+                        </li>
+                        <li className='dropdown__list'>
+                          <div className='image-logo'>
+                            <HelpDesk.default />
+                          </div>
+                          Help & supports
+                        </li>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            localStorage.clear();
+                            navigate('/login');
+                          }}
+                        >
+                          <div className='image-logo'>
+                            <LogoutImage.default />
+                          </div>
+                          Logout
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 </ul>
               </div>
             </div>

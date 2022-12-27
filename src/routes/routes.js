@@ -28,6 +28,7 @@ import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
 // import CongratualtionsScreen from '../pages/questions/CongratualtionsScreen';
 import TopicDetail from '../pages/LearnCategory/TopicDetail';
 import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
+import CertQuestions from '../components/ToDo/questcerttab/CertQuestions';
 
 export const appRoutes = [
   {
@@ -112,6 +113,10 @@ export const appRoutes = [
         path: '/to-do/challenge/detail/:id',
         element: <ChallengesDetail />,
       },
+      {
+        path: '/to-do/cert/start',
+        element: <ChallengesDetail />,
+      },
 
       {
         path: '/to-do/challenge/score-details/:id',
@@ -120,6 +125,10 @@ export const appRoutes = [
       {
         path: '/start-challenge-exam/:id',
         element: <ChallengesQuestions />,
+      },
+      {
+        path: '/start-cert-exam',
+        element: <CertQuestions />,
       },
       {
         path: '/challenge-squad-detail',

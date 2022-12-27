@@ -6,7 +6,15 @@ import QuestionCard, {
   ThumNailComponent,
 } from '../../Common/QuestionCard.js/QuestionCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay, Mousewheel, Keyboard, Pagination } from 'swiper';
+import {
+  Navigation,
+  Autoplay,
+  Mousewheel,
+  Keyboard,
+  Pagination,
+  EffectCards,
+} from 'swiper';
+import { CloseButton } from '../../../assets';
 
 const data = [
   {
@@ -56,9 +64,9 @@ const FlashCard = () => {
         // }}
         slidesPerView={1}
         spaceBetween={10}
-        // pagination={{
-        //   clickable: true,
-        // }}
+        pagination={{
+          clickable: true,
+        }}
         breakpoints={{
           640: {
             slidesPerView: 1,
@@ -73,18 +81,19 @@ const FlashCard = () => {
             spaceBetween: 10,
           },
         }}
-        modules={[Navigation, Autoplay, Mousewheel, Keyboard]}
+        modules={[Navigation, Autoplay, Mousewheel, Keyboard, EffectCards]}
         className='mySwiperCatergory'
         navigation={{
           prevEl: '.previous',
           nextEl: '.nextButton',
         }}
+        // modules={[EffectCards]}
       >
         {data.map((value, i) => {
           return (
             <SwiperSlide key={i}>
               <QuestionCard
-                className={'width-70 m-30'}
+                className={'flash_card'}
                 leftClassName='leftClassName'
                 rightClassName='rightClassName'
               >
@@ -102,7 +111,7 @@ const FlashCard = () => {
                   <h5>{value.detail1}</h5>
                   <h3 className='mt-4'>{value.heading2}</h3>
                   <h5>{value.detail2}</h5>
-                  <div className='swiper_pagination1'>
+                  <div className='swiper_pagination_flashCard'>
                     <span className='page_index'>
                       {i + 1} / {data.length}
                       {console.log('laa', value.i)}
@@ -120,6 +129,12 @@ const FlashCard = () => {
           );
         })}
       </Swiper>
+      <button
+        className='detail_close flash-card-wrapper__close_button'
+        onClick={handleCLick}
+      >
+        <CloseButton.default />
+      </button>
     </div>
   );
 };

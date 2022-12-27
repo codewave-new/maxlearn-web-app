@@ -9,8 +9,9 @@ const TopicDetail = () => {
       <div className='max__learn-wrapper'>
         <Header />
         <TopicCategoryDetail />
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };

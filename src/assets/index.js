@@ -61,3 +61,8 @@ export * as SquadBackGround from './bg.png';
 export * as correctIcon from './correctt.svg';
 export * as wrongIcon from './wrongg.svg';
 export * as unCheckedIcon from './question/Rectangle.svg';
+export * as LogoutImage from './log-out.svg';
+export * as ProfileImage from './profile.svg';
+export * as HelpDesk from './helpdesk.svg';
+export * as ConsoleArrow from './consoleArrow.svg';
+export * as StartCertExam from './start-cert/Group 13@3x.png';
