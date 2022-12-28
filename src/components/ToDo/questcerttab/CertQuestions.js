@@ -1,161 +1,153 @@
 import React, { useState, useEffect } from 'react';
-import {
-  useSearchParams,
-  useParams,
-  useNavigate,
-  createSearchParams,
-  useLocation,
-} from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import moment from 'moment';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import '../../../styles/questions/challengs-question.scss';
-import {
-  getChallengeExamQuestions,
-  submitAnswerChallengeExam,
-} from '../../../services/challenges';
 import CustomNavbar from '../../questionTypes/navBar';
 import { QuestionTypeWrapper } from '../../questionTypes/questionTypeWrapper';
 import ConfidenceSliderModal from '../../Common/CustomModal/ConfidenceSliderModal';
-import { getCertExamQuestions } from '../../../services/certs';
+import {
+  finishCertTest,
+  getCertExamQuestions,
+  submitCertExamAns,
+} from '../../../services/certs';
+import { CloseButton, MaxLogo, timerLogo } from '../../../assets';
 
-const range = [
-  { value: '0', step: 1 }, // acts as min value
-  { value: '50', step: 2 },
-  { value: '100', step: 3 },
-];
 const CertQuestions = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [searchParams] = useSearchParams();
-  useLocation;
-  let session = searchParams.get('session'); // 'name'
-  let master = searchParams.get('master'); // 'name'
-  // let attemptedQuestions=searchParams.get('attemptedQuestions') // 'name'
-  let questionPerSession = searchParams.get('questionPerSession'); // 'name'
-  let timerVal = searchParams.get('timer');
-  let challengeType = searchParams.get('challenge-type');
-  let points = searchParams.get('points');
-  let name = searchParams.get('name');
-
-  const { id } = useParams();
-  const [questionsInfo, setQuestionsInfo] = useState();
-  const [stat, setStat] = useState('');
-  const [timeTakenToAnswer, setTimeTakenToAnswer] = useState(0);
-  const [questionType, setQuestionType] = useState('');
   const [selectedOption, setSelectedOption] = useState([]);
   const [submitCliked, setSubmitCliked] = useState(false);
-  const [modalStatus, setModalStatus] = useState(true);
+  const [setModalStatus] = useState(true);
   const [isSubmitting, setSubmitting] = useState(false);
   const [isTrueOrFalse, setIsTrueOrFalse] = useState('');
-  const [attemptedQuestions, setAttemptedQuestions] = useState(0);
-  const [time, setTime] = useState();
-  const [totaltime, setTotalTime] = useState();
   const [confidence, setConfidence] = useState();
-  const [intervalID, setIntervalID] = useState();
-  const [incresingIntervalID, setIncresingTimerId] = useState();
 
   // uzhairkhan
   const [allQuestions, setAllQuestions] = useState([]);
   const [singleQuestion, setSingleQuestion] = useState('');
-
-  // my logic
-  // get question based on index
-  // on succes of submit increase index to get next question
-  // when index === length -1 go to completion page
+  const [singleQuestionIndex, setSingleQuestionIndex] = useState(null);
+  const [timeToSolveQuestion, setTimeToSolveQuestion] = useState(0);
+  const [remTimeToSolveQuestion, setRemTimeToSolveQuestion] = useState(0);
+  const [timeBoundVal, setTimeBound] = useState(false);
+  const [timerVal, setTimerVal] = useState('');
 
   const getExamQuestions = async (certID) => {
     try {
       const resp = await getCertExamQuestions(certID);
       if (resp.data.statusCode === 200) {
-        const questions = resp.data.data.list.questions;
+        const { questions } = resp.data.data.list;
+        const { timeBound } = resp.data.data.list;
         setAllQuestions(questions);
-        if (questions.length) setSingleQuestion(questions[0]);
+        setTimeBound(timeBound);
       }
-      // return navigate({
-      //   pathname: `/to-do/challenge/score-details/${session}`,
-      //   search: createSearchParams({
-      //     'challenge-type': challengeType,
-      //   }).toString(),
     } catch (error) {
       console.log(error.response.status);
-      if (error.response.status === 410) {
-        setStat('FINISHED');
-      }
     }
   };
-  // uzhairkhan
 
-  useEffect(() => {
-    if (questionsInfo?._id && timerVal == 'false' && !submitCliked) {
-      const timer = setInterval(() => {
-        if (!submitCliked) setTimeTakenToAnswer(timeTakenToAnswer + 1);
-      }, 1000);
-      if (!incresingIntervalID) setIncresingTimerId(timer);
-      return () => clearInterval(timer); //This is important
+  const finishTest = async (resultID) => {
+    try {
+      const resp = await finishCertTest({
+        resultId: resultID,
+        dateOfSubmission: moment().format('MM/DD/YYYY'),
+      });
+      if (resp.data.statusCode === 200) {
+        navigate('/to-do/cert/score', {
+          state: { ...location.state },
+        });
+      }
+    } catch (err) {
+      console.log(err.response);
     }
-  });
+  };
 
-  useEffect(() => {
-    let interval = null;
-    if (questionsInfo?._id && timerVal == 'true' && !submitCliked) {
-      interval = setInterval(() => {
-        setTime((prevTime) => prevTime - 1);
-      }, 1000);
-      setIntervalID(interval);
+  const attemptAnswer = async (ansConfidence) => {
+    setSubmitting(true);
+    try {
+      const params = {
+        resultId: location?.state?.resultId ?? '',
+        // eslint-disable-next-line no-underscore-dangle
+        question: singleQuestion._id,
+        solutionIndex: selectedOption?.length ? selectedOption : null,
+        isTrueOrFalse: isTrueOrFalse === '' ? null : isTrueOrFalse,
+        timeTaken: timeBoundVal
+          ? timeToSolveQuestion - remTimeToSolveQuestion
+          : remTimeToSolveQuestion || 0,
+        confidenceLevel: ansConfidence,
+      };
+      const resp = await submitCertExamAns(params);
+      if (resp.data.statusCode === 200) {
+        if (singleQuestionIndex === allQuestions.length - 1) {
+          finishTest(location.state.resultId);
+        } else {
+          setSubmitting(false);
+          setSingleQuestion('');
+          setConfidence('');
+          setSelectedOption('');
+          setSingleQuestionIndex((prevState) => prevState + 1);
+          setSubmitCliked(false);
+        }
+      }
+    } catch (error) {
+      console.log(error.response);
+      setSubmitting(false);
     }
-  }, [questionsInfo, timerVal, submitCliked]);
+  };
 
   useEffect(() => {
-    if (submitCliked) {
-      clearInterval(intervalID);
+    // initial load set index to 0
+    setSingleQuestionIndex(0);
+
+    return () => {};
+  }, []);
+
+  useEffect(() => {
+    if (location && location.state) {
+      if (
+        location.state.lastQuestionIdIndex >= 0 &&
+        location.state.lastQuestionIdIndex < allQuestions.length - 1
+      ) {
+        // eslint-disable-next-line no-unsafe-optional-chaining
+        setSingleQuestionIndex(location?.state?.lastQuestionIdIndex + 1);
+      }
+
+      if (location.state.lastQuestionIdIndex === allQuestions.length - 1) {
+        // eslint-disable-next-line no-unsafe-optional-chaining
+        setSingleQuestionIndex(location?.state?.lastQuestionIdIndex);
+      }
+
+      // if (location.state.lastQuestionIdIndex > allQuestions.length - 1) {
+      //   // eslint-disable-next-line no-unsafe-optional-chaining
+      //   finishTest(location?.state?.resultId);
+      // }
+
+      if (location.state.lastQuestionIdIndex === -1) {
+        // eslint-disable-next-line no-unsafe-optional-chaining
+        setSingleQuestionIndex(0);
+      }
     }
-  }, [intervalID, submitCliked]);
+  }, [location, allQuestions]);
 
   useEffect(() => {
-    if (submitCliked) {
-      clearInterval(incresingIntervalID);
+    if (location && location.state) {
+      if (location.state.certID) getExamQuestions(location.state.certID);
     }
-  }, [incresingIntervalID, submitCliked]);
-
-  useEffect(() => {
-    if (location && location.state && location.state.certID)
-      getExamQuestions(location.state.certID);
   }, [location]);
 
   useEffect(() => {
-    if (stat) getNextQuestion();
-    if (stat == 'COMPLETED') {
-      navigate({
-        pathname: `/to-do/challenge/score-details/${session}`,
-        search: createSearchParams({
-          'challenge-type': challengeType,
-        }).toString(),
-      });
+    if (singleQuestionIndex >= 0 && allQuestions.length) {
+      setSingleQuestion(allQuestions[singleQuestionIndex]);
+      const { timeToSolve } = allQuestions[singleQuestionIndex];
+      if (timeToSolve && timeBoundVal) {
+        setTimeToSolveQuestion(timeToSolve);
+        setRemTimeToSolveQuestion(timeToSolve);
+      }
     }
-  }, [stat]);
 
-  const getNextQuestion = () => {
-    setTimeTakenToAnswer(0);
-    setSubmitCliked(false);
-    setConfidence();
-    setTotalTime();
-    setTime();
-    setIsTrueOrFalse('');
-    setSelectedOption([]);
-    setQuestionsInfo('');
-    setIntervalID('');
-    setIncresingTimerId('');
-    if (stat === 'IN-PROGRESS') {
-      // setstatus({});
-      setStat('');
-      getExamQuestions();
-    }
-  };
-  useEffect(() => {
-    if (timerVal == 'true' && time == 0) {
-      setSubmitCliked(true);
-    }
-  }, [time, timerVal]);
+    return () => {};
+  }, [singleQuestionIndex, allQuestions]);
 
   useEffect(() => {
     if (confidence) {
@@ -163,76 +155,133 @@ const CertQuestions = () => {
     }
   }, [confidence]);
 
-  const attemptAnswer = async (confidence) => {
-    setSubmitting(true);
-    try {
-      const params = {
-        masterId: master,
-        sessionId: session,
-        question: questionsInfo._id,
-        solutionIndex: selectedOption?.length ? selectedOption : null,
-        isTrueOrFalse: isTrueOrFalse == '' ? null : isTrueOrFalse,
-        timeTaken: timerVal == 'true' ? totaltime - time : timeTakenToAnswer,
-        confidence: confidence,
-      };
-      if (questionType !== 'TRUE_OR_FALSE') delete params?.isTrueOrFalse;
-      if (questionType == 'TRUE_OR_FALSE') delete params?.solutionIndex;
-      const res = await submitAnswerChallengeExam(params);
-      setStat(res?.data?.sessionStatus);
-      setAttemptedQuestions(res?.data?.attemptedQuestions);
+  // timer code
 
-      setSubmitting(false);
-    } catch (error) {
-      console.log(error);
-      setSubmitting(false);
+  useEffect(() => {
+    let timer = '';
+
+    if (timeBoundVal) {
+      timer = setInterval(() => {
+        const mins = Math.floor(remTimeToSolveQuestion / 60);
+        const sec =
+          remTimeToSolveQuestion - Math.floor(remTimeToSolveQuestion / 60) * 60;
+
+        setTimerVal(`${mins} min : ${sec} sec`);
+        setRemTimeToSolveQuestion((prevState) => prevState - 1);
+      }, 1000);
+      if (remTimeToSolveQuestion < 0) clearInterval(timer);
     }
-  };
-  
+
+    if (!timeBoundVal) {
+      timer = setInterval(() => {
+        const mins = Math.floor(remTimeToSolveQuestion / 60);
+        const sec =
+          remTimeToSolveQuestion - Math.floor(remTimeToSolveQuestion / 60) * 60;
+
+        setTimerVal(`${mins} min : ${sec} sec`);
+        setRemTimeToSolveQuestion((prevState) => prevState + 1);
+      }, 1000);
+      // if (remTimeToSolveQuestion < 0) clearInterval(timer);
+    }
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [remTimeToSolveQuestion, timeBoundVal]);
+  // timer code
+
+  // uzhairkhan
+
   return (
     <div className=''>
       <div className='question_bg'>
-        <CustomNavbar
-          time={
-            timerVal === 'true'
-              ? Math.floor(time / 60) +
-                'min' +
-                ':' +
-                (time - Math.floor(time / 60) * 60) +
-                'sec'
-              : Math.floor(timeTakenToAnswer / 60) +
-                'min' +
-                ':' +
-                (timeTakenToAnswer - Math.floor(timeTakenToAnswer / 60) * 60) +
-                'sec'
-          }
-          progress={Math.floor(
-            (attemptedQuestions / parseInt(questionPerSession)) * 100
-          )}
-          points={points}
-          name={name}
-        />
+        {/* nav header */}
+        <header>
+          <nav className='navbar navbar-expand-lg max__navbar question_navbar'>
+            <div className='container-fluid'>
+              <div style={{ borderRight: '1px solid' }}>
+                <a className='navbar-brand' href='/src#'>
+                  <MaxLogo.default />
+                </a>
+
+                <button
+                  className='navbar-toggler'
+                  type='button'
+                  data-bs-toggle='offcanvas'
+                  data-bs-target='#offcanvasNavbar'
+                  aria-controls='offcanvasNavbar'
+                >
+                  <span className='navbar-toggler-icon' />
+                </button>
+              </div>
+
+              <div
+                className='offcanvas offcanvas-end'
+                tabIndex='-1'
+                id='offcanvasNavbar'
+                aria-labelledby='offcanvasNavbarLabel'
+              >
+                <div className='offcanvas-body'>
+                  <div className=' progress_bar w-75'>
+                    <ProgressBar
+                      now={Math.floor(
+                        (singleQuestionIndex /
+                          parseInt(allQuestions.length, 10)) *
+                          100
+                      )}
+                      className='bar mr-1'
+                    />
+                    <span className='d-inline progress_lable d-flex '>
+                      {' '}
+                      {Math.floor(
+                        (singleQuestionIndex /
+                          parseInt(allQuestions.length, 10)) *
+                          100
+                      )}
+                      %
+                    </span>
+                  </div>
+
+                  <div className='header-timer'>
+                    <timerLogo.default />
+                    {timerVal || '0 min : 0 sec'}
+                  </div>
+
+                  <a href='/to-do?tab=quest'>
+                    <button className='close_btn right-0'>
+                      <CloseButton.default />
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+        {/* nav header */}
+
         <div>
           <QuestionTypeWrapper
             questionInfo={singleQuestion}
-            // attemptedQuestions={attemptedQuestions}
-            // questionPerSession={questionPerSession}
             setSelectedOption={setSelectedOption}
             selectedOption={selectedOption}
             setSubmitCliked={setSubmitCliked}
             setIsTrueOrFalse={setIsTrueOrFalse}
             isTrueOrFalse={isTrueOrFalse}
+            type='cert'
+            questionNo={singleQuestionIndex + 1}
+            totalQuestions={allQuestions.length}
           />
         </div>
         {submitCliked ? (
           <ConfidenceSliderModal
-            modalStatus={true}
+            modalStatus={submitCliked}
             handleClose={() => setModalStatus(false)}
             setConfidence={setConfidence}
             setSubmitCliked={setSubmitCliked}
             isSubmitting={isSubmitting}
-            name={name}
-            setIncresingTimerId={setIncresingTimerId}
-            setIntervalID={setIntervalID}
+            name={location?.state?.userName ?? ''}
+            // setIncresingTimerId={setIncresingTimerId}
+            // setIntervalID={setIntervalID}
           />
         ) : (
           ''
