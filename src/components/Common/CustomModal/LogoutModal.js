@@ -4,11 +4,15 @@ import { LogoutIcon } from '../../../assets';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeAuth } from '../../../state/slices/loginSlice.';
 
 const LogoutModal = ({ open, close }) => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    dispatch(removeAuth());
     localStorage.clear();
     navigate('/login');
   };

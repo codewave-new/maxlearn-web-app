@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {
   HomeLogo,
@@ -16,9 +17,12 @@ import {
 } from '../../../assets';
 import NotificationModal from '../../Modals/NotificationModal';
 import LogoutModal from '../CustomModal/LogoutModal';
+import { removeAuth } from '../../../state/slices/loginSlice.';
+import SidebarModal from '../CustomModal/SidebarModal';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [profileDropDown, setProfileDropDown] = useState(false);
 
   const [showNotificationModal, setShowNotificationModal] = useState(false);
@@ -140,7 +144,12 @@ const Navbar = () => {
       </nav> */}
         <nav className='navbar navbar-expand-lg max__navbar'>
           <div className='container-fluid'>
-            <a className='navbar-brand' href='/src#'>
+            <a
+              className='navbar-brand'
+              onClick={() => {
+                navigate('/');
+              }}
+            >
               <MaxLogo.default />
             </a>
             <button
@@ -244,7 +253,12 @@ const Navbar = () => {
                           <li className='dropdown__list'>
                             Console <ConsoleArrow.default />
                           </li>
-                          <li className='dropdown__list'>
+                          <li
+                            className='dropdown__list'
+                            onClick={() => {
+                              navigate('/help');
+                            }}
+                          >
                             <div className='image-logo'>
                               <HelpDesk.default />
                             </div>

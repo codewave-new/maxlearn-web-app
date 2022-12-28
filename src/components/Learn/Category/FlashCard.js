@@ -114,7 +114,6 @@ const FlashCard = () => {
                   <div className='swiper_pagination_flashCard'>
                     <span className='page_index'>
                       {i + 1} / {data.length}
-                      {console.log('laa', value.i)}
                     </span>
                     <span className='previous'>
                       <span>{'<'}</span>

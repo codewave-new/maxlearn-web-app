@@ -14,7 +14,7 @@ const ActivityTab = (props) => {
 
   useEffect(() => {
     query['tab'] ? setActivetab(query['tab']) : handleNavigation('challenges');
-  }, []);
+  }, [query['tab']]);
 
   console.log(activetab, query['tab']);
 
