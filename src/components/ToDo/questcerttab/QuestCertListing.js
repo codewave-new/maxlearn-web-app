@@ -121,10 +121,13 @@ const useCreateQuestCards = (certsAndQuestData) => {
                     <Chip
                       status={
                         ele.type === 'cert' && ele.certResults
-                          ? ele.certResults.certStatus === 'finished' &&
-                            'COMPLETED'
+                          ? (ele.certResults.certStatus === 'finished' &&
+                              'COMPLETED') ||
+                            (ele.certResults.certStatus === 'started' &&
+                              'IN-PROGRESS')
                           : ele.questResults &&
-                            ele.questResults.status === 'in_progress' &&
+                            (ele.questResults.status === 'in_progress' ||
+                              ele.questResults.status === 'started') &&
                             'IN-PROGRESS'
                       }
                     />

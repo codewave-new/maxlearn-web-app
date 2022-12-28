@@ -18,3 +18,9 @@ export const getCertExamQuestions = (certId) =>
 
 export const submitCertExamAns = (payload) =>
   axios.post('/api/app/certs/submit-answer', payload);
+
+export const finishCertTest = (payload) =>
+  axios.post('/api/app/certs/finish-cert-test', payload);
+
+export const fetchCertReport = (resultId) =>
+  axios.post('/api/app/certs/get-cert-report', { resultId });

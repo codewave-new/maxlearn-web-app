@@ -11,6 +11,7 @@ const StartCertExamComponent = (props) => {
   const navigate = useNavigate();
 
   const handleClick = async (certInfoProp) => {
+    // result id = 63aae5cdfd1d725effcafc37
     // navigate('/start-cert-exam', {
     //   state: { ...certInfoProp, resultId: '63a5a50eecc6f8c11cb6d37d' },
     // });
@@ -72,7 +73,11 @@ const StartCertExamComponent = (props) => {
           </p>
         </div>
         <CustomButton
-          disabled={certInfo && certInfo.from === 'upcoming'}
+          disabled={
+            (certInfo && certInfo.from === 'upcoming') ||
+            certInfo.status === 'finished' ||
+            certInfo.status === 'completed'
+          }
           disabledText={
             certInfo.status === 'finished' || certInfo.status === 'completed'
               ? 'Completed'

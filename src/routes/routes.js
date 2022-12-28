@@ -29,6 +29,7 @@ import SubjectDetail from '../pages/LearnCategory/SubjectDetail';
 import TopicDetail from '../pages/LearnCategory/TopicDetail';
 import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
 import CertQuestions from '../components/ToDo/questcerttab/CertQuestions';
+import Score from '../components/ToDo/questcerttab/Score';
 
 export const appRoutes = [
   {
@@ -122,6 +123,7 @@ export const appRoutes = [
         path: '/to-do/challenge/score-details/:id',
         element: <ChallengesCompleted />,
       },
+
       {
         path: '/start-challenge-exam/:id',
         element: <ChallengesQuestions />,
@@ -129,6 +131,10 @@ export const appRoutes = [
       {
         path: '/start-cert-exam',
         element: <CertQuestions />,
+      },
+      {
+        path: '/to-do/cert/score',
+        element: <Score />,
       },
       {
         path: '/challenge-squad-detail',
