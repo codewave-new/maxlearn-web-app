@@ -30,13 +30,16 @@
       // }
     }
     .filled__button {
-      @include card(52px, 30%, 10px, #ff6633);
+      height: 52px;
+      width: 30%;
+      border-radius: 10px;
+      background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
       color: #ffffff;
       border: none;
-      &:hover {
-        background-color: #ff6633;
-        color: white;
-      }
+      // &:hover {
+      //   background-color: #ff6633;
+      //   color: white;
+      // }
     }
   }
 }
