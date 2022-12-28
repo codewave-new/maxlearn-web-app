@@ -40,7 +40,7 @@ const IndividualRanking = () => {
         <div className='row'>
           <div className='col-lg-4 col-12 text-center'>
             <div className='achievements__content'>
-              <RankingTop />
+              <RankingTop type='individual' />
               <h4>Your achievements are here!</h4>
               <div className='points-content d-flex justify-content-center'>
                 <h1>
