@@ -28,9 +28,7 @@ const CertQuestions = () => {
   const [singleQuestionIndex, setSingleQuestionIndex] = useState(null);
   const [timeToSolveQuestion, setTimeToSolveQuestion] = useState(0);
   const [remTimeToSolveQuestion, setRemTimeToSolveQuestion] = useState(0);
-  const [shouldFinishTest, setShouldFinishTest] = useState(false);
   const [timeBoundVal, setTimeBound] = useState(false);
-  const [startTimer, setStartTimer] = useState(false);
   const [timerVal, setTimerVal] = useState('');
 
   const getExamQuestions = async (certID) => {
@@ -55,7 +53,7 @@ const CertQuestions = () => {
       });
       if (resp.data.statusCode === 200) {
         navigate('/to-do/cert/score', {
-          state: { ...location.state, questions: allQuestions.length },
+          state: { ...location.state },
         });
       }
     } catch (err) {
@@ -72,20 +70,24 @@ const CertQuestions = () => {
         question: singleQuestion._id,
         solutionIndex: selectedOption?.length ? selectedOption : null,
         isTrueOrFalse: isTrueOrFalse === '' ? null : isTrueOrFalse,
-        timeTaken: 0,
+        timeTaken: timeBoundVal
+          ? timeToSolveQuestion - remTimeToSolveQuestion
+          : remTimeToSolveQuestion || 0,
         confidenceLevel: ansConfidence,
       };
       const resp = await submitCertExamAns(params);
       if (resp.data.statusCode === 200) {
-        setSubmitting(false);
-        setSingleQuestion('');
-        setConfidence('');
-        setSelectedOption('');
-        setSingleQuestionIndex((prevState) => prevState + 1);
-        setSubmitCliked(false);
+        if (singleQuestionIndex === allQuestions.length - 1) {
+          finishTest(location.state.resultId);
+        } else {
+          setSubmitting(false);
+          setSingleQuestion('');
+          setConfidence('');
+          setSelectedOption('');
+          setSingleQuestionIndex((prevState) => prevState + 1);
+          setSubmitCliked(false);
+        }
       }
-      // setStat(res?.data?.sessionStatus);
-      // setAttemptedQuestions(res?.data?.attemptedQuestions);
     } catch (error) {
       console.log(error.response);
       setSubmitting(false);
@@ -98,31 +100,6 @@ const CertQuestions = () => {
 
     return () => {};
   }, []);
-
-  useEffect(() => {
-    if (singleQuestionIndex >= 0 && allQuestions.length) {
-      setSingleQuestion(allQuestions[singleQuestionIndex]);
-      // const { timeToSolve } = allQuestions[singleQuestionIndex];
-      // if (timeToSolve) {
-      //   setTimeToSolveQuestion(timeToSolve);
-      //   setStartTimer(true);
-      // }
-    }
-    // if (singleQuestionIndex === allQuestions.length) {
-    //   console.log(singleQuestionIndex, allQuestions.length - 1);
-    //   // finishTest(location?.state?.resultId);
-    // }
-
-    return () => {
-      // setSingleQuestionIndex(null);
-    };
-  }, [singleQuestionIndex, allQuestions]);
-
-  useEffect(() => {
-    if (confidence) {
-      attemptAnswer(confidence);
-    }
-  }, [confidence]);
 
   useEffect(() => {
     if (location && location.state) {
@@ -157,32 +134,59 @@ const CertQuestions = () => {
     }
   }, [location]);
 
-  // timer code
-
   useEffect(() => {
-    if (startTimer) {
-      setRemTimeToSolveQuestion(timeToSolveQuestion);
-      setStartTimer(false);
+    if (singleQuestionIndex >= 0 && allQuestions.length) {
+      setSingleQuestion(allQuestions[singleQuestionIndex]);
+      const { timeToSolve } = allQuestions[singleQuestionIndex];
+      if (timeToSolve && timeBoundVal) {
+        setTimeToSolveQuestion(timeToSolve);
+        setRemTimeToSolveQuestion(timeToSolve);
+      }
     }
 
     return () => {};
-  }, [startTimer]);
+  }, [singleQuestionIndex, allQuestions]);
 
   useEffect(() => {
-    const timer = `${Math.floor(remTimeToSolveQuestion / 60)}min : ${
-      remTimeToSolveQuestion - Math.floor(remTimeToSolveQuestion / 60) * 60
-    }sec`;
-
-    // setTimerVal(timer);
-    // setRemTimeToSolveQuestion((prevState) => prevState - 1);
-    return () => {};
-  }, [remTimeToSolveQuestion]);
+    if (confidence) {
+      attemptAnswer(confidence);
+    }
+  }, [confidence]);
 
   // timer code
 
-  console.log('singleQuestion', singleQuestion);
-  console.log('singleQuestionIndex', singleQuestionIndex);
-  console.log('timeToSolveQuestion', remTimeToSolveQuestion);
+  useEffect(() => {
+    let timer = '';
+
+    if (timeBoundVal) {
+      timer = setInterval(() => {
+        const mins = Math.floor(remTimeToSolveQuestion / 60);
+        const sec =
+          remTimeToSolveQuestion - Math.floor(remTimeToSolveQuestion / 60) * 60;
+
+        setTimerVal(`${mins} min : ${sec} sec`);
+        setRemTimeToSolveQuestion((prevState) => prevState - 1);
+      }, 1000);
+      if (remTimeToSolveQuestion < 0) clearInterval(timer);
+    }
+
+    if (!timeBoundVal) {
+      timer = setInterval(() => {
+        const mins = Math.floor(remTimeToSolveQuestion / 60);
+        const sec =
+          remTimeToSolveQuestion - Math.floor(remTimeToSolveQuestion / 60) * 60;
+
+        setTimerVal(`${mins} min : ${sec} sec`);
+        setRemTimeToSolveQuestion((prevState) => prevState + 1);
+      }, 1000);
+      // if (remTimeToSolveQuestion < 0) clearInterval(timer);
+    }
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [remTimeToSolveQuestion, timeBoundVal]);
+  // timer code
 
   // uzhairkhan
 

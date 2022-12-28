@@ -17,7 +17,6 @@ const StartCertExamComponent = (props) => {
     // });
 
     try {
-      // const learnerId = localStorage.getItem('userid');
       let resp = '';
       if (certInfoProp.status === 'started') {
         resp = await resumeCertExam({
@@ -31,7 +30,6 @@ const StartCertExamComponent = (props) => {
           learnerId: certInfoProp.userID,
         });
       }
-      console.log(resp);
       if (resp.data.statusCode === 200) {
         const { resultId } = resp.data.data;
         const { lastQuestionIdIndex } = resp.data.data;

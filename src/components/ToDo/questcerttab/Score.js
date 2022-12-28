@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Button, Card } from 'react-bootstrap';
-import { CardFooter } from 'reactstrap';
+import { Button } from 'react-bootstrap';
 
 import '../../../styles/questions/congratulation.scss';
 import { CloseButton, CertTrophy, WhiteScoreDiamond } from '../../../assets';
 import { fetchCertReport } from '../../../services/certs';
 
 const Score = () => {
-  let points, name, close;
   const location = useLocation();
   const { state } = location;
   const navigate = useNavigate();
   const [background, setBackground] = useState('blue');
   const [certReport, setCertReport] = useState('');
-
-  console.log(location);
 
   const handleClose = () => {
     navigate('/to-do?tab=quest');
@@ -25,7 +21,6 @@ const Score = () => {
     try {
       const resp = await fetchCertReport(resultId);
       if (resp.data.statusCode === 200) {
-        console.log(resp.data);
         const { data } = resp.data;
         setCertReport(data);
       }
@@ -77,7 +72,6 @@ const Score = () => {
           <div className='score_aware'>
             <WhiteScoreDiamond.default /> You are at Awareness level
           </div>
-          {/* attemptedQuestions : 0 correctAnswers : 0 pointsEarned : 500 */}
           <div className='row m-0 justify-content-center mt-2'>
             <div className='col-2 ml-score-points'>
               <h5 className='ml-score-txt-bg'>
@@ -85,7 +79,9 @@ const Score = () => {
                   ? certReport.correctAnswers
                   : 0}{' '}
                 <span className='ml-score-txt-md'>of</span>{' '}
-                {state && state.questions ? state.questions : ''}
+                {certReport && certReport.attemptedQuestions
+                  ? certReport.attemptedQuestions
+                  : 0}
               </h5>
               <h5 className='ml-score-txt'>Correct</h5>
             </div>
