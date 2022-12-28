@@ -69,3 +69,5 @@ export * as StartCertExam from './start-cert/Group 13@3x.png';
 export * as TopperCrown from './crown.png';
 export * as ChatIcon from './chatIcon.svg';
 export * as LogoutIcon from './logoutIcon.svg';
+export * as CertTrophy from './Trophy-cert.png';
+export * as WhiteScoreDiamond from './white-score-diamond.svg';
