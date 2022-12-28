@@ -1,6 +1,5 @@
 import http from '../../api/api';
 
-
 export const yourSquadListing = async (learnerId) => {
   try {
     const response = await http.get(
@@ -34,11 +33,9 @@ export const yourSquadChallenges = async (squadId, pageNum) => {
   }
 };
 
-export const BasicInformation = async (squadId, pageNum) => {
+export const BasicInformation = async (learnerId) => {
   try {
-    const response = await http.get(
-      `/api/app/challenges/list-by-squad/${squadId}?pageNum=${pageNum}`
-    );
+    const response = await http.post(`/api/app/learners/profile`, { learnerId });
     return response.data;
   } catch (error) {
     return error.response;

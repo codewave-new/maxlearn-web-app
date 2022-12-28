@@ -12,7 +12,9 @@ const http = axios.create({ baseURL: baseURL?.dev });
 http.interceptors.request.use(
   (request) => {
     const applicationId = localStorage.getItem('applicationId');
+    const token = localStorage.getItem('TOKEN_NAME');
     request.headers['x-tenant-id'] = applicationId;
+    request.headers['x-access-token'] = token;
     return request;
   },
   (err) => Promise.reject(err)

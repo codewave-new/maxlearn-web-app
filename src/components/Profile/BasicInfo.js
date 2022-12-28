@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { BasicInfoEdit } from '../../assets';
+import { BasicInformation } from '../../services/profile';
 import EditUserDetailsModal from '../Modals/EditUserDetailsModal';
 
 const BasicInfo = () => {
+  const authData = useSelector((state) => state.auth);
   const dummyUserId = '6399d070af314ab863dce89c';
   const [showEditUserDetailsForm, setShowEditUserDetailsForm] = useState(false);
+  const [userInformation, setUserInformation] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-   
-  }, [])
-  
+    learnerInformation(authData.learnerId);
+  }, []);
+
+  const learnerInformation = async (learnerId) => {
+    setIsLoading(true);
+    const response = await BasicInformation(learnerId);
+    setIsLoading(false);
+    if (response.statusCode === 200) {
+      setUserInformation(response?.data);
+    }
+  };
 
   const handleEditUserDetailsForm = () => setShowEditUserDetailsForm(true);
   const closeModal = () => setShowEditUserDetailsForm(false);
@@ -29,10 +42,7 @@ const BasicInfo = () => {
           </h5>
           <div className='ml-pbi__usd-bio-block white-block mb-3'>
             <h5 className='ml-pbi__text ml-pbi-grey'>My bio</h5>
-            <p className='bio-desc'>
-              Sed ut perspiciatis unde omnis iste natus ers amets uptatem
-              accusantium doloremque laudant undeoml nis iste unde omnis iste.
-            </p>
+            <p className='bio-desc'>{userInformation?.bio}</p>
           </div>
           <div className='ml-pbi__usd-block white-block'>
             <div className='row usd-row'>
@@ -41,7 +51,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  Chrisbell Antony
+                  {userInformation?.fullName}
                 </span>
               </div>
             </div>
@@ -51,7 +61,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  CWST2007
+                  {userInformation?.empId}
                 </span>
               </div>
             </div>
@@ -61,7 +71,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  chrisbellan@codewave.com
+                  {userInformation?.emailId}
                 </span>
               </div>
             </div>
@@ -71,7 +81,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  +91 8899978880
+                  {userInformation?.mobile}
                 </span>
               </div>
             </div>
@@ -81,7 +91,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  chrisbellan@codewave.com
+                  {userInformation?.emailId}
                 </span>
               </div>
             </div>
@@ -91,7 +101,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  Creative Design
+                  {userInformation?.departmentInfo?.department}
                 </span>
               </div>
             </div>
@@ -101,7 +111,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  UI/UX Designer
+                  {userInformation?.jobTitleInfo?.jobTitle}
                 </span>
               </div>
             </div>
@@ -116,7 +126,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  Codewave Technologies
+                  {userInformation?.company_name}
                 </span>
               </div>
             </div>
@@ -125,7 +135,9 @@ const BasicInfo = () => {
                 <span className='ml-pbi__text ml-pbi-grey'>Country</span>
               </div>
               <div className='col-8 pr-0'>
-                <span className='ml-pbi__text ml-pbi-black w-100'>India</span>
+                <span className='ml-pbi__text ml-pbi-black w-100'>
+                  {userInformation?.country}
+                </span>
               </div>
             </div>
             <div className='row usd-row'>
@@ -134,7 +146,7 @@ const BasicInfo = () => {
               </div>
               <div className='col-8 pr-0'>
                 <span className='ml-pbi__text ml-pbi-black w-100'>
-                  Karnataka, KA
+                  {userInformation?.state}
                 </span>
               </div>
             </div>

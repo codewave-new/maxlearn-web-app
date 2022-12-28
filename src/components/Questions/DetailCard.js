@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
-import { Points, ExamDetailBackground } from '../../assets';
+import { Points, ExamDetailBackground, StartCertExam } from '../../assets';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -18,12 +18,12 @@ import {
 } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
-import { WaitingLoader } from '../loader/loader';
+import { WaitingLoader, ButtonLoader } from '../loader/loader';
 import { toast, ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
-import { ButtonLoader } from '../loader/loader';
+import StartCertExamComponent from '../ToDo/questcerttab/StartCertExamComponent';
 
-const DetailCard = ({ start }) => {
+const DetailCard = ({ start, state }) => {
   const navigate = useNavigate();
   const { id } = useParams();
   const loaction = useLocation();
@@ -43,9 +43,8 @@ const DetailCard = ({ start }) => {
   const [questionType, setQuestionType] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
-  console.log(searchParams.get('session')); // 'name'
-  console.log(searchParams.get('master')); // 'name'
   const [individualResult, setIndividualResult] = useState('');
+  const [opponentResult, setOpponentResult] = useState('');
 
   useEffect(() => {
     ChallengeDetail(id, query['challenge-type']);
@@ -80,10 +79,26 @@ const DetailCard = ({ start }) => {
             query['challenge-type'] == 'SQUAD'
               ? Math.floor(individualResult?.squadScore)
               : Math.floor(individualResult?.pointsEarned),
+          opponentName:
+            query['challenge-type'] == 'SQUAD'
+              ? opponentResult?.name
+              : opponentResult?.fullName,
+          opponentPoints:
+            query['challenge-type'] == 'SQUAD'
+              ? Math.floor(opponentResult?.squadScore)
+              : Math.floor(opponentResult?.pointsEarned),
+          logo1:
+            query['challenge-type'] == 'SQUAD'
+              ? individualResult?.imageUrl
+              : individualResult?.profilePic,
+          logo2:
+            query['challenge-type'] == 'SQUAD'
+              ? opponentResult?.imageUrl
+              : opponentResult?.profilePic,
         }).toString(),
       });
     }
-  }, [examStart, individualResult]);
+  }, [examStart, individualResult, opponentResult]);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
     const response = await challengesDetails(
@@ -121,8 +136,6 @@ const DetailCard = ({ start }) => {
         return learners?.learner;
       });
       setOngoingChallenge(liveExam);
-    } else {
-      console.log(response);
     }
   }, []);
 
@@ -197,208 +210,218 @@ const DetailCard = ({ start }) => {
           (item) => item?._id == challengeDescription?.learner
         );
         setIndividualResult(val);
+        let opponentVal = challengeDescription.challengeDetails?.learners?.find(
+          (item) => item?._id !== challengeDescription?.learner
+        );
+        setOpponentResult(opponentVal);
       }
     }
   }, [challengeDescription]);
-  console.log('individualResult', individualResult);
   // stat === ''&&!questionsInfo?._id &&isLoading
   return (
     <div>
       <div className='detail__card-wrapper width-100'>
-        <div className='row'>
-          <div className='col-12 col-lg-6'>
-            <div
-              className='detail__card-wrapper-left'
-              style={{
-                backgroundImage: `url(${ExamDetailBackground.default})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-              }}
-            >
-              <div className='team__info__image-des'>
-                <div className='text-center max-width'>
-                  <div
-                    className={
-                      query['challenge-type'] === 'SQUAD'
-                        ? 'team__info--image'
-                        : 'team__info-individual'
-                    }
-                    onClick={() => {
-                      teamDetailInfomation('our__team', yourTeam);
-                    }}
-                  >
-                    <img
+        {state && state.type === 'cert' ? (
+          <StartCertExamComponent certInfo={state} />
+        ) : (
+          <div className='row'>
+            <div className='col-12 col-lg-6'>
+              <div
+                className='detail__card-wrapper-left'
+                style={{
+                  backgroundImage: `url(${ExamDetailBackground.default})`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                }}
+              >
+                <div className='team__info__image-des'>
+                  <div className='text-center max-width'>
+                    <div
                       className={
                         query['challenge-type'] === 'SQUAD'
-                          ? 'team__info-logo-image'
-                          : 'team__info-individual-logo-image'
+                          ? 'team__info--image'
+                          : 'team__info-individual'
                       }
-                      src={yourTeam?.imageUrl || yourTeam?.profilePic}
-                      alt='no'
-                    />
-                  </div>
-                  <p className='team__info--name'>
-                    {yourTeam?.name || yourTeam?.fullName}
-                  </p>
-                  {query['challenge-type'] === 'SQUAD' && (
-                    <div className='team__info__member-wrapper justify-content-center'>
-                      <MembersAvatar
-                        total={yourTeam?.learners?.length}
-                        max={4}
-                        team={yourTeam?.learners}
-                        className='justify-content-center'
+                      onClick={() => {
+                        teamDetailInfomation('our__team', yourTeam);
+                      }}
+                    >
+                      <img
+                        className={
+                          query['challenge-type'] === 'SQUAD'
+                            ? 'team__info-logo-image'
+                            : 'team__info-individual-logo-image'
+                        }
+                        src={yourTeam?.imageUrl || yourTeam?.profilePic}
+                        alt='no'
                       />
                     </div>
-                  )}
-                  <div className='team__info__points-wrapper'>
-                    <p className='mb-0 team__info__points-text d-flex justify-content-center align-items-center'>
-                      <img
-                        className='team__info__points-img'
-                        src={Points.default}
-                      />
-                      {yourTeam?.pointsEarned} points
+                    <p className='team__info--name'>
+                      {yourTeam?.name || yourTeam?.fullName}
                     </p>
+                    {query['challenge-type'] === 'SQUAD' && (
+                      <div className='team__info__member-wrapper justify-content-center'>
+                        <MembersAvatar
+                          total={yourTeam?.learners?.length}
+                          max={4}
+                          team={yourTeam?.learners}
+                          className='justify-content-center'
+                        />
+                      </div>
+                    )}
+                    <div className='team__info__points-wrapper'>
+                      <p className='mb-0 team__info__points-text d-flex justify-content-center align-items-center'>
+                        <img
+                          className='team__info__points-img'
+                          src={Points.default}
+                        />
+                        {yourTeam?.pointsEarned} points
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                {opponentTeam?.length > 0 && (
-                  <ChallengeDetailSlider>
-                    {opponentTeam?.map((opponent) => (
-                      <div
-                        className='opponent-wrapper-slick'
-                        key={opponent?._id}
-                      >
-                        <div className='opponent_wrapper-slick d-flex flex-column justify-content-center align-items-center'>
-                          {/* <div> */}
-                          <div
-                            className={
-                              query['challenge-type'] === 'SQUAD'
-                                ? 'team__info--image'
-                                : 'team__info-individual'
-                            }
-                            onClick={() => {
-                              teamDetailInfomation('opponent__team', opponent);
-                            }}
-                          >
-                            <img
+                  {opponentTeam?.length > 0 && (
+                    <ChallengeDetailSlider>
+                      {opponentTeam?.map((opponent) => (
+                        <div
+                          className='opponent-wrapper-slick'
+                          key={opponent?._id}
+                        >
+                          <div className='opponent_wrapper-slick d-flex flex-column justify-content-center align-items-center'>
+                            {/* <div> */}
+                            <div
                               className={
                                 query['challenge-type'] === 'SQUAD'
-                                  ? 'team__info-logo-image'
-                                  : 'team__info-individual-logo-image'
+                                  ? 'team__info--image'
+                                  : 'team__info-individual'
                               }
-                              src={opponent?.imageUrl || opponent?.profilePic}
-                              alt='no'
-                            />
-                          </div>
-                          <p className='team__info--name text-center'>
-                            {opponent?.name || opponent?.fullName}
-                          </p>
-                          {/* </div> */}
-
-                          {query['challenge-type'] === 'SQUAD' && (
-                            <div className='team__info__member-wrapper'>
-                              <MembersAvatar
-                                total={opponent?.learners?.length}
-                                max={4}
-                                team={opponent?.learners}
+                              onClick={() => {
+                                teamDetailInfomation(
+                                  'opponent__team',
+                                  opponent
+                                );
+                              }}
+                            >
+                              <img
+                                className={
+                                  query['challenge-type'] === 'SQUAD'
+                                    ? 'team__info-logo-image'
+                                    : 'team__info-individual-logo-image'
+                                }
+                                src={opponent?.imageUrl || opponent?.profilePic}
+                                alt='no'
                               />
                             </div>
-                          )}
-                          <div
-                            className={
-                              query['challenge-type'] === 'SQUAD'
-                                ? 'team__info__points-wrapper'
-                                : ''
-                            }
-                          >
-                            <p className='mb-0 team__info__points-text text-center justify-content-center d-flex align-items-center'>
-                              <img
-                                className='team__info__points-img'
-                                src={Points.default}
-                              />
-                              {opponent?.pointsEarned} points
+                            <p className='team__info--name text-center'>
+                              {opponent?.name || opponent?.fullName}
                             </p>
+                            {/* </div> */}
+
+                            {query['challenge-type'] === 'SQUAD' && (
+                              <div className='team__info__member-wrapper'>
+                                <MembersAvatar
+                                  total={opponent?.learners?.length}
+                                  max={4}
+                                  team={opponent?.learners}
+                                />
+                              </div>
+                            )}
+                            <div
+                              className={
+                                query['challenge-type'] === 'SQUAD'
+                                  ? 'team__info__points-wrapper'
+                                  : ''
+                              }
+                            >
+                              <p className='mb-0 team__info__points-text text-center justify-content-center d-flex align-items-center'>
+                                <img
+                                  className='team__info__points-img'
+                                  src={Points.default}
+                                />
+                                {opponent?.pointsEarned} points
+                              </p>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  </ChallengeDetailSlider>
-                )}
+                      ))}
+                    </ChallengeDetailSlider>
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            className={`col-12  col-lg-6 ${
-              query.exam_type === 'TODAYSTEST'
-                ? 'detail__card-between'
-                : 'detail__card-center'
-            }`}
-          >
-            <div>
-              <div className='detail__card__header mt-lg-0 mt-sm-5'>
-                <h4 className='detail__card__header-heading mb-0'>
-                  Challenge in detail
-                </h4>
-                <p className='detail__card__header-duration mb-0'>
-                  {/* 10 More days to go to */}
-                </p>
-              </div>
+            <div
+              className={`col-12  col-lg-6 ${
+                query.exam_type === 'TODAYSTEST'
+                  ? 'detail__card-between'
+                  : 'detail__card-center'
+              }`}
+            >
+              <div>
+                <div className='detail__card__header mt-lg-0 mt-sm-5'>
+                  <h4 className='detail__card__header-heading mb-0'>
+                    Challenge in detail
+                  </h4>
+                  <p className='detail__card__header-duration mb-0'>
+                    {/* 10 More days to go to */}
+                  </p>
+                </div>
 
-              <div className='detail__card__body'>
-                <h3 className='detail__card__body-header'>
-                  {challengeDescription?.challengeDetails?.name}
-                </h3>
-                {/* points */}
-                <div className='detail__card__body-points'>
-                  <div className='wrapper'>
-                    <span>
-                      <img
-                        className='detail__card__body-points-img'
-                        src={Points.default}
-                      />
-                    </span>
-                    <p className='detail__card__body-points-key'>
-                      {challengeDescription?.challengeDetails?.description}
-                    </p>
+                <div className='detail__card__body'>
+                  <h3 className='detail__card__body-header'>
+                    {challengeDescription?.challengeDetails?.name}
+                  </h3>
+                  {/* points */}
+                  <div className='detail__card__body-points'>
+                    <div className='wrapper'>
+                      <span>
+                        <img
+                          className='detail__card__body-points-img'
+                          src={Points.default}
+                        />
+                      </span>
+                      <p className='detail__card__body-points-key'>
+                        {challengeDescription?.challengeDetails?.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {ongoingChallenge?.length > 0 && (
-              <div className='partcipation'>
-                <div className='partcipation__detail'>
-                  <MembersAvatar
-                    total={ongoingChallenge?.length}
-                    max={3}
-                    team={ongoingChallenge}
-                  />
-                  <p className='partcipation__detail-members mb-0'>
-                    {ongoingChallenge?.length} people are taking this challenge
-                    now!
-                  </p>
+              {ongoingChallenge?.length > 0 && (
+                <div className='partcipation'>
+                  <div className='partcipation__detail'>
+                    <MembersAvatar
+                      total={ongoingChallenge?.length}
+                      max={3}
+                      team={ongoingChallenge}
+                    />
+                    <p className='partcipation__detail-members mb-0'>
+                      {ongoingChallenge?.length} people are taking this
+                      challenge now!
+                    </p>
+                  </div>
                 </div>
+              )}
+              <div className='button'>
+                {/* <NavLink to='/start-challenge-exam/:id'> */}
+                <CustomButton
+                  disabled={query.exam_type === 'TODAYSTEST' ? false : true}
+                  disabledText={'Yet to start'}
+                  text={
+                    stat === '' && !questionsInfo?._id && isLoading ? (
+                      <ButtonLoader />
+                    ) : (
+                      'Start Challenge'
+                    )
+                  }
+                  handleClick={handleClick}
+                />
+                {/* </NavLink> */}
               </div>
-            )}
-            <div className='button'>
-              {/* <NavLink to='/start-challenge-exam/:id'> */}
-              <CustomButton
-                disabled={query.exam_type === 'TODAYSTEST' ? false : true}
-                disabledText={'Yet to start'}
-                text={
-                  stat === '' && !questionsInfo?._id && isLoading ? (
-                    <ButtonLoader />
-                  ) : (
-                    'Start Challenge'
-                  )
-                }
-                handleClick={handleClick}
-              />
-              {/* </NavLink> */}
             </div>
           </div>
-        </div>
+        )}
       </div>
       {query['challenge-type'] === 'SQUAD' ? (
         <TeamDetailModal
