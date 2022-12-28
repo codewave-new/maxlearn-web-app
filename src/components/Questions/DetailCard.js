@@ -99,6 +99,7 @@ const DetailCard = ({ start, state }) => {
       });
     }
   }, [examStart, individualResult, opponentResult]);
+  console.log(opponentResult);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
     const response = await challengesDetails(
@@ -204,6 +205,10 @@ const DetailCard = ({ start, state }) => {
             (item) => item?._id == challengeDescription?.squad
           );
           setIndividualResult(val);
+          let opponentVal = challengeDescription.challengeDetails?.squads?.find(
+            (item) => item?._id !== challengeDescription?.squad
+          );
+          setOpponentResult(opponentVal)
         }
       } else if (query['challenge-type'] == 'INDIVIDUAL') {
         let val = challengeDescription.challengeDetails?.learners?.find(
@@ -213,6 +218,7 @@ const DetailCard = ({ start, state }) => {
         let opponentVal = challengeDescription.challengeDetails?.learners?.find(
           (item) => item?._id !== challengeDescription?.learner
         );
+        console.log(opponentVal);
         setOpponentResult(opponentVal);
       }
     }
