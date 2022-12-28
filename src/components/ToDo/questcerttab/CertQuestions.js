@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import moment from 'moment';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import '../../../styles/questions/challengs-question.scss';
 import CustomNavbar from '../../questionTypes/navBar';
@@ -11,6 +12,7 @@ import {
   getCertExamQuestions,
   submitCertExamAns,
 } from '../../../services/certs';
+import { CloseButton, MaxLogo, timerLogo } from '../../../assets';
 
 const CertQuestions = () => {
   const navigate = useNavigate();
@@ -193,14 +195,70 @@ const CertQuestions = () => {
   return (
     <div className=''>
       <div className='question_bg'>
-        <CustomNavbar
-          time={timerVal || '0 min : 0 sec'}
-          progress={Math.floor(
-            (singleQuestionIndex / parseInt(allQuestions.length, 10)) * 100
-          )}
-          // points={points}
-          name={location?.state?.userName ?? ''}
-        />
+        {/* nav header */}
+        <header>
+          <nav className='navbar navbar-expand-lg max__navbar question_navbar'>
+            <div className='container-fluid'>
+              <div style={{ borderRight: '1px solid' }}>
+                <a className='navbar-brand' href='/src#'>
+                  <MaxLogo.default />
+                </a>
+
+                <button
+                  className='navbar-toggler'
+                  type='button'
+                  data-bs-toggle='offcanvas'
+                  data-bs-target='#offcanvasNavbar'
+                  aria-controls='offcanvasNavbar'
+                >
+                  <span className='navbar-toggler-icon' />
+                </button>
+              </div>
+
+              <div
+                className='offcanvas offcanvas-end'
+                tabIndex='-1'
+                id='offcanvasNavbar'
+                aria-labelledby='offcanvasNavbarLabel'
+              >
+                <div className='offcanvas-body'>
+                  <div className=' progress_bar w-75'>
+                    <ProgressBar
+                      now={Math.floor(
+                        (singleQuestionIndex /
+                          parseInt(allQuestions.length, 10)) *
+                          100
+                      )}
+                      className='bar mr-1'
+                    />
+                    <span className='d-inline progress_lable d-flex '>
+                      {' '}
+                      {Math.floor(
+                        (singleQuestionIndex /
+                          parseInt(allQuestions.length, 10)) *
+                          100
+                      )}
+                      %
+                    </span>
+                  </div>
+
+                  <div className='header-timer'>
+                    <timerLogo.default />
+                    {timerVal || '0 min : 0 sec'}
+                  </div>
+
+                  <a href='/to-do?tab=quest'>
+                    <button className='close_btn right-0'>
+                      <CloseButton.default />
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+        {/* nav header */}
+
         <div>
           <QuestionTypeWrapper
             questionInfo={singleQuestion}
@@ -209,6 +267,9 @@ const CertQuestions = () => {
             setSubmitCliked={setSubmitCliked}
             setIsTrueOrFalse={setIsTrueOrFalse}
             isTrueOrFalse={isTrueOrFalse}
+            type='cert'
+            questionNo={singleQuestionIndex + 1}
+            totalQuestions={allQuestions.length}
           />
         </div>
         {submitCliked ? (
