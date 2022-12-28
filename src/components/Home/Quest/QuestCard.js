@@ -8,7 +8,7 @@ import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 const QuestCard = ({ className, data, type, status, challengeType }) => {
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const completionDate = moment(data?.endDate).diff(moment(), 'minutes');
-  const endTime = moment('24:00:00','HH:mm:ss');
+  const endTime = moment('24:00:00', 'HH:mm:ss');
   const duration = moment.duration(endTime.diff(moment()));
 
   const endDateTz = moment.tz(data?.endDate, timeZone);
@@ -18,6 +18,9 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
     .tz(new Date(), timeZone)
     .diff(startDateTz, 'days');
 
+  console.log(
+    moment.utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss').tz(timeZone).format('l')
+  );
   const challengeStartDate = endDateTz.diff(startDateTz, 'days') + 1;
 
   return (
@@ -29,16 +32,18 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
             completionDate <= 0 ? (
               <h6 className='d-flex align-items-center'>
                 <ToDoCalendarIcon.default /> &nbsp;
-                {` Closed on ${moment(data?.endDate, timeZone).format(
-                  'MM/DD/YYYY'
-                )}`}
+                {` Closed on ${moment
+                  .utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss')
+                  .tz(timeZone)
+                  .format('l')}`}
               </h6>
             ) : challengeType === 'upcoming' ? (
               <h6 className='d-flex align-items-center'>
                 <ToDoCalendarIcon.default /> &nbsp;
-                {` Starts on ${moment(data?.startDate, timeZone).format(
-                  'MM/DD/YYYY'
-                )}`}
+                {` Starts on ${moment
+                  .utc(data?.startDate, 'YYYY-MM-DD HH:mm:ss')
+                  .tz(timeZone)
+                  .format('l')}`}
               </h6>
             ) : (
               <h6>

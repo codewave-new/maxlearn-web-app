@@ -218,7 +218,6 @@ const DetailCard = ({ start, state }) => {
         let opponentVal = challengeDescription.challengeDetails?.learners?.find(
           (item) => item?._id !== challengeDescription?.learner
         );
-        console.log(opponentVal);
         setOpponentResult(opponentVal);
       }
     }
