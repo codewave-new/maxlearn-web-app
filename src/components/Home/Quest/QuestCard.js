@@ -18,9 +18,6 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
     .tz(new Date(), timeZone)
     .diff(startDateTz, 'days');
 
-  console.log(
-    moment.utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss').tz(timeZone).format('l')
-  );
   const challengeStartDate = endDateTz.diff(startDateTz, 'days') + 1;
 
   return (

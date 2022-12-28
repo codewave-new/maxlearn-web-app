@@ -14,6 +14,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { yourSquadDetails } from '../../services/profile';
 import SquadDetailChallenges from './SquadDetailChallenges';
 import { useSelector } from 'react-redux';
+import { CenterLoadingBar } from '../loader/loader';
 
 const SquadDetails = (props) => {
   const navigate = useNavigate();
@@ -21,13 +22,16 @@ const SquadDetails = (props) => {
   const authDetails = useSelector((state) => state.auth);
   const [squadMemeberDetails, setSquadMemberDetails] = useState({});
   const [teamPoints, setTeamPoints] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     squadInfomation();
   }, []);
 
   const squadInfomation = async () => {
+    setIsLoading(true);
     const response = await yourSquadDetails(id);
+    setIsLoading(false);
     if (response?.statusCode === 200) {
       setSquadMemberDetails(response?.data?.squadInfo?.[0]);
       setTeamPoints(response?.data?.challengeInfo);
@@ -88,41 +92,45 @@ const SquadDetails = (props) => {
             <Tabs
               defaultActiveKey='Members'
               id='uncontrolled-tab-example'
-              className={`mb-3 max__todo-activity-tab max__profile-tab`}
+              className={`mb-3  max__profile-activity-tab`}
             >
               <Tab eventKey='Members' title='Members'>
-                <div className='squad-details-wrapper'>
-                  {squadMemeberDetails?.members
-                    ?.sort((a, b) => b?.pointsEarned - a?.pointsEarned)
-                    ?.map((individaual) => (
-                      <div
-                        key={individaual?._id}
-                        className={`squad-details-container ${props.className} d-flex align-items-center justify-content-between`}
-                      >
-                        <div className='user d-flex align-items-center'>
-                          <Avatar
-                            sx={{ width: 36, height: 36 }}
-                            alt='Remy Sharp'
-                            src={individaual?.profilePic}
-                          />
-                          <h5 className='ps-2'>
-                            {authDetails?.learnerId === individaual?._id
-                              ? 'You'
-                              : individaual?.fullName}
-                          </h5>
-                        </div>
-                        <div className='points d-flex align-items-center'>
-                          <h6 className='points'>
-                            <img
-                              src={Points.default}
-                              className='squad__points-image'
+                {isLoading ? (
+                  <CenterLoadingBar />
+                ) : (
+                  <div className='squad-details-wrapper'>
+                    {squadMemeberDetails?.members
+                      ?.sort((a, b) => b?.pointsEarned - a?.pointsEarned)
+                      ?.map((individaual) => (
+                        <div
+                          key={individaual?._id}
+                          className={`squad-details-container ${props.className} d-flex align-items-center justify-content-between`}
+                        >
+                          <div className='user d-flex align-items-center'>
+                            <Avatar
+                              sx={{ width: 36, height: 36 }}
+                              alt='Remy Sharp'
+                              src={individaual?.profilePic}
                             />
-                            {individaual?.pointsEarned} points
-                          </h6>
+                            <h5 className='ps-2'>
+                              {authDetails?.learnerId === individaual?._id
+                                ? 'You'
+                                : individaual?.fullName}
+                            </h5>
+                          </div>
+                          <div className='points d-flex align-items-center'>
+                            <h6 className='points'>
+                              <img
+                                src={Points.default}
+                                className='squad__points-image'
+                              />
+                              {individaual?.pointsEarned} points
+                            </h6>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                </div>
+                      ))}
+                  </div>
+                )}
               </Tab>
               <Tab eventKey='Challenges' title='Challenges'>
                 <SquadDetailChallenges />

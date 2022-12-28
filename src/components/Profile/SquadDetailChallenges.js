@@ -4,6 +4,7 @@ import { createSearchParams, useNavigate, useParams } from 'react-router-dom';
 import { yourSquadChallenges } from '../../services/profile';
 import QuestCard from '../Home/Quest/QuestCard';
 import InfiniteScrollling from '../Pagination/InfiniteScrollling';
+import { CenterLoadingBar, LoadingBar } from '../loader/loader';
 
 const SquadDetailChallenges = () => {
   const { id } = useParams();
@@ -11,6 +12,7 @@ const SquadDetailChallenges = () => {
   const [SquadChallenges, setSquadChallenges] = useState([]);
   const [count, setCount] = useState(0);
   const [pageNum, setPageNum] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     challengesOfParticularSquad();
@@ -18,7 +20,9 @@ const SquadDetailChallenges = () => {
 
   const challengesOfParticularSquad = async () => {
     setPageNum((pageNum) => pageNum + 1);
+    setIsLoading(true);
     const response = await yourSquadChallenges(id, pageNum + 1);
+    setIsLoading(false);
     if (response?.statusCode === 200) {
       const filteredChallenges = response?.data?.filter(
         (challenges) => !challenges?.count
@@ -59,42 +63,49 @@ const SquadDetailChallenges = () => {
 
   return (
     <div>
-      <h2 className='squad_challenge-header'>
-        Your squad has {count} challenges in the list
-      </h2>
+      {isLoading && pageNum === 1 ? (
+        <CenterLoadingBar />
+      ) : (
+        <div>
+          <h2 className='squad_challenge-header'>
+            Your squad has {count} challenges in the list
+          </h2>
 
-      <InfiniteScrollling
-        dataLength={SquadChallenges?.length}
-        next={challengesOfParticularSquad}
-        hasMore={SquadChallenges?.length < count}
-      >
-        <div className='row'>
-          {SquadChallenges?.map((individualChallenge, index) => (
-            <div
-              className='col-6'
-              key={`challenge0${index}`}
-              onClick={() => {
-                handleNavigation(individualChallenge);
-              }}
-            >
-              <QuestCard
-                data={individualChallenge}
-                type='challenges'
-                status={individualChallenge?.challengeStatus}
-                className={'max__activity-quest-card'}
-                challengeType={
-                  moment(individualChallenge?.startDate).diff(
-                    moment(),
-                    'days'
-                  ) > 0
-                    ? 'upcoming'
-                    : ''
-                }
-              />
+          <InfiniteScrollling
+            dataLength={SquadChallenges?.length}
+            next={challengesOfParticularSquad}
+            hasMore={SquadChallenges?.length < count}
+            loader={<LoadingBar />}
+          >
+            <div className='row'>
+              {SquadChallenges?.map((individualChallenge, index) => (
+                <div
+                  className='col-6'
+                  key={`challenge0${index}`}
+                  onClick={() => {
+                    handleNavigation(individualChallenge);
+                  }}
+                >
+                  <QuestCard
+                    data={individualChallenge}
+                    type='challenges'
+                    status={individualChallenge?.challengeStatus}
+                    className={'max__activity-quest-card'}
+                    challengeType={
+                      moment(individualChallenge?.startDate).diff(
+                        moment(),
+                        'days'
+                      ) > 0
+                        ? 'upcoming'
+                        : ''
+                    }
+                  />
+                </div>
+              ))}
             </div>
-          ))}
+          </InfiniteScrollling>
         </div>
-      </InfiniteScrollling>
+      )}
     </div>
   );
 };

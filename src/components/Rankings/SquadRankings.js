@@ -40,7 +40,7 @@ const SquadRankings = () => {
         <div className='row'>
           <div className='col-lg-4 col-12 text-center'>
             <div className='achievements__content'>
-              <RankingTop />
+              <RankingTop type='squad' />
             </div>
           </div>
           <div className='col-lg-8 col-12'>

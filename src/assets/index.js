@@ -69,3 +69,11 @@ export * as StartCertExam from './start-cert/Group 13@3x.png';
 export * as TopperCrown from './crown.png';
 export * as CertTrophy from './Trophy-cert.png';
 export * as WhiteScoreDiamond from './white-score-diamond.svg';
+export * as LoginLogo from './loginLogo.png';
+export * as ActiveHome from './homeActive.svg';
+export * as ActiveLearn from './learnActive.svg';
+export * as ActiveTodo from './todoActive.svg';
+export * as ActiveRanking from './rankingActive.svg';
+export * as InActiveHome from './HomeInactive.svg';
+
+
