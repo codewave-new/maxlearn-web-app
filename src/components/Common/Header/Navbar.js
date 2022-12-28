@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {
   HomeLogo,
@@ -14,10 +15,14 @@ import {
   ProfileImage,
   HelpDesk,
 } from '../../../assets';
+import { removeAuth } from '../../../state/slices/loginSlice.';
+import SidebarModal from '../CustomModal/SidebarModal';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [profileDropDown, setProfileDropDown] = useState(false);
+  const [notificationModal, setNotificationModal] = useState(false);
 
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
@@ -125,7 +130,12 @@ const Navbar = () => {
       </nav> */}
       <nav className='navbar navbar-expand-lg max__navbar'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='/src#'>
+          <a
+            className='navbar-brand'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             <MaxLogo.default />
           </a>
           <button
@@ -194,7 +204,11 @@ const Navbar = () => {
 
                   <li className='max__notification'>
                     <div className='max__nav-notification-container'>
-                      <button>
+                      <button
+                        onClick={() => {
+                          setNotificationModal(true);
+                        }}
+                      >
                         <HomeNotificationLogo.default />
                       </button>
                     </div>
@@ -227,7 +241,12 @@ const Navbar = () => {
                         <li className='dropdown__list'>
                           Console <ConsoleArrow.default />
                         </li>
-                        <li className='dropdown__list'>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            navigate('/help');
+                          }}
+                        >
                           <div className='image-logo'>
                             <HelpDesk.default />
                           </div>
@@ -236,6 +255,7 @@ const Navbar = () => {
                         <li
                           className='dropdown__list'
                           onClick={() => {
+                            dispatch(removeAuth());
                             localStorage.clear();
                             navigate('/login');
                           }}
@@ -256,6 +276,13 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+      <SidebarModal
+        show={notificationModal}
+        onHide={() => setNotificationModal(false)}
+        title='Notifications'
+      >
+        Notification
+      </SidebarModal>
     </header>
   );
 };

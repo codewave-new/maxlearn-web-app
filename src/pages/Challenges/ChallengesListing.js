@@ -10,9 +10,11 @@ import InfiniteScrollModal from '../../components/Pagination/InfiniteScrollModal
 import SidebarModal from '../../components/Common/CustomModal/SidebarModal';
 import InfiniteScrollling from '../../components/Pagination/InfiniteScrollling';
 import { CenterLoadingBar, LoadingBar } from '../../components/loader/loader';
+import { useSelector } from 'react-redux';
 
 const ChallengesListing = () => {
   const navigate = useNavigate();
+  const authData = useSelector((state) => state.auth);
   const [todayChallenge, setTodayChallenge] = useState([]);
   const [count, setCount] = useState(0);
   const [todayPageNum, setTodayPageNum] = useState(0);
@@ -23,10 +25,15 @@ const ChallengesListing = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingUpcoming, setIsLoadingUpcoming] = useState(false);
 
+  console.log(upcomingChallengeDetail);
+
   const todaysChallenges = async () => {
     setTodayPageNum((pageNum) => pageNum + 1);
     setIsLoading(true);
-    const response = await todaysChallengesListing(todayPageNum + 1);
+    const response = await todaysChallengesListing(
+      authData.learnerId,
+      todayPageNum + 1
+    );
     setIsLoading(false);
     if (response?.statusCode === 200) {
       setTodayChallenge((challenges) => [
@@ -35,7 +42,7 @@ const ChallengesListing = () => {
       ]);
       setCount(response?.data?.[0]?.countInfo?.[0]?.count);
     } else {
-      alert(response);
+      // alert(response);
     }
   };
 
@@ -46,7 +53,10 @@ const ChallengesListing = () => {
   const upcomingChallenge = async () => {
     setUpcomingPage((upcomingPage) => upcomingPage + 1);
     setIsLoadingUpcoming(true);
-    const response = await upcomingChallenges(upcomingPage + 1);
+    const response = await upcomingChallenges(
+      authData.learnerId,
+      upcomingPage + 1
+    );
     setIsLoadingUpcoming(false);
     if (response?.statusCode === 200) {
       setUpcomingChallengeDetail((upcomingChallenges) => [
@@ -55,7 +65,7 @@ const ChallengesListing = () => {
       ]);
       setUpcomingCount(response?.data?.[0]?.countInfo?.[0]?.count);
     } else {
-      alert(response);
+      // alert(response);
     }
   };
 
