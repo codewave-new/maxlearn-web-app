@@ -1,7 +1,4 @@
-
-
-
-import React from 'react'
+import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
 
 import { CardBody, Input } from 'reactstrap';
@@ -9,28 +6,38 @@ import { CheckBox } from '@mui/icons-material';
 import quesImage from '../../../assets/Images/question/Rectangle-2.png';
 import { renderText } from '../../../utility/helper';
 import { OptionWrapper } from './optionWrapper';
+import { OptionWrapperPreview } from './optionWrapperPreview';
 
-export const TrueOfFalse = ({ questionInfo ,attemptedQuestions,
+export const TrueOfFalse = ({
+  questionInfo,
+  attemptedQuestions,
   questionPerSession,
   setSubmitCliked,
   multi,
   setIsTrueOrFalse,
-  isTrueOrFalse
+  isTrueOrFalse,
+  isExplanation,
+  getNextQuestion,
+  statusVal,
+  questionNo,
+  totalQuestions,
+  type,
 }) => {
-  const options=[{
-    label:"TRUE",
-    value:'true'
-  },
-  {
-    label:'FALSE',
-    value:'false'
-  }]
-  const handleSelect = (val)=>{
-    if(val==isTrueOrFalse){
-      setIsTrueOrFalse('')
-
-    }else{
-      setIsTrueOrFalse(val)
+  const options = [
+    {
+      label: 'TRUE',
+      value: 'true',
+    },
+    {
+      label: 'FALSE',
+      value: 'false',
+    },
+  ];
+  const handleSelect = (val) => {
+    if (val == isTrueOrFalse) {
+      setIsTrueOrFalse('');
+    } else {
+      setIsTrueOrFalse(val);
     }
   };
 
@@ -39,35 +46,77 @@ export const TrueOfFalse = ({ questionInfo ,attemptedQuestions,
       <Col className='col-sm-6 mt-4 mb-4 ml-2 question_detail '>
         <div className='p-1'>
           <div className=''>
-            Question - {attemptedQuestions+1} OF {questionPerSession}</div>
-            <p className='mt-1'>
-            TRUE OR FALSE QUESTION
-          </p>
-          <p className='mt-1'>
-            {renderText(questionInfo?.body)}
-          </p>
-          <img className='quest_image mt-1' src={quesImage} />
+            {type && type === 'cert'
+              ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
+              : `Question - 
+              ${
+                isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1
+              } OF 
+              ${questionPerSession}`}
+            {/* Question -{' '}
+            {isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1} OF{' '}
+            {questionPerSession} */}
+          </div>
+          <p className='mt-1'>TRUE OR FALSE QUESTION</p>
+          <p className='mt-1'>{renderText(questionInfo?.body)}</p>
+          {/* <img className='quest_image mt-1' src={quesImage} /> */}
         </div>
       </Col>
       <Col className='col-sm-5 mt-4 mr-1 mb-4'>
-        <div className='mt-2 quest_ans'> SELECT YOUR ANSWER</div>
+        <div className='mt-2 quest_ans'>
+          {isExplanation ? 'YOUR ANSWERS' : 'SELECT YOUR ANSWER'}{' '}
+        </div>
         <CardBody className='mt-3 ml-2'>
-          <OptionWrapper
-options={options}
-isTrueOrFalse={isTrueOrFalse}
-handleSelect={handleSelect}
-          />
-</CardBody>      
-  <div className='app_subtn'>
-    <a >
-      <Button className='add-new-btn add_btnctprev' color='primary' disabled={isTrueOrFalse!==''?false:true}
-      
-      onClick={()=>setSubmitCliked(true)}>
-        {isTrueOrFalse!==''?'Submit answer':"Next question"}
-      </Button>
-    </a>
-  </div>
+          {isExplanation ? (
+            <OptionWrapperPreview
+              options={options}
+              statusVal={statusVal}
+              questionType={questionInfo?.questionType}
+            />
+          ) : (
+            <OptionWrapper
+              options={options}
+              isTrueOrFalse={isTrueOrFalse}
+              handleSelect={handleSelect}
+            />
+          )}
+        </CardBody>
+        <CardBody className='mt-3 ml-2'>
+          {isExplanation ? (
+            <>
+              <p className='mt-1'>Answer explanation in detail</p>
+              {statusVal?.answerInfo?.feedback}
+            </>
+          ) : (
+            ''
+          )}
+        </CardBody>
+
+        <div className='app_subtn'>
+          {isExplanation ? (
+            <a>
+              <Button
+                className='add-new-btn add_btnctprev'
+                color='primary'
+                onClick={() => getNextQuestion()}
+              >
+                Next question
+              </Button>
+            </a>
+          ) : (
+            <a>
+              <Button
+                className='add-new-btn add_btnctprev'
+                color='primary'
+                disabled={isTrueOrFalse !== '' ? false : true}
+                onClick={() => setSubmitCliked(true)}
+              >
+                {isTrueOrFalse !== '' ? 'Submit answer' : 'Next question'}
+              </Button>
+            </a>
+          )}
+        </div>
       </Col>
     </Row>
-  )
-}
+  );
+};

@@ -13,13 +13,14 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { useNavigate, useParams } from 'react-router-dom';
 import { yourSquadDetails } from '../../services/profile';
 import SquadDetailChallenges from './SquadDetailChallenges';
+import { useSelector } from 'react-redux';
 
 const SquadDetails = (props) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const authDetails = useSelector((state) => state.auth);
   const [squadMemeberDetails, setSquadMemberDetails] = useState({});
   const [teamPoints, setTeamPoints] = useState();
-  const learnerId = localStorage.getItem('userid');
 
   useEffect(() => {
     squadInfomation();
@@ -87,7 +88,7 @@ const SquadDetails = (props) => {
             <Tabs
               defaultActiveKey='Members'
               id='uncontrolled-tab-example'
-              className={`mb-3 max__todo-activity-tab ${props.className}`}
+              className={`mb-3 max__todo-activity-tab max__profile-tab`}
             >
               <Tab eventKey='Members' title='Members'>
                 <div className='squad-details-wrapper'>
@@ -105,7 +106,7 @@ const SquadDetails = (props) => {
                             src={individaual?.profilePic}
                           />
                           <h5 className='ps-2'>
-                            {learnerId === individaual?._id
+                            {authDetails?.learnerId === individaual?._id
                               ? 'You'
                               : individaual?.fullName}
                           </h5>

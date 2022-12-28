@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ProfileGem, ProfileStanding } from '../../assets';
 import { yourSquadListing } from '../../services/profile';
@@ -7,6 +8,7 @@ import MembersAvatar from '../Common/Avatar/MembersAvatar';
 
 const YourSquad = () => {
   const navigate=useNavigate()
+  const authData=useSelector(state=>state.auth)
   const [squadsLists, setSquadsLists] = useState([]);
 
   useEffect(() => {
@@ -14,7 +16,7 @@ const YourSquad = () => {
   }, []);
 
   const squadList = async () => {
-    const response = await yourSquadListing();
+    const response = await yourSquadListing(authData?.learnerId);
     if (response.statusCode === 200) {
       setSquadsLists(response?.data?.list);
     }

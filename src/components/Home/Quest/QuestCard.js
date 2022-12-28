@@ -1,16 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Points, TimeLogo, ToDoCalendarIcon } from '../../../assets';
 import GroupAvatars from '../../UI/GroupAvatars';
-import moment from 'moment';
+import moment from 'moment-timezone';
 import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
 const QuestCard = ({ className, data, type, status, challengeType }) => {
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const completionDate = moment(data?.endDate).diff(moment(), 'minutes');
   const endTime = moment('24:00:00', 'HH:mm:ss');
   const duration = moment.duration(endTime.diff(moment()));
-  const challengeEndDate = moment(data?.endDate).diff(moment(), 'days');
-  const challengeStartDate = moment(data?.startDate).diff(moment(), 'days');
+
+  const endDateTz = moment.tz(data?.endDate, timeZone);
+  const startDateTz = moment.tz(data?.startDate, timeZone);
+
+  const challengeEndDate = moment
+    .tz(new Date(), timeZone)
+    .diff(startDateTz, 'days');
+
+  console.log(
+    moment.utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss').tz(timeZone).format('l')
+  );
+  const challengeStartDate = endDateTz.diff(startDateTz, 'days') + 1;
 
   return (
     <div className={`max-home__quest-wrapper ${className} `}>
@@ -21,12 +32,18 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
             completionDate <= 0 ? (
               <h6 className='d-flex align-items-center'>
                 <ToDoCalendarIcon.default /> &nbsp;
-                {` Closed on ${moment(data?.endDate).format('MM/DD/YYYY')}`}
+                {` Closed on ${moment
+                  .utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss')
+                  .tz(timeZone)
+                  .format('l')}`}
               </h6>
             ) : challengeType === 'upcoming' ? (
               <h6 className='d-flex align-items-center'>
                 <ToDoCalendarIcon.default /> &nbsp;
-                {` Starts on ${moment(data?.startDate).format('MM/DD/YYYY')}`}
+                {` Starts on ${moment
+                  .utc(data?.startDate, 'YYYY-MM-DD HH:mm:ss')
+                  .tz(timeZone)
+                  .format('l')}`}
               </h6>
             ) : (
               <h6>
@@ -51,9 +68,7 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
             ) : challengeType === 'upcoming' ? (
               <h6 className='d-flex align-items-center'>
                 Schedule for:
-                <strong>
-                  {challengeStartDate ? challengeStartDate : 'Today'}
-                </strong>
+                <strong>{challengeStartDate}</strong>
                 <small>days</small>
               </h6>
             ) : (
@@ -61,13 +76,13 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
                 {challengeEndDate ? (
                   <>
                     Expire in:
-                    <strong>{' '}{challengeEndDate}</strong>
+                    <strong> {challengeEndDate}</strong>
                     <small> days</small>
                   </>
                 ) : (
                   <>
-                    Expires 
-                    <strong>{' '}Today</strong>
+                    Expires
+                    <strong> Today</strong>
                   </>
                 )}
               </h5>

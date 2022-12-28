@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import {
   HomeLogo,
   HomeNotificationLogo,
@@ -9,10 +10,19 @@ import {
   NavToDoLogo,
   NavRangingLogo,
   HomeUserLogo,
+  LogoutImage,
+  ConsoleArrow,
+  ProfileImage,
+  HelpDesk,
 } from '../../../assets';
+import { removeAuth } from '../../../state/slices/loginSlice.';
+import SidebarModal from '../CustomModal/SidebarModal';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [profileDropDown, setProfileDropDown] = useState(false);
+  const [notificationModal, setNotificationModal] = useState(false);
 
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
@@ -120,7 +130,12 @@ const Navbar = () => {
       </nav> */}
       <nav className='navbar navbar-expand-lg max__navbar'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='/src#'>
+          <a
+            className='navbar-brand'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             <MaxLogo.default />
           </a>
           <button
@@ -189,7 +204,11 @@ const Navbar = () => {
 
                   <li className='max__notification'>
                     <div className='max__nav-notification-container'>
-                      <button>
+                      <button
+                        onClick={() => {
+                          setNotificationModal(true);
+                        }}
+                      >
                         <HomeNotificationLogo.default />
                       </button>
                     </div>
@@ -198,19 +217,72 @@ const Navbar = () => {
                     <div className='max__nav-user-container'>
                       <button
                         onClick={() => {
-                          setProfileDropDown(true);
+                          setProfileDropDown((previousState) => !previousState);
                         }}
                       >
                         <HomeUserLogo.default />
                       </button>
                     </div>
                   </li>
+                  {profileDropDown ? (
+                    <div className='dropDownProfile'>
+                      <ul className='dropdown__list-wrapper'>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            navigate('/profile');
+                          }}
+                        >
+                          <div className='image-logo'>
+                            <ProfileImage.default />
+                          </div>
+                          My profile
+                        </li>
+                        <li className='dropdown__list'>
+                          Console <ConsoleArrow.default />
+                        </li>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            navigate('/help');
+                          }}
+                        >
+                          <div className='image-logo'>
+                            <HelpDesk.default />
+                          </div>
+                          Help & supports
+                        </li>
+                        <li
+                          className='dropdown__list'
+                          onClick={() => {
+                            dispatch(removeAuth());
+                            localStorage.clear();
+                            navigate('/login');
+                          }}
+                        >
+                          <div className='image-logo'>
+                            <LogoutImage.default />
+                          </div>
+                          Logout
+                        </li>
+                      </ul>
+                    </div>
+                  ) : (
+                    ''
+                  )}
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </nav>
+      <SidebarModal
+        show={notificationModal}
+        onHide={() => setNotificationModal(false)}
+        title='Notifications'
+      >
+        Notification
+      </SidebarModal>
     </header>
   );
 };

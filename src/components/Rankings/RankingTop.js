@@ -1,4 +1,5 @@
 import React from 'react';
+import { TopperCrown } from '../../assets';
 
 const RankingTop = () => {
   return (
@@ -14,14 +15,14 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+            <h6 className='topper__name'>dvgfhvfkkxkzxbck</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
         <div className='first-container'>
           <div className='container-color-bg'>
-            <div className='icon-container-first'>
-              <img src='' alt='' />
+            <div className='icon-container-first flex-column'>
+              <img src={TopperCrown.default} alt='crown' />
               <img
                 src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1665039794/Cute_Bat_o6fzlt.svg'
                 alt=''
@@ -29,8 +30,8 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+            <h6 className='topper__name'>You</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
         <div className='third-container'>
@@ -43,8 +44,8 @@ const RankingTop = () => {
             </div>
           </div>
           <div className='topper-details'>
-            <h6>You</h6>
-            <p>Points</p>
+            <h6 className='topper__name'>You</h6>
+            <p className='topper__points'>Points</p>
           </div>
         </div>
       </div>

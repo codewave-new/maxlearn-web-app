@@ -3,6 +3,8 @@ import Card from '../../UI/Card';
 import { WaveHand } from '../../../assets';
 
 const User = () => {
+  const fullName = localStorage.getItem('fullname');
+
   return (
     <div className='max_user-wrapper'>
       <Card className='max_user_card '>
@@ -10,7 +12,7 @@ const User = () => {
           <div>
             <h4 className=''>Hello</h4>
             <div className='d-flex align-item-center -justify-content-center'>
-              <h2>Bartholomew</h2>
+              <h2>{fullName}</h2>
               <WaveHand.default />
             </div>
           </div>

@@ -71,15 +71,26 @@
   letter-spacing: 0.47px;
   line-height: 26px;
 }
-.input_div input[type='email'],
-input[type='password'] {
-  background-color: transparent !important;
-  color: #212121;
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 18px;
+.input_div {
+  input[type='email'] {
+    background-color: transparent !important;
+    color: #212121;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 18px;
+  }
+
+  input[type='text'] {
+    background-color: transparent !important;
+    color: #212121;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 18px;
+  }
 }
 .login_name {
   box-sizing: border-box;
@@ -90,7 +101,15 @@ input[type='password'] {
   padding-bottom: 10px;
   background-color: transparent !important;
   background: none;
+  &::after {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
+  }
+  &::before {
+    border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
+    // content: "************" !important;
+  }
 }
+  
 .login_password::before {
   border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
   // content: "************" !important;

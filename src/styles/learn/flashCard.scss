@@ -1,31 +1,27 @@
 .flash-card-wrapper {
   padding: 65px;
   @include displayBothCenter();
+  .flash_card {
+    width: 80%;
+  }
+  &__close_button {
+    top: 6rem;
+  }
 }
 .leftClassName {
-  // height: 434px;
   background-color: #dfdada;
   border-radius: 20px;
 }
 .rightClassName {
   h3 {
-    color: #212121;
-    font-family: Roboto;
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0;
-    line-height: 26px;
+    @include font(#212121, 20px, bold, 0, 26px);
   }
   h5 {
-    color: #212121;
-    font-family: Roboto;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 24px;
+    @include font(#212121, 16px, 200px, 0, 24px);
     margin-top: 10px;
   }
 }
-.swiper_pagination1 {
+.swiper_pagination_flashCard {
   float: right;
   display: flex;
   justify-content: end;
@@ -44,14 +40,8 @@
     }
   }
   .previous {
-    background-color: #ecfeee;
-
-    height: 50px;
-    width: 50px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include card(50px, 50px, 30px, #ecfeee);
+    @include displayBothCenter();
     margin: 10px;
     &:hover {
       cursor: pointer;
@@ -62,13 +52,8 @@
     }
   }
   .nextButton {
-    background-color: #ecfeee;
-    height: 50px;
-    width: 50px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include card(50px, 50px, 30px, #ecfeee);
+    @include displayBothCenter();
     &:hover {
       cursor: pointer;
     }
@@ -78,10 +63,6 @@
     }
   }
   .page_index {
-    color: #212121;
-    font-family: Roboto;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 24px;
+    @include font(#212121, 16px, 300px, 0, 24px);
   }
 }

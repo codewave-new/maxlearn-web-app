@@ -68,9 +68,6 @@ const ProfileTab = (props) => {
       <Tab eventKey='Your squad' title='Your squad'>
         <YourSquad/>
       </Tab>
-      <Tab eventKey='badges' title='My badges'>
-        <div className='row'></div>
-      </Tab>
       <Tab eventKey='Basic info' title='Basic info'>
         <BasicInfo />
       </Tab>

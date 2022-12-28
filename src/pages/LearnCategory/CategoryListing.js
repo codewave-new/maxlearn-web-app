@@ -9,8 +9,9 @@ const CategoryListing = () => {
       <div className='max__learn-wrapper'>
         <Header />
         <CategoryList />
+
+        <Footer />
       </div>
-      <Footer />
     </>
   );
 };
