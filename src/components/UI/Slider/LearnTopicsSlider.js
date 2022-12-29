@@ -28,7 +28,7 @@ const data = [
   },
 ];
 
-const LearnTopicsSlider = () => {
+const LearnTopicsSlider = ({hotTopicLists}) => {
   return (
     <>
       <Swiper
@@ -67,7 +67,7 @@ const LearnTopicsSlider = () => {
           nextEl: '.next',
         }}
       >
-        {data.map((element, i) => {
+        {hotTopicLists?.length?hotTopicLists.map((element, i) => {
           return (
             <>
               <SwiperSlide key={i}>
@@ -75,7 +75,7 @@ const LearnTopicsSlider = () => {
               </SwiperSlide>
             </>
           );
-        })}
+        }):''}
 
         {/* <SwiperSlide>
           <TopicsCard />

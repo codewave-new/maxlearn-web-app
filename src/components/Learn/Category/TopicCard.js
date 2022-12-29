@@ -12,8 +12,8 @@ const TopicCard = ({ data }) => {
       // }}
     >
       {/* <DeckColor.default /> */}
-      <div className='card-name'>{data.name}</div>
-      <div className='card-number'>{data.cards}</div>
+      <div className='card-name'>{data?.title}</div>
+      <div className='card-number'>{data.flashcardCount} Flash Cards</div>
     </div>
   );
 };
