@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { BasicInfoEdit } from '../../assets';
 import { BasicInformation } from '../../services/profile';
 import { removeAuth } from '../../state/slices/loginSlice.';
@@ -29,6 +30,7 @@ const BasicInfo = () => {
       navigate('/login');
       localStorage.clear();
       dispatch(removeAuth());
+      toast.error('session expired');
     }
   };
 
