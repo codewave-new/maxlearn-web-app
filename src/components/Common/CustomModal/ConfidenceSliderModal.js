@@ -29,6 +29,10 @@ const ConfidenceSliderModal = ({
 }) => {
   const [sliderChange, setSliderChange] = useState(0);
   const [isContinue, setContinue] = useState(0);
+  const [feedbackModalStatus, setFeedbackModalStatus] = useState(false);
+
+  const showModal = () => setFeedbackModalStatus(true);
+  const closeModal = () => setFeedbackModalStatus(false);
 
   const dWidth = screen.width;
   useEffect(() => {
@@ -182,12 +186,12 @@ const ConfidenceSliderModal = ({
           <p>
             Do you have any feedback?&nbsp;
             <span>
-              <button>Click here</button>
+              <button onClick={showModal}>Click here</button>
             </span>
           </p>
         </div>
       </Modal>
-      <FeedbackModal open={showModal} close={closeModal} />
+      <FeedbackModal open={feedbackModalStatus} close={closeModal} />
     </>
   );
 };
