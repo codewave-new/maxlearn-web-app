@@ -11,14 +11,18 @@ const TeamMembersDetail = ({member}) => {
           src={profilePic}
           className='member-profile-img'
         />{' '}
+        <span>
         {fullName}
+        </span>
       </div>
       {/* {pointsEarned? */}
       <div className='member-points col-3 d-flex justify-start'>
         <span>
           <img className='member-points-img' src={Points.default} />
         </span>
+        <span className=''>
         {pointsEarned} points
+        </span>
         </div>
       {/* </div>:<button className='nudge__button'>Nudge player</button>} */}
     </div>

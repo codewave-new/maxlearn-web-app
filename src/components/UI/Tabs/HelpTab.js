@@ -42,6 +42,7 @@ const HelpTab = (props) => {
       className={`mb-3 max__todo-activity-tab ${props.className}`}
     >
       <Tab eventKey='learning' title='Learning'>
+        <div className='help-query-heading'>Most Frequent Queries</div>
         {helpAccordionData}
       </Tab>
       <Tab eventKey='challenges' title='Challenges'></Tab>

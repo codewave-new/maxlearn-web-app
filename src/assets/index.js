@@ -67,6 +67,8 @@ export * as HelpDesk from './helpdesk.svg';
 export * as ConsoleArrow from './consoleArrow.svg';
 export * as StartCertExam from './start-cert/Group 13@3x.png';
 export * as TopperCrown from './crown.png';
+export * as ChatIcon from './chatIcon.svg';
+export * as LogoutIcon from './logoutIcon.svg';
 export * as CertTrophy from './Trophy-cert.png';
 export * as WhiteScoreDiamond from './white-score-diamond.svg';
 export * as LoginLogo from './loginLogo.png';
@@ -77,5 +79,4 @@ export * as ActiveRanking from './rankingActive.svg';
 export * as InActiveHome from './HomeInactive.svg';
 export * as Console from './console.svg';
 export * as Crown from './crown.svg';
-
-
+export * as ThunderLogo from './thunder_logo.svg';

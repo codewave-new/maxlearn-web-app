@@ -1,6 +1,11 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
-import { Points, ExamDetailBackground, StartCertExam } from '../../assets';
+import {
+  Points,
+  ExamDetailBackground,
+  StartCertExam,
+  CloseButton,
+} from '../../assets';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -45,8 +50,11 @@ const DetailCard = ({ start, state }) => {
   const [searchParams] = useSearchParams();
   const [individualResult, setIndividualResult] = useState('');
   const [opponentResult, setOpponentResult] = useState('');
+  const [learnerName, setLearnerName] = useState('');
 
+  
   useEffect(() => {
+    window.scrollTo(0, 0)
     ChallengeDetail(id, query['challenge-type']);
     if (query.exam_type === 'TODAYSTEST') {
       learnersStartedChallenge(id);
@@ -95,6 +103,7 @@ const DetailCard = ({ start, state }) => {
             query['challenge-type'] == 'SQUAD'
               ? opponentResult?.imageUrl
               : opponentResult?.profilePic,
+            learnerName:learnerName
         }).toString(),
       });
     }
@@ -204,6 +213,8 @@ const DetailCard = ({ start, state }) => {
           let val = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id == challengeDescription?.squad
           );
+        let learnerName= val?.learners?.find(mem=>mem?._id==challengeDescription?.learner)
+        setLearnerName(learnerName?.fullName)
           setIndividualResult(val);
           let opponentVal = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id !== challengeDescription?.squad
@@ -226,6 +237,14 @@ const DetailCard = ({ start, state }) => {
   return (
     <div>
       <div className='detail__card-wrapper width-100'>
+        <button
+          className='close__button pt-5'
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <CloseButton.default />
+        </button>
         {state && state.type === 'cert' ? (
           <StartCertExamComponent certInfo={state} />
         ) : (
