@@ -191,7 +191,7 @@ const ConfidenceSliderModal = ({
           </p>
         </div>
       </Modal>
-      <FeedbackModal open={feedbackModalStatus} close={closeModal} />
+      {/* <FeedbackModal open={feedbackModalStatus} close={closeModal} /> */}
     </>
   );
 };
