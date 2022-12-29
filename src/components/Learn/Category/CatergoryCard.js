@@ -16,21 +16,24 @@ import ProgressBar from '../../UI/ProgressBar';
 //     </>
 //   );
 // };
-const CatergoryCard = ({ data, detail, level, button }) => {
+const CatergoryCard = ({ data, detail, level, button,topics }) => {
   return (
     <>
       <div
         className='max-learn__catergory-card'
-        style={{ background: data.bgColor }}
+        style={{ background:data?.colorr }}
       >
-        <LearnCompliance.default />
-        <h4 className='pt-3'>{data.name}</h4>
+        {/* <LearnCompliance.default /> */}
+        <img src={data?.icon} style={{width:'52px',height:'52px'}}/>
+        <h4 className='pt-3' >
+        {data?.title?.length > 15 ? `${data?.title?.slice(0, 15)}...` : data?.title}
+        </h4>
         <span className='max-learn__catergory-card__category_subject'>
-          {data.subject}
+          {data?.count} {topics? "Topics":'Subjects'} 
         </span>
         <ProgressBar
           bgcolor='#212121'
-          progress={data.percentage}
+          progress={data?.progress}
           height={6}
           className='mt-2 progressbar__learn-text'
           marginTop={20}
@@ -46,7 +49,7 @@ const CatergoryCard = ({ data, detail, level, button }) => {
               ></img>{' '}
               &nbsp;
               <span className='card_level'>
-                You are at <strong>{data.level}</strong>
+                You are at <strong>{data?.level}</strong>
               </span>
             </div>
           </>
@@ -55,7 +58,10 @@ const CatergoryCard = ({ data, detail, level, button }) => {
         )}
 
         <div className='category_detail'>
-          {detail === true ? data.detail : ''}
+          {detail === true ?
+          data?.description?.length > 100 ? `${data?.description?.slice(0, 100)}...` : data?.title
+          : ''}
+
         </div>
 
         {button === true ? (

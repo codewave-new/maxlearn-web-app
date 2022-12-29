@@ -397,3 +397,24 @@ border-radius: 6px;
 .actual_answers{
   background: #D4FED9;
 }
+.explanation-details{
+  border-radius: 20px;
+  background-color: #F6F6F6;
+  padding: 25px 20px;
+  p{
+    color: #212121;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 22px;
+  }
+  h2{
+    color: #212121;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+  }
+
+}
