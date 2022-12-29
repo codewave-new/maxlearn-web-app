@@ -25,6 +25,7 @@ import {
   ActiveRanking,
   ActiveHome,
   InActiveHome,
+  Console,
 } from '../../../assets';
 import { removeAuth } from '../../../state/slices/loginSlice.';
 import SidebarModal from '../CustomModal/SidebarModal';
@@ -304,8 +305,16 @@ const Navbar = () => {
                 </div>
                 My profile
               </li>
-              <li className='dropdown__list'>
-                Console <ConsoleArrow.default />
+              <li className='dropdown__list d-flex justify-content-between align-items-center'>
+                <div className='d-flex justify-content-between align-items-center dropdown__list'>
+                  <div className='image-logo'>
+                    <Console.default />
+                  </div>
+                  Console
+                </div>
+                <div className='text-end'>
+                  <ConsoleArrow.default />
+                </div>
               </li>
               <li
                 className='dropdown__list'
