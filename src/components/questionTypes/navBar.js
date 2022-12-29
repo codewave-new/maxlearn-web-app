@@ -93,7 +93,7 @@ const CustomNavbar = ({time,
                         <img src={logo2} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
                         <span className='team_name'>
-                        {opponentName.length > 10? `${opponentName.slice(0, 10)}...` : opponentName}
+                        {opponentName?.length > 10? `${opponentName.slice(0, 10)}...` : opponentName}
                         </span>
                         <span className=' team_points'>{opponentPoints} Points</span>
                         </div>

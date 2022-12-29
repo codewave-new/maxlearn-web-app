@@ -18,8 +18,9 @@ import {
 } from 'react-router-dom';
 import { useQuery } from '../../utility/helper';
 import ChallengeDetailSlider from '../UI/Slider/ChallengeDetailSlider';
-import { WaitingLoader } from '../loader/loader';
+import { WaitingLoader, ButtonLoader } from '../loader/loader';
 import { toast, ToastContainer } from 'react-toastify';
+import { useSelector } from 'react-redux';
 import StartCertExamComponent from '../ToDo/questcerttab/StartCertExamComponent';
 
 const DetailCard = ({ start, state }) => {
@@ -27,6 +28,7 @@ const DetailCard = ({ start, state }) => {
   const { id } = useParams();
   const loaction = useLocation();
   const query = useQuery(loaction.search);
+  const authData = useSelector((state) => state.auth);
   const [modalStatus, setModalStatus] = useState(false);
   const [challengeDescription, setChallengeDescription] = useState({});
   const [ongoingChallenge, setOngoingChallenge] = useState([]);
@@ -44,10 +46,8 @@ const DetailCard = ({ start, state }) => {
   const [individualResult, setIndividualResult] = useState('');
   const [opponentResult, setOpponentResult] = useState('');
 
-  const learnerId = localStorage.getItem('userid');
-
   useEffect(() => {
-    if (!state) ChallengeDetail(id, query['challenge-type']);
+    ChallengeDetail(id, query['challenge-type']);
     if (query.exam_type === 'TODAYSTEST') {
       learnersStartedChallenge(id);
     }
@@ -61,7 +61,7 @@ const DetailCard = ({ start, state }) => {
   // },[examStart])
 
   useEffect(() => {
-    if (examStart?.challengeResult && individualResult !== ''&&opponentResult!=='') {
+    if (examStart?.challengeResult && individualResult !== '') {
       navigate({
         pathname: `/start-challenge-exam/${examStart?.challengeResult}`,
         search: createSearchParams({
@@ -79,29 +79,34 @@ const DetailCard = ({ start, state }) => {
             query['challenge-type'] == 'SQUAD'
               ? Math.floor(individualResult?.squadScore)
               : Math.floor(individualResult?.pointsEarned),
-              opponentName:
-              query['challenge-type'] == 'SQUAD'
-                ? opponentResult?.name
-                : opponentResult?.fullName,
-                opponentPoints:
-              query['challenge-type'] == 'SQUAD'
-                ? Math.floor(opponentResult?.squadScore)
-                : Math.floor(opponentResult?.pointsEarned),
-                logo1:
-                query['challenge-type'] == 'SQUAD'
-                  ? individualResult?.imageUrl
-                  : individualResult?.profilePic,
-                  logo2:
-                query['challenge-type'] == 'SQUAD'
-                  ? opponentResult?.imageUrl
-                  : opponentResult?.profilePic,
+          opponentName:
+            query['challenge-type'] == 'SQUAD'
+              ? opponentResult?.name
+              : opponentResult?.fullName,
+          opponentPoints:
+            query['challenge-type'] == 'SQUAD'
+              ? Math.floor(opponentResult?.squadScore)
+              : Math.floor(opponentResult?.pointsEarned),
+          logo1:
+            query['challenge-type'] == 'SQUAD'
+              ? individualResult?.imageUrl
+              : individualResult?.profilePic,
+          logo2:
+            query['challenge-type'] == 'SQUAD'
+              ? opponentResult?.imageUrl
+              : opponentResult?.profilePic,
         }).toString(),
       });
     }
-  }, [examStart, individualResult,opponentResult]);
+  }, [examStart, individualResult, opponentResult]);
+  console.log(opponentResult);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
-    const response = await challengesDetails(challengeId, challengeType);
+    const response = await challengesDetails(
+      authData.learnerId,
+      challengeId,
+      challengeType
+    );
     if (response.statusCode === 200) {
       setChallengeDescription(response?.data);
       if (challengeType === 'SQUAD') {
@@ -132,8 +137,6 @@ const DetailCard = ({ start, state }) => {
         return learners?.learner;
       });
       setOngoingChallenge(liveExam);
-    } else {
-      console.log(response);
     }
   }, []);
 
@@ -183,7 +186,7 @@ const DetailCard = ({ start, state }) => {
 
     const res = await startChallenge({
       challenge: id,
-      learner: learnerId,
+      learner: authData?.learnerId,
     });
     if (res.statusCode === 200) {
       setExamStart(res?.data);
@@ -215,7 +218,7 @@ const DetailCard = ({ start, state }) => {
         let opponentVal = challengeDescription.challengeDetails?.learners?.find(
           (item) => item?._id !== challengeDescription?.learner
         );
-        setOpponentResult(opponentVal)
+        setOpponentResult(opponentVal);
       }
     }
   }, [challengeDescription]);
@@ -412,7 +415,7 @@ const DetailCard = ({ start, state }) => {
                   disabledText={'Yet to start'}
                   text={
                     stat === '' && !questionsInfo?._id && isLoading ? (
-                      <WaitingLoader />
+                      <ButtonLoader />
                     ) : (
                       'Start Challenge'
                     )

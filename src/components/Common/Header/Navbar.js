@@ -1,5 +1,12 @@
-import React, { useState } from 'react';
-import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  Link,
+  Navigate,
+  NavLink,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
 import {
   HomeLogo,
   HomeNotificationLogo,
@@ -13,14 +20,32 @@ import {
   ConsoleArrow,
   ProfileImage,
   HelpDesk,
+  ActiveLearn,
+  ActiveTodo,
+  ActiveRanking,
+  ActiveHome,
+  InActiveHome,
 } from '../../../assets';
+import { removeAuth } from '../../../state/slices/loginSlice.';
+import SidebarModal from '../CustomModal/SidebarModal';
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const [activeNav, setActiveNav] = useState('home');
   const [profileDropDown, setProfileDropDown] = useState(false);
+  const [notificationModal, setNotificationModal] = useState(false);
 
   const activeClassName = 'active';
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
+
+  useEffect(() => {
+    console.log(location);
+    const path = location.pathname.split('/');
+    console.log(path);
+    setActiveNav(location.pathname === '' ? 'home' : path[1]);
+  }, [location]);
 
   return (
     // <nav className='max_menu'>
@@ -125,7 +150,12 @@ const Navbar = () => {
       </nav> */}
       <nav className='navbar navbar-expand-lg max__navbar'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='/src#'>
+          <a
+            className='navbar-brand'
+            onClick={() => {
+              navigate('/');
+            }}
+          >
             <MaxLogo.default />
           </a>
           <button
@@ -158,23 +188,50 @@ const Navbar = () => {
               <ul className='navbar-nav max__menunav-list justify-content-end flex-grow-1 border-end pe-5'>
                 <li>
                   <NavLink className={navActive} to='/'>
-                    <HomeLogo.default /> Home
+                    <span className='nav-icon'>
+                      {activeNav === '' ? (
+                        <ActiveHome.default />
+                      ) : (
+                        <InActiveHome.default />
+                      )}
+                    </span>
+                    Home
                   </NavLink>
                 </li>
                 <li>
                   <NavLink className={navActive} to='/learn'>
-                    <NavLearnLogo.default /> Learn
+                    <span className='nav-icon'>
+                      {activeNav === 'learn' ? (
+                        <ActiveLearn.default />
+                      ) : (
+                        <NavLearnLogo.default />
+                      )}
+                    </span>
+                    Learn
                   </NavLink>
                 </li>
                 <li>
                   <NavLink className={navActive} to='/to-do'>
-                    <NavToDoLogo.default />
+                    <span className='nav-icon'>
+                      {activeNav === 'to-do' ? (
+                        <ActiveTodo.default />
+                      ) : (
+                        <NavToDoLogo.default />
+                      )}
+                    </span>
                     To-Do
                   </NavLink>
                 </li>
                 <li>
                   <NavLink className={navActive} to='/rankings'>
-                    <NavRangingLogo.default /> Rankings
+                    <span className='nav-icon'>
+                      {activeNav === 'rankings' ? (
+                        <ActiveRanking.default />
+                      ) : (
+                        <NavRangingLogo.default />
+                      )}
+                    </span>
+                    Rankings
                   </NavLink>
                 </li>
               </ul>
@@ -194,7 +251,11 @@ const Navbar = () => {
 
                   <li className='max__notification'>
                     <div className='max__nav-notification-container'>
-                      <button>
+                      <button
+                        onClick={() => {
+                          setNotificationModal(true);
+                        }}
+                      >
                         <HomeNotificationLogo.default />
                       </button>
                     </div>
@@ -210,52 +271,72 @@ const Navbar = () => {
                       </button>
                     </div>
                   </li>
-                  {profileDropDown ? (
-                    <div className='dropDownProfile'>
-                      <ul className='dropdown__list-wrapper'>
-                        <li
-                          className='dropdown__list'
-                          onClick={() => {
-                            navigate('/profile');
-                          }}
-                        >
-                          <div className='image-logo'>
-                            <ProfileImage.default />
-                          </div>
-                          My profile
-                        </li>
-                        <li className='dropdown__list'>
-                          Console <ConsoleArrow.default />
-                        </li>
-                        <li className='dropdown__list'>
-                          <div className='image-logo'>
-                            <HelpDesk.default />
-                          </div>
-                          Help & supports
-                        </li>
-                        <li
-                          className='dropdown__list'
-                          onClick={() => {
-                            localStorage.clear();
-                            navigate('/login');
-                          }}
-                        >
-                          <div className='image-logo'>
-                            <LogoutImage.default />
-                          </div>
-                          Logout
-                        </li>
-                      </ul>
-                    </div>
-                  ) : (
-                    ''
-                  )}
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </nav>
+      <SidebarModal
+        show={notificationModal}
+        onHide={() => setNotificationModal(false)}
+        title='Notifications'
+      >
+        Notification
+      </SidebarModal>
+      {profileDropDown ? (
+        <div
+          className='dropblur'
+          onClick={() => {
+            setProfileDropDown(false);
+          }}
+        >
+          <div className='dropDownProfile'>
+            <ul className='dropdown__list-wrapper'>
+              <li
+                className='dropdown__list'
+                onClick={() => {
+                  navigate('/profile');
+                }}
+              >
+                <div className='image-logo'>
+                  <ProfileImage.default />
+                </div>
+                My profile
+              </li>
+              <li className='dropdown__list'>
+                Console <ConsoleArrow.default />
+              </li>
+              <li
+                className='dropdown__list'
+                onClick={() => {
+                  navigate('/help');
+                }}
+              >
+                <div className='image-logo'>
+                  <HelpDesk.default />
+                </div>
+                Help & supports
+              </li>
+              <li
+                className='dropdown__list'
+                onClick={() => {
+                  dispatch(removeAuth());
+                  localStorage.clear();
+                  navigate('/login');
+                }}
+              >
+                <div className='image-logo'>
+                  <LogoutImage.default />
+                </div>
+                Logout
+              </li>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
     </header>
   );
 };

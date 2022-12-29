@@ -8,7 +8,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Loginauth } from '../services/login/index';
-import {WaitingLoader} from '../components/loader/loader';
+import { ButtonLoader, WaitingLoader } from '../components/loader/loader';
 
 import {
   MaxLogo,
@@ -16,12 +16,14 @@ import {
   LoginIcon2,
   GoogleIcon,
   LinkedinIcon,
+  LoginLogo,
 } from '../assets';
 
 import Header from '../components/Common/Header/Header';
 import { useDispatch } from 'react-redux';
 import { Email, Password } from '@mui/icons-material';
 import Swal from 'sweetalert2';
+import { saveAuth } from '../state/slices/loginSlice.';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,15 +32,13 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailvalue, setemailvalue] = useState('');
   const [pwsdValue, setpwdvalue] = useState('');
-  const [pwdEyeOnOff, setPwdEyeOnOff] = useState(true);
+  const [pwdEyeOnOff, setPwdEyeOnOff] = useState(false);
   const [apperrorLogin, setapperrorLogin] = useState('');
   const [pwderror, setpwderror] = useState('');
   const [showPage, setShowPage] = useState(false);
 
   useEffect(() => {
-    console.log(location);
     if (loaction.pathname === '/login' && localStorage.getItem('TOKEN_NAME')) {
-      console.log('effect');
       navigate('/');
     } else {
       setShowPage(true);
@@ -92,22 +92,19 @@ const Login = () => {
       };
       const loginapi = await dispatch(Loginauth(logindata));
       setIsLoading(false);
-      if (loginapi.data.statusCode === 200) {
-        localStorage.setItem('token', loginapi.data.data.loginDetails.token);
-        localStorage.setItem(
-          'TOKEN_NAME',
-          loginapi.data.data.loginDetails.token
-        );
-        localStorage.setItem(
-          'applicationId',
-          loginapi.data.data.loginDetails.user.registrations[0].applicationId
-        );
-        localStorage.setItem(
-          'fullname',
-          loginapi.data.data.loginDetails.user.fullName
-        );
-        localStorage.setItem('userid', loginapi.data.data.learnerId);
 
+      if (loginapi.data.statusCode === 200) {
+        const authData = {
+          TOKEN_NAME: loginapi.data.data.loginDetails.token,
+          applicationId:
+            loginapi.data.data.loginDetails.user.registrations[0].applicationId,
+          fullname: loginapi.data.data.loginDetails.user.fullName,
+          userid: loginapi.data.data.learnerId,
+        };
+        dispatch(saveAuth(authData));
+        Object.keys(authData).map((tokens) => {
+          localStorage.setItem(tokens, authData[tokens]);
+        });
         navigate('/');
       } else if (loginapi.data.statusCode === 401) {
         Swal.fire({
@@ -136,8 +133,14 @@ const Login = () => {
             <div className='formdiv'>
               <div className='fordiv-wrapper'>
                 <p className='welcome'>Welcome back!</p>
-                <h2 className='logintext'>
-                  Log in to <MaxLogo.default />
+                <h2 className='logintext '>
+                  Log in to
+                  <img
+                    className='login__logo'
+                    src={LoginLogo.default}
+                    alt='logo'
+                  />
+                  {/* <LoginLogo.default /> */}
                 </h2>
                 <form>
                   <div className='row input_div'>
@@ -188,7 +191,7 @@ const Login = () => {
                       disabled={isLoading}
                       onClick={(e) => loginClick(e)}
                     >
-                      {isLoading ? <WaitingLoader /> : 'Login'}
+                      {isLoading ? <ButtonLoader /> : 'Login'}
                     </button>
                   </div>
 
@@ -203,7 +206,7 @@ const Login = () => {
                   </div>
                   <div className='row input_div'>
                     <div className='col-sm-6'>
-                      <a href='/'>
+                      <a>
                         <div className='social_innerdiv'>
                           <GoogleIcon.default />
                           <span className='google_text'>Google</span>
@@ -211,7 +214,7 @@ const Login = () => {
                       </a>
                     </div>
                     <div className='col-sm-6'>
-                      <a href='/'>
+                      <a>
                         <div className='social_innerdiv'>
                           <LinkedinIcon.default />
                           <span className='google_text'>Linkedin</span>

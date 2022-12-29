@@ -71,6 +71,7 @@
     "html-react-parser": "^3.0.4",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.40",
     "rc-horizontal-scroll": "^1.1.1",
     "rc-horizontal-slider": "^1.1.4",
     "rc-slider": "^10.1.0",

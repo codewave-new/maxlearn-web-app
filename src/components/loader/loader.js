@@ -25,3 +25,15 @@ export const CenterLoadingBar = () => {
     </div>
   );
 };
+
+export const ButtonLoader = () => {
+  return (
+    <div className='loader__container'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      {/* <span></span> */}
+    </div>
+  );
+};
