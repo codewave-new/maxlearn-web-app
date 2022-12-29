@@ -37,7 +37,6 @@ const Navbar = () => {
   const location = useLocation();
   const [activeNav, setActiveNav] = useState('home');
   const [profileDropDown, setProfileDropDown] = useState(false);
-  // const [notificationModal, setNotificationModal] = useState(false);
 
   const [showNotificationModal, setShowNotificationModal] = useState(false);
   const handleNotificationModal = () => setShowNotificationModal(true);
