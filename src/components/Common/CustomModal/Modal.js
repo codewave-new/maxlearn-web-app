@@ -3,15 +3,19 @@ import ReactDom from 'react-dom';
 import { CloseButton } from '../../../assets';
 import '../../../styles/common/modal/modal.scss';
 
-const Modal = ({ children, open, close, className }) => {
+const Modal = ({ children, open, close, className, button = true }) => {
   if (!open) return null;
   return ReactDom.createPortal(
     <>
       <div className='backdrop'>
         <div className={`modal__wrapper ${className}`}>{children}</div>
-        <button className='close__button' onClick={close}>
-          <CloseButton.default />
-        </button>
+        {button ? (
+          <button className='close__button' onClick={close}>
+            <CloseButton.default />
+          </button>
+        ) : (
+          ''
+        )}
       </div>
     </>,
     document.getElementById('overlays')

@@ -8,7 +8,6 @@
   margin: auto;
   border-radius: 20px;
 }
-
 .maodal_name {
   color: #999999;
   font-family: Roboto;
@@ -16,7 +15,6 @@
   font-weight: 500;
   letter-spacing: 0;
 }
-
 .modal_header {
   color: #212121;
   font-family: Roboto;
@@ -24,26 +22,25 @@
   font-weight: bold;
   letter-spacing: 0;
 }
-
 .modal_header {
   border-radius: 20px;
   background-color: #ecfeee;
 }
-
 .horizontal-slider {
   height: 4px;
-  svg{
+  svg {
     width: 100% !important;
   }
   width: 487px;
-  *{
+  * {
     border: none;
   }
 }
-.example-thumb,.example-thumb:active{
+.example-thumb,
+.example-thumb:active {
   top: -24px;
-    border-style: none;
-    border: 0px;
+  border-style: none;
+  border: 0px;
 }
 .example-track {
   // background-color: black;
@@ -53,20 +50,20 @@
   width: 100px;
   cursor: pointer;
 }
-.example-thumb-first{
+.example-thumb-first {
   left: -19px !important;
 }
-.example-thumb-last{
+.example-thumb-last {
   margin-top: -11px;
   margin-left: 3px;
   left: 368px !important;
 }
-.slider_footer{
+.slider_footer {
   margin-top: 159px;
   padding: 0 48px;
   border-top: none;
 }
-.slider_text{
+.slider_text {
   width: 60px;
   color: #212121;
   font-family: Roboto;
@@ -76,9 +73,9 @@
   line-height: 16px;
   text-align: center;
 }
-.slider_footer_feedback{
+.slider_footer_feedback {
   padding-top: 1rem;
-  p{
+  p {
     text-align: center;
     color: #212121;
     font-family: Roboto;
@@ -86,31 +83,29 @@
     font-weight: 500;
     letter-spacing: 0;
     line-height: 12px;
-  button{
-background:none;
- border:none;
- outline: none;
- color: #2A7776;
- font-family: Roboto;
- font-size: 16px;
- font-weight: bold;
- letter-spacing: 0;
- line-height: 19px;
-
-  }
-  }
-}
-.confidence_modal{
-  padding-bottom: 1rem 0;
-  height: 450px;
-    .slider{
-      margin: 5rem 0;
+    button {
+      background: none;
+      border: none;
+      outline: none;
+      color: #2a7776;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0;
+      line-height: 19px;
     }
   }
-  .example-thumb{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+}
+.confidence_modal {
+  padding-bottom: 1rem 0;
+  height: 450px;
+  .slider {
+    margin: 5rem 0;
   }
-  
+}
+.example-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}

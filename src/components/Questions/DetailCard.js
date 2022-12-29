@@ -1,6 +1,11 @@
 import React, { memo, useCallback, useEffect, useState } from 'react';
 import CustomButton from '../Common/CustomButton/CustomButton';
-import { Points, ExamDetailBackground, StartCertExam } from '../../assets';
+import {
+  Points,
+  ExamDetailBackground,
+  StartCertExam,
+  CloseButton,
+} from '../../assets';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
 import TeamDetailModal from '../Common/CustomModal/TeamDetailModal';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -232,6 +237,14 @@ const DetailCard = ({ start, state }) => {
   return (
     <div>
       <div className='detail__card-wrapper width-100'>
+        <button
+          className='close__button pt-5'
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <CloseButton.default />
+        </button>
         {state && state.type === 'cert' ? (
           <StartCertExamComponent certInfo={state} />
         ) : (

@@ -1,0 +1,43 @@
+.feedback_modal {
+  @include card(auto, 50%, 20px, #ffffff);
+  position: relative;
+  top: 84px;
+  // left: 238px;
+  margin: auto;
+  .feedback_header {
+    @include displayBothCenter();
+    padding-top: 50px;
+    flex-direction: column;
+    .feedback_name {
+      @include font(#212121, 20px, bold, 0, 26px);
+      padding-top: 16px;
+    }
+  }
+  .feedback_text_area {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    textarea {
+      resize: none;
+      @include font(#979797, 12px, 500, 0.22px, 18px);
+      border: 1px solid #979797;
+      border-radius: 8px;
+      background-color: #ffffff;
+      padding: 20px;
+      height: 276px;
+      width: 90%;
+    }
+  }
+  .feedaback_submit_button {
+    @include displayBothCenter();
+    padding-top: 26px;
+    padding-bottom: 50px;
+    button {
+      border-radius: 10px;
+      background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+      padding: 19px 69px;
+      border: none;
+      @include font(#ffffff, 16px, 500, 0, 12px);
+    }
+  }
+}

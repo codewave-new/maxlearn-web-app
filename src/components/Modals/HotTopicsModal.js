@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
 import ModalTopicsCard from '../Learn/ModalTopicsCard';
 import SidebarModal from '../Common/CustomModal/SidebarModal';
 import InfiniteScrollling from '../Pagination/InfiniteScrollling';
-import { CenterLoadingBar,LoadingBar } from '../loader/loader';
+import { CenterLoadingBar, LoadingBar } from '../loader/loader';
 
-const HotTopicsModal = ({show,onHide,hotTopicLists,
+const HotTopicsModal = ({
+  show,
+  onHide,
+  hotTopicLists,
   hotTopicLoading,
   hotTopicPage,
   setHotTopicPage,
-  hotTopicTotalCount
+  hotTopicTotalCount,
 }) => {
   return (
     <SidebarModal show={show} onHide={onHide} title='Hot topics for the day'>
@@ -19,17 +21,17 @@ const HotTopicsModal = ({show,onHide,hotTopicLists,
         </h4>
 
         {hotTopicLoading && hotTopicPage === 1 ? (
-        <CenterLoadingBar />
-      ) : (
+          <CenterLoadingBar />
+        ) : (
           <InfiniteScrollling
             dataLength={hotTopicLists?.length}
-            next={()=>setHotTopicPage(hotTopicPage+1)}
+            next={() => setHotTopicPage(hotTopicPage + 1)}
             hasMore={hotTopicLists?.length < hotTopicTotalCount}
             loader={<LoadingBar />}
-          > 
-                 <ModalTopicsCard hotTopicLists={hotTopicLists}/>
-                 </InfiniteScrollling>
-      )}
+          >
+            <ModalTopicsCard hotTopicLists={hotTopicLists} />
+          </InfiniteScrollling>
+        )}
 
         {/* <QuestCard
               data={individualChallenge}
