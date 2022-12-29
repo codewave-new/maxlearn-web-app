@@ -85,6 +85,15 @@ export const MultiSelect = ({
             />
           )}
         </CardBody>
+        {isExplanation?
+        <CardBody className='mt-3 ml-2 explanation-details'>
+           
+            <>
+              <h2 className='mt-1'>Answer explanation in detail</h2>
+              <p>{statusVal?.answerInfo?.feedback}</p>
+            </>
+          
+        </CardBody>:''}
         <div className='app_subtn'>
           {isExplanation ? (
             <a>
@@ -123,16 +132,6 @@ export const MultiSelect = ({
             </a>
           )}
         </div>
-        {isExplanation ? (
-          <CardBody className='mt-3 ml-2 explanation-details'>
-            <>
-              <h2 className='mt-1'>Answer explanation in detail</h2>
-              <p>{statusVal?.answerInfo?.feedback}</p>
-            </>
-          </CardBody>
-        ) : (
-          ''
-        )}
       </Col>
     </Row>
   );
