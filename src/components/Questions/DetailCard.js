@@ -49,6 +49,7 @@ const DetailCard = ({ start, state }) => {
 
   
   useEffect(() => {
+    window.scrollTo(0, 0)
     ChallengeDetail(id, query['challenge-type']);
     if (query.exam_type === 'TODAYSTEST') {
       learnersStartedChallenge(id);

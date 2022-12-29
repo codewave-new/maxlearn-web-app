@@ -3,7 +3,8 @@ import { Link, Navigate,useNavigate, NavLink } from 'react-router-dom';
 import {
   MaxLogo,
   CloseButton,
-  timerLogo
+  timerLogo,
+  ThunderLogo
 } from '../../assets';
 import team from '../../assets/Images/usersquad/Team.jpg';
 import '../../styles/questions/challengs-question.scss';
@@ -27,7 +28,7 @@ const CustomNavbar = ({time,
   const naviagte=useNavigate()
   const handleExitExam=async()=>{
     const willDelete = await swal({
-      text: "Are you sure you want to exit? Yes or No",
+      text: "Are you sure you want to exit?",
       icon: "warning",
       dangerMode: true,
       className:'swal-footer-wrapper',
@@ -106,6 +107,9 @@ const CustomNavbar = ({time,
                         <span className=' team_points'>{points} Points</span>
                         </div>
                       {/* </NavLink> */}
+                    </li>
+                    <li className='d-flex align-items-center justify-content-center'>
+                      <ThunderLogo.default/>
                     </li>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
