@@ -1,0 +1,45 @@
+.logout_modal {
+  @include card(auto, 50%, 20px, #ffffff);
+  position: relative;
+  top: 200px;
+  margin: auto;
+  .logout_icon {
+    @include displayBothCenter();
+    padding-top: 85px;
+  }
+  .logout_header_name {
+    @include displayBothCenter();
+    padding-top: 24px;
+    text-align: center;
+    @include font(#212121, 22px, bold, 0, 28px);
+  }
+  .logout_button_wrapper {
+    @include displayBothCenter();
+    padding-top: 40px;
+    padding-bottom: 80px;
+
+    .outlined__button {
+      @include card(52px, 30%, 10px, #ffffff);
+      margin: 10px;
+      border: 2px solid #ff6633;
+      color: #ff6633;
+      // &:hover {
+      //   background-color: #ff6633;
+      //   color: white;
+      //   border-color: #ff6633;
+      // }
+    }
+    .filled__button {
+      height: 52px;
+      width: 30%;
+      border-radius: 10px;
+      background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
+      color: #ffffff;
+      border: none;
+      // &:hover {
+      //   background-color: #ff6633;
+      //   color: white;
+      // }
+    }
+  }
+}

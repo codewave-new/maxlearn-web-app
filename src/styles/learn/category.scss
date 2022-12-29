@@ -78,6 +78,7 @@
 .category_detail {
   @include font(#212121, 14px, 0, 0, 20px);
   margin-top: 20px;
+  line-break: anywhere;
 }
 .category_row {
   border-radius: 20px;

@@ -3,7 +3,14 @@ import LearningCard from './LearningCard';
 import LearningModal from '../Modals/LearningModal';
 import { SubjectData } from './Category/data';
 
-function Learning() {
+function Learning({
+  continueLists,
+  continueTotalCount,
+  setContinueLearingLoading,
+  continueLearingLoading,
+  setContinuePage,
+  continuePage,
+}) {
   const [showLearningModal, setShowLearningModal] = useState(false);
 
   const handleShowLearningModal = () => setShowLearningModal(true);
@@ -17,7 +24,7 @@ function Learning() {
           <button onClick={handleShowLearningModal}>View all</button>
         </div>
         <div className='row learning-card-row'>
-          {SubjectData.slice(0, 6).map((element, i) => {
+          {continueLists.slice(0, 6).map((element, i) => {
             return (
               <div className='col-lg-4 col-md-6 col-12 mb-3' key={i}>
                 <LearningCard data={element} className='content' />
@@ -45,7 +52,15 @@ function Learning() {
         </div>
       </div>
 
-      <LearningModal show={showLearningModal} onHide={closeModal} />
+      <LearningModal show={showLearningModal} onHide={closeModal} 
+        continueLists={continueLists}
+        continueTotalCount={continueTotalCount}
+        setContinueLearingLoading={setContinueLearingLoading}
+        continueLearingLoading={continueLearingLoading}
+        setContinuePage={setContinuePage}
+        continuePage={continuePage}
+      
+      />
     </Fragment>
   );
 }

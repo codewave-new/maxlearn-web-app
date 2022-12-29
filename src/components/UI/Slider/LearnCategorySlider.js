@@ -6,7 +6,7 @@ import { Autoplay, Mousewheel, Keyboard, Pagination } from 'swiper';
 import CatergoryCard from '../../Learn/Category/CatergoryCard';
 import { data } from '../../Learn/Category/data';
 
-const LearnCategorySlider = () => {
+const LearnCategorySlider = ({learnCategoryLists}) => {
   return (
     <>
       <Swiper
@@ -37,13 +37,21 @@ const LearnCategorySlider = () => {
         modules={[Autoplay, Mousewheel, Pagination, Keyboard]}
         className='mySwiperCatergory'
       >
-        {data.slice(0, 6).map((element, i) => {
+        {learnCategoryLists?.length?learnCategoryLists.slice(0, 6).map((element, i) => {
           return (
             <SwiperSlide key={i}>
-              <CatergoryCard data={element} />
+              <CatergoryCard     
+              data={{
+                progress:element?.progressPercent,
+                title:element?.title,
+                count:element?.subjectsCount,
+                icon:element?.categoryIcon,
+                colorr:element?.categoryColor
+                }}
+              />
             </SwiperSlide>
-          );
-        })}
+          )
+        }):''}
       </Swiper>
     </>
   );

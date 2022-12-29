@@ -17,7 +17,7 @@ export const OptionWrapper = ({options,
       {/* <input type='checkbox'
     checked={isTrueOrFalse===''?'':(isTrueOrFalse===item?.value?true:false)}
  /> */}
-  {isTrueOrFalse===''?'':(isTrueOrFalse===item?.value?<img src={checkedIcon} style={{width:'20px',height:'20px'}}/>:<unCheckedIcon.default/>)}
+  {isTrueOrFalse===''?<unCheckedIcon.default/>:(isTrueOrFalse===item?.value?<img src={checkedIcon} style={{width:'20px',height:'20px'}}/>:<unCheckedIcon.default/>)}
     </div>
     <div className='col-sm-10  '>
       <label className='quest_options'>{item?.label}</label>
