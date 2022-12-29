@@ -5,10 +5,10 @@
     @include card(139px, 100%, 20px, $primary-color);
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
     padding: 1.25rem;
-     @media (max-width: 992px) {
+    @media (max-width: 992px) {
       width: 100%;
     }
-     .max__user-container {
+    .max__user-container {
       background-color: $user-bg;
       height: 100%;
       position: relative;
@@ -25,11 +25,16 @@
       h4 {
         @include font($text-user-color, 1.375rem, 900, 0, 1.375rem);
       }
-      h2 {
+      .user_name {
+        margin-right: 10px;
         display: inline-flex !important;
-        // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
         @include font($text-secondary-color, 1.625rem, 900, 0.029rem, 1.4);
       }
+      // h2 {
+      //   // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+      // display: inline-flex !important;
+      // @include font($text-secondary-color, 1.625rem, 900, 0.029rem, 1.4);
+      // }
     }
   }
 }

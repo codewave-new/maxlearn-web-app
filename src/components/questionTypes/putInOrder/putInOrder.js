@@ -41,7 +41,7 @@ export const PutInOrder = ({
               ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
               : ` Question - 
               ${
-                isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1
+                isExplanation ? attemptedQuestions  : attemptedQuestions + 1
               } OF 
               ${questionPerSession}`}
             {/* Question -{' '}
@@ -73,7 +73,7 @@ export const PutInOrder = ({
             />
           )}
         </CardBody>
-        <CardBody className='mt-3 ml-2'>
+        <CardBody className='mt-3 ml-2 explanation-details'>
           {isExplanation ? (
             <>
               <p className='mt-1'>Answer explanation in detail</p>

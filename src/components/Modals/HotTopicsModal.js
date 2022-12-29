@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import ModalTopicsCard from '../Learn/ModalTopicsCard';
 import SidebarModal from '../Common/CustomModal/SidebarModal';
+import InfiniteScrollling from '../Pagination/InfiniteScrollling';
+import { CenterLoadingBar, LoadingBar } from '../loader/loader';
 
-const HotTopicsModal = (props) => {
-  const { show, onHide } = props;
+const HotTopicsModal = ({
+  show,
+  onHide,
+  hotTopicLists,
+  hotTopicLoading,
+  hotTopicPage,
+  setHotTopicPage,
+  hotTopicTotalCount,
+}) => {
   return (
     <SidebarModal show={show} onHide={onHide} title='Hot topics for the day'>
       <div>
@@ -11,26 +20,19 @@ const HotTopicsModal = (props) => {
           Let's learn through hottest topics (12)
         </h4>
 
-        {/* <InfiniteScrollModal */}
-        {/* // dataLength={upcomingChallengeDetail?.length}
-        // next={upcomingChallenge}
-        // hasMore={upcomingChallengeDetail?.length < upcomingCount}
-        > */}
-        {/* {upcomingChallengeDetail?.map((individualChallenge, index) => (
-            <div
-              className='col-12'
-              key={`challenge0${index}`}
-              onClick={() => {
-                navigate({
-                  pathname: `/to-do/challenge/detail/${individualChallenge?._id}`,
-                  search: createSearchParams({
-                    'challenge-type': `${individualChallenge?.challengeType}`,
-                    exam_type: `UPCOMMING`,
-                  }).toString(),
-                });
-              }} */}
-        {/* > */}
-        <ModalTopicsCard />
+        {hotTopicLoading && hotTopicPage === 1 ? (
+          <CenterLoadingBar />
+        ) : (
+          <InfiniteScrollling
+            dataLength={hotTopicLists?.length}
+            next={() => setHotTopicPage(hotTopicPage + 1)}
+            hasMore={hotTopicLists?.length < hotTopicTotalCount}
+            loader={<LoadingBar />}
+          >
+            <ModalTopicsCard hotTopicLists={hotTopicLists} />
+          </InfiniteScrollling>
+        )}
+
         {/* <QuestCard
               data={individualChallenge}
               status='YET-TO-START'

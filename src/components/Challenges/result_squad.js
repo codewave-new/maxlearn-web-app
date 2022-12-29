@@ -130,14 +130,16 @@ export const ResultSquad = ({
         </div>
       </div>
       <button className='completion__close-btn'>
+      <Link to='/to-do'>
         <CloseButton.default />
+        </Link>
       </button>
       <div className='completion__footer '>
         <div className='d-flex justify-content-between align-items-center footer__wrapper'>
           <div>
-          <Link to='#'>
+          {/* <Link > */}
             <button className='challenge__outline-btn '>View my leaderboard</button>
-            </Link>
+            {/* </Link> */}
             <Link to='/to-do'>
             <button className='challenge__filled-btn'>Explore challenges</button>
             </Link>           

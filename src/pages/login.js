@@ -16,6 +16,7 @@ import {
   LoginIcon2,
   GoogleIcon,
   LinkedinIcon,
+  LoginLogo,
 } from '../assets';
 
 import Header from '../components/Common/Header/Header';
@@ -31,7 +32,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [emailvalue, setemailvalue] = useState('');
   const [pwsdValue, setpwdvalue] = useState('');
-  const [pwdEyeOnOff, setPwdEyeOnOff] = useState(true);
+  const [pwdEyeOnOff, setPwdEyeOnOff] = useState(false);
   const [apperrorLogin, setapperrorLogin] = useState('');
   const [pwderror, setpwderror] = useState('');
   const [showPage, setShowPage] = useState(false);
@@ -132,8 +133,14 @@ const Login = () => {
             <div className='formdiv'>
               <div className='fordiv-wrapper'>
                 <p className='welcome'>Welcome back!</p>
-                <h2 className='logintext'>
-                  Log in to <MaxLogo.default />
+                <h2 className='logintext '>
+                  Log in to
+                  <img
+                    className='login__logo'
+                    src={LoginLogo.default}
+                    alt='logo'
+                  />
+                  {/* <LoginLogo.default /> */}
                 </h2>
                 <form>
                   <div className='row input_div'>
@@ -199,7 +206,7 @@ const Login = () => {
                   </div>
                   <div className='row input_div'>
                     <div className='col-sm-6'>
-                      <a href='/'>
+                      <a>
                         <div className='social_innerdiv'>
                           <GoogleIcon.default />
                           <span className='google_text'>Google</span>
@@ -207,7 +214,7 @@ const Login = () => {
                       </a>
                     </div>
                     <div className='col-sm-6'>
-                      <a href='/'>
+                      <a>
                         <div className='social_innerdiv'>
                           <LinkedinIcon.default />
                           <span className='google_text'>Linkedin</span>

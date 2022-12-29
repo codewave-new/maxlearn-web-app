@@ -64,24 +64,25 @@
   padding: 40px;
 }
 .logintext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #212121;
   font-family: Roboto;
   font-size: 26px;
   font-weight: 900;
   letter-spacing: 0.47px;
   line-height: 26px;
+  height: 30px;
+}
+.login__logo {
+  height: 29px;
+  margin-left: 8px;
+  margin-top: 6px;
 }
 .input_div {
-  input[type='email'] {
-    background-color: transparent !important;
-    color: #212121;
-    font-family: Roboto;
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0;
-    line-height: 18px;
-  }
-
+  input[type='email'],
+  input[type='password'],
   input[type='text'] {
     background-color: transparent !important;
     color: #212121;
@@ -109,7 +110,7 @@
     // content: "************" !important;
   }
 }
-  
+
 .login_password::before {
   border-bottom: 0px solid rgba(0, 0, 0, 0.87) !important;
   // content: "************" !important;
@@ -161,6 +162,9 @@
   line-height: 16px;
   text-align: center;
   padding-top: 20px;
+  &:hover {
+    color: #0e3a5e;
+  }
 }
 
 .login_with {

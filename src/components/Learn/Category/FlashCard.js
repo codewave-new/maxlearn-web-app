@@ -15,6 +15,7 @@ import {
   EffectCards,
 } from 'swiper';
 import { CloseButton } from '../../../assets';
+import { renderText } from '../../../utility/helper';
 
 const data = [
   {
@@ -49,7 +50,7 @@ const data = [
   },
 ];
 
-const FlashCard = () => {
+const FlashCard = ({flashCards}) => {
   const navigate = useNavigate();
   const handleCLick = () => {
     navigate('/learn/topic-detail');
@@ -89,7 +90,7 @@ const FlashCard = () => {
         }}
         // modules={[EffectCards]}
       >
-        {data.map((value, i) => {
+        {flashCards.map((value, i) => {
           return (
             <SwiperSlide key={i}>
               <QuestionCard
@@ -98,22 +99,20 @@ const FlashCard = () => {
                 rightClassName='rightClassName'
               >
                 <ThumNailComponent>
-                  {/* <img
-                  src={value.img}
+                  <img
+                  src={value?.imageUrl}
                   alt='no image'
-                  height='434px'
-                  width='100%'
-                ></img> */}
+                />
                 </ThumNailComponent>
                 <DetailComponent>
                   {' '}
-                  <h3>{value.heading1}</h3>
-                  <h5>{value.detail1}</h5>
-                  <h3 className='mt-4'>{value.heading2}</h3>
-                  <h5>{value.detail2}</h5>
+                  <h3>{renderText(value?.title)}</h3>
+                  <h5>{renderText(value.content)}</h5>
+                  {/* <h3 className='mt-4'>{value.heading2}</h3>
+                  <h5>{value.detail2}</h5> */}
                   <div className='swiper_pagination_flashCard'>
                     <span className='page_index'>
-                      {i + 1} / {data.length}
+                      {i + 1} / {flashCards?.length}
                     </span>
                     <span className='previous'>
                       <span>{'<'}</span>

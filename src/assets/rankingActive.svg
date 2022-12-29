@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="16px" viewBox="0 0 20 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>2C6C85B6-DBE7-4D65-8AFD-A7BF88A588A1</title>
+    <defs>
+        <linearGradient x1="47.6913869%" y1="8.81239526e-14%" x2="55.0043183%" y2="109.394658%" id="linearGradient-1">
+            <stop stop-color="#FF6633" offset="0%"></stop>
+            <stop stop-color="#DE5020" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="48.6586023%" y1="8.81239526e-14%" x2="52.9077116%" y2="109.394658%" id="linearGradient-2">
+            <stop stop-color="#FF6633" offset="0%"></stop>
+            <stop stop-color="#DE5020" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="44.6344091%" y1="8.81239526e-14%" x2="61.6308465%" y2="109.394658%" id="linearGradient-3">
+            <stop stop-color="#FF6633" offset="0%"></stop>
+            <stop stop-color="#DE5020" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Individual---Leaderboard" transform="translate(-989.000000, -32.000000)">
+            <g id="menu/Item-Copy-3" transform="translate(980.000000, 20.000000)">
+                <g id="Group-36" transform="translate(10.000000, 13.000000)">
+                    <path d="M16.0714286,7 L12.8571429,7 L12.8571429,2.1 C12.8571429,0.940202025 11.993692,0 10.9285714,0 L7.07142857,0 C6.00630798,0 5.14285714,0.940202025 5.14285714,2.1 L5.14285714,4.2 L1.92857143,4.2 C0.86345084,4.2 0,5.14020203 0,6.3 L0,12.6 C0,13.3731986 0.575633893,14 1.28571429,14 L16.7142857,14 C17.4243661,14 18,13.3731986 18,12.6 L18,9.1 C18,7.94020203 17.1365492,7 16.0714286,7 Z" id="Path" stroke="#FFFFFF" stroke-width="0.636363636" fill="#212121" fill-rule="nonzero"></path>
+                    <path d="M1.28571429,6.3 C1.28571429,5.91340068 1.60036731,5.6 1.98851149,5.6 L5.5024975,5.6 L5.5024975,12.6 L1.28571429,12.6 L1.28571429,6.3 Z" id="Path" fill="url(#linearGradient-1)"></path>
+                    <path d="M6.42857143,2.1 C6.42857143,1.71340068 6.71638838,1.4 7.07142857,1.4 L10.9285714,1.4 C11.2836116,1.4 11.5714286,1.71340068 11.5714286,2.1 L11.5714286,12.6 L6.42857143,12.6 L6.42857143,2.1 Z" id="Path" fill="url(#linearGradient-2)"></path>
+                    <path d="M12.8571429,12.6 L12.8571429,8.4 L16.0714286,8.4 C16.4264688,8.4 16.7142857,8.71340068 16.7142857,9.1 L16.7142857,12.6 L12.8571429,12.6 Z" id="Path" fill="url(#linearGradient-3)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
