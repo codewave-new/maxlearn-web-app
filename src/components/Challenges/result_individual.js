@@ -118,7 +118,9 @@ export const ResultIndividual = ({
         </div>
       </div>
       <button className='completion__close-btn'>
+        <Link to='/to-do'>
         <CloseButton.default />
+        </Link>
       </button>
       <div className='completion__footer '>
         <div className='d-flex justify-content-between align-items-center footer__wrapper'>

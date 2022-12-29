@@ -49,6 +49,9 @@ const ChallengesQuestions = () => {
   let opponentName = searchParams.get('opponentName')
   let logo1 = searchParams.get('logo1')
   let logo2 = searchParams.get('logo2')
+  let learnerName = searchParams.get('learnerName')
+
+  
 
   
   const { id } = useParams();
@@ -68,7 +71,7 @@ const ChallengesQuestions = () => {
   const [intervalID, setIntervalID] = useState();
   const [incresingIntervalID, setIncresingTimerId] = useState();
   const [nextButtonClicked, setNextButtonClicked] = useState(false);
-  const [statusVal, setstatus] = useState({});
+  const [statusVal, setstatus] = useState();
 
 
   useEffect(() => {
@@ -130,7 +133,7 @@ const ChallengesQuestions = () => {
       setTotalTime(res?.data?.questionInfo?.timeToSolve);
       setAttemptedQuestions(res?.data?.attemptedQuestions)
       setNextButtonClicked(false)
-      setstatus({});
+      setstatus();
       setStat('');
       setSelectedOption([]);
       setIsTrueOrFalse('')
@@ -181,8 +184,9 @@ const ChallengesQuestions = () => {
     // setIncresingTimerId('')
     // }
   };
+  console.log('statusVal',statusVal)
   useEffect(() => {
-    if ((timerVal == "true" && time == 0)) {
+    if ((timerVal == "true" && time == 0&&!statusVal)) {
       setSubmitCliked(true)
     }
   }, [time, timerVal])
@@ -274,7 +278,7 @@ const ChallengesQuestions = () => {
             setConfidence={setConfidence}
             setSubmitCliked={setSubmitCliked}
             isSubmitting={isSubmitting}
-            name={name}
+            name={learnerName??name}
             setIncresingTimerId={setIncresingTimerId}
             setIntervalID={setIntervalID}
             timeOut={(timerVal == "true" && time == 0) ? true : false}

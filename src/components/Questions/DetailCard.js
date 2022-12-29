@@ -45,7 +45,9 @@ const DetailCard = ({ start, state }) => {
   const [searchParams] = useSearchParams();
   const [individualResult, setIndividualResult] = useState('');
   const [opponentResult, setOpponentResult] = useState('');
+  const [learnerName, setLearnerName] = useState('');
 
+  
   useEffect(() => {
     ChallengeDetail(id, query['challenge-type']);
     if (query.exam_type === 'TODAYSTEST') {
@@ -95,6 +97,7 @@ const DetailCard = ({ start, state }) => {
             query['challenge-type'] == 'SQUAD'
               ? opponentResult?.imageUrl
               : opponentResult?.profilePic,
+            learnerName:learnerName
         }).toString(),
       });
     }
@@ -204,6 +207,8 @@ const DetailCard = ({ start, state }) => {
           let val = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id == challengeDescription?.squad
           );
+        let learnerName= val?.learners?.find(mem=>mem?._id==challengeDescription?.learner)
+        setLearnerName(learnerName?.fullName)
           setIndividualResult(val);
           let opponentVal = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id !== challengeDescription?.squad

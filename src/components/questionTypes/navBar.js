@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Navigate,useNavigate, NavLink } from 'react-router-dom';
 import {
   MaxLogo,
   CloseButton,
@@ -8,6 +8,7 @@ import {
 import team from '../../assets/Images/usersquad/Team.jpg';
 import '../../styles/questions/challengs-question.scss';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import swal from 'sweetalert';
 
 
 const CustomNavbar = ({time,
@@ -23,13 +24,31 @@ const CustomNavbar = ({time,
   logo1,
   logo2
 }) => {
+  const naviagte=useNavigate()
+  const handleExitExam=async()=>{
+    const willDelete = await swal({
+      text: "Are you sure you want to exit? Yes or No",
+      icon: "warning",
+      dangerMode: true,
+      className:'swal-footer-wrapper',
+      buttons: [
+        'No',
+        'Yes, I am sure!'
+      ],
+    });
+    if (willDelete) {
+      naviagte({
+        pathname: `/to-do`
+      })
+    }
+  }
     return (
       <>
         <header>
           <nav className='navbar navbar-expand-lg max__navbar question_navbar'>
             <div className='container-fluid'>
-              <div style={{ borderRight: '1px solid' }}>
-                <a className='navbar-brand' href='/src#'>
+              <div style={{ borderRight: '1px solid',cursor:'pointer' }}>
+                <a className='navbar-brand cursor-pointer' onClick={handleExitExam}>
                   <MaxLogo.default />
                 </a>
 
@@ -82,7 +101,7 @@ const CustomNavbar = ({time,
                         <img src={logo1} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
                         <span className='team_name'>
-                        {name.length > 15 ? `${name.slice(0, 15)}...` : name}
+                        {name.length > 10 ? `${name.slice(0, 10)}...` : name}
                         </span>
                         <span className=' team_points'>{points} Points</span>
                         </div>
@@ -126,7 +145,7 @@ const CustomNavbar = ({time,
                     </div>
                      :''
                     }
-                    <a href='/to-do'>
+                    <a onClick={handleExitExam}>
                       <button className='close_btn right-0'>
                         <CloseButton.default />
                       </button>
