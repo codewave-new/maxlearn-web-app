@@ -76,3 +76,4 @@ export * as ActiveTodo from './todoActive.svg';
 export * as ActiveRanking from './rankingActive.svg';
 export * as InActiveHome from './HomeInactive.svg';
 export * as ThunderLogo from './thunder_logo.svg';
+export * as LearnTrophy from './learn/LearnTrophy.png';

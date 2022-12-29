@@ -29,7 +29,7 @@ const DummyData = [
   },
 ];
 
-const ModalLearningCard = () => {
+const ModalLearningCard = ({continueLists}) => {
   return (
     <Fragment>
       <div className='learning_modal_card_wrapper'>

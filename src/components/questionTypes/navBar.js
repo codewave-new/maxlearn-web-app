@@ -23,7 +23,8 @@ const CustomNavbar = ({time,
   opponentPoints,
   opponentName,
   logo1,
-  logo2
+  logo2,
+  quiz
 }) => {
   const naviagte=useNavigate()
   const handleExitExam=async()=>{
@@ -96,6 +97,7 @@ const CustomNavbar = ({time,
                   />
                 </div>
                 <div className='offcanvas-body'>
+                  {!quiz?
                   <ul className='navbar-nav max__menunav-list justify-content-start  border-end '>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
@@ -133,9 +135,9 @@ const CustomNavbar = ({time,
                         </div>
                       </NavLink>
                     </li> */}
-                  </ul>
+                  </ul>:""}
 
-                  <div className=' progress_bar  '>
+                  <div className={`progress_bar ${quiz?'quiz-progess-bar':''}`}>
                     <ProgressBar now={progress} className='bar mr-1' />
                     <span className='d-inline progress_lable d-flex '>
                       {' '}

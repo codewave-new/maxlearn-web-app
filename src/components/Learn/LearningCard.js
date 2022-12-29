@@ -28,7 +28,7 @@ const LearningCard = ({ data, className }) => {
               <p>
                 Level - <strong>{data?.learningLevel}</strong>
               </p>
-              <h5>{data?.title}</h5>
+              <h5>{data?.topicInfo?.title}</h5>
             </div>
           </div>
         </div>

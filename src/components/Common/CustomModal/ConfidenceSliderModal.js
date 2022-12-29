@@ -45,7 +45,7 @@ const handleClose=()=>{
   if(!timeOut){
     setSubmitCliked(false)
     setIncresingTimerId()
-    setIntervalID()
+    // setIntervalID()
   }
 }
   return (

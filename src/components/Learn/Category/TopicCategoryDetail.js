@@ -15,32 +15,34 @@ const TopicCategoryDetail = ({
   setlearnDeckPage,
   learnDeckPage,
   deckLoading,
-  setFlashCardId
+  setFlashCardId,
+  handleExam,
+  openExamPage
 }) => {
   console.log('learnDeckLists',learnDeckLists)
-  let attt=[
-    {
-      _id: "639831eb6ae52f253c57d697",
-      title: "Gowtham Deck",
-      flashcardCount: 1
-  },
-  {
-    _id: "639831eb6ae52f253c57d697",
-    title: "Gowtham Deck",
-    flashcardCount: 1
-},
-{
-  _id: "639831eb6ae52f253c57d697",
-  title: "Gowtham Deck",
-  flashcardCount: 1
-},
-{
-  _id: "639831eb6ae52f253c57d697",
-  title: "Gowtham Deck",
-  flashcardCount: 1
-}
+//   let attt=[
+//     {
+//       _id: "639831eb6ae52f253c57d697",
+//       title: "Gowtham Deck",
+//       flashcardCount: 1
+//   },
+//   {
+//     _id: "639831eb6ae52f253c57d697",
+//     title: "Gowtham Deck",
+//     flashcardCount: 1
+// },
+// {
+//   _id: "639831eb6ae52f253c57d697",
+//   title: "Gowtham Deck",
+//   flashcardCount: 1
+// },
+// {
+//   _id: "639831eb6ae52f253c57d697",
+//   title: "Gowtham Deck",
+//   flashcardCount: 1
+// }
 
-  ]
+//   ]
   return (
     <>
       <div className='container category_detail_wrapper'>
@@ -63,6 +65,8 @@ const TopicCategoryDetail = ({
                   detail={true}
                   level={true}
                   button={true}
+                  handleExam={handleExam}
+                  openExamPage={openExamPage}
                 />
               </div>
             {/* );
@@ -70,7 +74,7 @@ const TopicCategoryDetail = ({
 
           <div className='col-xl-9 col-lg-8 col-12 detail_right_col'>
             <div className='subject_description'>
-              Decks under Compliance and m.. (20)
+              Decks under {learndeckStats?.title}
             </div>
             {/* <Link to='/learn/flash-card'>
               <div className='row'>
@@ -100,13 +104,13 @@ const TopicCategoryDetail = ({
                  {/* <CategorySubjects subjects={learnCategorySubjects} */}
 
                  <div className='row'>
-                {attt?.length?attt.map((data, i) => {
+                {learnDeckLists?.length?learnDeckLists.map((data, i) => {
                   return (
                     <div
                       className='col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 mb-3'
                       key={i}
                     >
-                       <Link to={`/learn/flash-card?deck=${'639831eb6ae52f253c57d697'}`}>
+                       <Link to={`/learn/flash-card?deck=${data?._id}`}>
                       <TopicCard data={data} />
                       </Link>
                     </div>

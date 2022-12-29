@@ -30,6 +30,8 @@ import TopicDetail from '../pages/LearnCategory/TopicDetail';
 import CategoryFlashCard from '../pages/LearnCategory/CategoryFlashCard';
 import CertQuestions from '../components/ToDo/questcerttab/CertQuestions';
 import Score from '../components/ToDo/questcerttab/Score';
+import StartQuizQuestions from '../pages/LearnCategory/start-quiz-questions';
+import { QuizScore } from '../pages/LearnCategory/quiz-score';
 
 export const appRoutes = [
   {
@@ -148,6 +150,15 @@ export const appRoutes = [
         path: '/questions/:id',
         element: <QuestionsNavbar />,
       },
+      {
+        path: '/start-learn-module-quiz/',
+        element: <StartQuizQuestions />,
+      },
+      {
+        path: '/learn/score-details/',
+        element: <QuizScore />,
+      },
+
     ],
   },
   // unprotected routes

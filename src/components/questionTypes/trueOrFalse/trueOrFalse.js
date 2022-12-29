@@ -81,16 +81,15 @@ export const TrueOfFalse = ({
             />
           )}
         </CardBody>
+        {isExplanation?
         <CardBody className='mt-3 ml-2 explanation-details'>
-          {isExplanation ? (
+           
             <>
-              <p className='mt-1'>Answer explanation in detail</p>
-              {statusVal?.answerInfo?.feedback}
+              <h2 className='mt-1'>Answer explanation in detail</h2>
+              <p>{statusVal?.answerInfo?.feedback}</p>
             </>
-          ) : (
-            ''
-          )}
-        </CardBody>
+          
+        </CardBody>:''}
 
         <div className='app_subtn'>
           {isExplanation ? (

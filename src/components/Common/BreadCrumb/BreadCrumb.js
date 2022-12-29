@@ -2,7 +2,7 @@ import React from 'react';
 import { Breadcrumbs } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const BreadCrumb = ({ title, id }) => {
+const BreadCrumb = ({ title, id ,path}) => {
   const dummyData = [
     {
       path: '/learn',

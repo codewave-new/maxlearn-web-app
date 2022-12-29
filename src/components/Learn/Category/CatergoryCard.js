@@ -16,7 +16,10 @@ import ProgressBar from '../../UI/ProgressBar';
 //     </>
 //   );
 // };
-const CatergoryCard = ({ data, detail, level, button,topics }) => {
+const CatergoryCard = ({ data, detail, level, button,topics,
+  handleExam,
+  openExamPage
+}) => {
   return (
     <>
       <div
@@ -65,7 +68,7 @@ const CatergoryCard = ({ data, detail, level, button,topics }) => {
         </div>
 
         {button === true ? (
-          <div className='card_quiz_button'>
+          <div className='card_quiz_button cursor-pointer' onClick={openExamPage}>
             <div>Quiz me</div>
           </div>
         ) : (
