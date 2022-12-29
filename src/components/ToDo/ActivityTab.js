@@ -16,7 +16,6 @@ const ActivityTab = (props) => {
     query['tab'] ? setActivetab(query['tab']) : handleNavigation('challenges');
   }, [query['tab']]);
 
-  console.log(activetab, query['tab']);
 
   const handleNavigation = (eventKey) => {
     setActivetab(eventKey);

@@ -40,9 +40,7 @@ export const PutInOrder = ({
             {type && type === 'cert'
               ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
               : ` Question - 
-              ${
-                isExplanation ? attemptedQuestions  : attemptedQuestions + 1
-              } OF 
+              ${isExplanation ? attemptedQuestions : attemptedQuestions + 1} OF 
               ${questionPerSession}`}
             {/* Question -{' '}
             {isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1} OF{' '}

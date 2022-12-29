@@ -49,10 +49,6 @@ const ConfirmPassword = () => {
     setEmail(decoded.data);
   }, []);
 
-  console.log(email, 'decode');
-
-  console.log(tokenValue.get('token'));
-
   const handlePassword1 = (e) => {
     e.preventDefault();
     var field = document.querySelector('[name="email"]');

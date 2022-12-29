@@ -54,9 +54,7 @@ export const MultiSelect = ({
             {type && type === 'cert'
               ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
               : `Question - ${
-                  isExplanation
-                    ? attemptedQuestions 
-                    : attemptedQuestions+1
+                  isExplanation ? attemptedQuestions : attemptedQuestions + 1
                 } OF ${questionPerSession}`}
           </div>
           <p className='mt-1'>
