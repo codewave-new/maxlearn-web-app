@@ -13,7 +13,6 @@ const loginSlice = createSlice({
   initialState,
   reducers: {
     saveAuth: (state, action) => {
-      console.log(action);
       return {
         ...state,
         learnerId: action.payload.userid,

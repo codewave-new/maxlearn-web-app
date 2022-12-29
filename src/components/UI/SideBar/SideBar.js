@@ -8,9 +8,7 @@ import Modal from '../Modal';
 const SideBar = (props) => {
   const { data } = props;
 
-  console.log(props.data);
   const dataChallenges = data.map((el) => {
-    console.log(el);
     return (
       <div key={el.id} className='row'>
         <div className='col-12  mb-1'>

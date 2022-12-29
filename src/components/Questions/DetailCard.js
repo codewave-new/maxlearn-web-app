@@ -108,7 +108,6 @@ const DetailCard = ({ start, state }) => {
       });
     }
   }, [examStart, individualResult, opponentResult]);
-  console.log(opponentResult);
 
   const ChallengeDetail = async (challengeId, challengeType) => {
     const response = await challengesDetails(

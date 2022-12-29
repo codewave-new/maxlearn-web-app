@@ -22,11 +22,10 @@ const BasicInfo = () => {
   const learnerInformation = async (learnerId) => {
     setIsLoading(true);
     const response = await BasicInformation(learnerId);
-    console.log(response);
     setIsLoading(false);
     if (response.statusCode === 200) {
       setUserInformation(response?.data);
-    } else if (response.status_code === 440) {
+    } else if (response.statusCode === 440) {
       navigate('/login');
       localStorage.clear();
       dispatch(removeAuth());
