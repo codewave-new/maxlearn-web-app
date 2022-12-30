@@ -6,8 +6,10 @@ import { Link, NavLink,useSearchParams } from 'react-router-dom';
 import { getSubjWiseTopics,getSubDetilsStats } from '../../services/learn';
 import { CenterLoadingBar, LoadingBar } from '../../components/loader/loader';
 import InfiniteScrollling from '../../components/Pagination/InfiniteScrollling';
+import { useSelector } from 'react-redux';
 
 const SubjectDetail = () => {
+  const authData = useSelector((state) => state.auth);
   const [searchParams] = useSearchParams();
   let subId=searchParams.get('subject');
 
@@ -29,7 +31,7 @@ const SubjectDetail = () => {
 const getLearnBYCategory = async (currentPage) => {
     settopicLoading(true)
     try {
-      let res = await getSubjWiseTopics(subId,currentPage)
+      let res = await getSubjWiseTopics(authData.learnerId,subId,currentPage)
       setlearnSubTopicc(res?.data?.response)
       setlearnTopicctotalCount(res?.data?.countInfo?.[0]?.count)
       settopicLoading(false)
@@ -40,7 +42,7 @@ const getLearnBYCategory = async (currentPage) => {
   }
   const getAllCatrgoryWiseStats = async () => {
     try {
-      let res = await getSubDetilsStats(subId)
+      let res = await getSubDetilsStats(authData.learnerId,subId)
       setlearnSubStats(res?.data)
     } catch (err) {
       console.log('eeee', err)

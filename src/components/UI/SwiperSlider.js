@@ -9,7 +9,6 @@ import { Pagination, Autoplay, Mousewheel, Keyboard } from 'swiper';
 import ChallengesCard from '../Challenges/ChallengesCard';
 
 export default function SwiperSlider(props) {
- 
   const { data } = props;
   const dataChallenges = data.map((el) => {
     return (
@@ -23,6 +22,8 @@ export default function SwiperSlider(props) {
           challengerImg={el.challengerImg}
           opponentImg={el.opponentImg}
           discription={el.discription}
+          type={el.type}
+          completionStatus={el.completionStatus}
         />
       </SwiperSlide>
     );

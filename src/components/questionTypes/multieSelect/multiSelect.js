@@ -54,9 +54,7 @@ export const MultiSelect = ({
             {type && type === 'cert'
               ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
               : `Question - ${
-                  isExplanation
-                    ? attemptedQuestions 
-                    : attemptedQuestions+1
+                  isExplanation ? attemptedQuestions : attemptedQuestions + 1
                 } OF ${questionPerSession}`}
           </div>
           <p className='mt-1'>
@@ -87,6 +85,15 @@ export const MultiSelect = ({
             />
           )}
         </CardBody>
+        {isExplanation?
+        <CardBody className='mt-3 ml-2 explanation-details'>
+           
+            <>
+              <h2 className='mt-1'>Answer explanation in detail</h2>
+              <p>{statusVal?.answerInfo?.feedback}</p>
+            </>
+          
+        </CardBody>:''}
         <div className='app_subtn'>
           {isExplanation ? (
             <a>
@@ -125,16 +132,6 @@ export const MultiSelect = ({
             </a>
           )}
         </div>
-        <CardBody className='mt-3 ml-2 explanation-details'>
-          {isExplanation ? (
-            <>
-              <h2 className='mt-1'>Answer explanation in detail</h2>
-              <p>{statusVal?.answerInfo?.feedback}</p>
-            </>
-          ) : (
-            ''
-          )}
-        </CardBody>
       </Col>
     </Row>
   );

@@ -2,6 +2,7 @@
   padding: 8px 15px;
   @include font(#212121, 12px, 400, 0, 12px);
   border-radius: 12px;
+  margin-left: 12px;
 }
 .completed__color {
   background-color: #ecfeee;

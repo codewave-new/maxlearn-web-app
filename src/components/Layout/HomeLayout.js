@@ -7,9 +7,7 @@ import User from '../Home/User/User';
 import Card from '../UI/Card';
 
 const HomeLayout = (props) => {
- 
-  
-  
+  console.log(props, '44');
   return (
     <div className='max_home-container container'>
       <div className='row'>
@@ -17,9 +15,10 @@ const HomeLayout = (props) => {
           <User />
           <Challenges
             data={props.ChallengesData}
+            loader={props.loader}
             onClickOpen={props.showCartHandler}
           />
-          <Quest />
+          <Quest data={props.certsData} />
         </div>
         <div className='col-lg-4 col-12'>
           <div className='max__right-home-container'>

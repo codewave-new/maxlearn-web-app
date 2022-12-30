@@ -1,7 +1,4 @@
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   .max__navbar {
     @include space-between();
     @include make-container(6.25rem);
@@ -17,7 +14,6 @@ header {
       align-items: center;
       li {
         margin: 0 5px;
-        
       }
       svg {
         fill: aqua;
@@ -87,10 +83,15 @@ header {
 //   }
 // }
 
-.nav-icon{
+.nav-icon {
   margin-right: 6px;
   align-items: center;
   margin-bottom: 15px;
+}
+.home__navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 header {

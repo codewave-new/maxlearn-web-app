@@ -148,3 +148,23 @@
 //     }
 //   }
 // }
+
+.image_own {
+  height: 50px;
+  border-radius: 7px;
+}
+
+.image_own_learner {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.image_opponent_learner {
+  height: 50px;
+  border-radius: 50%;
+}
+
+.image_opponent {
+  height: 50px;
+  border-radius: 7px;
+}

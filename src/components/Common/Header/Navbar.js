@@ -55,9 +55,7 @@ const Navbar = () => {
   const navActive = ({ isActive }) => (isActive ? activeClassName : undefined);
 
   useEffect(() => {
-    console.log(location);
     const path = location.pathname.split('/');
-    console.log(path);
     setActiveNav(location.pathname === '' ? 'home' : path[1]);
   }, [location]);
 
@@ -110,7 +108,7 @@ const Navbar = () => {
     //         </nav>
     //     </header> */}
 
-      <header>
+      <header className='home__navbar'>
         {/* <div className='max__menu-btn'>
         <span></span>
       </div>
