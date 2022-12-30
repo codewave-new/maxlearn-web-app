@@ -6,7 +6,7 @@ const ChallengesIntro = ({ variant, state }) => {
     case 'challenge':
       return <ExamDetails state={state} />;
     case 'quest':
-      return <ExamDetails />;
+      return <ExamDetails  />;
     default:
       return <ExamDetails />;
   }

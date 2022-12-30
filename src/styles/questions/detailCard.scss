@@ -161,13 +161,19 @@
       margin-right: 8px;
       object-fit: cover;
     }
+    span{
+      @include font(#212121, 14px, 500, 0, 14px);  
+    }
   }
   .member-points {
-    @include font(#212121, 12px, 500, 0, 14px);
+    @include font(#212121, 14px, bold, 0, 14px);
     &-img {
       width: 14px;
       height: 14px;
       margin-right: 8px;
+    }
+    span{
+      @include font(#212121, 14px, bold, 0, 14px);
     }
   }
   .nudge__button {
@@ -262,8 +268,8 @@
   @include media('>=1000px', '<1240px') {
     right: -75%;
   }
-  max-height: 70px;
-  overflow-y: scroll;
+  // max-height: 70px;
+  // overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 0px;
   }

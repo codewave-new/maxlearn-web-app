@@ -5,7 +5,7 @@ const initialState = {
   applicationId: localStorage.getItem('applicationId'),
   learnerId: localStorage.getItem('userid'),
   token: localStorage.getItem('TOKEN_NAME'),
-  fullName: localStorage.getItem('fullName'),
+  fullName: localStorage.getItem('fullname'),
 };
 
 const loginSlice = createSlice({
@@ -17,12 +17,18 @@ const loginSlice = createSlice({
         ...state,
         learnerId: action.payload.userid,
         token: action.payload.TOKEN_NAME,
-        fullName: action.payload.fullName,
+        fullName: action.payload.fullname,
         applicationId: action.payload.applicationId,
       };
     },
     removeAuth: () => {
-      return initialState;
+      return {
+        loading: null,
+        applicationId: null,
+        learnerId: null,
+        token: null,
+        fullName: null,
+      };
     },
   },
 });

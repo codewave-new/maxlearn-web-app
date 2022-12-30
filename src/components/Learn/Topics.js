@@ -3,7 +3,14 @@ import LearnTopicsSlider from '../UI/Slider/LearnTopicsSlider';
 // import EditUserDetailsModal from '../Modals/EditUserDetailsModal';
 import HotTopicsModal from '../Modals/HotTopicsModal';
 
-const Topics = () => {
+const Topics = ({
+  hotTopicLists,
+  hotTopicTotalCount,
+  setHotTopicLoading,
+  hotTopicLoading,
+  hotTopicPage,
+  setHotTopicPage,
+}) => {
   const [showTopicModal, setShowTopicModal] = useState(false);
 
   const handleShowTopicModal = () => setShowTopicModal(true);
@@ -30,7 +37,7 @@ const Topics = () => {
                 </div>
               </div>
               <div className='col-11 col-sm-10 col-lg-10 col-xl-11 col-md-10'>
-                <LearnTopicsSlider />
+                <LearnTopicsSlider hotTopicLists={hotTopicLists}/>
               </div>
               <div className='col-xl-auto col-lg-auto col-sm-1 col-auto col-md-auto icon_column'>
                 <div className='next'>
@@ -47,7 +54,13 @@ const Topics = () => {
         </div>
       </div>
 
-      <HotTopicsModal show={showTopicModal} onHide={closeModal} />
+      <HotTopicsModal hotTopicLists={hotTopicLists}
+        hotTopicLoading={hotTopicLoading}
+        hotTopicPage={hotTopicPage}
+        setHotTopicPage={setHotTopicPage}
+        hotTopicTotalCount={hotTopicTotalCount}
+      
+      show={showTopicModal} onHide={closeModal} />
     </Fragment>
   );
 };

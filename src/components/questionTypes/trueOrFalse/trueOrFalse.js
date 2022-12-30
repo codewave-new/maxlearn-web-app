@@ -49,9 +49,7 @@ export const TrueOfFalse = ({
             {type && type === 'cert'
               ? `Question - ${questionNo || 0} OF ${totalQuestions || 0}`
               : `Question - 
-              ${
-                isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1
-              } OF 
+              ${isExplanation ? attemptedQuestions : attemptedQuestions + 1} OF 
               ${questionPerSession}`}
             {/* Question -{' '}
             {isExplanation ? attemptedQuestions - 1 : attemptedQuestions + 1} OF{' '}
@@ -81,16 +79,15 @@ export const TrueOfFalse = ({
             />
           )}
         </CardBody>
-        <CardBody className='mt-3 ml-2'>
-          {isExplanation ? (
+        {isExplanation?
+        <CardBody className='mt-3 ml-2 explanation-details'>
+           
             <>
-              <p className='mt-1'>Answer explanation in detail</p>
-              {statusVal?.answerInfo?.feedback}
+              <h2 className='mt-1'>Answer explanation in detail</h2>
+              <p>{statusVal?.answerInfo?.feedback}</p>
             </>
-          ) : (
-            ''
-          )}
-        </CardBody>
+          
+        </CardBody>:''}
 
         <div className='app_subtn'>
           {isExplanation ? (

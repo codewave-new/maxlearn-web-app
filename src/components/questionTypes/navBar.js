@@ -1,13 +1,15 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, Navigate,useNavigate, NavLink } from 'react-router-dom';
 import {
   MaxLogo,
   CloseButton,
-  timerLogo
+  timerLogo,
+  ThunderLogo
 } from '../../assets';
 import team from '../../assets/Images/usersquad/Team.jpg';
 import '../../styles/questions/challengs-question.scss';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import swal from 'sweetalert';
 
 
 const CustomNavbar = ({time,
@@ -21,15 +23,34 @@ const CustomNavbar = ({time,
   opponentPoints,
   opponentName,
   logo1,
-  logo2
+  logo2,
+  quiz
 }) => {
+  const naviagte=useNavigate()
+  const handleExitExam=async()=>{
+    const willDelete = await swal({
+      text: "Are you sure you want to exit?",
+      icon: "warning",
+      dangerMode: true,
+      className:'swal-footer-wrapper',
+      buttons: [
+        'No',
+        'Yes, I am sure!'
+      ],
+    });
+    if (willDelete) {
+      naviagte({
+        pathname: `/to-do`
+      })
+    }
+  }
     return (
       <>
         <header>
           <nav className='navbar navbar-expand-lg max__navbar question_navbar'>
             <div className='container-fluid'>
-              <div style={{ borderRight: '1px solid' }}>
-                <a className='navbar-brand' href='/src#'>
+              <div style={{ borderRight: '1px solid',cursor:'pointer' }}>
+                <a className='navbar-brand cursor-pointer' onClick={handleExitExam}>
                   <MaxLogo.default />
                 </a>
 
@@ -76,17 +97,21 @@ const CustomNavbar = ({time,
                   />
                 </div>
                 <div className='offcanvas-body'>
+                  {!quiz?
                   <ul className='navbar-nav max__menunav-list justify-content-start  border-end '>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
                         <img src={logo1} className='team' style={{marginRight:'10px'}} />
                         <div className='d-flex  flex-column justify-content-start '>
                         <span className='team_name'>
-                        {name.length > 15 ? `${name.slice(0, 15)}...` : name}
+                        {name.length > 10 ? `${name.slice(0, 10)}...` : name}
                         </span>
                         <span className=' team_points'>{points} Points</span>
                         </div>
                       {/* </NavLink> */}
+                    </li>
+                    <li className='d-flex align-items-center justify-content-center'>
+                      <ThunderLogo.default/>
                     </li>
                     <li className='d-flex align-items-center justify-content-center'>
                       {/* <NavLink className='p-0' to='/'> */}
@@ -110,9 +135,9 @@ const CustomNavbar = ({time,
                         </div>
                       </NavLink>
                     </li> */}
-                  </ul>
+                  </ul>:""}
 
-                  <div className=' progress_bar  '>
+                  <div className={`progress_bar ${quiz?'quiz-progess-bar':''}`}>
                     <ProgressBar now={progress} className='bar mr-1' />
                     <span className='d-inline progress_lable d-flex '>
                       {' '}
@@ -126,7 +151,7 @@ const CustomNavbar = ({time,
                     </div>
                      :''
                     }
-                    <a href='/to-do'>
+                    <a onClick={handleExitExam}>
                       <button className='close_btn right-0'>
                         <CloseButton.default />
                       </button>

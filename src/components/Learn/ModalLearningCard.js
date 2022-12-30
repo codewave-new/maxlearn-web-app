@@ -29,33 +29,33 @@ const DummyData = [
   },
 ];
 
-const ModalLearningCard = () => {
+const ModalLearningCard = ({continueLists}) => {
   return (
     <Fragment>
       <div className='learning_modal_card_wrapper'>
-        {DummyData.map((index) => {
+        {continueLists?.length?continueLists.map((index) => {
           return (
             <div
-              key={index.id}
+              key={index._id}
               className='row learning_modal_card_wrapper__row'
             >
               <div className='col-12 d-flex justify-content-between'>
                 <div className='learning_modal_card_wrapper__row__content'>
                   <div className='learning_modal_card_wrapper__row__content__title'>
-                    {index.title}
+                    {index?.topicInfo?.title}
                   </div>
 
                   <span className='learning_modal_card_wrapper__row__content__level'>
                     <LearnBadge.default /> You are at{' '}
                     <span className='learning_modal_card_wrapper__row__content__level1'>
-                      {index.level}
+                      {index.learningLevel}
                     </span>
                   </span>
                 </div>
                 <div className='learning_modal_card_wrapper__row__progress'>
                   <CircularProgressbar
-                    value={index.percentage}
-                    text={`${index.percentage}%`}
+                    value={index.progressPercent}
+                    text={`${index.progressPercent}%`}
                     styles={buildStyles({
                       rotation: 0.85,
                       textSize: '20px',
@@ -69,7 +69,7 @@ const ModalLearningCard = () => {
               </div>
             </div>
           );
-        })}
+        }):''}
       </div>
     </Fragment>
   );

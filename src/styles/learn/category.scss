@@ -63,6 +63,7 @@
     }
   }
   .card_quiz_button {
+    cursor: pointer;
     border-radius: 10px;
     background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
     padding: 19px;
@@ -78,6 +79,7 @@
 .category_detail {
   @include font(#212121, 14px, 0, 0, 20px);
   margin-top: 20px;
+  line-break: anywhere;
 }
 .category_row {
   border-radius: 20px;

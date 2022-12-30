@@ -98,39 +98,39 @@ const DummyData = [
   },
 ];
 
-const ModalTopicsCard = () => {
+const ModalTopicsCard = ({hotTopicLists}) => {
   return (
     <Fragment>
       <div className='topicsModalCard_wrapper'>
-        {DummyData.map((data) => {
+        {hotTopicLists?.length?hotTopicLists.map((data) => {
           return (
-            <div key={data.id} className='row topicsModalCard_wrapper__row'>
+            <div key={data?._id} className='row topicsModalCard_wrapper__row'>
               <div className='col-12  mb-1'>
                 <div className='topicsModalCard_wrapper__row__content'>
                   <div className='topicsModalCard_wrapper__row__content__title'>
-                    {data.title}
+                    {data?.topicInfo?.title}
                   </div>
                   <span className='topicsModalCard_wrapper__row__content__level'>
                     <LearnBadge.default /> You are at{' '}
                     <span className='topicsModalCard_wrapper__row__content__level1'>
-                      {data.level}
+                    {data?.learningLevel}
                     </span>
                   </span>
                   <span className='d-flex align-items-center topicsModalCard_wrapper__row__content__members'>
                     <MembersAvatar
-                      total={DummyData?.length}
+                      total={data?.members?.length}
                       max={3}
-                      team={data?.member}
+                      team={data?.members}
                     />{' '}
                     <span className='topicsModalCard_wrapper__row__content__total'>
-                      5 people are learning this topic now
+                      {data?.members?.length} people are learning this topic now
                     </span>
                   </span>
                 </div>
               </div>
             </div>
           );
-        })}
+        }):""}
       </div>
     </Fragment>
   );
