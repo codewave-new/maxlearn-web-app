@@ -5,7 +5,14 @@ import moment from 'moment-timezone';
 import Chip from '../../Common/chip/Chip';
 import SquadAvatar from '../../../pages/Challenges/SquadAvatar';
 
-const QuestCard = ({ className, data, type, status, challengeType }) => {
+const QuestCard = ({
+  className,
+  data,
+  type,
+  status,
+  challengeType,
+  multiChip,
+}) => {
   const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   const completionDate = moment(data?.endDate).diff(moment(), 'minutes');
   const endTime = moment('24:00:00', 'HH:mm:ss');
@@ -18,9 +25,9 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
     .tz(new Date(), timeZone)
     .diff(startDateTz, 'days');
 
-  console.log(
-    moment.utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss').tz(timeZone).format('l')
-  );
+  // console.log(
+  //   moment.utc(data?.endDate, 'YYYY-MM-DD HH:mm:ss').tz(timeZone).format('l')
+  // );
   const challengeStartDate = endDateTz.diff(startDateTz, 'days') + 1;
 
   return (
@@ -104,7 +111,15 @@ const QuestCard = ({ className, data, type, status, challengeType }) => {
             <div className='quest-home__progress'>
               {/* <p className='progress'>In progress</p>
               <p className='quest'>quest</p> */}
-              <Chip status={status || data?.status} />
+              {multiChip ? (
+                multiChip.map((status) => (
+                  <Chip status={status || data?.status} />
+                ))
+              ) : (
+                <Chip status={status || data?.status} />
+              )}
+
+              {}
             </div>
           </div>
         </div>

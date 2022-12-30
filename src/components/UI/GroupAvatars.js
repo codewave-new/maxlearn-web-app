@@ -3,14 +3,20 @@ import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import { BadgeBgImg } from '../../assets';
 
-const GroupAvatars = () => {
+const GroupAvatars = (props) => {
+  console.log(props, '2');
   return (
     <AvatarGroup max={4}>
-      <Avatar
-        sx={{ width: 30, height: 30 }}
-        alt='Remy Sharp'
-        src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1665299456/Group_45_bpykjx.svg'
-      />
+      {/* {props.images.map((all) => {
+        return (
+          <Avatar
+            sx={{ width: 30, height: 30 }}
+            alt='Remy Sharp'
+            src={all.profilePic}
+          />
+        );
+      })} */}
+
       <Avatar
         sx={{ width: 30, height: 30 }}
         alt='Travis Howard'
