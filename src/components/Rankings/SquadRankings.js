@@ -9,6 +9,7 @@ const SquadRankings = () => {
   const authData = useSelector((state) => state.auth);
   const [myTeamStandings, setMyTeamStandings] = useState([]);
   const [otherTeamStandings, setOtherTeamStandings] = useState([]);
+  const [topThreeTeam, setTopThreeTeam] = useState([]);
   const [pageNo, setPageNo] = useState(0);
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,20 @@ const SquadRankings = () => {
     const response = await squadRankings(authData?.learnerId, pageNo + 1);
     setIsLoading(false);
     if (response.statusCode === 200) {
+      const bestThree = [
+        ...response?.data?.mySquads,
+        ...response?.data?.otherSquads?.response,
+      ]
+        .sort((a, b) => a.rank - b.rank)
+        .slice(0, 3)
+        .map((team) => {
+          return {
+            name: team?.squadInfo?.name,
+            points: team?.pointsEarned,
+            image: team?.squadInfo?.imageUrl,
+          };
+        });
+      setTopThreeTeam(bestThree);
       setOtherTeamStandings((previousRanks) => [
         ...previousRanks,
         ...response?.data?.otherSquads?.response,
@@ -40,7 +55,7 @@ const SquadRankings = () => {
         <div className='row'>
           <div className='col-lg-4 col-12 text-center'>
             <div className='achievements__content'>
-              <RankingTop type='squad' />
+              <RankingTop type='squad' topperList={topThreeTeam} />
             </div>
           </div>
           <div className='col-lg-8 col-12'>
@@ -50,6 +65,7 @@ const SquadRankings = () => {
               </h6>
               {myTeamStandings?.map((eachsquadStanding, index) => (
                 <RankingPositionCard
+                  type='squad'
                   key={eachsquadStanding?._id}
                   rankNo={eachsquadStanding?.rank}
                   userLogo={eachsquadStanding?.squadInfo?.imageUrl}
@@ -63,6 +79,7 @@ const SquadRankings = () => {
               </h6>
               {otherTeamStandings.map((eachsquadStanding) => (
                 <RankingPositionCard
+                  type='squad'
                   key={eachsquadStanding?._id}
                   rankNo={eachsquadStanding?.rank}
                   userLogo={eachsquadStanding?.squadInfo?.imageUrl}

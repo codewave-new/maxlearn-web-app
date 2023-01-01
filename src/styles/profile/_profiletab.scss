@@ -4,11 +4,10 @@
 
 // @include card($ht, $wd, $borderRad, $bg)
 .max__profile-tab {
-
   li {
     button {
       height: 100%;
-      padding: 10px 33px;
+      padding: 18px 64px;
       width: 100%;
     }
   }
@@ -46,23 +45,20 @@
   }
 }
 
-
-
 // basic info tab
 .white-block {
   border-radius: 8px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
   padding: 1.5rem 1.25rem;
 }
 
 .ml-pbi-black {
   color: #212121;
-
 }
 
 .ml-pbi-grey {
-  color: #6D6B6B;
+  color: #6d6b6b;
 }
 
 .ml-pbi {
@@ -138,5 +134,4 @@
 
     cursor: pointer;
   }
-
 }

@@ -9,6 +9,7 @@ const IndividualRanking = () => {
   const authData = useSelector((state) => state.auth);
   const [myIndividualRanking, setMyIndividualRanking] = useState({});
   const [othersIndividualRankList, setOthersIndividualRankList] = useState([]);
+  const [topThreeList, setTopThreeList] = useState([]);
   const [count, setCount] = useState(0);
   const [pageNo, setPageNo] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,20 @@ const IndividualRanking = () => {
     const response = await IndividualsRankings(authData?.learnerId, pageNo + 1);
     setIsLoading(false);
     if (response.statusCode === 200) {
+      const allList = [
+        ...response?.data?.otherIndividuals?.response,
+        response?.data?.myRankInfo,
+      ]
+        .sort((a, b) => a.rank - b.rank)
+        .slice(0, 3)
+        .map((learner) => {
+          return {
+            name: learner?.learnerInfo?.fullName,
+            points: learner?.pointsEarned,
+            image: learner?.learnerInfo?.profilePic,
+          };
+        });
+      setTopThreeList(allList);
       setOthersIndividualRankList((previousRanks) => [
         ...previousRanks,
         ...response?.data?.otherIndividuals?.response,
@@ -40,7 +55,7 @@ const IndividualRanking = () => {
         <div className='row'>
           <div className='col-lg-4 col-12 text-center'>
             <div className='achievements__content'>
-              <RankingTop type='individual' />
+              <RankingTop type='individual' topperList={topThreeList} />
               <h4>Your achievements are here!</h4>
               <div className='points-content d-flex justify-content-center'>
                 <h1>
@@ -58,6 +73,7 @@ const IndividualRanking = () => {
             <div className='scroll-rank-user'>
               <RankingPositionCard
                 className='topper'
+                type='individual'
                 rankNo={myIndividualRanking?.rank}
                 userLogo={myIndividualRanking?.learnerInfo?.profilePic}
                 userName={'You'}
@@ -66,6 +82,7 @@ const IndividualRanking = () => {
               {othersIndividualRankList?.length &&
                 othersIndividualRankList?.map((othersRankings, index) => (
                   <RankingPositionCard
+                    type='individual'
                     key={othersRankings?._id}
                     animation={`ranking-cardslide`}
                     rankNo={othersRankings?.rank}

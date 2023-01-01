@@ -69,7 +69,7 @@ const EditUserDetailsModal = (props) => {
             appLanguage: '',
             password: '',
           }}
-          //   validationSchema={klp_schema}  
+          //   validationSchema={klp_schema}
           onSubmit={(formData, ...rest) => {
             // console.log(formData);
           }}
@@ -172,7 +172,7 @@ const EditUserDetailsModal = (props) => {
                       setFieldValue('appLanguage', e);
                     }
                   }}
-                  options={[]}
+                  options={['english']}
                   isClearable
                   styles={selectStyles}
                   //   getOptionLabel={(category) => category.label}

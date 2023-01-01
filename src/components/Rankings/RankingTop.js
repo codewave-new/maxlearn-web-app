@@ -1,9 +1,7 @@
 import React from 'react';
 import { Points, TopperCrown } from '../../assets';
 
-const RankingTop = (props) => {
-  // const { type = 'squad' } = props;
-  const type = 'squad';
+const RankingTop = ({ type, topperList }) => {
   return (
     <div className='ranking__top-wrapper'>
       <div className='topper-container'>
@@ -12,7 +10,7 @@ const RankingTop = (props) => {
             className={
               type === 'squad' ? 'squad__container-bg' : 'container-color-bg'
             }
-            title={'mohan'}
+            title={topperList?.[1]?.name}
           >
             <div
               className={
@@ -27,18 +25,21 @@ const RankingTop = (props) => {
                     ? 'squad__ranking-secondimage'
                     : 'individual__ranking-secondimage'
                 }
-                src='https://maxlearn-admin-images.s3.amazonaws.com/admin/images/profile/image_20kb.jpeg.jpeg'
+                src={topperList?.[1]?.image}
                 alt=''
               />
             </div>
           </div>
           <div className='topper-details'>
-            <h6 className='topper__name' title={'mohan'}>
-              dvgfhvfkkxkzxbck
+            <h6 className='topper__name' title={topperList?.[1]?.name}>
+              {topperList?.[1]?.name}
             </h6>
-            <p className='topper__points' title='1600 points'>
-              <img className='points-gem' src={Points.default} alt='' /> 1000000
-              Points
+            <p
+              className='topper__points'
+              title={`${topperList?.[1]?.points} points`}
+            >
+              <img className='points-gem' src={Points.default} alt='' />
+              {topperList?.[1]?.points} Points
             </p>
           </div>
         </div>
@@ -47,7 +48,7 @@ const RankingTop = (props) => {
             className={
               type === 'squad' ? 'squad__container-bg' : 'container-color-bg'
             }
-            title={'mohan'}
+            title={topperList?.[0]?.name}
           >
             <div
               className={
@@ -56,25 +57,32 @@ const RankingTop = (props) => {
                   : 'icon-container-first flex-column'
               }
             >
-              {/* <img src={TopperCrown.default} alt='crown' /> */}
+              <img
+                className='first__crown'
+                src={TopperCrown.default}
+                alt='crown'
+              />
               <img
                 className={
                   type === 'squad'
                     ? 'squad__ranking-firstimage'
                     : 'individual__ranking-firstimage'
                 }
-                src='https://maxlearn-admin-images.s3.amazonaws.com/admin/images/profile/image_20kb.jpeg.jpeg'
+                src={topperList?.[0]?.image}
                 alt=''
               />
             </div>
           </div>
           <div className='topper-details'>
-            <h6 className='topper__name' title={'mohan'}>
-              vdjfsddgfkskgfkjgdsh
+            <h6 className='topper__name' title={topperList?.[0]?.name}>
+              {topperList?.[0]?.name}
             </h6>
-            <p className='topper__points' title='1600 points'>
+            <p
+              className='topper__points'
+              title={`${topperList?.[0]?.points} points`}
+            >
               <img className='points-gem' src={Points.default} alt='' />
-              2312324234 Points
+              {topperList?.[0]?.points} Points
             </p>
           </div>
         </div>
@@ -83,7 +91,7 @@ const RankingTop = (props) => {
             className={
               type === 'squad' ? 'squad__container-bg' : 'container-color-bg'
             }
-            title={'mohan'}
+            title={topperList?.[2]?.name}
           >
             <div
               className={
@@ -98,18 +106,21 @@ const RankingTop = (props) => {
                     ? 'squad__ranking-thirdimage'
                     : 'individual__ranking-thirdimage'
                 }
-                src='https://maxlearn-admin-images.s3.amazonaws.com/admin/images/profile/image_20kb.jpeg.jpeg'
+                src={topperList?.[2]?.image}
                 alt=''
               />
             </div>
           </div>
           <div className='topper-details'>
-            <h6 className='topper__name' title={'mohan'}>
-              vdjfsddgfkskgfkjgdsh
+            <h6 className='topper__name' title={topperList?.[2]?.name}>
+              {topperList?.[2]?.name}
             </h6>
-            <p className='topper__points' title='1600 points'>
+            <p
+              className='topper__points'
+              title={`${topperList?.[2]?.points} points`}
+            >
               <img className='points-gem' src={Points.default} alt='' />
-              23143423 Points
+              {topperList?.[2]?.points} Points
             </p>
           </div>
         </div>

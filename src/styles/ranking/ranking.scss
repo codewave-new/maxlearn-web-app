@@ -66,6 +66,7 @@
         top: 70px;
         right: 38%;
         .squad__container-bg {
+          position: relative;
           background-color: rgba(216, 216, 216, 0.26);
           height: 85px;
           width: 85px;
@@ -75,6 +76,12 @@
             height: 68px;
             width: 68px;
             border-radius: 7px;
+            .first__crown {
+              position: absolute;
+              top: -24px;
+              right: 50%;
+              transform: translate(50%, 0px);
+            }
             .squad__ranking-firstimage {
               object-fit: cover;
               width: 100%;
@@ -84,6 +91,7 @@
           }
         }
         .container-color-bg {
+          position: relative;
           background-color: rgba(216, 216, 216, 0.26);
           height: 85px;
           width: 85px;
@@ -96,6 +104,12 @@
             width: 68px;
             border-radius: 50%;
             @include displayBothCenter();
+            .first__crown {
+              position: absolute;
+              top: -24px;
+              right: 50%;
+              transform: translate(50%, 0px);
+            }
             .individual__ranking-firstimage {
               object-fit: cover;
               width: 100%;
@@ -284,6 +298,29 @@
           // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
           @include font(#2a4759, 16px, 500, 0, 17px);
         }
+        .individual__ranking {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+        .squad__ranking {
+          width: 36px;
+          height: 36px;
+          border-radius: 4px;
+          &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+          }
+        }
+
         .ranking__points-topper {
           margin: 0;
           @include font(#ff6633, 16px, 500, 0, 17px);
