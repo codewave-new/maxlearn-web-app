@@ -63,7 +63,7 @@
       top: 30%;
       bottom: -50%;
       right: 32%;
-      @include card(4.375rem, 4.383rem, 0.972rem, $challenge-left-Color);
+      @include card(4.375rem, 4.383rem, 0.972rem, 'transprent');
       display: flex;
       justify-content: center;
       align-items: center;
@@ -76,6 +76,11 @@
       // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
       @include font($white, 14px, 500, 0, 14px);
     }
+  }
+
+  .remain_members {
+    position: relative;
+    bottom: 112px;
   }
   .right_challenges-container {
     height: 185px;
@@ -100,7 +105,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      @include card(4.375rem, 4.383rem, 0.972rem, $chanllenge-right-color);
+      @include card(4.375rem, 4.383rem, 0.972rem, 'transprent');
       transform: rotate(180deg);
     }
   }

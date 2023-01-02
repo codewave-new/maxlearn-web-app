@@ -1,0 +1,58 @@
+.congratulation_card {
+    background-color: rgb(241, 236, 236);
+    width: 100%;
+    height: 100vh;
+    padding: 40px;
+    .score_card_wrapper {
+      border-radius: 20px;
+      background-color: white;
+    }
+    .score_heading {
+      flex-direction: column;
+    }
+    .score_title {
+      @include font(#212121, 20px, 900, 0.36, 26px);
+      text-align: center;
+    }
+    .trophy_img {
+      width: 384px;
+      height: 240px;
+    }
+    .aware_level {
+      @include font(#212121, 14px, 400, 0, 14px);
+      text-align: center;
+      margin-bottom: 48px;
+      margin-top: 30px;
+      span {
+        @include font(#212121, 14px, bold, 0, 14px);
+      }
+    }
+    .learn-score-text {
+      @include font(#212121, 34px, bold, 0.62px, 34px);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .score-txt {
+      @include font(#212121, 16px, bold, 0, 17px);
+      text-align: center;
+    }
+    .score-txt-md {
+      @include font(#212121, 22px, bold, 0.4px, 28px);
+      text-align: center;
+    }
+    .continue_exploring {
+      width: 354px;
+      border-radius: 10px;
+      background: linear-gradient(169.56deg, #FF6633 0%, #DE5020 100%);
+      border: none;
+      height: 50px;
+    }
+    .view_leaderboard_learn {
+      @include font(#FF6633, 16px, bold, 0, 12px);
+      background: none;
+      border: none;
+      padding-bottom: 64px;
+    }
+  }

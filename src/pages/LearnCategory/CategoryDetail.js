@@ -6,8 +6,10 @@ import { Link, NavLink,useSearchParams } from 'react-router-dom';
 import { getCatrgoryWiseStats,getCatrgoryWiseSubjects } from '../../services/learn';
 import { CenterLoadingBar, LoadingBar } from '../../components/loader/loader';
 import InfiniteScrollling from '../../components/Pagination/InfiniteScrollling';
+import { useSelector } from 'react-redux';
 
 const CategoryDetail = () => {
+  const authData = useSelector((state) => state.auth);
   const [searchParams] = useSearchParams();
   let categoryId=searchParams.get('category');
 
@@ -29,8 +31,8 @@ const CategoryDetail = () => {
 const getLearnBYCategory = async (currentPage) => {
     setCategoryLoading(true)
     try {
-      let res = await getCatrgoryWiseSubjects(categoryId,currentPage)
-      setLearnCategorySubjects(res?.data?.response)
+      let res = await getCatrgoryWiseSubjects(authData.learnerId,categoryId,currentPage)
+      setLearnCategorySubjects(previousState=>[...previousState,...res?.data?.response])
       setLearnCategoryTotalCount(res?.data?.countInfo?.[0]?.count)
       setCategoryLoading(false)
 
@@ -40,7 +42,7 @@ const getLearnBYCategory = async (currentPage) => {
   }
   const getAllCatrgoryWiseStats = async () => {
     try {
-      let res = await getCatrgoryWiseStats(categoryId)
+      let res = await getCatrgoryWiseStats(authData.learnerId,categoryId)
       setLearnCategoryStats(res?.data)
     } catch (err) {
       console.log('eeee', err)

@@ -96,13 +96,11 @@
     margin: 0;
     margin-bottom: 0.875rem;
   }
-  /* Chrome, Safari, Edge, Opera */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-  /* Firefox */
   input[type='number'] {
     -moz-appearance: textfield;
   }
@@ -122,8 +120,64 @@
     letter-spacing: 0;
     line-height: 22px;
   }
+  .selectbox__wrapper {
+    position: relative;
+  }
+  .select__icon {
+    position: absolute;
+    right: 0px;
+    pointer-events: none;
+  }
+  .select__input {
+    width: 100%;
+    padding-bottom: 1rem;
+    color: #212121;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    border-bottom: 1.5px solid #d9d9d9;
+    appearance: none;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    position: relative;
+    &:focus {
+      outline: none;
+      border-bottom: 1.5px solid #212121;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    option {
+      color: #212121;
+    }
+  }
 
   .ml-form-inputs:focus {
     box-shadow: none;
   }
+}
+
+.ml-edit-user-detail-form {
+  .ml-form-group {
+    .password_input {
+      position: relative;
+      .password__icon {
+        position: absolute;
+        display: inline-block;
+        top: 0px;
+        right: 0px;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+.form_error-message{
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
 }

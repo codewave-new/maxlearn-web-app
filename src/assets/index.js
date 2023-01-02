@@ -77,6 +77,12 @@ export * as ActiveLearn from './learnActive.svg';
 export * as ActiveTodo from './todoActive.svg';
 export * as ActiveRanking from './rankingActive.svg';
 export * as InActiveHome from './HomeInactive.svg';
+export * as LearnTrophy from './learn/learnTrophy.png';
 export * as Console from './console.svg';
 export * as Crown from './crown.svg';
 export * as ThunderLogo from './thunder_logo.svg';
+export * as PasswordHidden from './passwordHidden.svg';
+export * as SelectArrow from './selectArrow.svg';
+export * as AvatarTick from './AvartarTick.svg';
+
+

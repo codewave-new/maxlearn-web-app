@@ -1,14 +1,14 @@
 import React from 'react';
 import { LearnDiamond } from '../../assets';
 
-const Achievement = () => {
+const Achievement = ({points,name}) => {
   return (
     <div className='max__learn-achieve-wrapper row padd-20'>
       <div className='achieve-wrapper'>
         <div className='col-7'>
-          <h2>Great achievement Tessa!</h2>
+          <h2>Great achievement {name}!</h2>
           <h1>
-            350
+            {points?points:'0'}
             <small className='ps-1'>Points</small>
           </h1>
         </div>

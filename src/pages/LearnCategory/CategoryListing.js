@@ -5,8 +5,9 @@ import CategoryList from '../../components/Learn/Category/CategoryList';
 import { getLearnByCategory } from '../../services/learn';
 import { CenterLoadingBar, LoadingBar } from '../../components/loader/loader';
 import InfiniteScrollling from '../../components/Pagination/InfiniteScrollling';
-
+import { useSelector } from 'react-redux';
 const CategoryListing = () => {
+  const authData = useSelector((state) => state.auth);
   const [learnCategoryTotalCount, setLearnCategoryTotalCount] = useState(0);
   const [categoryLoading, setCategoryLoading] = useState(false);
   const [learnCategoryLists, setLearnCategoryLists] = useState([]);
@@ -19,8 +20,8 @@ const CategoryListing = () => {
   const getLearnBYCategory = async (currentPage) => {
     setCategoryLoading(true)
     try {
-      let res = await getLearnByCategory(currentPage)
-      setLearnCategoryLists(res?.data?.response)
+      let res = await getLearnByCategory(authData.learnerId,currentPage)
+      setLearnCategoryLists((previousState)=>[...previousState,...res?.data?.response])
       setLearnCategoryTotalCount(res?.data?.countInfo?.[0]?.count)
       setCategoryLoading(false)
 

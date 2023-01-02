@@ -94,6 +94,7 @@ const Login = () => {
       setIsLoading(false);
 
       if (loginapi.data.statusCode === 200) {
+        console.log(loginapi.data);
         const authData = {
           TOKEN_NAME: loginapi.data.data.loginDetails.token,
           applicationId:

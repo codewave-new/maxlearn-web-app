@@ -5,10 +5,9 @@ import { ProfileGem, ProfileStanding } from '../../assets';
 import { yourSquadListing } from '../../services/profile';
 import MembersAvatar from '../Common/Avatar/MembersAvatar';
 
-
 const YourSquad = () => {
-  const navigate=useNavigate()
-  const authData=useSelector(state=>state.auth)
+  const navigate = useNavigate();
+  const authData = useSelector((state) => state.auth);
   const [squadsLists, setSquadsLists] = useState([]);
 
   useEffect(() => {
@@ -22,16 +21,19 @@ const YourSquad = () => {
     }
   };
 
-  const handleSquadDetails=(squadId)=>{
-    navigate(`/profile/squad-details/${squadId}`)
-  }
+  const handleSquadDetails = (squadId) => {
+    navigate(`/profile/squad-details/${squadId}`);
+  };
 
   return (
     <div>
-      <p className='your__squad-header'>You are the part of {squadsLists?.length} squads</p>
+      <p className='your__squad-header'>
+        You are the part of {squadsLists?.length} squads
+      </p>
       {squadsLists?.map((singleSquad) => {
         return (
           <button
+            key={singleSquad?._id}
             className='table_btn'
             onClick={() => {
               handleSquadDetails(singleSquad?._id);
@@ -45,7 +47,14 @@ const YourSquad = () => {
                     src={singleSquad?.imageUrl}
                     alt='no-data'
                   />
-                  <p className='mb-0 your__squad-text' style={{whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'}}>
+                  <p
+                    className='mb-0 your__squad-text'
+                    style={{
+                      whiteSpace: 'nowrap',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
                     {singleSquad?.name}
                   </p>
                 </div>
