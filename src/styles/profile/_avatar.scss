@@ -8,12 +8,19 @@
   padding: 40px 60px;
   max-width: 300px;
   margin: auto;
+  @include media('>1023px', '<1280px') {
+    padding: 20px;
+  }
+  @include media('>1279px', '<=1366px') {
+    padding: 30px 40px;
+  }
   .avatar-img-container {
     text-align: center;
     padding: 40px 30px;
     border-radius: 8px;
     background: linear-gradient(180deg, #894ef9 0%, #bdc7fb 100%);
     position: relative;
+
     .loading_skeleton {
       height: 103px;
       width: 103px;
@@ -59,5 +66,3 @@
     background-color: hsl(200, 20%, 95%);
   }
 }
-
-

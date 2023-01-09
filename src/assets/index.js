@@ -84,5 +84,9 @@ export * as ThunderLogo from './thunder_logo.svg';
 export * as PasswordHidden from './passwordHidden.svg';
 export * as SelectArrow from './selectArrow.svg';
 export * as AvatarTick from './AvartarTick.svg';
+export * as EditClose from './editClose.svg';
+export * as PasswordClose from './passwordClose.svg';
+export * as PasswordShow from './passwordShown.svg';
+
 
 

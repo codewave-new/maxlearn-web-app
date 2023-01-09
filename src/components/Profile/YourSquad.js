@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { ProfileGem, ProfileStanding } from '../../assets';
@@ -40,7 +40,7 @@ const YourSquad = () => {
             }}
           >
             <div className='table__row-wrapper row' key={singleSquad?._id}>
-              <div className='col-6 row '>
+              <div className='col-6 row your__squad-member'>
                 <div className='col-7 d-flex align-items-center p-0 your_Squad_img-wrapper '>
                   <img
                     className='your__squad-image'
@@ -58,7 +58,7 @@ const YourSquad = () => {
                     {singleSquad?.name}
                   </p>
                 </div>
-                <div className='col-5 m-auto your__squad-member text-center'>
+                <div className='col-5 m-auto  text-center'>
                   <MembersAvatar
                     team={singleSquad?.members}
                     total={singleSquad?.members?.length}
@@ -88,4 +88,4 @@ const YourSquad = () => {
   );
 };
 
-export default YourSquad;
+export default memo(YourSquad);

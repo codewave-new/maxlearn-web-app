@@ -28,6 +28,11 @@
   &__modal-header {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    .edit_btn {
+      background-color: transparent;
+      border: none;
+    }
+    
 
     .modal-title {
       color: #212121;
@@ -49,6 +54,7 @@
   &__modal-body {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    overflow-y: auto;
     .modal__body-header {
       @include font(#212121, 16px, 700, 0, 17px);
       margin-bottom: 20px;
@@ -56,7 +62,8 @@
   }
 
   &__modal-footer {
-    padding: 0 2.5rem 1.8rem 2.5rem;
+    // padding: 0 2.5rem 1.8rem 2.5rem;
+    padding: 0;
     border-top: none !important;
     justify-content: center;
 
@@ -78,6 +85,15 @@
 
 // edit user details form
 .ml-edit-user-detail-form {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  .form__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 150px);
+  }
   .ml-form-group {
     margin: 0;
     margin-bottom: 1.938rem;
@@ -85,7 +101,46 @@
       resize: none;
     }
   }
-
+  .phone__number-wrapper {
+    .react-tel-input {
+      color: #212121;
+      font-family: Roboto !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0;
+      line-height: 16px !important;
+      padding: 0px !important;
+      .form-control:focus {
+        box-shadow: none;
+      }
+      input {
+        width: 100%;
+        color: #212121;
+        font-family: Roboto !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0;
+        line-height: 16px !important;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1.5px solid #d9d9d9 !important;
+        padding-bottom: 17px;
+        outline: none;
+      }
+      .flag-dropdown {
+        padding-bottom: 17px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1.5px solid #d9d9d9 !important;
+        background-color: transparent;
+        .selected-flag {
+          padding-bottom: 17px;
+        }
+      }
+    }
+  }
   .ml-form-text-title {
     color: #727a92;
     font-family: Roboto;
@@ -176,7 +231,7 @@
     }
   }
 }
-.form_error-message{
+.form_error-message {
   margin-top: 10px;
   color: red;
   font-size: 14px;

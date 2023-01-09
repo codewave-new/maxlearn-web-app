@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { AvatarTick } from '../../assets';
-import { editProfileDetails, getProfileAvatars, uploadFromGallery } from '../../services/profile';
+import { editProfileDetails, uploadFromGallery } from '../../services/profile';
 import { userImageChange } from '../../state/slices/loginSlice.';
 import { convertToBase64 } from '../../utility/helper';
 import Modal from '../Common/CustomModal/Modal';
+import useAuthenticationError from '../CustomHooks/ApiErrors';
 import { ButtonLoader, OutlineButtonLoader } from '../loader/loader';
 
-const AvatarModal = ({avatarsList,closeModal,showAvatar,avatarLoader}) => {
+const AvatarModal = ({ avatarsList, closeModal, showAvatar, avatarLoader }) => {
   const dispatch = useDispatch();
+  const authError = useAuthenticationError();
   const [selectedAvatar, setSelectedAvatar] = useState('');
   const [loader, setLoader] = useState(false);
   const [filledLoader, setFilledLoader] = useState(false);
@@ -48,6 +50,8 @@ const AvatarModal = ({avatarsList,closeModal,showAvatar,avatarLoader}) => {
             localStorage.setItem('profileImage', imageupload.data.documentUrl);
             dispatch(userImageChange(imageupload.data.documentUrl));
             toast.success('profile image updated sucessfully');
+          } else if (response?.statusCode === 440) {
+            authError();
           } else {
             toast.error('something went wrong');
           }
@@ -79,6 +83,8 @@ const AvatarModal = ({avatarsList,closeModal,showAvatar,avatarLoader}) => {
         localStorage.setItem('profileImage', selectAvatar?.image);
         dispatch(userImageChange(selectAvatar?.image));
         toast.success('profile image updated successfully');
+      } else if (response?.statusCode === 440) {
+        authError();
       } else {
         toast.error('something went wrong');
       }
@@ -143,7 +149,7 @@ const AvatarModal = ({avatarsList,closeModal,showAvatar,avatarLoader}) => {
                 onClick={changeProfilePic}
                 disabled={filledLoader}
               >
-                {filledLoader ? <ButtonLoader /> : 'Submit feedback'}
+                {filledLoader ? <ButtonLoader /> : 'Submit Avatar'}
               </button>
             </div>
           </div>

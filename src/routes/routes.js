@@ -32,6 +32,7 @@ import CertQuestions from '../components/ToDo/questcerttab/CertQuestions';
 import Score from '../components/ToDo/questcerttab/Score';
 import StartQuizQuestions from '../pages/LearnCategory/start-quiz-questions';
 import { QuizScore } from '../pages/LearnCategory/quiz-score';
+import CongratualtionsScreen from '../components/Challenges/CongratualtionsScreen';
 
 export const appRoutes = [
   {
@@ -142,10 +143,10 @@ export const appRoutes = [
         path: '/challenge-squad-detail',
         element: <ChallengeSquadDetails />,
       },
-      // {
-      //   path: '/team-score',
-      //   element: <CongratualtionsScreen />,
-      // },
+      {
+        path: '/team-score',
+        element: <CongratualtionsScreen />,
+      },
       {
         path: '/questions/:id',
         element: <QuestionsNavbar />,

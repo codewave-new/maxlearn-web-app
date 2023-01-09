@@ -6,6 +6,15 @@
   position: relative;
   top: 200px;
   margin: auto;
+  @include media('<1000px') {
+    width: 80%;
+  }
+  @include media('>1000px','<=1366px') {
+    width: 70%;
+  }
+  @include media('>1366px','<=1440px') {
+    width: 60%;
+  }
   .avatar__selection-wrapper {
     padding: 50px;
     .avatar__selection-header {
@@ -31,7 +40,7 @@
           width: 76px;
           height: 76px;
           object-fit: cover;
-          margin-right: 30px;
+          margin-right: 20px;
           margin-bottom: 20px;
         }
         .selection_tick {
@@ -90,9 +99,9 @@
 .image_loader {
   width: 76px;
   height: 76px;
-  margin-right:30px;
+  margin-right: 30px;
   margin-bottom: 20px;
-  border:none;
+  border: none;
   border-radius: 50%;
   animation: blink 1s infinite alternate;
 }

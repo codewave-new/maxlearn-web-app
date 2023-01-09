@@ -9,7 +9,7 @@ const RankingPositionCard = (props) => {
     <div className={`max__ranking-position-card `}>
       <div className={`row ${animation}`}>
         <div
-          className={`col-3 col-lg-1 rank-number d-flex align-items-center justify-content-center ${props.className}`}
+          className={`col-2 col-lg-2 col-xl-1 rank-number d-flex align-items-center justify-content-center ${props.className}`}
         >
           <h3
             className={`mb-0 ${
@@ -19,7 +19,7 @@ const RankingPositionCard = (props) => {
             {rankNo}
           </h3>
         </div>
-        <div className='col-9 col-lg-11 '>
+        <div className='col-10 col-lg-10 col-xl-11 '>
           <div className='rank-details-wrapper'>
             <div className={`rank-details-container ${props.className}`}>
               <div className='user d-flex align-items-center'>
@@ -40,7 +40,7 @@ const RankingPositionCard = (props) => {
                     />
                   </div>
                 )}
-                <h5 className='ps-2'>{userName}</h5>
+                <h5 className='ps-2 ranking__learners-name'>{userName}</h5>
               </div>
               <div className='points d-flex align-items-center'>
                 <h6

@@ -9,6 +9,7 @@
 .your__squad-text {
   @include font(#212121, 16px, 700, 0, 16px);
   text-transform: capitalize;
+  
 }
 .your__squad-subtext {
   @include font(#212121, 12px, 400, 0, 12px);
@@ -16,6 +17,8 @@
 .squad_challenge-header {
   margin-top: 30px;
   margin-bottom: 15px;
+  @include font(#212121, 20px, 700, 0, 22px);
+
 }
 .points__earned-image {
   width: 15px;
@@ -83,10 +86,11 @@
 .squad-text {
   display: inline-block;
   margin-left: 6px;
+  margin-top: 4px;
   @include font(#212121, 24px, 900, 0, 24px);
 }
 .squad-subheader {
-  @include font(#515b73, 14px, 500, 0, 16px);
+  @include font(#515b73, 14px, 700, 0, 16px);
   margin-top: 12px;
   text-align: center;
 }
@@ -96,8 +100,8 @@
   padding: 1px 20px 1px 20px;
   max-width: 300px;
   margin: auto;
-  @include media('>phone', '<=tablet') {
-  margin-bottom: 20px;
+  @include media( '<1000px') {
+  margin-bottom: 30px;
   }
 }
 .squad__logo-container {
@@ -117,7 +121,7 @@
   margin-bottom: 30px;
   word-wrap: break-word;
   text-transform: capitalize;
-  @include font(#212121, 16px, 500, 0, 16px);
+  @include font(#212121, 16px, 700, 0, 16px);
 }
 .squad__detail-logo {
   border-radius: 20px;
@@ -137,4 +141,13 @@
   margin-right: 9px;
   height: 18px;
   width: 18px;
+}
+.squad__member-name{
+  @include font(#2A4759, 16px, 500, 0, 17px);
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
+.total__points{
+  margin-bottom: 0px;
+  @include font(#212121, 16px, 500, 0, 17px);
 }

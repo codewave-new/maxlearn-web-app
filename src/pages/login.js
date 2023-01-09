@@ -17,6 +17,8 @@ import {
   GoogleIcon,
   LinkedinIcon,
   LoginLogo,
+  PasswordClose,
+  PasswordShow,
 } from '../assets';
 
 import Header from '../components/Common/Header/Header';
@@ -152,7 +154,7 @@ const Login = () => {
                       <Input
                         type='email'
                         id='user_name'
-                        placeholder='Email Id'
+                        placeholder='Email ID'
                         name='email'
                         className='login_name'
                         onChange={emailchangeValue}
@@ -177,7 +179,11 @@ const Login = () => {
                         endAdornment={
                           <InputAdornment position='end'>
                             <IconButton onClick={togglePwdEyeOnOff}>
-                              {pwdEyeOnOff ? <Visibility /> : <VisibilityOff />}
+                              {pwdEyeOnOff ? (
+                                <PasswordShow.default />
+                              ) : (
+                                <PasswordClose.default />
+                              )}
                             </IconButton>
                           </InputAdornment>
                         }
@@ -186,7 +192,7 @@ const Login = () => {
                     </div>
                   </div>
 
-                  <div className='row input_div'>
+                  <div className='row  login_btn'>
                     <button
                       className='login_button'
                       disabled={isLoading}
@@ -202,10 +208,10 @@ const Login = () => {
                     </a>
                   </p>
 
-                  <div className='row input_div'>
-                    <p className='login_with'>or login with</p>
+                  <div className='row divider__height'>
+                    <p className='mb-0 login_with'>or login with</p>
                   </div>
-                  <div className='row input_div'>
+                  <div className='row divider__height'>
                     <div className='col-sm-6'>
                       <a>
                         <div className='social_innerdiv'>
