@@ -389,6 +389,7 @@ border-radius: 6px;
 }
 
 .drag-list{
+  padding-left: 0;
   li{
     list-style-type: none;
 }
@@ -420,4 +421,17 @@ border-radius: 6px;
     line-height: 18px;
   }
 
+}
+.question-desc{
+  p{
+  color: #212121;
+  font-family: Roboto;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+}
+.grey_bg{
+  background-color: #C0C0C0 !important;
+  background: #C0C0C0 !important;
 }

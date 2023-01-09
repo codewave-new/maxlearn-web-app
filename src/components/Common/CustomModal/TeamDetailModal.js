@@ -33,8 +33,8 @@ const TeamDetailModal = ({
         </ThumNailComponent>
         <DetailComponent>
           <div>
-            <div className='points__data row d-flex align-items-center justify-content-center'>
-              <div className='points__data-graph col-4'>
+            <div className='points__data d-flex align-items-center justify-content-between'>
+              <div className='points__data-graph col-4 progress-icon'>
                 <svg style={{ height: 0 }}>
                   <defs>
                     <linearGradient
@@ -51,6 +51,7 @@ const TeamDetailModal = ({
                   strokeWidth={5}
                   circleRatio='0.45'
                   styles={{
+                  
                     path: {
                       stroke: `url(#${'progress'})`,
                       height: '100%',
@@ -60,21 +61,24 @@ const TeamDetailModal = ({
                     trail: {
                       stroke: '#2e2e2e',
                       transform: 'rotate(0.55turn)',
+                      marginTop:'-120%'
                     },
                   }}
                   initialAnimation={true}
+                 
                 >
-                  <div>
-                    <h3 className='mb-0 text-center'>
-                      {teamDetails?.pointsEarned} <br />
-                      <small>Points</small>
+                  <div className='d-flex align-items-center justify-content-center flex-column'>
+                    <h3 className='mb-0 text-center circular-progress'
+                    >
+                      {teamDetails?.pointsEarned} 
                     </h3>
+                    <small className='points__data-small-points'>Points</small>
                   </div>
                 </CircularProgressbarWithChildren>
               </div>
-              <div className='col-7 mt-md-1'>
+              <div className='col-7 mt-md-2'>
                 <span className='points__data-text mb-0'>
-                  Points earned by the team
+                  Points earned <br/> by the team
                 </span>
               </div>
             </div>

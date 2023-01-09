@@ -22,6 +22,7 @@ export const PutInOrder = ({
   questionNo,
   totalQuestions,
   type,
+  isExp
 }) => {
   const handleSelect = (array) => {
     let ress = array?.map((item) => item?.index);
@@ -47,7 +48,7 @@ export const PutInOrder = ({
             {questionPerSession} */}
           </div>
           <p className='mt-1'>PUT IN ORDER QUESTION</p>
-          <p className='mt-1'>{renderText(questionInfo?.body)}</p>
+          <p className='mt-1 question-desc'>{renderText(questionInfo?.body)}</p>
           {/* <img className='quest_image mt-1' src={quesImage} /> */}
         </div>
       </Col>
@@ -71,7 +72,7 @@ export const PutInOrder = ({
             />
           )}
         </CardBody>
-        {isExplanation?
+        {isExplanation&&isExp?
         <CardBody className='mt-3 ml-2 explanation-details'>
            
             <>
@@ -88,14 +89,14 @@ export const PutInOrder = ({
                 color='primary'
                 onClick={() => getNextQuestion()}
               >
-                Next question
+                {(questionPerSession-attemptedQuestions)==0?"Submit":'Next question'}
               </Button>
             </a>
           ) : (
             <a>
               <Button
-                className='add-new-btn add_btnctprev'
-                color='primary'
+  className={`add-new-btn add_btnctprev ${ selectedOption?.length ? '' :'grey_bg'}
+  `}                color='primary'
                 disabled={selectedOption?.length ? false : true}
                 onClick={() => setSubmitCliked(true)}
               >

@@ -90,7 +90,7 @@
 }
 
 .detail__card__center {
-  padding: 65px;
+  padding: 90px;
   @include media('<=600px') {
     padding: 30px;
   }
@@ -235,15 +235,35 @@
     margin-top: 30px;
   }
   &-graph {
-    width: 180px;
+    width: 130px;
     height: 100px;
-    overflow: clip;
+    // overflow: clip;
   }
   &-text {
     display: inline-block;
     vertical-align: middle;
     @include font(#212121, 20px, 500, 0, 28px);
+    
   }
+  &-small-points {
+    color: #6B6B6B;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 13px;
+}
+h3{
+  color: #167F7D;
+  font-family: Roboto;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 32px;
+  text-align: center;
+}
+}
+.circular-progress{
+  margin-top: -52px;
 }
 .opponent-wrapper-slick {
   min-height: 260px !important;
@@ -303,7 +323,7 @@
 
 .member__listing-modal {
   overflow-y: auto;
-  max-height: 280px;
+  height: 350px;
 }
 
 .team__members {

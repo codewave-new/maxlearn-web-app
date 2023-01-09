@@ -21,6 +21,7 @@
   box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
   z-index: 30;
   animation: slide-down 300ms ease-out forwards;
+  z-index: 999999;
 }
 
 @media (min-width: 768px) {
@@ -40,7 +41,6 @@
     transform: translateX(0);
   }
 }
-
 .max__home-challenges-sidebar {
   .sidebar-head {
     padding: 0 1.875rem;

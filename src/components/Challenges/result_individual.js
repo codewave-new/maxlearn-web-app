@@ -125,7 +125,7 @@ export const ResultIndividual = ({
       <div className='completion__footer '>
         <div className='d-flex justify-content-between align-items-center footer__wrapper'>
           <div>
-          <Link to='#'>
+          <Link to='/rankings'>
             <button className='challenge__outline-btn '>View my leaderboard</button>
             </Link>           
             <Link to='/to-do'>
