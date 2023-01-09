@@ -18,6 +18,7 @@ export const QuestionTypeWrapper = ({
   questionNo,
   totalQuestions,
   type,
+  isExp
 }) => {
   return (
     <div>
@@ -36,6 +37,7 @@ export const QuestionTypeWrapper = ({
           questionNo={questionNo}
           totalQuestions={totalQuestions}
           type={type}
+          isExp={isExp}
         />
       ) : questionInfo?.questionType == 'SINGLE_CHOICE' ? (
         <MultiSelect
@@ -52,6 +54,7 @@ export const QuestionTypeWrapper = ({
           questionNo={questionNo}
           totalQuestions={totalQuestions}
           type={type}
+          isExp={isExp}
         />
       ) : questionInfo?.questionType == 'TRUE_OR_FALSE' ? (
         <TrueOfFalse
@@ -68,6 +71,7 @@ export const QuestionTypeWrapper = ({
           questionNo={questionNo}
           totalQuestions={totalQuestions}
           type={type}
+          isExp={isExp}
         />
       ) : questionInfo?.questionType == 'PUT_IN_ORDER' ? (
         <PutInOrder
@@ -83,6 +87,7 @@ export const QuestionTypeWrapper = ({
           questionNo={questionNo}
           totalQuestions={totalQuestions}
           type={type}
+          isExp={isExp}
         />
       ) : (
         ''

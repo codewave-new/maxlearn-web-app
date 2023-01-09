@@ -22,6 +22,7 @@ export const TrueOfFalse = ({
   questionNo,
   totalQuestions,
   type,
+  isExp
 }) => {
   const options = [
     {
@@ -56,7 +57,7 @@ export const TrueOfFalse = ({
             {questionPerSession} */}
           </div>
           <p className='mt-1'>TRUE OR FALSE QUESTION</p>
-          <p className='mt-1'>{renderText(questionInfo?.body)}</p>
+          <p className='mt-1 question-desc'>{renderText(questionInfo?.body)}</p>
           {/* <img className='quest_image mt-1' src={quesImage} /> */}
         </div>
       </Col>
@@ -79,7 +80,7 @@ export const TrueOfFalse = ({
             />
           )}
         </CardBody>
-        {isExplanation?
+        {isExplanation&&isExp?
         <CardBody className='mt-3 ml-2 explanation-details'>
            
             <>
@@ -97,14 +98,14 @@ export const TrueOfFalse = ({
                 color='primary'
                 onClick={() => getNextQuestion()}
               >
-                Next question
+              {(questionPerSession-attemptedQuestions)==0?"Submit":'Next question'}
               </Button>
             </a>
           ) : (
             <a>
               <Button
-                className='add-new-btn add_btnctprev'
-                color='primary'
+  className={`add-new-btn add_btnctprev ${ isTrueOrFalse !== '' ?'': 'grey_bg'}
+  `}                color='primary'
                 disabled={isTrueOrFalse !== '' ? false : true}
                 onClick={() => setSubmitCliked(true)}
               >

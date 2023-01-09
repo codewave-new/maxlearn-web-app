@@ -102,7 +102,8 @@ const DetailCard = ({ start, state }) => {
             query['challenge-type'] == 'SQUAD'
               ? opponentResult?.imageUrl
               : opponentResult?.profilePic,
-          learnerName: learnerName,
+            learnerName:learnerName,
+            isExp:examStart?.isExplanationSetPerQuestion
         }).toString(),
       });
     }
