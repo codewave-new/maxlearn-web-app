@@ -28,6 +28,7 @@ const SideBar = (props) => {
   });
   const challengesListItemNo = 6;
   return (
+    <div className='home_challenges'>
     <Modal onClose={props.onClose}>
       <div className='max__home-challenges-sidebar'>
         <div className='sidebar-head'>
@@ -43,6 +44,7 @@ const SideBar = (props) => {
         </div>
       </div>
     </Modal>
+    </div>
   );
 };
 

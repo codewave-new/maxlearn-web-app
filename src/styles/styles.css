@@ -1703,9 +1703,9 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   background-color: white;
   border-radius: 14px 0 0 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  z-index: 30;
   -webkit-animation: slide-down 300ms ease-out forwards;
-  animation: slide-down 300ms ease-out forwards;
+          animation: slide-down 300ms ease-out forwards;
+  z-index: 999999;
 }
 
 @-webkit-keyframes slide-down {
@@ -3470,7 +3470,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 .points__data-graph {
   width: 180px;
   height: 100px;
-  overflow: clip;
+  /* overflow: clip; */
 }
 .points__data-text {
   display: inline-block;
@@ -4750,4 +4750,14 @@ li .active-slider {
 
 .infinite-scroll-component {
   overflow-x: hidden !important;
-} /*# sourceMappingURL=styles.css.map */
+}/*# sourceMappingURL=styles.css.map */
+.progress-icon{
+  width: 130px;
+  }  
+  .small-points{
+    color: #6B6B6B;
+    font-family: Roboto;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 13px;
+  }

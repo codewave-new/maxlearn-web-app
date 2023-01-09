@@ -50,7 +50,9 @@ const ChallengesQuestions = () => {
   let logo1 = searchParams.get('logo1')
   let logo2 = searchParams.get('logo2')
   let learnerName = searchParams.get('learnerName')
+  let isExp = searchParams.get('isExp')
 
+  
   
 
   
@@ -269,6 +271,7 @@ const ChallengesQuestions = () => {
             isExplanation={true}
             getNextQuestion={getNextQuestion}
             statusVal={statusVal}
+            isExp={isExp}
           />
         )}
         {submitCliked ?
