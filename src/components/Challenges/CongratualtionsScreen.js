@@ -18,6 +18,7 @@ function CongratualtionsScreen({ points, name, close }) {
   const location = useLocation();
   const params = useQuery(location.search);
 
+  
   const handleClose = () => {
     navigate(-1);
   };
