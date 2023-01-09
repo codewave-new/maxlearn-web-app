@@ -1,7 +1,7 @@
 /**
 * Global Style file where all index file will be imported
 */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .padding-1 {
   padding: 1rem;
 }
@@ -239,7 +239,7 @@
 }
 .max__right-home-container .max__right-card .max-home__badge-container {
   width: 100%;
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/c_scale,h_166,q_auto:eco,w_360/v1665027832/Group_2x_cem3ax.png");
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/c_scale,h_166,q_auto:eco,w_360/v1665027832/Group_2x_cem3ax.png');
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 20px 20px;
@@ -249,7 +249,11 @@
     padding: 60px 20px;
   }
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h6 {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h6 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -258,7 +262,11 @@
   line-height: 12px;
   color: rgba(255, 255, 255, 0.86);
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h4 {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h4 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
@@ -266,7 +274,12 @@
   letter-spacing: 0.29px;
   line-height: 16px;
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h4 strong {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h4
+  strong {
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
@@ -275,12 +288,20 @@
   line-height: 16px;
   color: #f1ba2d;
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area hr {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  hr {
   height: 1px;
   width: 243px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area p {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  p {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -307,7 +328,7 @@
   font-size: 70px;
   line-height: 1.1;
   letter-spacing: -0.06em;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 30px;
 }
 .cwr_login button {
@@ -324,7 +345,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .login_bg {
@@ -372,8 +393,8 @@
   line-height: 26px;
 }
 
-.input_div input[type=email],
-input[type=password] {
+.input_div input[type='email'],
+input[type='password'] {
   background-color: transparent !important;
   color: #212121;
   font-family: Roboto;
@@ -457,7 +478,7 @@ input[type=password] {
 }
 
 .login_with:before {
-  content: "";
+  content: '';
   flex: 1 1;
   border: 1px solid #d9d9d9;
   opacity: 0.48;
@@ -467,7 +488,7 @@ input[type=password] {
 }
 
 .login_with:after {
-  content: "";
+  content: '';
   flex: 1 1;
   border-bottom: 1px solid;
   margin: auto;
@@ -669,7 +690,7 @@ input[type=password] {
 }
 .max__right-home-container .max__right-card .max-home__badge-container {
   width: 100%;
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/c_scale,h_166,q_auto:eco,w_360/v1665027832/Group_2x_cem3ax.png");
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/c_scale,h_166,q_auto:eco,w_360/v1665027832/Group_2x_cem3ax.png');
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 20px 20px;
@@ -679,7 +700,11 @@ input[type=password] {
     padding: 60px 20px;
   }
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h6 {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h6 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -688,7 +713,11 @@ input[type=password] {
   line-height: 12px;
   color: rgba(255, 255, 255, 0.86);
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h4 {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h4 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
@@ -696,7 +725,12 @@ input[type=password] {
   letter-spacing: 0.29px;
   line-height: 16px;
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area h4 strong {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  h4
+  strong {
   color: #ffffff;
   font-family: Roboto;
   font-size: 16px;
@@ -705,12 +739,20 @@ input[type=password] {
   line-height: 16px;
   color: #f1ba2d;
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area hr {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  hr {
   height: 1px;
   width: 243px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.max__right-home-container .max__right-card .max-home__badge-container .badge-content-area p {
+.max__right-home-container
+  .max__right-card
+  .max-home__badge-container
+  .badge-content-area
+  p {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -737,7 +779,7 @@ input[type=password] {
   font-size: 70px;
   line-height: 1.1;
   letter-spacing: -0.06em;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 30px;
 }
 .cwr_login button {
@@ -754,7 +796,7 @@ input[type=password] {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .login_bg {
@@ -802,8 +844,8 @@ input[type=password] {
   line-height: 26px;
 }
 
-.input_div input[type=email],
-input[type=password] {
+.input_div input[type='email'],
+input[type='password'] {
   background-color: transparent !important;
   color: #212121;
   font-family: Roboto;
@@ -887,7 +929,7 @@ input[type=password] {
 }
 
 .login_with:before {
-  content: "";
+  content: '';
   flex: 1 1;
   border: 1px solid #d9d9d9;
   opacity: 0.48;
@@ -897,7 +939,7 @@ input[type=password] {
 }
 
 .login_with:after {
-  content: "";
+  content: '';
   flex: 1 1;
   border-bottom: 1px solid;
   margin: auto;
@@ -1069,7 +1111,7 @@ body,
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #777777;
   font-style: normal;
 }
@@ -1164,21 +1206,36 @@ header .max__navbar .max__menunav-list .active {
   background-color: #fef4ec;
   color: #ff6633;
 }
-header .max__navbar .max__menunav-list .max__nav-search .max__nav-search-container button {
+header
+  .max__navbar
+  .max__menunav-list
+  .max__nav-search
+  .max__nav-search-container
+  button {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 0.625rem;
   background-color: #f5f5f5;
   border: none;
 }
-header .max__navbar .max__menunav-list .max__notification .max__nav-notification-container button {
+header
+  .max__navbar
+  .max__menunav-list
+  .max__notification
+  .max__nav-notification-container
+  button {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 0.625rem;
   background-color: #ffeca2;
   border: none;
 }
-header .max__navbar .max__menunav-list .max__nav-user .max__nav-user-container button {
+header
+  .max__navbar
+  .max__menunav-list
+  .max__nav-user
+  .max__nav-user-container
+  button {
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 0.625rem;
@@ -1297,7 +1354,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   border-radius: 8px;
 }
 .max-home_challenges__card-wrapper .max-home_challenges__card-container {
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1664801059/flash_i9thnf.png");
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/q_auto:eco/v1664801059/flash_i9thnf.png');
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -1305,11 +1362,13 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   position: relative;
   height: 195px;
   width: 227.55px;
-  display: "flex";
-  justify-content: "center";
-  flex-direction: "column";
+  display: 'flex';
+  justify-content: 'center';
+  flex-direction: 'column';
 }
-.max-home_challenges__card-wrapper .left_challenges-container .left_challenge_icon-container {
+.max-home_challenges__card-wrapper
+  .left_challenges-container
+  .left_challenge_icon-container {
   position: absolute;
   top: 30%;
   bottom: -50%;
@@ -1352,7 +1411,9 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 14px;
   transform: rotate(180deg);
 }
-.max-home_challenges__card-wrapper .right_challenges-container .right_challenge_icon-container {
+.max-home_challenges__card-wrapper
+  .right_challenges-container
+  .right_challenge_icon-container {
   position: absolute;
   top: 30%;
   bottom: -50%;
@@ -1369,7 +1430,10 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 .max-home_challenges__card-wrapper .max-challenges-content-container {
   padding: 1.25rem 1.25rem 1.875rem 1.25rem;
 }
-.max-home_challenges__card-wrapper .max-challenges-content-container .time-details h3 {
+.max-home_challenges__card-wrapper
+  .max-challenges-content-container
+  .time-details
+  h3 {
   margin: 1.125rem 0 0 0;
   color: #212121;
   font-family: Roboto;
@@ -1378,7 +1442,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 16px;
 }
-.max-home_challenges__card-wrapper .max-challenges-content-container .time-details .time-details-text h6 {
+.max-home_challenges__card-wrapper
+  .max-challenges-content-container
+  .time-details
+  .time-details-text
+  h6 {
   color: #777777;
   font-family: Roboto;
   font-size: 14px;
@@ -1386,7 +1454,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 14px;
 }
-.max-home_challenges__card-wrapper .max-challenges-content-container .time-details .time-details-text h5 {
+.max-home_challenges__card-wrapper
+  .max-challenges-content-container
+  .time-details
+  .time-details-text
+  h5 {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -1395,7 +1467,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   font-style: italic;
 }
-.max-home_challenges__card-wrapper .max-challenges-content-container .time-details .time-details-text h5 strong {
+.max-home_challenges__card-wrapper
+  .max-challenges-content-container
+  .time-details
+  .time-details-text
+  h5
+  strong {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -1404,7 +1481,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   font-style: italic;
 }
-.max-home_challenges__card-wrapper .max-challenges-content-container .time-details .time-details-text h5 small {
+.max-home_challenges__card-wrapper
+  .max-challenges-content-container
+  .time-details
+  .time-details-text
+  h5
+  small {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -1448,7 +1530,9 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   background-color: #ffffff;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.03);
 }
-.wax__home-quest-wrapper .wax__home-quest-container .wax__home-quest-slider-wrapper {
+.wax__home-quest-wrapper
+  .wax__home-quest-container
+  .wax__home-quest-slider-wrapper {
   margin-top: 24px;
 }
 .wax__home-quest-wrapper .wax__home-quest-container div h5 {
@@ -1474,7 +1558,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 }
 
 .max-home__quest-wrapper {
-  height: "";
+  height: '';
   width: 100%;
   border-radius: 8px;
   background-color: #ffffff;
@@ -1497,7 +1581,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 20px;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-time-details-text h6 {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-time-details-text
+  h6 {
   color: #5d5c5c;
   font-family: Roboto;
   font-size: 14px;
@@ -1505,7 +1593,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 14px;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-time-details-text h5 {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-time-details-text
+  h5 {
   color: #212121;
   font-family: Roboto;
   font-size: 12px;
@@ -1514,7 +1606,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   font-style: italic;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-time-details-text h5 strong {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-time-details-text
+  h5
+  strong {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -1523,7 +1620,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   font-style: italic;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-time-details-text h5 small {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-time-details-text
+  h5
+  small {
   color: #212121;
   font-family: Roboto;
   font-size: 12px;
@@ -1532,13 +1634,25 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   font-style: italic;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-home-content-container {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-home-content-container {
   margin-top: 24px;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-home-content-container .quest-home__progress {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-home-content-container
+  .quest-home__progress {
   display: flex;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-home-content-container .quest-home__progress p {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-home-content-container
+  .quest-home__progress
+  p {
   height: 24px;
   width: 88px;
   border-radius: 12px;
@@ -1549,7 +1663,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   text-align: center;
 }
-.max-home__quest-wrapper .max-home__questcard-container .quest-time-details .quest-home-content-container .quest-home__progress .quest {
+.max-home__quest-wrapper
+  .max-home__questcard-container
+  .quest-time-details
+  .quest-home-content-container
+  .quest-home__progress
+  .quest {
   height: 24px;
   width: 68px;
   border-radius: 12px;
@@ -1906,7 +2025,10 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   padding: 30px 20px;
   position: relative;
 }
-.max-learn__category-wrapper .category-container .max-learn__catergory-card .catergory-card-oval {
+.max-learn__category-wrapper
+  .category-container
+  .max-learn__catergory-card
+  .catergory-card-oval {
   top: -50px;
   position: absolute;
   height: 143px;
@@ -2055,7 +2177,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 }
 
 .upcomming__todo-btn {
-  background-color: #FFE8B9;
+  background-color: #ffe8b9;
   padding: 22px 20px;
   border-radius: 4px;
   display: flex;
@@ -2083,14 +2205,18 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 }
 .max__ranking-wrapper .achievements__content .ranking__top-wrapper {
   position: relative;
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/v1665560515/ranking_bg_aigoui.svg");
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665560515/ranking_bg_aigoui.svg');
   padding: 3.125rem 1.5rem 0 1.5rem;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
   height: 477px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .topper-details h6 {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .topper-details
+  h6 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -2099,7 +2225,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   margin: 5px 0 0 0;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .topper-details p {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .topper-details
+  p {
   color: #ffd568;
   font-family: Roboto;
   font-size: 12px;
@@ -2108,12 +2238,19 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 12px;
   margin: 5px 0;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container {
   position: absolute;
   top: 70px;
   right: 38%;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -2122,7 +2259,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container .container-color-bg .icon-container-first {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container
+  .container-color-bg
+  .icon-container-first {
   background: linear-gradient(180deg, #ff8cd9 0%, #ffdef6 100%);
   padding: 0.675rem;
   height: 68px;
@@ -2132,12 +2274,19 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container {
   position: absolute;
   top: 140px;
   left: 40px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -2146,7 +2295,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container .container-color-bg .icon-container-second {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container
+  .container-color-bg
+  .icon-container-second {
   background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
   height: 68px;
   width: 68px;
@@ -2155,12 +2309,19 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container {
   position: absolute;
   top: 170px;
   right: 30px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -2169,7 +2330,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container .container-color-bg .icon-container-third {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container
+  .container-color-bg
+  .icon-container-third {
   background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
   height: 68px;
   width: 68px;
@@ -2284,14 +2450,21 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 22px;
   text-align: center;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container {
   display: flex;
   justify-content: space-between;
   padding: 1.125rem 1.5rem;
   border-radius: 10px;
   background-color: #ffffff;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container h5 {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container
+  h5 {
   margin: 0;
   color: #2a4759;
   font-family: Roboto;
@@ -2300,7 +2473,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 17px;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container h6 {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container
+  h6 {
   margin: 0;
   color: #212121;
   font-family: Roboto;
@@ -2409,17 +2586,23 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   transition: 0.35s ease;
   color: #212121;
 }
-.max__help-wrapper .help__search-container input#search-bar:focus::-webkit-input-placeholder {
+.max__help-wrapper
+  .help__search-container
+  input#search-bar:focus::-webkit-input-placeholder {
   -webkit-transition: opacity 0.45s ease;
   transition: opacity 0.45s ease;
   opacity: 0;
 }
-.max__help-wrapper .help__search-container input#search-bar:focus::-moz-placeholder {
+.max__help-wrapper
+  .help__search-container
+  input#search-bar:focus::-moz-placeholder {
   -moz-transition: opacity 0.45s ease;
   transition: opacity 0.45s ease;
   opacity: 0;
 }
-.max__help-wrapper .help__search-container input#search-bar:focus:-ms-placeholder {
+.max__help-wrapper
+  .help__search-container
+  input#search-bar:focus:-ms-placeholder {
   -ms-transition: opacity 0.45s ease;
   transition: opacity 0.45s ease;
   opacity: 0;
@@ -2435,7 +2618,10 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 .max__help-wrapper .help__accordion-contianer .accordion {
   margin-bottom: 20px;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-button:focus {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-button:focus {
   box-shadow: none;
 }
 .max__help-wrapper .help__accordion-contianer .accordion .accordion-button {
@@ -2447,7 +2633,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 14px;
   background-color: #ededed;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item:last-of-type .accordion-collapse {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item:last-of-type
+  .accordion-collapse {
   box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.06);
 }
 .max__help-wrapper .help__accordion-contianer .accordion .accordion-item {
@@ -2456,7 +2646,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   box-shadow: none;
   border: none;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-header {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header {
   color: #2b615c;
   font-family: Roboto;
   font-size: 14px;
@@ -2464,7 +2658,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 14px;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button:not(.collapsed) {
   color: #2b615c;
   font-family: Roboto;
   font-size: 14px;
@@ -2474,12 +2673,22 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   box-shadow: none;
   background: #ffffff;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed)::after {
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg");
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button:not(.collapsed)::after {
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg');
   transform: rotate(-180deg);
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button::after {
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg");
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button::after {
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665652242/path9509_e8cdri.svg');
   color: #2b615c;
   font-family: Roboto;
   font-size: 14px;
@@ -2488,10 +2697,19 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 14px;
   transform: rotate(-90deg);
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-body {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body {
   padding-top: 0;
 }
-.max__help-wrapper .help__accordion-contianer .accordion .accordion-item .accordion-body p {
+.max__help-wrapper
+  .help__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body
+  p {
   color: #212121;
   font-family: Roboto;
   font-size: 14px;
@@ -2552,7 +2770,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   box-shadow: none;
   border-radius: 4px;
 }
-.max__help-wrapper .question_wrapper form .question-from-control textarea::-moz-placeholder {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  textarea::-moz-placeholder {
   color: #a0a1a2;
   font-family: Roboto;
   font-size: 12px;
@@ -2560,7 +2782,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 14px;
 }
-.max__help-wrapper .question_wrapper form .question-from-control textarea:-ms-input-placeholder {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  textarea:-ms-input-placeholder {
   color: #a0a1a2;
   font-family: Roboto;
   font-size: 12px;
@@ -2569,7 +2795,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 14px;
 }
 .max__help-wrapper .question_wrapper form .question-from-control input,
-.max__help-wrapper .question_wrapper form .question-from-control textarea::placeholder {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  textarea::placeholder {
   color: #a0a1a2;
   font-family: Roboto;
   font-size: 12px;
@@ -2578,13 +2808,21 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   line-height: 14px;
 }
 .max__help-wrapper .question_wrapper form .question-from-control input,
-.max__help-wrapper .question_wrapper form .question-from-control textarea:focus {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  textarea:focus {
   border: none;
   box-shadow: none;
   outline: 0;
 }
 .max__help-wrapper .question_wrapper form .question-from-control input,
-.max__help-wrapper .question_wrapper form .question-from-control textarea:focus-visible {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  textarea:focus-visible {
   border: none;
   box-shadow: none;
   outline: 0;
@@ -2593,7 +2831,11 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   position: relative;
   resize: none;
 }
-.max__help-wrapper .question_wrapper form .question-from-control .textarea-number-container {
+.max__help-wrapper
+  .question_wrapper
+  form
+  .question-from-control
+  .textarea-number-container {
   position: absolute;
   bottom: 10px;
   right: 25px;
@@ -2794,7 +3036,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
 }
 .max__profile-wrapper .white-block {
   border-radius: 8px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
   padding: 1.5rem 1.25rem;
 }
@@ -2802,7 +3044,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   color: #212121;
 }
 .max__profile-wrapper .ml-pbi-grey {
-  color: #6D6B6B;
+  color: #6d6b6b;
 }
 .max__profile-wrapper .ml-pbi {
   margin: 0;
@@ -2873,7 +3115,12 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.1);
   border: none;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-header button {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  button {
   color: #212121;
   font-family: Roboto;
   font-size: 16px;
@@ -2881,23 +3128,49 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 22px;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button:focus {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button:focus {
   border: none;
   box-shadow: none;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button::after {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button::after {
   margin-left: 20px;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-header .accordion-button:not(.collapsed) {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-header
+  .accordion-button:not(.collapsed) {
   background-color: #ffffff;
   border: none;
   box-shadow: none;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-body .details-container {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body
+  .details-container {
   background-color: #f5f5f5;
   padding: 20px 15px;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-body .details-container h5 {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body
+  .details-container
+  h5 {
   color: #858585;
   font-family: Roboto;
   font-size: 14px;
@@ -2905,12 +3178,25 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   letter-spacing: 0;
   line-height: 16px;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-body .details-container h4 {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body
+  .details-container
+  h4 {
   margin-top: 24px;
   display: flex;
   align-items: center;
 }
-.max__profile-wrapper .profile__accordion-contianer .accordion .accordion-item .accordion-body .details-container h4 .percentage-bar {
+.max__profile-wrapper
+  .profile__accordion-contianer
+  .accordion
+  .accordion-item
+  .accordion-body
+  .details-container
+  h4
+  .percentage-bar {
   width: 20%;
 }
 
@@ -2934,7 +3220,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   height: 600px;
   border-radius: 20px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .detail__card-wrapper .detail__card-center {
   padding-left: 30px;
@@ -3035,7 +3321,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   width: 30px !important;
   height: 30px !important;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 50%;
   margin-left: -6px;
 }
@@ -3096,7 +3382,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   border-radius: 50%;
   margin-right: 8px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .member__wrapper .member-points {
   color: #212121;
@@ -3158,7 +3444,7 @@ header .max__navbar .max__menunav-list .max__nav-search-container a {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
 }
 
 .team__name {
@@ -3310,7 +3596,7 @@ li .active-slider {
 
 .team__info-logo-image {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 18px;
@@ -3318,7 +3604,7 @@ li .active-slider {
 
 .team__info-individual-logo-image {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -3704,7 +3990,7 @@ li .active-slider {
   right: 0 !important;
   left: auto !important;
   -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 .ml-edit-user-details__modal-dialog {
   margin: 0;
@@ -3804,7 +4090,7 @@ li .active-slider {
 
 .ml-modal-blur {
   -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .chip__wrapper {
@@ -3856,7 +4142,7 @@ li .active-slider {
 
 .squad__image-img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 30px;
   height: 30px;
   border-radius: 8px;
@@ -3864,7 +4150,7 @@ li .active-slider {
 
 .individual__image-img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -3935,7 +4221,7 @@ li .active-slider {
   width: 15px;
   height: 15px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   margin-right: 2px;
 }
 
@@ -4103,14 +4389,18 @@ li .active-slider {
 }
 .max__ranking-wrapper .achievements__content .ranking__top-wrapper {
   position: relative;
-  background-image: url("https://res.cloudinary.com/dysdy7hjr/image/upload/v1665560515/ranking_bg_aigoui.svg");
+  background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665560515/ranking_bg_aigoui.svg');
   padding: 3.125rem 1.5rem 0 1.5rem;
   background-repeat: no-repeat;
   background-size: 100%;
   width: 100%;
   height: 477px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .topper-details h6 {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .topper-details
+  h6 {
   color: #ffffff;
   font-family: Roboto;
   font-size: 12px;
@@ -4119,7 +4409,11 @@ li .active-slider {
   line-height: 12px;
   margin: 5px 0 0 0;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .topper-details p {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .topper-details
+  p {
   color: #ffd568;
   font-family: Roboto;
   font-size: 12px;
@@ -4128,12 +4422,19 @@ li .active-slider {
   line-height: 12px;
   margin: 5px 0;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container {
   position: absolute;
   top: 70px;
   right: 38%;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -4142,7 +4443,12 @@ li .active-slider {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .first-container .container-color-bg .icon-container-first {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .first-container
+  .container-color-bg
+  .icon-container-first {
   background: linear-gradient(180deg, #ff8cd9 0%, #ffdef6 100%);
   padding: 0.675rem;
   height: 68px;
@@ -4152,12 +4458,19 @@ li .active-slider {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container {
   position: absolute;
   top: 140px;
   left: 40px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -4166,7 +4479,12 @@ li .active-slider {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .second-container .container-color-bg .icon-container-second {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .second-container
+  .container-color-bg
+  .icon-container-second {
   background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
   height: 68px;
   width: 68px;
@@ -4175,12 +4493,19 @@ li .active-slider {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container {
   position: absolute;
   top: 170px;
   right: 30px;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container .container-color-bg {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container
+  .container-color-bg {
   background-color: rgba(216, 216, 216, 0.26);
   height: 85px;
   width: 85px;
@@ -4189,7 +4514,12 @@ li .active-slider {
   justify-content: center;
   align-items: center;
 }
-.max__ranking-wrapper .achievements__content .ranking__top-wrapper .third-container .container-color-bg .icon-container-third {
+.max__ranking-wrapper
+  .achievements__content
+  .ranking__top-wrapper
+  .third-container
+  .container-color-bg
+  .icon-container-third {
   background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
   height: 68px;
   width: 68px;
@@ -4304,14 +4634,21 @@ li .active-slider {
   line-height: 22px;
   text-align: center;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container {
   display: flex;
   justify-content: space-between;
   padding: 1.125rem 1.5rem;
   border-radius: 10px;
   background-color: #ffffff;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container h5 {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container
+  h5 {
   margin: 0;
   color: #2a4759;
   font-family: Roboto;
@@ -4320,7 +4657,11 @@ li .active-slider {
   letter-spacing: 0;
   line-height: 17px;
 }
-.max__ranking-wrapper .max__ranking-position-card .rank-details-wrapper .rank-details-container h6 {
+.max__ranking-wrapper
+  .max__ranking-position-card
+  .rank-details-wrapper
+  .rank-details-container
+  h6 {
   margin: 0;
   color: #212121;
   font-family: Roboto;
@@ -4335,7 +4676,7 @@ li .active-slider {
   right: 0 !important;
   left: auto !important;
   -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
 }
 .sidebar__modal__modal-dialog {
   margin: 0;
