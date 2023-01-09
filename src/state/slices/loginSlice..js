@@ -6,6 +6,7 @@ const initialState = {
   learnerId: localStorage.getItem('userid'),
   token: localStorage.getItem('TOKEN_NAME'),
   fullName: localStorage.getItem('fullname'),
+  profileImage: localStorage.getItem('profileImage'),
 };
 
 const loginSlice = createSlice({
@@ -21,6 +22,9 @@ const loginSlice = createSlice({
         applicationId: action.payload.applicationId,
       };
     },
+    userImageChange: (state, action) => {
+      return { ...state, profileImage: action.payload };
+    },
     removeAuth: () => {
       return {
         loading: null,
@@ -28,10 +32,11 @@ const loginSlice = createSlice({
         learnerId: null,
         token: null,
         fullName: null,
+        profileImage:null
       };
     },
   },
 });
 
-export const { saveAuth, removeAuth } = loginSlice.actions;
+export const { saveAuth, userImageChange, removeAuth } = loginSlice.actions;
 export default loginSlice.reducer;

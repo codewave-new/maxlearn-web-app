@@ -32,7 +32,7 @@ const getLearnBYCategory = async (currentPage) => {
     setCategoryLoading(true)
     try {
       let res = await getCatrgoryWiseSubjects(authData.learnerId,categoryId,currentPage)
-      setLearnCategorySubjects(res?.data?.response)
+      setLearnCategorySubjects(previousState=>[...previousState,...res?.data?.response])
       setLearnCategoryTotalCount(res?.data?.countInfo?.[0]?.count)
       setCategoryLoading(false)
 

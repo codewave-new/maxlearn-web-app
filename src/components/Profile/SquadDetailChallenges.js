@@ -5,8 +5,11 @@ import { yourSquadChallenges } from '../../services/profile';
 import QuestCard from '../Home/Quest/QuestCard';
 import InfiniteScrollling from '../Pagination/InfiniteScrollling';
 import { CenterLoadingBar, LoadingBar } from '../loader/loader';
+import CongratualtionsScreen from '../Challenges/CongratualtionsScreen';
+import { useDispatch } from 'react-redux';
 
 const SquadDetailChallenges = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
   const navigate = useNavigate();
   const [SquadChallenges, setSquadChallenges] = useState([]);
@@ -36,6 +39,7 @@ const SquadDetailChallenges = () => {
   };
 
   const handleNavigation = (individualChallenge) => {
+    console.log(individualChallenge);
     const startDate = moment(individualChallenge?.startDate).diff(
       moment(),
       'days'
@@ -49,6 +53,19 @@ const SquadDetailChallenges = () => {
       : (examType = 'TODAYSTEST');
 
     if (examType === 'COMPLETED') {
+      navigate({
+        pathname: `/team-score`,
+        search: createSearchParams({
+          type: individualChallenge?.challengeType,
+          name: individualChallenge?.yourSquad?.name,
+          points: individualChallenge?.squadScore,
+        }).toString(),
+      });
+      dispatch({
+        type: individualChallenge?.challengeType,
+        name: individualChallenge?.yourSquad?.name,
+        points: individualChallenge?.squadScore,
+      });
       console.log('completed');
     } else {
       navigate({
@@ -80,7 +97,7 @@ const SquadDetailChallenges = () => {
             <div className='row'>
               {SquadChallenges?.map((individualChallenge, index) => (
                 <div
-                  className='col-6'
+                  className='col-12 col-md-6'
                   key={`challenge0${index}`}
                   onClick={() => {
                     handleNavigation(individualChallenge);
@@ -106,6 +123,7 @@ const SquadDetailChallenges = () => {
           </InfiniteScrollling>
         </div>
       )}
+      {/* { <CongratualtionsScreen />} */}
     </div>
   );
 };

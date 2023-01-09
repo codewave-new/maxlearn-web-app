@@ -26,6 +26,9 @@
     }
   }
   .achievements__content {
+    @include media('>=500px', '<995px') {
+      margin-bottom: 40px;
+    }
     .ranking__top-wrapper {
       position: relative;
       background-image: url('https://res.cloudinary.com/dysdy7hjr/image/upload/v1665560515/ranking_bg_aigoui.svg');
@@ -34,264 +37,398 @@
       background-size: 100%;
       width: 100%;
       height: 477px;
-      .topper-details {
-        .topper__name {
-          max-width: 80px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          @include font($white, 12px, 700, 0, 12px);
-          margin: 5px 0 0 0;
+      @include media('>=760px', '<995px') {
+        max-width: 70%;
+        margin: auto;
+      }
+    }
+
+    .topper-details {
+      .topper__name {
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include font($white, 12px, 700, 0, 12px);
+        margin: 5px 0 0 0;
+      }
+      // h6 {
+      //   @include font($white, 12px, 700, 0, 12px);
+      //   margin: 5px 0 0 0;
+      // }
+      .topper__points {
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        .points-gem {
+          width: 12px;
+          height: 12px;
+          margin-right: 2px;
         }
-        // h6 {
-        //   @include font($white, 12px, 700, 0, 12px);
-        //   margin: 5px 0 0 0;
-        // }
-        .topper__points {
-          max-width: 80px;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          .points-gem {
-            width: 12px;
-            height: 12px;
-            margin-right: 2px;
+        @include font(#ffd568, 12px, 500, 0, 12px);
+        margin: 5px 0;
+      }
+    }
+    .first-container {
+      position: absolute;
+      top: 70px;
+      right: 38%;
+      @include media('>=1280px', '<1440px') {
+        top: 40px;
+        right: 35%;
+      }
+      @include media('>1023px', '<1280px') {
+        top: 35px;
+        right: 35%;
+      }
+      .squad__container-bg {
+        position: relative;
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 7px;
+        @include displayBothCenter();
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
+        }
+        .squad-container-first {
+          height: 68px;
+          width: 68px;
+          border-radius: 7px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
           }
-          @include font(#ffd568, 12px, 500, 0, 12px);
-          margin: 5px 0;
+          .first__crown {
+            position: absolute;
+            top: -24px;
+            right: 50%;
+            transform: translate(50%, 0px);
+          }
+          .squad__ranking-firstimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 7px;
+          }
         }
       }
-      .first-container {
-        position: absolute;
-        top: 70px;
-        right: 38%;
-        .squad__container-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
-          border-radius: 7px;
-          @include displayBothCenter();
-          .squad-container-first {
-            height: 68px;
-            width: 68px;
-            border-radius: 7px;
-            .squad__ranking-firstimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 7px;
-            }
-          }
+      .container-color-bg {
+        position: relative;
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
         }
-        .container-color-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
+        @include displayBothCenter();
+        .icon-container-first {
+          // background: linear-gradient(180deg, #ff8cd9 0%, #ffdef6 100%);
+          // padding: 0.675rem;
+          height: 68px;
+          width: 68px;
           border-radius: 50%;
           @include displayBothCenter();
-          .icon-container-first {
-            // background: linear-gradient(180deg, #ff8cd9 0%, #ffdef6 100%);
-            // padding: 0.675rem;
-            height: 68px;
-            width: 68px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
+          }
+          .first__crown {
+            position: absolute;
+            top: -24px;
+            right: 50%;
+            transform: translate(50%, 0px);
+          }
+          .individual__ranking-firstimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            @include displayBothCenter();
-            .individual__ranking-firstimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 50%;
-            }
           }
         }
       }
-      .second-container {
-        position: absolute;
-        top: 140px;
+    }
+    .second-container {
+      position: absolute;
+      top: 140px;
+      left: 40px;
+      @include media('>=500px', '<995px') {
+        top: 160px;
         left: 40px;
-        .squad__container-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
+      }
+      @include media('>=1280px', '<1440px') {
+        top: 100px;
+        left: 30px;
+      }
+      @include media('>1023px', '<1280px') {
+        top: 80px;
+        left: 15px;
+      }
+      .squad__container-bg {
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 7px;
+        @include displayBothCenter();
+
+        @include media('>=1280px', '<1440px') {
+          top: 100px;
+          left: 30px;
+        }
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
+        }
+        .squad-container-second {
+          height: 68px;
+          width: 68px;
           border-radius: 7px;
-          @include displayBothCenter();
-          .squad-container-second {
-            height: 68px;
-            width: 68px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
+          }
+          .squad__ranking-secondimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             border-radius: 7px;
-            .squad__ranking-secondimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 7px;
-            }
           }
         }
-        .container-color-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
+      }
+      .container-color-bg {
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        @include displayBothCenter();
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
+        }
+        .icon-container-second {
+          // background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
+          height: 68px;
+          width: 68px;
           border-radius: 50%;
           @include displayBothCenter();
-          .icon-container-second {
-            // background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
-            height: 68px;
-            width: 68px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
+          }
+          .individual__ranking-secondimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            @include displayBothCenter();
-            .individual__ranking-secondimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 50%;
-            }
           }
         }
       }
-      .third-container {
-        position: absolute;
-        top: 170px;
-        right: 30px;
-        .squad__container-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
+    }
+    .third-container {
+      position: absolute;
+      top: 170px;
+      right: 30px;
+      @include media('>=500px', '<995px') {
+        top: 190px;
+        right: 35px;
+      }
+      @include media('>=1280px', '<1440px') {
+        top: 130px;
+        right: 15px;
+      }
+      @include media('>1023px', '<1280px') {
+        top: 110px;
+        right: 5px;
+      }
+      .squad__container-bg {
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 7px;
+        @include displayBothCenter();
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
+        }
+        .squad-container-third {
+          height: 68px;
+          width: 68px;
           border-radius: 7px;
-          @include displayBothCenter();
-          .squad-container-third {
-            height: 68px;
-            width: 68px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
+          }
+          .squad__ranking-thirdimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             border-radius: 7px;
-            .squad__ranking-thirdimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 7px;
-            }
           }
         }
-        .container-color-bg {
-          background-color: rgba(216, 216, 216, 0.26);
-          height: 85px;
-          width: 85px;
+      }
+      .container-color-bg {
+        background-color: rgba(216, 216, 216, 0.26);
+        height: 85px;
+        width: 85px;
+        border-radius: 50%;
+        @include displayBothCenter();
+        @include media('>1023px', '<1280px') {
+          height: 65px;
+          width: 65px;
+        }
+        .icon-container-third {
+          // background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
+          height: 68px;
+          width: 68px;
           border-radius: 50%;
           @include displayBothCenter();
-          .icon-container-third {
-            // background: linear-gradient(180deg, #fc7c3a 0%, #ffbe96 100%);
-            height: 68px;
-            width: 68px;
+          @include media('>1023px', '<1280px') {
+            height: 48px;
+            width: 48px;
+          }
+          .individual__ranking-thirdimage {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            @include displayBothCenter();
-            .individual__ranking-thirdimage {
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              border-radius: 50%;
-            }
           }
         }
       }
     }
-    text-align: center;
-    h4 {
-      @include font($text-secondary-color, 18px, 500, 0, 23px);
-      // border-right: 1px solid $user-bg-secondary;
+  }
+  text-align: center;
+  h4 {
+    @include font($text-secondary-color, 18px, 500, 0, 23px);
+    // border-right: 1px solid $user-bg-secondary;
+  }
+  h1 {
+    padding-right: 20px;
+    @include font($text-secondary-color, 32px, 900, 0, 38px);
+    border-right: 1px solid;
+    strong {
+      @include font($text-secondary-color, 14px, 700, 0, 14px);
     }
-    h1 {
-      padding-right: 20px;
-      @include font($text-secondary-color, 32px, 900, 0, 38px);
-      border-right: 1px solid;
-      strong {
-        @include font($text-secondary-color, 14px, 700, 0, 14px);
-      }
-      small {
-        @include font($text-secondary-color, 14px, 400, 0, 14px);
-      }
-    }
-    h2 {
-      @include font($text-secondary-color, 32px, 900, 0, 38px);
-      padding-left: 20px;
-      strong {
-        @include font($text-secondary-color, 14px, 700, 0, 14px);
-      }
-      small {
-        @include font($text-secondary-color, 14px, 400, 0, 14px);
-      }
+    small {
+      @include font($text-secondary-color, 14px, 400, 0, 14px);
     }
   }
-  .ranking-card {
-    @include card(auto, 100%, 20px, $white);
-    padding: 1.25rem 1.875rem;
-    .rank__content-wrapper {
-      @include card(100%, 100%, 20px, $user-bg);
-      padding: 1.875rem;
-      .scroll-rank-user {
-        overflow-x: hidden;
-        height: 600px;
-        padding: 1rem;
-        padding-top: 0;
-        overflow-y: scroll;
-      }
+  h2 {
+    @include font($text-secondary-color, 32px, 900, 0, 38px);
+    padding-left: 20px;
+    strong {
+      @include font($text-secondary-color, 14px, 700, 0, 14px);
+    }
+    small {
+      @include font($text-secondary-color, 14px, 400, 0, 14px);
     }
   }
-  .rank__points-image {
-    width: 18px;
-    height: 18;
-    margin-right: 6px;
-  }
-  .max__ranking-position-card {
-    margin-bottom: 5px;
-    .topper {
-      background-color: #ffeca2 !important;
+}
+.ranking-card {
+  @include card(auto, 100%, 20px, $white);
+  padding: 1.25rem 1.875rem;
+  .rank__content-wrapper {
+    @include card(100%, 100%, 20px, $user-bg);
+    padding: 1.875rem;
+    .scroll-rank-user {
+      overflow-x: hidden;
+      height: 600px;
+      padding: 1rem;
+      padding-top: 0;
+      overflow-y: scroll;
     }
-    .rank-number {
+  }
+}
+.rank__points-image {
+  width: 18px;
+  height: 18;
+  margin-right: 6px;
+}
+.max__ranking-position-card {
+  margin-bottom: 5px;
+  .topper {
+    background-color: #ffeca2 !important;
+  }
+  .rank-number {
+    padding: 1.125rem 1.5rem;
+    border-radius: 10px;
+    background-color: $white;
+    // @include card(100%,100%,10px,#FFECA2)
+
+    .ranking__topper {
+      color: #ff6633;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 22px;
+      text-align: center;
+    }
+    .rankings__other {
+      margin: 0;
+      color: #2a4759;
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 22px;
+      text-align: center;
+    }
+  }
+
+  .rank-details-wrapper {
+    .rank-details-container {
+      display: flex;
+      justify-content: space-between;
       padding: 1.125rem 1.5rem;
       border-radius: 10px;
       background-color: $white;
       // @include card(100%,100%,10px,#FFECA2)
-
-      .ranking__topper {
-        color: #ff6633;
-        font-family: Roboto;
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0;
-        line-height: 22px;
-        text-align: center;
-      }
-      .rankings__other {
+      .ranking__learners-name {
         margin: 0;
-        color: #2a4759;
-        font-family: Roboto;
-        font-size: 20px;
-        font-weight: 500;
-        letter-spacing: 0;
-        line-height: 22px;
-        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 200px;
+        // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
+        @include font(#2a4759, 16px, 500, 0, 17px);
+        @include media('>=500px', '<995px') {
+          max-width: 100px;
+        }
       }
-    }
+      .individual__ranking {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        &-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+        }
+      }
+      .squad__ranking {
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        &-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
+        }
+      }
 
-    .rank-details-wrapper {
-      .rank-details-container {
-        display: flex;
-        justify-content: space-between;
-        padding: 1.125rem 1.5rem;
-        border-radius: 10px;
-        background-color: $white;
-        // @include card(100%,100%,10px,#FFECA2)
-        h5 {
-          margin: 0;
-          // $color, $fontSize, $fontWeight, $letterSpace, $lineHeight
-          @include font(#2a4759, 16px, 500, 0, 17px);
-        }
-        .ranking__points-topper {
-          margin: 0;
-          @include font(#ff6633, 16px, 500, 0, 17px);
-        }
-        .ranking__points-others {
-          margin: 0;
-          @include font($text-secondary-color, 16px, 500, 0, 17px);
-        }
+      .ranking__points-topper {
+        margin: 0;
+        @include font(#ff6633, 16px, 500, 0, 17px);
+      }
+      .ranking__points-others {
+        margin: 0;
+        @include font($text-secondary-color, 16px, 500, 0, 17px);
       }
     }
   }

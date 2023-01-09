@@ -21,7 +21,7 @@ const CategoryListing = () => {
     setCategoryLoading(true)
     try {
       let res = await getLearnByCategory(authData.learnerId,currentPage)
-      setLearnCategoryLists(res?.data?.response)
+      setLearnCategoryLists((previousState)=>[...previousState,...res?.data?.response])
       setLearnCategoryTotalCount(res?.data?.countInfo?.[0]?.count)
       setCategoryLoading(false)
 

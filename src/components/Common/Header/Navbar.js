@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Link,
   Navigate,
@@ -36,6 +36,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
+  const auth = useSelector((state) => state.auth);
   const [activeNav, setActiveNav] = useState('home');
   const [profileDropDown, setProfileDropDown] = useState(false);
 
@@ -265,7 +266,7 @@ const Navbar = () => {
 
                     <li className='max__notification'>
                       <div className='max__nav-notification-container'>
-                        <button onClick={handleNotificationModal}>
+                        <button id='notification' onClick={handleNotificationModal}>
                           <HomeNotificationLogo.default />
                         </button>
                       </div>
@@ -273,13 +274,19 @@ const Navbar = () => {
                     <li className='max__nav-user'>
                       <div className='max__nav-user-container'>
                         <button
+                        id='profile-dropdown'
                           onClick={() => {
                             setProfileDropDown(
                               (previousState) => !previousState
                             );
                           }}
                         >
-                          <HomeUserLogo.default />
+                          <img
+                            className='user_profile-pic'
+                            src={auth?.profileImage}
+                            alt='profile image'
+                          />
+                          {/* <HomeUserLogo.default /> */}
                         </button>
                       </div>
                     </li>
@@ -318,15 +325,15 @@ const Navbar = () => {
                 </li>
                 <li className='dropdown__list d-flex justify-content-between align-items-center'>
                   <div className='d-flex justify-content-between align-items-center dropdown__list'>
-                  <div className='image-logo'>
-                    <Console.default />
+                    <div className='image-logo'>
+                      <Console.default />
+                    </div>
+                    Console
                   </div>
-                  Console
-                </div>
-                <div className='text-end'>
-                  <ConsoleArrow.default />
+                  <div className='text-end'>
+                    <ConsoleArrow.default />
                   </div>
-              </li>
+                </li>
                 <li
                   className='dropdown__list'
                   onClick={() => {

@@ -28,6 +28,11 @@
   &__modal-header {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    .edit_btn {
+      background-color: transparent;
+      border: none;
+    }
+    
 
     .modal-title {
       color: #212121;
@@ -49,6 +54,7 @@
   &__modal-body {
     padding: 2.5rem;
     padding-bottom: 1.5rem;
+    overflow-y: auto;
     .modal__body-header {
       @include font(#212121, 16px, 700, 0, 17px);
       margin-bottom: 20px;
@@ -56,7 +62,8 @@
   }
 
   &__modal-footer {
-    padding: 0 2.5rem 1.8rem 2.5rem;
+    // padding: 0 2.5rem 1.8rem 2.5rem;
+    padding: 0;
     border-top: none !important;
     justify-content: center;
 
@@ -65,7 +72,7 @@
       border-radius: 4px;
       background: linear-gradient(169.56deg, #ff6633 0%, #de5020 100%);
       padding: 1.375rem;
-
+      border: none;
       color: #ffffff;
       font-family: Roboto;
       font-size: 14px;
@@ -78,11 +85,62 @@
 
 // edit user details form
 .ml-edit-user-detail-form {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  .form__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 150px);
+  }
   .ml-form-group {
     margin: 0;
     margin-bottom: 1.938rem;
+    textarea {
+      resize: none;
+    }
   }
-
+  .phone__number-wrapper {
+    .react-tel-input {
+      color: #212121;
+      font-family: Roboto !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0;
+      line-height: 16px !important;
+      padding: 0px !important;
+      .form-control:focus {
+        box-shadow: none;
+      }
+      input {
+        width: 100%;
+        color: #212121;
+        font-family: Roboto !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        letter-spacing: 0;
+        line-height: 16px !important;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1.5px solid #d9d9d9 !important;
+        padding-bottom: 17px;
+        outline: none;
+      }
+      .flag-dropdown {
+        padding-bottom: 17px;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-bottom: 1.5px solid #d9d9d9 !important;
+        background-color: transparent;
+        .selected-flag {
+          padding-bottom: 17px;
+        }
+      }
+    }
+  }
   .ml-form-text-title {
     color: #727a92;
     font-family: Roboto;
@@ -93,13 +151,20 @@
     margin: 0;
     margin-bottom: 0.875rem;
   }
-
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
   .ml-form-inputs {
     border: none;
     border-bottom: 1.5px solid #d9d9d9;
     border-radius: 0px;
     padding: 0;
-    padding-bottom: 1.4rem;
+    padding-bottom: 1rem;
     padding-right: 1.4rem;
 
     // input text styling
@@ -110,8 +175,64 @@
     letter-spacing: 0;
     line-height: 22px;
   }
+  .selectbox__wrapper {
+    position: relative;
+  }
+  .select__icon {
+    position: absolute;
+    right: 0px;
+    pointer-events: none;
+  }
+  .select__input {
+    width: 100%;
+    padding-bottom: 1rem;
+    color: #212121;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 16px;
+    border-bottom: 1.5px solid #d9d9d9;
+    appearance: none;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    position: relative;
+    &:focus {
+      outline: none;
+      border-bottom: 1.5px solid #212121;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    option {
+      color: #212121;
+    }
+  }
 
   .ml-form-inputs:focus {
     box-shadow: none;
   }
+}
+
+.ml-edit-user-detail-form {
+  .ml-form-group {
+    .password_input {
+      position: relative;
+      .password__icon {
+        position: absolute;
+        display: inline-block;
+        top: 0px;
+        right: 0px;
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+.form_error-message {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
 }

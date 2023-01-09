@@ -52,9 +52,8 @@ const DetailCard = ({ start, state }) => {
   const [opponentResult, setOpponentResult] = useState('');
   const [learnerName, setLearnerName] = useState('');
 
-  
   useEffect(() => {
-    window.scrollTo(0, 0)
+    window.scrollTo(0, 0);
     ChallengeDetail(id, query['challenge-type']);
     if (query.exam_type === 'TODAYSTEST') {
       learnersStartedChallenge(id);
@@ -202,7 +201,7 @@ const DetailCard = ({ start, state }) => {
       setLoading(false);
     } else if (res?.data?.statusCode === 409) {
       setLoading(false);
-      toast.error('This Challenge is completed');
+      toast.error(res?.data?.message);
     }
   };
 
@@ -213,13 +212,15 @@ const DetailCard = ({ start, state }) => {
           let val = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id == challengeDescription?.squad
           );
-        let learnerName= val?.learners?.find(mem=>mem?._id==challengeDescription?.learner)
-        setLearnerName(learnerName?.fullName)
+          let learnerName = val?.learners?.find(
+            (mem) => mem?._id == challengeDescription?.learner
+          );
+          setLearnerName(learnerName?.fullName);
           setIndividualResult(val);
           let opponentVal = challengeDescription.challengeDetails?.squads?.find(
             (item) => item?._id !== challengeDescription?.squad
           );
-          setOpponentResult(opponentVal)
+          setOpponentResult(opponentVal);
         }
       } else if (query['challenge-type'] == 'INDIVIDUAL') {
         let val = challengeDescription.challengeDetails?.learners?.find(

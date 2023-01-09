@@ -1,43 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import QuestCertListing from './questcerttab/QuestCertListing';
 import ChallengesListing from '../../pages/Challenges/ChallengesListing';
-import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
-import { useQuery } from '../../utility/helper';
+import useActiveTab from '../CustomHooks/ActiveTab';
 
-const ActivityTab = (props) => {
-  const navigate = useNavigate();
-  const loaction = useLocation();
-  const query = useQuery(loaction.search);
-  const [activetab, setActivetab] = useState();
+const ActivityTab = () => {
+  const [activeTab, setActivetab] = useActiveTab('challenges');
 
-  useEffect(() => {
-    query['tab'] ? setActivetab(query['tab']) : handleNavigation('challenges');
-  }, [query['tab']]);
-
-
-  const handleNavigation = (eventKey) => {
-    setActivetab(eventKey);
-    navigate({
-      pathname: '/to-do',
-      search: createSearchParams({
-        tab: `${eventKey}`,
-      }).toString(),
-    });
-  };
   return (
     <Tabs
-      defaultActiveKey={query['tab'] === 'quest' ? 'quest' : 'challenges'}
+      defaultActiveKey={activeTab}
       id='uncontrolled-tab-example'
       className='max__todo-activity-tab'
-      onSelect={handleNavigation}
+      onSelect={setActivetab}
     >
       <Tab eventKey='challenges' title='Challenges'>
-        {query['tab'] === 'challenges' && <ChallengesListing />}
+        {activeTab === 'challenges' && <ChallengesListing />}
       </Tab>
       <Tab eventKey='quest' title='Quests & Certs'>
-        {query['tab'] === 'quest' && <QuestCertListing />}
+        {activeTab === 'quest' && <QuestCertListing />}
       </Tab>
     </Tabs>
   );

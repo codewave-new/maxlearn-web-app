@@ -37,3 +37,15 @@ export const ButtonLoader = () => {
     </div>
   );
 };
+
+export const OutlineButtonLoader = () => {
+  return (
+    <div className='loader__orange'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      {/* <span></span> */}
+    </div>
+  );
+};

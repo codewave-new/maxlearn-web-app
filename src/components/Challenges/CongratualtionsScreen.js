@@ -4,9 +4,24 @@ import { CardFooter } from 'reactstrap';
 
 import '../../styles/questions/congratulation.scss';
 import { CloseButton } from '../../assets';
-import { Link, NavLink } from 'react-router-dom';
+import {
+  Link,
+  Navigate,
+  NavLink,
+  useLocation,
+  useNavigate,
+} from 'react-router-dom';
+import { useQuery } from '../../utility/helper';
 
-function CongratualtionsScreen({points,name,close}) {
+function CongratualtionsScreen({ points, name, close }) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = useQuery(location.search);
+
+  
+  const handleClose = () => {
+    navigate(-1);
+  };
   return (
     <div className='cong_bg'>
       <div className='banner_bg'>
@@ -17,13 +32,13 @@ function CongratualtionsScreen({points,name,close}) {
               style={{ marginTop: '40px' }}
             >
               {/* <a href='/to-do'> */}
-                <button className='detail_close' onClick={close}>
-                  <CloseButton.default />
-                </button>
+              <button className='detail_close' onClick={close || handleClose}>
+                <CloseButton.default />
+              </button>
               {/* </a> */}
             </div>
             <div className='cong_intro s pt-4'>Congratualtions</div>
-            <div className='cong_team_name pt-2'>{name}</div>
+            <div className='cong_team_name pt-2'>{name || params?.name}</div>
             <div className='d-flex  justify-content-center   mt-3'>
               <img
                 src='https://res.cloudinary.com/dysdy7hjr/image/upload/v1670992479/trophy_woqchp.png'
@@ -33,10 +48,10 @@ function CongratualtionsScreen({points,name,close}) {
             <div className='d-flex justify-content-center mt-2'>
               <Card className='  cong_card '>
                 <div className='mt-4 d-flex justify-content-center card_intro'>
-                  Points earned by {name}
+                  Points earned by {name || params?.name}
                 </div>
                 <div className='mt-3 cong_points d-flex justify-content-center'>
-                  {points}
+                  {points || params?.points}
                 </div>
 
                 <CardFooter className='cong_card_footer mt-4 cong_footer  d-flex justify-content-center'>
@@ -46,12 +61,21 @@ function CongratualtionsScreen({points,name,close}) {
               </Card>
             </div>
             <div className='d-flex justify-content-center mt-4 '>
-              <Link to="/to-do">
-              <Button className='explore_challenge'>Explore Challenges</Button>
+              <Link to='/to-do'>
+                <Button className='explore_challenge'>
+                  Explore Challenges
+                </Button>
               </Link>
             </div>
             <div className='d-flex justify-content-center mt-3 '>
-              <Button className='view_leaderboard'>View my leaderboard</Button>
+              <Button
+                className='view_leaderboard'
+                onClick={() => {
+                  navigate('/rankings');
+                }}
+              >
+                View my leaderboard
+              </Button>
             </div>
           </div>
         </div>

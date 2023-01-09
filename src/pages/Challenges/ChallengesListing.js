@@ -92,7 +92,7 @@ const ChallengesListing = () => {
             <div className='row'>
               {todayChallenge?.map((individualChallenge, index) => (
                 <div
-                  className='col-6'
+                  className='col-12 col-md-6'
                   key={`challenge0${index}`}
                   onClick={() => {
                     navigate({

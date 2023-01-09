@@ -32,7 +32,7 @@ const getLearnBYCategory = async (currentPage) => {
     settopicLoading(true)
     try {
       let res = await getSubjWiseTopics(authData.learnerId,subId,currentPage)
-      setlearnSubTopicc(res?.data?.response)
+      setlearnSubTopicc((previousState)=>[...previousState,...res?.data?.response])
       setlearnTopicctotalCount(res?.data?.countInfo?.[0]?.count)
       settopicLoading(false)
 

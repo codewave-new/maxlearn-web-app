@@ -35,7 +35,41 @@ export const yourSquadChallenges = async (squadId, pageNum) => {
 
 export const BasicInformation = async (learnerId) => {
   try {
-    const response = await http.post(`/api/app/learners/profile`, { learnerId });
+    const response = await http.post(`/api/app/learners/profile`, {
+      learnerId,
+    });
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+export const editProfileDetails = async (editedDetails) => {
+  try {
+    const response = await http.post(
+      `/api/app/learners/update-profile`,
+      editedDetails
+    );
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const getProfileAvatars = async () => {
+  try {
+    const response = await http.get(`/api/app/learners/avatars`);
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const uploadFromGallery = async (imageDetails) => {
+  try {
+    const response = await http.post(
+      `/api/admin/general/upload-image`,
+      imageDetails
+    );
     return response.data;
   } catch (error) {
     return error.response;
